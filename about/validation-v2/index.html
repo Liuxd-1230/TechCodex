@@ -1143,6 +1143,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公开部署记录
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1210,6 +1221,17 @@
     <span class="md-ellipsis">
       
         网站与复现
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公开部署记录
       
     </span>
   </a>
@@ -1311,7 +1333,7 @@
 </tr>
 <tr>
 <td>生成站点</td>
-<td>25 个 HTML 页面、1387 个本地引用及锚点、图注语义、折叠推导与 25 个 MathJax 文件完整性检查通过</td>
+<td>25 个 HTML 页面、1390 个本地引用及锚点、图注语义、折叠推导与 25 个 MathJax 文件完整性检查通过</td>
 </tr>
 <tr>
 <td>桌面渲染</td>
@@ -1332,7 +1354,15 @@
 </tbody>
 </table>
 <p>渲染检查发现并修正了两类实际问题：早期 SVG 数学组件的独立公式留白，以及原生 details 内部没有解析 Markdown。后者由构建钩子临时加入解析标记，GitHub 原始正文仍保留普通 details。第 4～10 章尚未完成；手机检查为浏览器窄视口检查，尚未涵盖各型号实体设备。</p>
-<p>公开部署状态在 GitHub Pages 首次发布验证后另行记录。本轮没有用新增大规模扫描替代讲授。</p>
+<h2 id="_5">公开部署记录<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
+<p>首次上线源提交为 <code>6e2ea4e</code>，生成分支提交为 <code>11fd62d2fc6efaeb89457f2f988b08fe3c5d94d8</code>。GitHub Pages 的来源为 <code>gh-pages</code> 根目录，首次 <a href="https://github.com/Liuxd-1230/TechCodex/actions/runs/39632099986">构建与部署记录</a> 已完成且结论为 success。后续编辑仍沿同一构建路径发布，分支历史保留。</p>
+<ul>
+<li><a href="https://liuxd-1230.github.io/TechCodex/">公开首页</a> 与 <a href="https://liuxd-1230.github.io/TechCodex/analog/stages/source-follower/">源跟随器样章</a> 实际访问成功。</li>
+<li>62 个公开页面与资源返回 HTTP 200，响应字节的 SHA-256 与本地严格构建产物一致，涵盖章节、SVG、MathJax 组件和字体、样式与搜索索引。</li>
+<li>公开站点的 8 篇核心正文已经浏览器复核，没有 MathJax 错误或损坏图片；样章为 26 处已排版数学、3 幅有图注的原创电路图。</li>
+<li>GitHub 原生 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/模拟/03-共源级.md">共源级正文</a> 已实际打开，确认公式与 4 幅图加载完成，正文不是静态站的专属格式。</li>
+</ul>
+<p>本轮没有用新增大规模扫描替代讲授。原有实验资源可继续独立使用；本次实际工艺仿真回归的覆盖仍是原有器件与共源级网表，并不宣称所有新增教学拓扑都已经完成 GF180MCU 仿真。</p>
 
 
 
