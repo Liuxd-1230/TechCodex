@@ -1,0 +1,29 @@
+V1 GF180MCU resistor-loaded CS: fixed gate bias comparison, Rs substituted
+.include "design.ngspice"
+.lib "sm141064.ngspice" typical
+.param sw_stat_global=0 sw_stat_mismatch=0
+.temp 27
+.options reltol=1e-5 abstol=1e-13 vntol=1e-8
+Vdd vdd 0 3.3
+Vin in 0 dc .9 ac 1 sin(.9 .001 10k)
+Rd vdd out 39k
+Rs src 0 @RS@
+X1 out in src 0 nmos_3p3 w=10u l=1u ad=5p as=5p pd=21u ps=21u
+Cl out 0 2p
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+op
+wrdata op.txt v(out) v(src) @m.x1.m0[id] @m.x1.m0[gm] @m.x1.m0[gds] @m.x1.m0[gmbs] @m.x1.m0[vdsat]
+dc Vin .8999 .9001 .0001
+wrdata dc.txt v(out)
+ac dec 80 10 1G
+let gain_real = real(v(out))
+let gain_imag = imag(v(out))
+wrdata ac.txt gain_real gain_imag
+tran .2u .4m
+wrdata tran.txt v(in) v(out)
+quit
+.endc
+.end

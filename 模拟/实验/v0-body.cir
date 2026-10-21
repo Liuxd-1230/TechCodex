@@ -1,0 +1,20 @@
+V0 GF180MCU NMOS body effect: fixed Vgs=.9V and Vds=1.65V
+.include "design.ngspice"
+.lib "sm141064.ngspice" typical
+.param sw_stat_global=0 sw_stat_mismatch=0
+.temp 27
+.options reltol=1e-5 abstol=1e-13 vntol=1e-8
+Vs s 0 0
+Vg g s .9
+Vd d s 1.65
+X1 d g s 0 nmos_3p3 w=10u l=1u ad=5p as=5p pd=21u ps=21u
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+save v(s) @m.x1.m0[id] @m.x1.m0[gm] @m.x1.m0[gmbs] @m.x1.m0[vth]
+dc Vs 0 .8 .01
+wrdata body.txt @m.x1.m0[id] @m.x1.m0[gm] @m.x1.m0[gmbs] @m.x1.m0[vth]
+quit
+.endc
+.end

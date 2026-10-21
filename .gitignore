@@ -1,0 +1,15 @@
+.venv/
+.tools/
+.cache/
+__pycache__/
+*.pyc
+build/
+*.raw
+*.log
+*.tmp
+.env
+.env.*
+private-models/
+local-config.json
+*__on_page*
+*.lint.txt

@@ -1,0 +1,19 @@
+V0 GF180MCU NMOS transfer: W=10um, L substituted by runner, Vds=1.65V
+.include "design.ngspice"
+.lib "sm141064.ngspice" typical
+.param sw_stat_global=0 sw_stat_mismatch=0
+.temp 27
+.options reltol=1e-5 abstol=1e-13 vntol=1e-8
+Vd d 0 1.65
+Vg g 0 .9
+X1 d g 0 0 nmos_3p3 w=10u l=@LENGTH@ ad=5p as=5p pd=21u ps=21u
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+save v(g) @m.x1.m0[id] @m.x1.m0[gm] @m.x1.m0[gds] @m.x1.m0[gmbs] @m.x1.m0[vth] @m.x1.m0[vdsat]
+dc Vg .3 1.5 .005
+wrdata transfer.txt @m.x1.m0[id] @m.x1.m0[gm] @m.x1.m0[gds] @m.x1.m0[gmbs] @m.x1.m0[vth] @m.x1.m0[vdsat]
+quit
+.endc
+.end
