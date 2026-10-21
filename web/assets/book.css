@@ -1,0 +1,73 @@
+:root {
+  --md-primary-fg-color:#173c50;
+  --md-primary-bg-color:#fff;
+  --md-accent-fg-color:#126e63;
+  --md-default-fg-color:#253440;
+  --md-default-fg-color--light:#566976;
+  --md-typeset-a-color:#126e63;
+  --book-rule:#d8e2e9;
+  --book-paper:#fff;
+  --book-margin:#f5f8fa;
+  --book-serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+  --md-text-font:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;
+  --md-code-font:"Cascadia Code","Consolas",monospace;
+}
+body {background:var(--book-margin);}
+.md-header {box-shadow:none;border-bottom:1px solid #315566;}
+.md-header__title {letter-spacing:.04em;font-weight:600;}
+.md-header__button.md-logo img {height:1.6rem;width:1.6rem;}
+.md-grid {max-width:80rem;}
+.md-main__inner {margin-top:1.8rem;}
+.md-content {background:var(--book-paper);border:1px solid var(--book-rule);min-width:0;}
+.md-content__inner {max-width:43rem;margin:0 auto;padding:2rem 2.4rem 3rem;}
+.md-typeset {font-size:.89rem;line-height:1.95;letter-spacing:.015em;}
+.md-typeset p {margin:1.1em 0;text-align:justify;overflow-wrap:anywhere;}
+.md-typeset h1,.md-typeset h2,.md-typeset h3 {font-family:var(--book-serif);color:#17394a;letter-spacing:.025em;}
+.md-typeset h1 {font-size:1.85rem;line-height:1.5;font-weight:700;margin:.9rem 0 1.6rem;text-wrap:balance;}
+.md-typeset h2 {font-size:1.23rem;font-weight:700;margin:2.5rem 0 1rem;padding-top:1.2rem;border-top:1px solid var(--book-rule);}
+.md-typeset h3 {font-size:1.05rem;font-weight:700;margin-top:1.6rem;}
+.book-running-head {display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--book-rule);padding-bottom:.8rem;color:#637d8c;font-size:.57rem;letter-spacing:.12em;}
+.md-typeset a {text-underline-offset:.22em;}
+.md-typeset a:hover {text-decoration:underline;}
+.md-typeset strong {font-weight:700;color:#17394a;}
+.md-typeset .teaching-note {color:#334e5d;border-left:3px solid #26867c;background:#f4f9f8;margin:1.8rem 0;padding:.35rem 1.15rem;}
+.md-typeset .teaching-note p {text-align:left;}
+.md-typeset figure {display:block;max-width:100%;margin:1.8rem 0 2rem;padding:1.15rem 0 .8rem;border-top:1px solid var(--book-rule);border-bottom:1px solid var(--book-rule);}
+.md-typeset figure p {margin:0;line-height:1;}
+.md-typeset figure img {display:block;max-width:100%;max-height:39rem;margin:0 auto;object-fit:contain;}
+.md-typeset figcaption {font-size:.7rem;line-height:1.8;color:#526974;text-align:left;margin:1rem auto 0;max-width:36rem;font-style:normal;}
+.md-typeset .arithmatex {letter-spacing:0;font-size:1.02em;}
+.md-typeset div.arithmatex {overflow-x:auto;overflow-y:hidden;padding:.8rem .35rem;margin:1rem 0;}
+.md-typeset mjx-container[display="true"] {margin:0!important;}
+.md-typeset div.arithmatex>mjx-container {display:block;text-align:center;}
+.md-typeset details {border:1px solid var(--book-rule);border-left:3px solid #809ba9;box-shadow:none;font-size:inherit;border-radius:0;padding:.25rem 1rem;}
+.md-typeset details summary {background:#f4f7fa;color:#294656;font-size:.8rem;margin:-.25rem -1rem;padding:.7rem 1rem .7rem 2rem;}
+.md-typeset details summary::after {color:#617b89;}
+.md-typeset table:not([class]) {font-size:.74rem;line-height:1.75;box-shadow:none;border-color:var(--book-rule);}
+.md-typeset table:not([class]) th {background:#eef4f7;color:#234453;}
+.md-nav {font-size:.67rem;line-height:1.55;}
+.md-nav__item--section>.md-nav__link {font-size:.62rem;text-transform:none;color:#486473;letter-spacing:.05em;}
+.md-sidebar--secondary .md-nav {border-left:1px solid var(--book-rule);}
+.md-nav__link--active {font-weight:700;}
+.md-footer {background:#173c50;}
+.md-footer-meta {background:#102f40;}
+.md-footer__link {padding:1rem 0;}
+.md-typeset pre {font-size:.73rem;line-height:1.65;}
+.md-typeset code {font-size:.85em;}
+@media (min-width:76.25em) {.md-sidebar--primary {width:12rem;}.md-sidebar--secondary {width:11rem;}}
+@media (max-width:76.234em) {.md-content__inner {padding:1.7rem 2rem 2.5rem;}.book-running-head span:last-child{display:none;}}
+@media (max-width:44.984em) {
+  .md-main__inner {margin-top:0;}
+  .md-content {border:0;}
+  .md-content__inner {padding:1.1rem 1rem 2rem;}
+  .md-typeset {font-size:.84rem;line-height:1.95;letter-spacing:0;}
+  .md-typeset h1 {font-size:1.5rem;margin-top:1rem;}
+  .md-typeset h2 {font-size:1.15rem;margin-top:2rem;}
+  .md-typeset figure {padding:.8rem 0;}
+  .md-typeset figcaption {font-size:.69rem;}
+  .md-typeset p {text-align:left;}
+  .md-typeset div.arithmatex {font-size:.94em;}
+  .md-typeset .teaching-note {padding:.25rem .8rem;}
+}
+@media (prefers-reduced-motion:reduce) {*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;}}
+@media print {.md-header,.md-sidebar,.md-footer,.book-running-head{display:none;}.md-content{border:0;}.md-content__inner{max-width:none;padding:0;}}

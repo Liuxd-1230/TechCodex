@@ -12,7 +12,7 @@ from bootstrap import ROOT, verify_models
 def main():
     verify_models()
     files=[p for p in ROOT.rglob('*') if p.is_file() and not any(
-        x in ('.git','.tools','.venv','.cache','build','__pycache__') for x in p.relative_to(ROOT).parts)]
+        x in ('.git','.tools','.venv','.venv-site','.cache','build','site','node_modules','__pycache__') for x in p.relative_to(ROOT).parts)]
     links=0
     for file in files:
         if file.suffix=='.md':

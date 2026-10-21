@@ -13,3 +13,6 @@ private-models/
 local-config.json
 *__on_page*
 *.lint.txt
+.venv-site/
+site/
+node_modules/

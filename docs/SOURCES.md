@@ -1,5 +1,7 @@
 # 资料、模型与工具来源
 
+第二版教学组织参考、阅读方式及独立核验原则见 [编辑说明](第二版编辑说明.md)。器件与单级放大器的补充一手资料包括 [MIT 6.012 官方讲义目录](https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-spring-2009/pages/lecture-notes/) 和 [Clif Fonstad 的单管放大级讲义](https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2009/18a2d9a52234f9e962d74b5599759767_MIT6_012F09_lec18.pdf)，用于交叉核对端口模型、体效应与电容近似；没有复制讲义图文。
+
 查证日期：2026-10-21。书籍作为理论主线，不声称已在线取得或逐页核对原书全文。
 
 | 来源 | 用于什么 | 可追溯信息 |
