@@ -1,0 +1,1637 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="从零开始的模电生活 · 理解模拟 CMOS 电路为何这样设计">
+      
+      
+      
+        <link rel="canonical" href="https://liuxd-1230.github.io/TechCodex/analog/stages/common-source/">
+      
+      
+        <link rel="prev" href="../analysis/">
+      
+      
+        <link rel="next" href="../source-follower/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>3.2 共源级与负载 - TechCodex</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/book.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="TechCodex" class="md-header__button md-logo" aria-label="TechCodex" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TechCodex
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.2 共源级与负载
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liuxd-1230/TechCodex" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TechCodex 源码
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="TechCodex" class="md-nav__button md-logo" aria-label="TechCodex" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    TechCodex
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liuxd-1230/TechCodex" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TechCodex 源码
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    阅读起点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从零开始的模电生活
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    从零开始的模电生活
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    符号与模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../devices/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 · MOS 器件
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第 2 章 · MOS 器件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/nonideal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非理想效应与设计取舍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/small-signal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    小信号模型与电容
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 · 单级放大器
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第 3 章 · 单级放大器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 端口与分析方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 共源级与负载
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 共源级与负载
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        放大之前，漏端电压先在哪里
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输入抬高 1 mV，漏端怎样重新平衡
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        负载换成 MOS，变化的不只是“电阻数值”
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="负载换成 MOS，变化的不只是“电阻数值”">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二极管连接：用跨导产生恢复电流
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        固定栅偏置：保留直流电流，减小增量加载
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        若让上下两管都接收输入
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vgs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        源极电阻：少动一点 VGS，会怎样
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="源极电阻：少动一点 VGS，会怎样">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一个可以迁移到共源共栅的阻抗结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        让真实模型只回答一个有用的问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../source-follower/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 源跟随器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common-gate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 共栅级
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cascode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 共源共栅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../labs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验与复现
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验与复现
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labs/windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows 环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labs/models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GF180MCU 模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编辑与资料
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    编辑与资料
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/curriculum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    知识覆盖与后续章节
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/edition2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二版编辑说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    资料来源
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网站维护
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/validation-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首版验证记录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/validation-v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二版验收
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        放大之前，漏端电压先在哪里
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输入抬高 1 mV，漏端怎样重新平衡
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        负载换成 MOS，变化的不只是“电阻数值”
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="负载换成 MOS，变化的不只是“电阻数值”">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二极管连接：用跨导产生恢复电流
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        固定栅偏置：保留直流电流，减小增量加载
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        若让上下两管都接收输入
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vgs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        源极电阻：少动一点 VGS，会怎样
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="源极电阻：少动一点 VGS，会怎样">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一个可以迁移到共源共栅的阻抗结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        让真实模型只回答一个有用的问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+<div class="book-running-head"><span>TECHCODEX / 模拟 CMOS</span><span>从零开始的模电生活</span></div>
+
+                  
+
+
+  
+  
+    
+      
+    
+    <a href="https://github.com/Liuxd-1230/TechCodex/raw/main/%E6%A8%A1%E6%8B%9F/03-%E5%85%B1%E6%BA%90%E7%BA%A7.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="32">3.2 共源级：电流怎样换来电压增益<a class="headerlink" href="#32" title="Permanent link">¶</a></h1>
+<p><a href="../">本章导航</a> · <a href="../analysis/">前一节：分析方法</a> · <a href="../source-follower/">下一节：源跟随器</a></p>
+<p>栅极几乎不取低频电流，为什么一个很小的栅压变化还能在漏端产生明显的电压变化？器件只完成了其中一半：把栅源电压变化转成漏电流变化。另一半由漏端所连接的网络完成——它要改变输出电压，才能容纳这股新的电流。</p>
+<p>所以，单独知道输入管 gm 还不足以知道电压增益。负载既决定如何建立直流电压，也决定漏端电流在小信号下能换成多大的电压。</p>
+<figure><p><img alt="共源级的电流变化和漏端电压变化" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cs-principle.svg"/></p><figcaption>图 3.2-1：输入加在 G，输出取自 D，S 为公共参考。输入升高使向下漏流增大，RD 必须从电源多送电流，输出因此降低。B 用独立的橙色支路接地，结箭头不表示漏源与体端的欧姆短接。</figcaption></figure>
+
+<h2 id="_1">放大之前，漏端电压先在哪里<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>先取源、体接地，RD 接理想 VDD，输入直流为 VI。漏端满足</p>
+<div class="arithmatex">\[
+\frac{V_{DD}-V_O}{R_D}=I_D(V_I,V_O).
+\]</div>
+<p>一边是电阻负载线，一边是器件输出特性，交点就是工作点。若 VI 很低，漏流很小，输出靠近 VDD；VI 升高以后，漏流增加，输出下降。再继续抬高输入，输出可能降到不足以让 NMOS 保持合适饱和余量的位置。</p>
+<p>因此，RD 不能只按目标增益选择。增大 RD 会增加静态压降，也会移动工作点。对于长沟道强反型，常用 <span class="arithmatex">\(V_O\gtrsim V_{OV}\)</span> 检查饱和余量；真实模型中还应查看工作点和输出特性，不能把这条近似边界当作失真指标。</p>
+<p>把输出静态放在电源一半附近，有时便于获得较均衡的上下余量，却不是所有拓扑的最优偏置。若输入管、负载管需要不同的余量，或负载电流不对称，可用摆幅也不会关于半电源对称。</p>
+<details>
+<summary>沿着直流传输曲线，饱和区在哪里结束？</summary>
+<p>在长沟道平方律模型中，令 <span class="arithmatex">\(\beta=\mu_nC_{ox}W/L\)</span>，忽略沟道长度调制。饱和与三极区的边界满足 <span class="arithmatex">\(V_O=V_I-V_{TH}=V_{OV}\)</span>，把它代回负载线：</p>
+<div class="arithmatex">\[
+V_{DD}-V_O=\frac12\beta R_DV_O^2.
+\]</div>
+<p>舍去负根，得到</p>
+<div class="arithmatex">\[
+V_{O,\mathrm{boundary}}
+=\frac{\sqrt{1+2\beta R_DV_{DD}}-1}{\beta R_D}.
+\]</div>
+<p>它回答的是：缓慢提高输入时，静态传输曲线何时离开该模型的饱和区。它没有回答交流摆幅允许多大失真；即使所有时刻都在饱和区，平方律本身也会产生非线性。</p>
+</details>
+<h2 id="1-mv">输入抬高 1 mV，漏端怎样重新平衡<a class="headerlink" href="#1-mv" title="Permanent link">¶</a></h2>
+<p>在已经确定的工作点附近，理想电源是交流地，源和体也固定。先只考虑 gm 的作用，栅压增加 <span class="arithmatex">\(v_i\)</span>，输入管会多吸收 <span class="arithmatex">\(g_mv_i\)</span> 的漏电流。输出降低，让 RD 从交流地向节点补入同样大小的电流，于是</p>
+<div class="arithmatex">\[
+v_o\simeq-g_mv_iR_D.
+\]</div>
+<p>负号可以在列方程之前判断。接着加入 gds：漏端降低时，器件自身漏流也会略微减小，因此抵消一部分由栅端推动的电流变化。漏端 KCL 给出</p>
+<div class="arithmatex">\[
+\frac{v_o}{R_D}+g_{ds}v_o+g_mv_i=0,
+\]</div>
+<div class="arithmatex">\[
+A_v=-\frac{g_m}{1/R_D+g_{ds}}
+=-g_m(R_D\parallel r_o).
+\]</div>
+<figure><p><img alt="共源级的低频增量模型" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/v1-small-signal.svg"/></p><figcaption>图 3.2-2：RD 与 ro 都为输出电流提供恢复路径。S、B 固定，所以体跨导没有受到激励；这不等于器件没有体效应，而是此时 vbs=0。</figcaption></figure>
+
+<p>这个式子也解释了本征增益为何不能直接当作实际增益。当 RD≪ro，输出主要由 RD 加载，增益接近 −gmRD；只有外部负载足够高阻，才可能接近 −gmro。</p>
+<p>若暂时冻结器件工作点，增益对 RD 的相对敏感度是</p>
+<div class="arithmatex">\[
+\frac{\partial\ln|A_v|}{\partial\ln R_D}
+=\frac1{1+g_{ds}R_D}.
+\]</div>
+<p>增加一个本来已经很大的 RD，收益会逐渐变小。但真正调整电阻后，直流工作点还会移动，所以这个偏导只解释局部机制，不能代替重新求偏置。</p>
+<h2 id="mos">负载换成 MOS，变化的不只是“电阻数值”<a class="headerlink" href="#mos" title="Permanent link">¶</a></h2>
+<p>集成电路中，大电阻要占面积。MOS 可以承担负载，但先要问：输出端移动时，它的栅源电压会不会跟着动？这决定它表现为 1/gm 量级的低阻负载，还是 ro 量级的高阻负载。</p>
+<figure><p><img alt="二极管连接与固定栅偏置的 PMOS 负载比较" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cs-loads.svg"/></p><figcaption>图 3.2-3：两只 PMOS 的源、体都接 VDD。A 的栅漏相连，输出变化会直接改变 VSG；B 的栅压由偏置源固定，低频时 VSG 不变。图中只截取负载，下面的输入 NMOS 与图 3.2-1 相同。</figcaption></figure>
+
+<h3 id="_2">二极管连接：用跨导产生恢复电流<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
+<p>对图 A 的 PMOS，输出升高使 VSG 减小，负载向输出提供的电流下降。这相当于输出节点多了一项 <span class="arithmatex">\(g_{mp}v_o\)</span> 的恢复电流，再加上它的 gds。于是二极管负载的增量电阻为</p>
+<div class="arithmatex">\[
+r_{\mathrm{diode},p}=\frac1{g_{mp}+g_{dsp}},
+\]</div>
+<div class="arithmatex">\[
+A_v=-\frac{g_{mn}}{g_{dsn}+g_{mp}+g_{dsp}}
+\simeq-\frac{g_{mn}}{g_{mp}}.
+\]</div>
+<p>后一个近似要求负载跨导主导输出总电导。两个强反型长沟道器件流过相同支路电流时，gm 与 <span class="arithmatex">\(\sqrt{\mu C_{ox}(W/L)I_D}\)</span> 成正比，因此增益可用尺寸比调节。但迁移率、偏置区间、失配和输出电导仍会影响这个比值；它不是对所有误差免疫。</p>
+<p>二极管连接能自动用一个 VSG 建立直流压降，同时也把输出节点钳得较硬，因此电压增益通常不高。这两个特点来自同一个机制。</p>
+<p>还有一种上拉方式：把 NMOS 的 D、G 一起接 VDD，从它的 S 端接到输出。它也是栅漏相连，但输出观察的是源端，若 B 接地，负载电导是 <span class="arithmatex">\(g_{m2}+g_{mb2}+g_{ds2}\)</span>。不能照搬 PMOS 情况删掉 gmb。这也是为什么“二极管连接约为 1/gm”必须先说从哪一端观察、体端如何连接。</p>
+<h3 id="_3">固定栅偏置：保留直流电流，减小增量加载<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<p>对图 B，PMOS 的 G、S、B 在小信号下都固定，输出只改变漏端。因此负载增量电阻主要为 rop：</p>
+<div class="arithmatex">\[
+A_v\simeq-g_{mn}(r_{on}\parallel r_{op}).
+\]</div>
+<p>这里相较二极管负载，输出不再通过 gmp 受到强恢复作用，因此可以取得更高增益。代价是直流电流匹配更敏感：若上下管希望流过的电流略有差别，高阻节点会发生较大的电压移动，直到有限输出电导或工作区变化重新建立平衡。高交流阻抗不是稳定直流偏置的保证。</p>
+<p>长沟道近似下，上下两管均保持饱和需要</p>
+<div class="arithmatex">\[
+V_{OV,n}\lesssim V_O\lesssim V_{DD}-V_{OV,p}.
+\]</div>
+<p>这比用二极管负载消耗一个完整 VSG 的约束更有利于输出余量，但需要产生并维护合适的栅偏置。电流镜如何提供这种偏置，将在第 5 章讨论；当前先把镜像负载和固定偏置电流源负载区分开。</p>
+<h3 id="_4">若让上下两管都接收输入<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<p>把 PMOS 的栅也接到输入，就得到在转换区偏置的互补反相器。输入升高时，下方 NMOS 多吸电流，上方 PMOS 少供电流，两种作用都推动输出下降，因此</p>
+<div class="arithmatex">\[
+A_v\simeq-\frac{g_{mn}+g_{mp}}{g_{dsn}+g_{dsp}}.
+\]</div>
+<figure><p><img alt="互补输入共源结构" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/inverter-stage.svg"/></p><figcaption>图 3.2-4：上下管共用输入和支路电流，但体端分别接各自电源轨。两个跨导共同推动输出，两个输出电导共同加载输出。</figcaption></figure>
+
+<p>它能用同一支路电流同时取得两个跨导，不过两只管的 gm 不必相等，“跨导恰好翻倍”不是一般结论。输入电容增加，合适的直流输入范围与输出工作点也更依赖工艺和温度；因此它需要偏置或反馈来维持在模拟工作区。</p>
+<h2 id="vgs">源极电阻：少动一点 VGS，会怎样<a class="headerlink" href="#vgs" title="Permanent link">¶</a></h2>
+<p>若输出电流过于敏感地依赖输入管参数，可以在源端加入 RS。输入升高后，电流增加使源极升高，抵消一部分 VGS 增量。忽略体效应和输出电导，先写</p>
+<div class="arithmatex">\[
+i_d=g_m(v_i-i_dR_S),
+\qquad
+G_m=\frac{i_d}{v_i}=\frac{g_m}{1+g_mR_S}.
+\]</div>
+<p>Gm 是输入管与 RS 这个组合的有效跨导。当 gmRS≫1，Gm 接近 1/RS，电流变化更由电阻决定；对 gm 的相对敏感度降为 1/(1+gmRS)。这能减轻一部分器件非线性，但不是消除所有失真。</p>
+<p>保持 B 接地并恢复有限 ro，源端移动同时改变 VGS、VBS、VDS。利用 <span class="arithmatex">\(v_s=i_dR_S\)</span>、<span class="arithmatex">\(v_o=-i_dR_D\)</span>，得到</p>
+<div class="arithmatex">\[
+A_v=-\frac{g_mR_D}
+{1+(g_m+g_{mb})R_S+g_{ds}(R_D+R_S)}.
+\]</div>
+<p>这个公式适用于理想输入源、理想电阻、忽略低频栅体电流的模型。只有体端也跟随 S，体跨导激励才消失。若要进一步得到 <span class="arithmatex">\(A_v\simeq-R_D/R_S\)</span>，还需 <span class="arithmatex">\(g_mR_S\gg1\)</span>，并且 <span class="arithmatex">\(g_{mb}R_S\)</span> 与 <span class="arithmatex">\(g_{ds}(R_D+R_S)\)</span> 都远小于 <span class="arithmatex">\(g_mR_S\)</span>。仅仅把 RS 增大，并不能自动消除体效应。RS 还消耗直流电压余量，并有自身热噪声，后续噪声章节需要把它一同计算。</p>
+<h3 id="_5">一个可以迁移到共源共栅的阻抗结果<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
+<p>现在只保留 MOS 与 RS，从 D 端看入，输入 G 与 B 的增量置零，移开 RD。向 D 注入测试电流 ix，它也流过 RS，所以 <span class="arithmatex">\(v_s=i_xR_S\)</span>。漏源关系给出</p>
+<div class="arithmatex">\[
+i_x=-(g_m+g_{mb})v_s+\frac{v_x-v_s}{r_o}.
+\]</div>
+<p>因此</p>
+<div class="arithmatex">\[
+R_{\mathrm{out},D}
+=r_o+R_S+(g_m+g_{mb})r_oR_S.
+\]</div>
+<p>源极移动形成局部反馈，使漏端电流对漏端电压更不敏感，输出电阻反而提高。于是同一个 RS 同时减小有效输入跨导、提高看入漏端的电阻。若外部 RD 仍较小，总输出电阻还是会被 RD 限制，不能把两个效应各算一遍后重复放大增益。</p>
+<p><a href="../cascode/">共源共栅</a> 会把这里的 RS 换成另一只 MOS 的 ro，正好复用这个分析。</p>
+<h2 id="_6">让真实模型只回答一个有用的问题<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
+<p>现有 GF180MCU 实验取 3.3 V 供电、RD=39 kΩ。求得的工作点附近，gm≈0.313 mS，ro≈1.19 MΩ，而实际低频增益约 −11.83。它远低于单管本征增益，正好检验了“高 gmro 不保证接上负载后仍高增益”这个判断。</p>
+<p>同一实验在保持栅极直流偏置不变时加入 1 kΩ 源极电阻，电流与 gm 也跟着下降。因此两版增益差异同时包含退化和工作点迁移，不能把全部变化归因于局部反馈。这是比小数点后的误差更值得带走的实验结论。</p>
+<p>完整 OP、AC/DC 对照、频率响应和 CSV 保存在 <a href="../../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A6%96%E7%89%88%E5%85%B1%E6%BA%90%E7%BA%A7%E7%AC%94%E8%AE%B0/">首版实验笔记</a> 与 <a href="../../../labs/">实验说明</a>。频率响应会在第 6 章结合节点电容系统展开。</p>
+<p>源极退化已经告诉我们：让源极随输出移动，器件会产生恢复作用。若干脆从源端取输出，就进入 <a href="../source-follower/">源跟随器</a>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../analysis/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3.1 端口与分析方法">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                3.1 端口与分析方法
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../source-follower/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.3 源跟随器">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                3.3 源跟随器
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      原创文字与图示 © TechCodex · 开源实验可独立复现
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../assets/math-config.js"></script>
+      
+        <script src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
+      
+        <script src="../../../assets/book.js"></script>
+      
+    
+  </body>
+</html>
