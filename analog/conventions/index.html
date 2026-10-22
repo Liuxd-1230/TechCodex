@@ -262,6 +262,8 @@
       
         
       
+        
+      
     
     
     
@@ -706,6 +708,258 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../differential/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 · 差分放大器
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第 4 章 · 差分放大器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../differential/current-steering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 电流如何分配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../differential/symmetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 对称性与差模增益
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../differential/common-mode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 共模与尾源
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../differential/headroom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 余量与线性范围
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../differential/mos-loads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 MOS 负载
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../differential/gilbert/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6 Gilbert 单元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -724,6 +978,8 @@
       
         
           
+        
+      
         
       
         
@@ -827,6 +1083,34 @@
     
   
     GF180MCU 模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/differential/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    差分对实验
   
 
     
@@ -1185,6 +1469,7 @@
 </tbody>
 </table>
 <p>正文会区分三种证据：物理/解析模型用于解释机制；小信号模型用于工作点附近的局部预测；GF180MCU 模型仿真用于检查该组器件、尺寸和条件下的行为。模型仿真不等于硅片测量。</p>
+<p>差分系列约定输入差与输出差均为左减右，共模为两端平均值。gm 若无特别说明表示单只管在该工作点的跨导；尾节点电压写 VT，阈值写 VTH。完整端口与增益口径见 <a href="../differential/">第 4 章约定</a>。</p>
 <p>默认条件：GF180MCU <code>nmos_3p3</code>，typical，27 °C，随机全局变化和失配关闭，W=10 µm，L=1 µm。器件独立测试取 VDS=1.65 V；共源级的 VDS 由电路求解。除 PVT 冒烟测试外，结面积 AD=AS=5 µm²、周长 PD=PS=21 µm，作为明确的原理图级几何假设；并非从版图提取。网表中写 <code>ad=5p</code> 是 5×10⁻¹² m²，<code>pd=21u</code> 是 21×10⁻⁶ m。</p>
 <p>电阻、电容和电压源是理想测试元件，MOS 是真实工艺紧凑模型。未建模互连、焊盘、封装、版图相关效应和器件失配。PVT 测试仅检查模型可执行性，尚未对放大器进行跨 PVT 规格验收。</p>
 

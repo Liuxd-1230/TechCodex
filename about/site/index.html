@@ -265,6 +265,8 @@
       
         
       
+        
+      
     
     
     
@@ -701,6 +703,258 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../analog/differential/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 · 差分放大器
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第 4 章 · 差分放大器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analog/differential/current-steering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 电流如何分配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analog/differential/symmetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 对称性与差模增益
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analog/differential/common-mode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 共模与尾源
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analog/differential/headroom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 余量与线性范围
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analog/differential/mos-loads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 MOS 负载
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analog/differential/gilbert/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6 Gilbert 单元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -719,6 +973,8 @@
       
         
           
+        
+      
         
       
         
@@ -822,6 +1078,34 @@
     
   
     GF180MCU 模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/differential/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    差分对实验
   
 
     
@@ -1260,6 +1544,7 @@
 <span class="p">.\.</span><span class="n">venv-site</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">scripts</span><span class="p">/</span><span class="n">book</span><span class="p">.</span><span class="n">py</span> <span class="n">serve</span>
 </code></pre></div>
 <p><code>build</code> 使用严格模式。<code>serve</code> 默认监听 <code>127.0.0.1:8000</code>，不向局域网公开；源文件修改后重启该命令以重新准备暂存目录。仿真虚拟环境 <code>.venv</code> 独立保留，网站依赖不进入原有仿真依赖快照。</p>
+<p>中文搜索在构建期使用 jieba 0.42.1 分词，少量电路术语保存在 <code>web/search_terms.txt</code>；浏览器仍只读取静态搜索索引。添加这项依赖是为了让“失调”“共模”等词能从连续中文句子中被查到，避免只能匹配整段文字开头。</p>
 <p>MathJax 3.2.2 的 CHTML 组件和字体随站点提供，不从 CDN 加载公式资源。版本、包完整性与逐文件哈希在 <code>web/assets/vendor/mathjax/source.json</code>，Apache-2.0 许可证一并保存；需要恢复文件时执行 <code>python scripts/fetch_mathjax.py</code>。字体使用浏览器本地系统字体栈，无外部字体服务。</p>
 <h2 id="github-pages">发布到 GitHub Pages<a class="headerlink" href="#github-pages" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="p">.\.</span><span class="n">venv-site</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">scripts</span><span class="p">/</span><span class="n">book</span><span class="p">.</span><span class="n">py</span> <span class="n">deploy</span>

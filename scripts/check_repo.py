@@ -42,6 +42,13 @@ def main():
     for name,digest in record['data_sha256'].items():
         if hashlib.sha256((ROOT/'模拟/实验/data'/name).read_bytes()).hexdigest()!=digest:
             raise AssertionError(f'Data changed since simulation: {name}')
+    differential=ROOT/'模拟/实验/差分对/data/run.json'
+    if differential.exists():
+        diff_record=json.loads(differential.read_text(encoding='utf-8'))
+        for name,digest in diff_record['sha256'].items():
+            path=(ROOT/name).resolve()
+            if not path.is_relative_to(ROOT.resolve()) or hashlib.sha256(path.read_bytes()).hexdigest()!=digest:
+                raise AssertionError(f'Chapter 4 artifact changed since simulation: {name}')
     print(f'PASS: {links} local links; all SVG XML; Markdown fences; model/netlist hashes; path/credential scan')
 
 

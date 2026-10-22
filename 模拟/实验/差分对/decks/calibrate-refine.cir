@@ -1,0 +1,19 @@
+Ch04 real-tail calibration
+.include "design.ngspice"
+.lib "sm141064.ngspice" typical
+.param sw_stat_global=0 sw_stat_mismatch=0
+.temp 27
+.options reltol=1e-5 abstol=1e-13 vntol=1e-8
+Vdr d 0 0.37282088417977
+Vb b 0 0.79473238074701
+XT d b 0 0 nmos_3p3 w=10u l=.28u ad=5p as=5p pd=21u ps=21u
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+op
+let current = -i(Vdr)
+wrdata cal.txt current @m.xt.m0[gm]
+quit
+.endc
+.end

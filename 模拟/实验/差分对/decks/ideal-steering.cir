@@ -1,0 +1,46 @@
+GF180MCU differential pair: inputs are Vcm +/- Vdiff/2
+.include "design.ngspice"
+.lib "sm141064.ngspice" typical
+.param sw_stat_global=0 sw_stat_mismatch=0
+.temp 27
+.options reltol=1e-9 abstol=1e-16 vntol=1e-12
+Vdd vdd 0 3.3
+Vcm cm 0 dc 1.4 ac 0
+Vdiff diff 0 dc 0 ac 1
+Ep ip cm diff 0 .5
+En inn cm diff 0 -.5
+R1 vdd o1 20000
+R2 vdd o2 20000
+Vd1 o1 d1 0
+Vd2 o2 d2 0
+Vs1 s1 t 0
+Vs2 s2 t 0
+Vbulk bulk 0 0
+X1 d1 ip s1 bulk nmos_3p3 w=10u l=1u ad=5p as=5p pd=21u ps=21u
+X2 d2 inn s2 bulk nmos_3p3 w=10u l=1u ad=5p as=5p pd=21u ps=21u
+Itail t 0 80u
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+set numdgt=15
+save all @m.x1.m0[id] @m.x2.m0[id] @m.x1.m0[gm] @m.x1.m0[gmbs] @m.x1.m0[gds] @m.x1.m0[vdsat] @m.x2.m0[gm] @m.x2.m0[gmbs] @m.x2.m0[gds] @m.x2.m0[vdsat]
+op
+wrdata op.txt v(o1) v(o2) v(t) i(Vd1) i(Vd2) @m.x1.m0[gm] @m.x1.m0[gmbs] @m.x1.m0[gds] @m.x2.m0[gm] @m.x2.m0[gmbs] @m.x2.m0[gds] v(diff) v(diff) i(Vbulk)
+ac lin 1 1 1
+let od = v(o1)-v(o2)
+wrdata adm.txt v(o1) v(o2) v(t) od
+alter @vdiff[acmag] = 0
+alter @vcm[acmag] = 1
+ac lin 1 1 1
+let od = v(o1)-v(o2)
+wrdata acm.txt v(o1) v(o2) v(t) od
+dc Vdiff -.001 .001 .001
+wrdata linear_dm.txt v(o1) v(o2) v(t)
+dc Vcm 1.399 1.401 .001
+wrdata linear_cm.txt v(o1) v(o2) v(t)
+dc Vdiff -.65 .65 .002
+wrdata sweep.txt v(o1) v(o2) v(t) i(Vd1) i(Vd2) @m.x1.m0[vdsat] @m.x2.m0[vdsat] v(diff) i(Vs1) i(Vs2) i(Vbulk)
+quit
+.endc
+.end

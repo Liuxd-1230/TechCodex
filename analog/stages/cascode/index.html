@@ -16,7 +16,7 @@
         <link rel="prev" href="../common-gate/">
       
       
-        <link rel="next" href="../../../labs/">
+        <link rel="next" href="../../differential/">
       
       
         
@@ -259,6 +259,8 @@
       
         
           
+        
+      
         
       
         
@@ -825,6 +827,258 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../differential/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 4 章 · 差分放大器
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第 4 章 · 差分放大器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../differential/current-steering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 电流如何分配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../differential/symmetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 对称性与差模增益
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../differential/common-mode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 共模与尾源
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../differential/headroom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 余量与线性范围
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../differential/mos-loads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 MOS 负载
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../differential/gilbert/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6 Gilbert 单元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -843,6 +1097,8 @@
       
         
           
+        
+      
         
       
         
@@ -946,6 +1202,34 @@
     
   
     GF180MCU 模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labs/differential/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    差分对实验
   
 
     
@@ -1417,7 +1701,7 @@ R_{\mathrm{fold,branch}}
 <p>输出端另一个偏置支路还会继续与它并联。所以“折叠更好”不是一般结论；它更适合哪种输入范围、输出摆幅、功耗与噪声约束，需要到完整差分放大器和运放设计中再判断。</p>
 <h2 id="_7">从拓扑名称回到设计选择<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
 <p>本章已经能用同一套方法回答不同问题：共源用高阻节点换电压增益；源跟随器用局部恢复电流降低输出电阻；共栅让源端接收电流；共源共栅借用另一只器件的输出电阻形成更强的局部反馈。</p>
-<p>面对一个陌生级，可以先确定输入、输出和交流固定端，再追踪一股小电流，最后检查负载是否允许预期的电压变化。这些工具将在差分对和电流镜中反复使用。后续章节的实际完成状态见 <a href="../../../about/curriculum/">知识覆盖</a>。</p>
+<p>面对一个陌生级，可以先确定输入、输出和交流固定端，再追踪一股小电流，最后检查负载是否允许预期的电压变化。这些工具将在 <a href="../../differential/">第 4 章差分放大器</a> 和后续电流镜中反复使用。后续章节的实际完成状态见 <a href="../../../about/curriculum/">知识覆盖</a>。</p>
 
 
 
@@ -1471,13 +1755,13 @@ R_{\mathrm{fold,branch}}
         
         
           
-          <a href="../../../labs/" class="md-footer__link md-footer__link--next" aria-label="下一页: 可复现实验">
+          <a href="../../differential/" class="md-footer__link md-footer__link--next" aria-label="下一页: 第 4 章 · 差分放大器：让电流学会比较">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                可复现实验
+                第 4 章 · 差分放大器：让电流学会比较
               </div>
             </div>
             <div class="md-footer__button md-icon">
