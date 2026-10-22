@@ -1,0 +1,52 @@
+/* The diagram is the experiment. Colours identify branches, never success/failure. */
+.md-typeset .circuit-demo {--demo-left:#126e63;--demo-right:#a05b18;margin:1.8rem 0 2.2rem;padding:1rem;border:1px solid #bed0d8;border-top:3px solid #173c50;background:#fff;font-family:var(--md-text-font);letter-spacing:0;line-height:1.65;}
+.circuit-demo[hidden],.demo-loading[hidden] {display:none!important;}
+.circuit-demo,#steering-title {scroll-margin-top:4rem;}
+.md-typeset .circuit-demo p {text-align:left;margin:.65rem 0;}
+.demo-kicker {font-size:.65rem;color:#566976;letter-spacing:.06em;}
+.md-typeset .demo-heading h3 {font-size:1.03rem;margin:.3rem 0 .7rem;line-height:1.6;}
+.md-typeset .demo-heading p {font-size:.78rem;}
+.circuit-demo fieldset {border:0;padding:0;margin:1rem 0 .3rem;display:flex;gap:.5rem 1rem;flex-wrap:wrap;}
+.circuit-demo legend {font-size:.65rem;color:#566976;margin-bottom:.25rem;}
+.demo-models label {font-size:.72rem;display:inline-flex;align-items:center;gap:.25rem;min-height:2.2rem;cursor:pointer;}
+.circuit-demo input[type=radio] {width:1rem;height:1rem;accent-color:#126e63;}
+.md-typeset .demo-source {font-size:.66rem;color:#47616e;background:#f0f5f7;padding:.45rem .6rem;}
+.demo-control {margin:1rem 0 .5rem;}
+.demo-control>label,.demo-bias>label {display:flex;justify-content:space-between;align-items:baseline;font-size:.78rem;font-weight:600;gap:.5rem;}
+.circuit-demo output {font-family:var(--md-code-font);font-size:.85rem;color:#173c50;white-space:nowrap;}
+.circuit-demo input[type=range] {display:block;width:100%;height:2.25rem;margin:0;accent-color:#126e63;cursor:ew-resize;touch-action:pan-y;}
+.circuit-demo input:focus-visible,.circuit-demo button:focus-visible {outline:3px solid #327aa0;outline-offset:3px;}
+.circuit-demo input:disabled {cursor:not-allowed;opacity:.5;}
+.demo-range-ends {display:flex;align-items:center;justify-content:space-between;gap:.4rem;font-size:.6rem;color:#566976;}
+.demo-range-ends button {color:#126e63;border:1px solid #b5ccc7;padding:.4rem .6rem;background:white;border-radius:3px;font:inherit;font-size:.68rem;min-height:2.2rem;cursor:pointer;white-space:nowrap;}
+.demo-range-ends button:hover {background:#eff7f5;}
+.circuit-demo small {display:block;font-size:.63rem;color:#566976;line-height:1.8;margin-top:.5rem;}
+.demo-visuals {display:grid;grid-template-columns:1fr;gap:.5rem;margin-top:1rem;align-items:center;}
+.demo-visuals svg {width:100%;height:auto;display:block;overflow:visible;}
+.demo-drawing,.demo-chart {min-width:0;}
+.demo-drawing {max-width:25rem;width:100%;margin:auto;}
+.demo-wire,.demo-axis {stroke:#203b4a;}
+.demo-node {fill:#203b4a;}
+.demo-svg-label {fill:#203b4a;stroke:none;font-family:var(--md-text-font);font-size:19px;font-variant-numeric:tabular-nums;}
+.demo-svg-note {font-size:17px;fill:#566976;}
+.demo-bulk {stroke:#a05b18;}
+text.demo-bulk {stroke:none;fill:#a05b18;}
+path.demo-left,.demo-current.demo-left {stroke:var(--demo-left);}
+path.demo-right,.demo-current.demo-right {stroke:var(--demo-right);}
+text.demo-left,.demo-dot.demo-left {fill:var(--demo-left);}
+text.demo-right,.demo-dot.demo-right {fill:var(--demo-right);}
+.demo-current {fill:none;stroke-linecap:round;}
+.demo-comparison {stroke-dasharray:7 6;opacity:.55;}
+.demo-grid {stroke:#e0e8ec;}
+.demo-cursor {fill:none;stroke:#567787;stroke-width:1;stroke-dasharray:3 4;}
+.demo-dot {stroke:#fff;stroke-width:1.5;}
+.md-typeset .demo-chart-caption {font-size:.62rem;color:#566976;margin:.2rem .2rem .7rem;}
+.demo-readout {font-size:.72rem;padding:.75rem 0;border-top:1px solid #d8e2e9;font-variant-numeric:tabular-nums;line-height:1.8;}
+.md-typeset .demo-observation {font-size:.75rem;margin:0 0 1rem;border-left:3px solid #126e63;padding:.25rem 0 .25rem .65rem;min-height:4em;}
+.md-typeset .circuit-demo details {font-size:.7rem;margin:.7rem 0 0;padding:.3rem .65rem;border-left-width:1px;}
+.md-typeset .circuit-demo details summary {font-size:.7rem;margin:-.3rem -.65rem;padding:.6rem .65rem .6rem 1.7rem;}
+.md-typeset .circuit-demo details p {font-size:.68rem;overflow-wrap:anywhere;}
+.md-typeset .demo-loading {font-size:.68rem;color:#566976;}
+@media(min-width:64em) {.demo-visuals {grid-template-columns:1fr 1fr;}.demo-drawing {max-width:none;}}
+@media(max-width:44.984em) {.md-typeset .circuit-demo {padding:.75rem .5rem;margin-left:-.25rem;margin-right:-.25rem;}.demo-range-ends {font-size:.56rem;}.demo-range-ends span{max-width:33%;}.demo-visuals {gap:.3rem;}}
+@media print {.circuit-demo,.demo-loading {display:none!important;}}
