@@ -45,6 +45,7 @@ markdown_extensions:
   - pymdownx.superfences
 extra_css:
   - assets/book.css
+  - assets/demos/circuit-demo.css
 extra_javascript:
   - assets/math-config.js
   - assets/vendor/mathjax/tex-chtml-full.js

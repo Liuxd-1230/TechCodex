@@ -1,0 +1,90 @@
+<section class="circuit-demo" data-demo="current-steering" aria-labelledby="steering-title" hidden>
+  <header class="demo-heading">
+    <span class="demo-kicker">动手想一想 · 4.1</span>
+    <h3 id="steering-title">同一份尾电流，怎样在左右之间转移？</h3>
+    <p><strong>先预测：</strong>保持输入平均值不变，左栅升高、右栅降低。T 会一直停在原处吗？</p>
+  </header>
+  <fieldset class="demo-models">
+    <legend>选择数据来源</legend>
+    <label><input type="radio" name="steering-source" value="analytic" checked> 平方律 · 实时计算</label>
+    <label><input type="radio" name="steering-source" value="process"> GF180 · 预计算数据</label>
+  </fieldset>
+  <p class="demo-source" data-field="source"></p>
+  <div class="demo-control">
+    <label for="steering-vid"><span>差分输入 V<sub>ID</sub></span> <output for="steering-vid" data-field="vid">0 mV</output></label>
+    <input id="steering-vid" type="range" min="-650" max="650" step="1" value="0" aria-describedby="steering-keyboard">
+    <div class="demo-range-ends"><span>−650 mV · 右支路占优</span><button type="button" data-action="zero">归零输入</button><span>+650 mV · 左支路占优</span></div>
+    <small id="steering-keyboard">拖动滑块；键盘 ← / → 微调 1 mV，Home / End 到两端。输入为 1.4 V ± V<sub>ID</sub>/2。</small>
+  </div>
+  <div class="demo-visuals">
+    <div class="demo-drawing">
+      <svg viewBox="0 0 480 390" role="img" aria-labelledby="steering-circuit-title steering-circuit-desc">
+        <title id="steering-circuit-title">电阻负载 NMOS 差分对</title>
+        <desc id="steering-circuit-desc" data-field="circuit-description">两只 NMOS 源端共享 T，体端分别接地；两个漏端经 20 千欧电阻接 3.3 伏。箭头均向下，粗细表示漏电流大小。</desc>
+        <defs><marker id="steering-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="context-stroke"/></marker></defs>
+        <g class="demo-wire" fill="none" stroke-width="2" stroke-linejoin="round">
+          <path d="M145 45H345M145 45V60m0 0l-7 6l14 10l-14 10l14 10l-7 6v25M345 45V60m0 0l-7 6l14 10l-14 10l14 10l-7 6v25"/>
+          <!-- Four-terminal NMOS. Broken channels and separate bulk-to-ground leads. -->
+          <path d="M145 127V157H123M123 151V166m0 6v12m0 6v15M123 199H145V255H245M113 151V205M58 178H113"/>
+          <path d="M345 127V157H323M323 151V166m0 6v12m0 6v15M323 199H345V255H245M313 151V205M258 178H313"/>
+          <path class="demo-bulk" d="M123 178H188V219m-11 0h22m-18 6h14m-10 6h6M133 172L125 178L133 184M323 178H388V219m-11 0h22m-18 6h14m-10 6h6M333 172L325 178L333 184"/>
+          <path d="M245 255V290m0 48v14m-12 0h24m-19 6h14m-10 6h6"/>
+          <circle cx="245" cy="314" r="24"/>
+          <path d="M245 301V326m-5-6l5 6l5-6"/>
+        </g>
+        <g class="demo-node"><circle cx="145" cy="127" r="4"/><circle cx="345" cy="127" r="4"/><circle cx="245" cy="255" r="4"/></g>
+        <g class="demo-svg-label">
+          <text x="245" y="28" text-anchor="middle">VDD = 3.3 V</text>
+          <text x="163" y="87">20 kΩ</text><text x="363" y="87">20 kΩ</text>
+          <text x="25" y="119" class="demo-left" data-field="o1"></text><text x="265" y="119" class="demo-right" data-field="o2"></text>
+          <text x="29" y="163" class="demo-left" data-field="vi1"></text><text x="229" y="163" class="demo-right" data-field="vi2"></text>
+          <text x="83" y="218">M1</text><text x="283" y="218">M2</text>
+          <text x="173" y="167" class="demo-bulk">B</text><text x="373" y="167" class="demo-bulk">B</text>
+          <text x="31" y="246" class="demo-left" data-field="i1"></text><text x="309" y="246" class="demo-right" data-field="i2"></text>
+          <text x="260" y="282" data-field="vt"></text><text x="280" y="326" data-field="it"></text>
+          <text x="245" y="385" text-anchor="middle" class="demo-svg-note">B 各自接地 · T 是源端公共节点</text>
+        </g>
+        <path class="demo-current demo-left" d="M52 195V220" data-current="i1" marker-end="url(#steering-arrow)"/>
+        <path class="demo-current demo-right" d="M453 195V220" data-current="i2" marker-end="url(#steering-arrow)"/>
+      </svg>
+    </div>
+    <div class="demo-chart">
+      <svg viewBox="0 0 480 340" role="img" aria-labelledby="steering-plot-title steering-plot-desc">
+        <title id="steering-plot-title">漏端支路电流随差分输入的变化</title>
+        <desc id="steering-plot-desc">实线对应所选模型；虚线为另一模型在 80 微安尾电流下的对照。竖线和两圆点标出当前输入。横轴毫伏，纵轴微安。</desc>
+        <g class="demo-grid" fill="none" stroke-width="1"><path d="M57 35H463M57 85H463M57 135H463M57 185H463M57 235H463M260 35V235"/></g>
+        <g class="demo-axis" fill="none" stroke-width="1.5"><path d="M57 35V235H463"/></g>
+        <g class="demo-svg-label">
+          <text x="57" y="22">I1、I2 / µA</text>
+          <text x="45" y="241" text-anchor="end">0</text><text x="45" y="191" text-anchor="end">25</text><text x="45" y="141" text-anchor="end">50</text><text x="45" y="91" text-anchor="end">75</text><text x="45" y="41" text-anchor="end">100</text>
+          <text x="57" y="263" text-anchor="middle">−650</text><text x="260" y="263" text-anchor="middle">0</text><text x="463" y="263" text-anchor="middle">650</text>
+          <text x="260" y="292" text-anchor="middle">VID / mV</text>
+          <text x="70" y="327" class="demo-left">— I1 左支路</text><text x="280" y="327" class="demo-right">— I2 右支路</text>
+        </g>
+        <g fill="none" stroke-width="2.5"><path class="demo-left demo-comparison" data-curve="other1"/><path class="demo-right demo-comparison" data-curve="other2"/><path class="demo-left" data-curve="i1"/><path class="demo-right" data-curve="i2"/></g>
+        <path class="demo-cursor" d="M260 35V235" data-field="cursor"/>
+        <circle class="demo-dot demo-left" r="5" data-dot="i1"/><circle class="demo-dot demo-right" r="5" data-dot="i2"/>
+      </svg>
+      <p class="demo-chart-caption" data-field="legend"></p>
+    </div>
+  </div>
+  <div class="demo-readout" aria-live="off" data-field="readout"></div>
+  <p class="demo-observation" role="status" aria-live="polite" aria-atomic="true" data-field="observation"></p>
+  <details class="demo-bias">
+    <summary>再试一次：改变尾电流，会更容易转向吗？</summary>
+    <label for="steering-tail"><span>解析模型尾电流 I<sub>T</sub></span> <output for="steering-tail" data-field="tail"></output></label>
+    <input id="steering-tail" type="range" min="40" max="100" step="10" value="80" aria-describedby="steering-tail-note">
+    <small id="steering-tail-note" data-field="tail-note"></small>
+  </details>
+  <details class="demo-assumptions">
+    <summary>模型、数据与复现条件</summary>
+    <p>这是准静态工作点演示，箭头是常规漏电流的正方向，粗细仅表示大小；没有模拟电子运动或节点充电的时间过程。两种模式都接理想尾电流源；GF180 指输入器件模型，不是下方换成了真实尾管。</p>
+    <p>平方律：匹配、长沟道、强反型饱和，β 和阈值固定，忽略体效应与沟道长度调制。到达 |VID| = √(2IT/β) 后使用单管导通的分段式；全范围另外检查饱和余量。β 与阈值只为对齐 GF180 标称点的端口斜率和 T 电压而校准，不能当作工艺参数。</p>
+    <p data-field="parameters"></p>
+    <p>GF180：Windows 原生 ngspice-47，typical、27 °C，输入 W/L = 10/1 µm，关闭统计全局与失配；VDD = 3.3 V，VCM = 1.4 V，RD = 20 kΩ，理想尾源 80 µA。651 个 DC 点、间隔 2 mV，滑块中间值线性插值，不外推。不是浏览器实时 SPICE 仿真，也不代表瞬态响应。</p>
+    <p>原理图显示外部漏端电流；完整模型的体端相关传导使 I1 + I2 与尾源电流略有差别，不强行归一化。源端电流之和仍等于 IT；完整端口数据保留在 CSV 中。</p>
+    <p>来源：<a href="{{lab}}">实验网表、端口定义与复现</a> · <a href="{{csv}}">原始 CSV</a> · <a href="{{payload}}">交互数据与来源哈希</a>。模型固定提交 <code>9f992d5a9186d1f7820c58f039c484ad35b2edea</code>；数据打包脚本 <code>scripts/export_steering_demo.py</code>。</p>
+  </details>
+</section>
+<p class="demo-loading" data-demo-message>交互需要 JavaScript 和本页数据；下文的静态图与推导始终可以阅读。</p>
+<script type="module" src="{{module}}"></script>

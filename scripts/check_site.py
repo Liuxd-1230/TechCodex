@@ -5,6 +5,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 from bs4 import BeautifulSoup
+from export_steering_demo import package, OUT
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / 'site'
@@ -47,6 +48,30 @@ for route in ('analog/stages/common-source', 'analog/devices/small-signal'):
 sample = documents[SITE / 'analog/stages/source-follower/index.html']
 if sample.select_one('details strong') is None:
     errors.append('Sample exercise Markdown was not parsed')
+
+expected_payload = package().encode('utf-8')
+if OUT.read_bytes() != expected_payload or (SITE / 'assets/demos/steering-data.json').read_bytes() != expected_payload:
+    errors.append('Interactive GF180 payload is stale or does not match the deployed copy')
+
+demo_page = documents[SITE / 'analog/differential/current-steering/index.html']
+demo = demo_page.select_one('[data-demo="current-steering"]')
+if demo is None or not demo.has_attr('hidden'):
+    errors.append('Demo must start hidden and enhance only after successful initialization')
+else:
+    if len(demo.select('input[type="range"]')) != 2:
+        errors.append('Demo voltage/bias controls missing')
+    for control in demo.select('input'):
+        if control.get('type') == 'range' and not demo.find('label', attrs={'for': control.get('id')}):
+            errors.append('Demo control has no accessible label')
+    for svg in demo.select('svg'):
+        if not svg.find('title') or not svg.find('desc'):
+            errors.append('Demo SVG lacks title/description')
+    if not demo.select_one('[role="status"]'):
+        errors.append('Demo lacks accessible observation text')
+    if not demo_page.select_one('figure img[src*="diff-steering.svg"]'):
+        errors.append('Static current-steering fallback missing')
+    if '{{' in str(demo):
+        errors.append('Demo asset URL placeholders were not resolved')
 
 vendor = ROOT / 'web/assets/vendor/mathjax'
 manifest = json.loads((vendor / 'source.json').read_text(encoding='utf-8'))
