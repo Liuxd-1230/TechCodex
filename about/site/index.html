@@ -269,6 +269,8 @@
       
         
       
+        
+      
     
     
     
@@ -957,6 +959,228 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../analog/mirrors/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 · 电流镜与偏置
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第 5 章 · 电流镜与偏置
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analog/mirrors/basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 普通电流镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analog/mirrors/cascode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 共源共栅电流镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analog/mirrors/active-load/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 有源镜与五管 OTA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analog/mirrors/biasing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 偏置与启动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analog/mirrors/design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 从指标到电路
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -975,6 +1199,8 @@
       
         
           
+        
+      
         
       
         
@@ -1108,6 +1334,34 @@
     
   
     差分对实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/mirrors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电流镜与 OTA 实验
   
 
     
@@ -1660,7 +1914,7 @@
 <p>组件最初隐藏，只有模块和数据均加载成功才显示；加载失败给出静态阅读提示，禁用脚本时正文与两幅原图仍在。打印只使用正文和静态图。GitHub 阅读不会出现一组无法工作的控件。</p>
 <h3 id="_4">解析与工艺数据的边界<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>解析模型使用固定 β、固定阈值、饱和区平方律，分段处理单管截止；参数只按标称 GF180 端口斜率与尾电压对齐，不能当作提取的工艺参数。尾电流可在 40–100 µA 调节，整个滑块范围已检查饱和余量。图的纵轴保持不变，避免自动缩放掩盖电流总量变化。</p>
-<p>GF180 模式只使用原有 <code>ideal-steering-sweep.csv</code> 的 651 个固定条件点，滑块中间值逐列线性插值，不外推，也不缩放到其他尾电流。此模式锁定 80 µA；切回解析模式恢复先前的解析偏置。两种模型仅在同为 80 µA 时叠加。微小漏流切换到 nA 显示，以保留弱反型尾部。完整体端相关电流未被归一化消除。</p>
+<p>GF180 模式只使用原有 <code>ideal-steering-sweep.csv</code> 的 651 个固定条件点，滑块中间值逐列线性插值，不外推，也不缩放到其他尾电流。此模式锁定 80 µA；切回解析模式恢复先前的解析偏置。默认只画当前模型两条曲线，主动勾选对照且同为 80 µA 时才叠加。观察视角由读者明确切换：完整转向为 ±650 mV、0–100 µA，零点附近为 ±40 mV、15–65 µA，二者均固定坐标；切到局部视图时，超出范围的当前输入收回到边界。微小漏流切换到 nA 显示，完整体端相关电流未被归一化消除。</p>
 <p><code>scripts/export_steering_demo.py</code> 从已有 CSV 和 metrics 打包 JSON；校验原仿真记录的源哈希，保留模型提交、仿真版本、条件、执行时间和输入文件哈希。JSON 使用 LF，保证 Windows 提交后的哈希稳定。重跑仿真后须重新导出：</p>
 <div class="highlight"><pre><span></span><code><span class="p">.\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">scripts</span><span class="p">/</span><span class="n">run_differential</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-check</span>
 <span class="n">python</span> <span class="n">scripts</span><span class="p">/</span><span class="n">export_steering_demo</span><span class="p">.</span><span class="n">py</span>
@@ -1675,6 +1929,7 @@
 <p>浏览器实际操作了拖动输入、键盘微调和 Home/End、输入归零、模型切换、尾电流调节及偏置恢复。在 1440×1000、390×844、320×780 视口检查布局与 SVG/公式加载，未出现整页横向溢出。禁用脚本时原图与推导保留，阻断 JSON 加载时显示阅读提示，打印时隐藏交互并保留静态图。正常交互未记录控制台错误；故意阻断数据的网络错误属于回退测试。窄视口检查不等于实体手机或各类读屏器兼容性认证。</p>
 <h3 id="_5">按需复用<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
 <p>新增交互时先确定一个需要读者改变判断的问题，再决定最少的控件。复用这套分工与渐进增强方式：原始正文和静态图 → 构建钩子的显式标记 → 原生控件及 SVG → 独立模型或有来源的数据 → 数值与浏览器检查。不要把第 4 章的固定条件查表包装成通用 SPICE 求解器，也不要自动给每篇文章加面板。</p>
+<p>第 5 章使用同样的显式标记加入 <code>mirror-compliance</code> 样板，静态原理图以内联 SVG 增强节点读数；只在所选章节载入模块。<code>scripts/export_mirror_demo.py</code> 校验原始两条工艺曲线哈希，<code>node scripts/check_mirror_demo.mjs</code> 检查原点、插值、边界以及“电流容差合格但上管未饱和”的反例。理论、工艺数据与实际运行 ngspice 的入口分开保留。</p>
 <h2 id="_6">新增章节<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>在 <code>模拟/</code> 写普通 Markdown，并在 <code>scripts/book.py</code> 的 ROUTES 中指定稳定网址；同步更新 <code>mkdocs.yml</code> 的导航。原始链接仍指向仓库中的真实文件，由构建过程转换。图放在 <code>模拟/图/</code>，图注紧跟图片；图注以“图 ”开头，构建器才会把它组合成 figure。</p>
 <p>检查 <a href="../curriculum/">知识覆盖</a> 的状态，把未完成内容与已完成正文区分开。已有真实实验和模型继续按原有 <a href="../../labs/windows/">Windows 复现流程</a> 维护，不能因重排阅读路径而移除。</p>

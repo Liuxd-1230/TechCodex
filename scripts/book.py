@@ -32,6 +32,13 @@ ROUTES={
     '模拟/04-差分放大器/05-MOS负载.md':'analog/differential/mos-loads.md',
     '模拟/04-差分放大器/06-Gilbert单元.md':'analog/differential/gilbert.md',
     '模拟/实验/差分对/README.md':'labs/differential.md',
+    '模拟/05-电流镜与偏置/README.md':'analog/mirrors/index.md',
+    '模拟/05-电流镜与偏置/01-普通电流镜.md':'analog/mirrors/basic.md',
+    '模拟/05-电流镜与偏置/02-共源共栅镜.md':'analog/mirrors/cascode.md',
+    '模拟/05-电流镜与偏置/03-有源镜与OTA.md':'analog/mirrors/active-load.md',
+    '模拟/05-电流镜与偏置/04-偏置与启动.md':'analog/mirrors/biasing.md',
+    '模拟/05-电流镜与偏置/05-设计一次电流源.md':'analog/mirrors/design.md',
+    '模拟/实验/电流镜/README.md':'labs/mirrors.md',
     '模拟/实验/README.md':'labs/index.md',
     'models/README.md':'labs/models.md',
     'docs/WINDOWS.md':'labs/windows.md',
@@ -53,6 +60,8 @@ def rewrite_links(text,source,target):
         path,sep,fragment=url.partition('#')
         original=posixpath.normpath(posixpath.join(posixpath.dirname(source),unquote(path)))
         destination=ROUTES.get(original,original)
+        if original.startswith('web/assets/'):
+            destination=original.removeprefix('web/')
         relative=posixpath.relpath(destination,posixpath.dirname(target) or '.')
         return match.group(1)+relative+(sep+fragment if sep else '')+')'
     return re.sub(r'(!?\[[^\]]*\]\()([^)]+)\)',replace,text)

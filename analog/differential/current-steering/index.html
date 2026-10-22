@@ -271,6 +271,8 @@
       
         
       
+        
+      
     
     
     
@@ -1070,6 +1072,228 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../mirrors/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 · 电流镜与偏置
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第 5 章 · 电流镜与偏置
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mirrors/basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 普通电流镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mirrors/cascode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 共源共栅电流镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mirrors/active-load/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 有源镜与五管 OTA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mirrors/biasing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 偏置与启动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mirrors/design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 从指标到电路
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1088,6 +1312,8 @@
       
         
           
+        
+      
         
       
         
@@ -1221,6 +1447,34 @@
     
   
     差分对实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labs/mirrors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电流镜与 OTA 实验
   
 
     
@@ -1633,16 +1887,21 @@ V_T=V_{ICM}-V_{GS}(I_0).
 <h3 id="steering-title">同一份尾电流，怎样在左右之间转移？</h3>
 <p><strong>先预测：</strong>保持输入平均值不变，左栅升高、右栅降低。T 会一直停在原处吗？</p>
 </header>
+<details class="demo-options">
+<summary>模型选择与曲线对照</summary>
 <fieldset class="demo-models">
 <legend>选择数据来源</legend>
 <label><input checked="" name="steering-source" type="radio" value="analytic"/> 平方律 · 实时计算</label>
 <label><input name="steering-source" type="radio" value="process"/> GF180 · 预计算数据</label>
 </fieldset>
+<label class="demo-compare"><input id="steering-compare" type="checkbox"/> 叠加另一模型（仅在 80 µA 时）</label>
+</details>
 <p class="demo-source" data-field="source"></p>
+<label class="demo-view" for="steering-view">观察视角 <select id="steering-view"><option value="large">完整转向：±650 mV，0–100 µA</option><option value="small">零点附近：±40 mV，15–65 µA</option></select></label>
 <div class="demo-control">
 <label for="steering-vid"><span>差分输入 V<sub>ID</sub></span> <output data-field="vid" for="steering-vid">0 mV</output></label>
 <input aria-describedby="steering-keyboard" id="steering-vid" max="650" min="-650" step="1" type="range" value="0"/>
-<div class="demo-range-ends"><span>−650 mV · 右支路占优</span><button data-action="zero" type="button">归零输入</button><span>+650 mV · 左支路占优</span></div>
+<div class="demo-range-ends"><span data-field="range-left">−650 mV · 右支路占优</span><button data-action="zero" type="button">归零输入</button><span data-field="range-right">+650 mV · 左支路占优</span></div>
 <small id="steering-keyboard">拖动滑块；键盘 ← / → 微调 1 mV，Home / End 到两端。输入为 1.4 V ± V<sub>ID</sub>/2。</small>
 </div>
 <div class="demo-visuals">
@@ -1680,13 +1939,13 @@ V_T=V_{ICM}-V_{GS}(I_0).
 <div class="demo-chart">
 <svg aria-labelledby="steering-plot-title steering-plot-desc" role="img" viewbox="0 0 480 340">
 <title id="steering-plot-title">漏端支路电流随差分输入的变化</title>
-<desc id="steering-plot-desc">实线对应所选模型；虚线为另一模型在 80 微安尾电流下的对照。竖线和两圆点标出当前输入。横轴毫伏，纵轴微安。</desc>
+<desc data-field="plot-description" id="steering-plot-desc">实线对应所选模型。主动勾选对照时才显示另一模型的虚线。坐标范围由视角明确指定，不自动缩放。</desc>
 <g class="demo-grid" fill="none" stroke-width="1"><path d="M57 35H463M57 85H463M57 135H463M57 185H463M57 235H463M260 35V235"></path></g>
 <g class="demo-axis" fill="none" stroke-width="1.5"><path d="M57 35V235H463"></path></g>
 <g class="demo-svg-label">
 <text x="57" y="22">I1、I2 / µA</text>
-<text text-anchor="end" x="45" y="241">0</text><text text-anchor="end" x="45" y="191">25</text><text text-anchor="end" x="45" y="141">50</text><text text-anchor="end" x="45" y="91">75</text><text text-anchor="end" x="45" y="41">100</text>
-<text text-anchor="middle" x="57" y="263">−650</text><text text-anchor="middle" x="260" y="263">0</text><text text-anchor="middle" x="463" y="263">650</text>
+<text data-y-tick="0" text-anchor="end" x="45" y="241">0</text><text data-y-tick="1" text-anchor="end" x="45" y="191">25</text><text data-y-tick="2" text-anchor="end" x="45" y="141">50</text><text data-y-tick="3" text-anchor="end" x="45" y="91">75</text><text data-y-tick="4" text-anchor="end" x="45" y="41">100</text>
+<text data-field="x-left" text-anchor="middle" x="57" y="263">−650</text><text text-anchor="middle" x="260" y="263">0</text><text data-field="x-right" text-anchor="middle" x="463" y="263">650</text>
 <text text-anchor="middle" x="260" y="292">VID / mV</text>
 <text class="demo-left" x="70" y="327">— I1 左支路</text><text class="demo-right" x="280" y="327">— I2 右支路</text>
 </g>
@@ -1698,7 +1957,8 @@ V_T=V_{ICM}-V_{GS}(I_0).
 </div>
 </div>
 <div aria-live="off" class="demo-readout" data-field="readout"></div>
-<p aria-atomic="true" aria-live="polite" class="demo-observation" data-field="observation" role="status"></p>
+<p class="demo-observation" data-field="observation"></p>
+<span aria-atomic="true" aria-live="polite" class="md-visually-hidden" data-field="announcement" role="status"></span>
 <details class="demo-bias">
 <summary>再试一次：改变尾电流，会更容易转向吗？</summary>
 <label for="steering-tail"><span>解析模型尾电流 I<sub>T</sub></span> <output data-field="tail" for="steering-tail"></output></label>

@@ -2,11 +2,11 @@
   "schema": 1,
   "source": "GF180MCU / Windows native ngspice-47",
   "model_commit": "9f992d5a9186d1f7820c58f039c484ad35b2edea",
-  "executed_utc": "2026-10-22T06:58:56.797705+00:00",
+  "executed_utc": "2026-10-22T09:30:00.385624+00:00",
   "source_sha256": {
     "data/ideal-steering-sweep.csv": "d43a48df6decb871fdaa7d9aee800ef9d238180c89adcc721b051e34a5f36cbe",
     "data/metrics.json": "01032c8caa30ddacfc4ecdff0771e124076ce0471a5e2b3ba7383e0ddaea2a80",
-    "data/run.json": "02471850366ad22df249b313d8dd82a119f03889d82c924c444b037d225adfea"
+    "data/run.json": "60830a42e76fc64574a30f691ce29139957f659f13252553f195afa1a1bae1e8"
   },
   "conditions": {
     "VDD_V": 3.3,

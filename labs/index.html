@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://liuxd-1230.github.io/TechCodex/labs/">
       
       
-        <link rel="prev" href="../analog/differential/gilbert/">
+        <link rel="prev" href="../analog/mirrors/design/">
       
       
         <link rel="next" href="windows/">
@@ -259,6 +259,8 @@
       
         
           
+        
+      
         
       
         
@@ -957,6 +959,228 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../analog/mirrors/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 5 章 · 电流镜与偏置
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第 5 章 · 电流镜与偏置
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analog/mirrors/basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 普通电流镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analog/mirrors/cascode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 共源共栅电流镜
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analog/mirrors/active-load/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 有源镜与五管 OTA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analog/mirrors/biasing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 偏置与启动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analog/mirrors/design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 从指标到电路
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -977,6 +1201,8 @@
       
         
           
+        
+      
         
       
         
@@ -1110,6 +1336,34 @@
     
   
     差分对实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mirrors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电流镜与 OTA 实验
   
 
     
@@ -1440,6 +1694,7 @@
 <p><a href="../analog/">系列首页</a> · <a href="windows/">安装步骤</a> · <a href="models/">模型说明</a></p>
 <p>第二版把详细参数与误差统计留在实验阅读路径。原有分析和结果完整保存在 <a href="../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A6%96%E7%89%88%E5%99%A8%E4%BB%B6%E7%AC%94%E8%AE%B0/">首版器件笔记</a> 与 <a href="../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A6%96%E7%89%88%E5%85%B1%E6%BA%90%E7%BA%A7%E7%AC%94%E8%AE%B0/">首版共源级笔记</a>；按教材顺序阅读可从 <a href="../analog/devices/">第 2 章</a> 和 <a href="../analog/stages/">第 3 章</a> 开始。</p>
 <p>第 4 章新增 <a href="differential/">差分对实验</a>，包括同工作点的理想/真实尾源比较、电流转向和不等负载的共模转换。它使用独立入口 <code>scripts/run_differential.py --check</code>，原有入口和数据保持独立。</p>
+<p>第 5 章的 <a href="mirrors/">电流镜与 OTA 实验</a> 先固定设计指标，比较普通/共源共栅镜，再实现电阻参考的五管 OTA 核心。入口是 <code>scripts/run_mirrors.py --check</code>，包括工作区、DC/AC 增益、少量 PVT 与一条上电轨迹。</p>
 <p>从根目录执行 <code>python scripts/run.py --check</code>，脚本自动定位仓库、展开模板并调用原生 ngspice。这里的 <code>python</code> 应为已安装依赖的项目虚拟环境解释器；完整 Windows 命令见安装步骤。</p>
 <table>
 <thead>
@@ -1520,7 +1775,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../analog/differential/gilbert/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 4.6 Gilbert 单元">
+          <a href="../analog/mirrors/design/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 5.5 从指标到电路">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1530,7 +1785,7 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                4.6 Gilbert 单元
+                5.5 从指标到电路
               </div>
             </div>
           </a>
