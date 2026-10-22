@@ -24,6 +24,9 @@ def finish(fig,name):
     for ax in fig.axes:
         ax.grid(alpha=.16);ax.tick_params(labelsize=11)
     fig.savefig(OUT/(name+'.svg'),metadata={'Date':None})
+    svg=OUT/(name+'.svg')
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text(encoding='utf-8').splitlines())+'\n',
+                   encoding='utf-8',newline='\n')
     fig.savefig(OUT/(name+'.png'),dpi=180)
     plt.close(fig)
 

@@ -35,7 +35,9 @@ def execute(name,source,expected):
 
 def write_csv(name,header,data):
     DATA.mkdir(parents=True,exist_ok=True)
-    np.savetxt(DATA/(name+'.csv'),data,delimiter=',',header=header,comments='',fmt='%.12e')
+    # Match the repository's LF policy before hashing, including on Windows.
+    with (DATA/(name+'.csv')).open('w',encoding='ascii',newline='\n') as stream:
+        np.savetxt(stream,data,delimiter=',',header=header,comments='',fmt='%.12e')
 
 
 def pair(name,tail_voltage=None,mismatch=False,steering=False):
@@ -52,6 +54,7 @@ def pair(name,tail_voltage=None,mismatch=False,steering=False):
     }
     source=(LAB/'pair.cir').read_text(encoding='ascii')
     for old,new in replacements.items():source=source.replace(old,new)
+    source='\n'.join(line.rstrip() for line in source.splitlines())+'\n'
     op,adm,acm,linear_dm,linear_cm,sweep=execute(name,source,['op.txt','adm.txt','acm.txt','linear_dm.txt','linear_cm.txt','sweep.txt'])
     q=op[0,1:]
     # OP: o1,o2,t,I1,I2,gm1,gmb1,gds1,gm2,gmb2,gds2,gtail,VdsatT
