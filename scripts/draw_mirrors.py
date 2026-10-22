@@ -60,8 +60,8 @@ def ota():
     c.line(210,450,390,450);c.node(300,450);c.text(310,440,'T',18,SIGNAL)
     t=c.mos(270,550,'MT');c.line(300,450,300,490);c.ground(*t['s']);grounded(c,t,590)
     c.wire((100,550),t['g']);c.text(55,525,'VB ← 参考支路',18,SIGNAL)
-    c.arrow((445,90),(445,125));c.text(465,115,'I4',18,SIGNAL)
-    c.arrow((445,275),(445,310));c.text(465,300,'I2',18,SIGNAL)
+    c.arrow((505,90),(505,125));c.text(525,115,'I4',18,SIGNAL)
+    c.arrow((505,275),(505,310));c.text(525,300,'I2',18,SIGNAL)
     c.text(35,680,'输出注入电流 = I4 − I2；M3、M4 的 B 接 VDD。',18,MUTED)
     c.save('mirror-ota',OUT)
 
