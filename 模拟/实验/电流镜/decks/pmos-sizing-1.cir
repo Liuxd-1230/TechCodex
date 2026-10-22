@@ -1,0 +1,21 @@
+Ch05 PMOS sizing at target VSG
+.include "design.ngspice"
+.lib "sm141064.ngspice" typical
+.param sw_stat_global=0 sw_stat_mismatch=0
+.temp 27
+.options reltol=1e-5 abstol=1e-13 vntol=1e-8
+Vs s 0 3.3
+Vg g 0 1.65
+Vd d 0 1.65
+Xp d g s s pmos_3p3 w=3.85673193632u l=1u ad=5p as=5p pd=21u ps=21u
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+set numdgt=15
+op
+let ip = i(Vd)
+wrdata op.txt ip
+quit
+.endc
+.end

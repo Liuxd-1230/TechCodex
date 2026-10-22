@@ -6,6 +6,8 @@
 
 第 4 章新增 [差分对实验](差分对/README.md)，包括同工作点的理想/真实尾源比较、电流转向和不等负载的共模转换。它使用独立入口 `scripts/run_differential.py --check`，原有入口和数据保持独立。
 
+第 5 章的 [电流镜与 OTA 实验](电流镜/README.md) 先固定设计指标，比较普通/共源共栅镜，再实现电阻参考的五管 OTA 核心。入口是 `scripts/run_mirrors.py --check`，包括工作区、DC/AC 增益、少量 PVT 与一条上电轨迹。
+
 从根目录执行 `python scripts/run.py --check`，脚本自动定位仓库、展开模板并调用原生 ngspice。这里的 `python` 应为已安装依赖的项目虚拟环境解释器；完整 Windows 命令见安装步骤。
 
 | 源文件 | 测试条件与输出 | 用途 |

@@ -32,6 +32,28 @@ def on_page_content(html,page,config,files):
         for key,target in targets.items():
             template=template.replace('{{'+key+'}}',get_relative_url(target,page.url))
         html=html.replace(marker,template)
+    marker='<!-- interactive: mirror-compliance -->'
+    if marker in html:
+        template=(Path(__file__).parent/'demos/mirror-compliance.html').read_text(encoding='utf-8')
+        drawings=[]
+        for name,art in [('medium','mirror-basic'),('cascode','mirror-cascode')]:
+            drawing=BeautifulSoup((Path(__file__).resolve().parents[1]/'模拟/图'/f'{art}.svg').read_text(encoding='utf-8'),'html.parser')
+            svg=drawing.svg
+            svg['data-topology']=name
+            if name=='cascode':svg['hidden']='hidden'
+            for style in svg.select('style'):style.decompose()
+            svg.title['id']=f'mirror-{name}-title';svg.desc['id']=f'mirror-{name}-desc'
+            svg['aria-labelledby']=f'mirror-{name}-title mirror-{name}-desc'
+            for label in svg.select('text'):
+                if label.get_text()=='VB':label['data-mirror-node']='gate';label['font-size']='17'
+            for key,x,y,anchor in [('output',480,48,'end')]+([('internal',495,378,'start')] if name=='cascode' else []):
+                label=drawing.new_tag('text',attrs={'x':x,'y':y,'font-size':17,'fill':'#126e63','text-anchor':anchor,'data-mirror-node':key})
+                svg.append(label)
+            drawings.append(str(svg))
+        template=template.replace('{{schematics}}',''.join(drawings))
+        for key,target in {'lab':'labs/mirrors/','payload':'assets/demos/mirror-data.json','module':'assets/demos/mirror-compliance.js'}.items():
+            template=template.replace('{{'+key+'}}',get_relative_url(target,page.url))
+        html=html.replace(marker,template)
     soup=BeautifulSoup(html,'html.parser')
     for paragraph in list(soup.find_all('p')):
         if not paragraph.find('img'):

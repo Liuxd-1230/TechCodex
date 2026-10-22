@@ -4,16 +4,21 @@
     <h3 id="steering-title">同一份尾电流，怎样在左右之间转移？</h3>
     <p><strong>先预测：</strong>保持输入平均值不变，左栅升高、右栅降低。T 会一直停在原处吗？</p>
   </header>
+  <details class="demo-options">
+  <summary>模型选择与曲线对照</summary>
   <fieldset class="demo-models">
     <legend>选择数据来源</legend>
     <label><input type="radio" name="steering-source" value="analytic" checked> 平方律 · 实时计算</label>
     <label><input type="radio" name="steering-source" value="process"> GF180 · 预计算数据</label>
   </fieldset>
+  <label class="demo-compare"><input type="checkbox" id="steering-compare"> 叠加另一模型（仅在 80 µA 时）</label>
+  </details>
   <p class="demo-source" data-field="source"></p>
+  <label class="demo-view" for="steering-view">观察视角 <select id="steering-view"><option value="large">完整转向：±650 mV，0–100 µA</option><option value="small">零点附近：±40 mV，15–65 µA</option></select></label>
   <div class="demo-control">
     <label for="steering-vid"><span>差分输入 V<sub>ID</sub></span> <output for="steering-vid" data-field="vid">0 mV</output></label>
     <input id="steering-vid" type="range" min="-650" max="650" step="1" value="0" aria-describedby="steering-keyboard">
-    <div class="demo-range-ends"><span>−650 mV · 右支路占优</span><button type="button" data-action="zero">归零输入</button><span>+650 mV · 左支路占优</span></div>
+    <div class="demo-range-ends"><span data-field="range-left">−650 mV · 右支路占优</span><button type="button" data-action="zero">归零输入</button><span data-field="range-right">+650 mV · 左支路占优</span></div>
     <small id="steering-keyboard">拖动滑块；键盘 ← / → 微调 1 mV，Home / End 到两端。输入为 1.4 V ± V<sub>ID</sub>/2。</small>
   </div>
   <div class="demo-visuals">
@@ -51,13 +56,13 @@
     <div class="demo-chart">
       <svg viewBox="0 0 480 340" role="img" aria-labelledby="steering-plot-title steering-plot-desc">
         <title id="steering-plot-title">漏端支路电流随差分输入的变化</title>
-        <desc id="steering-plot-desc">实线对应所选模型；虚线为另一模型在 80 微安尾电流下的对照。竖线和两圆点标出当前输入。横轴毫伏，纵轴微安。</desc>
+        <desc id="steering-plot-desc" data-field="plot-description">实线对应所选模型。主动勾选对照时才显示另一模型的虚线。坐标范围由视角明确指定，不自动缩放。</desc>
         <g class="demo-grid" fill="none" stroke-width="1"><path d="M57 35H463M57 85H463M57 135H463M57 185H463M57 235H463M260 35V235"/></g>
         <g class="demo-axis" fill="none" stroke-width="1.5"><path d="M57 35V235H463"/></g>
         <g class="demo-svg-label">
           <text x="57" y="22">I1、I2 / µA</text>
-          <text x="45" y="241" text-anchor="end">0</text><text x="45" y="191" text-anchor="end">25</text><text x="45" y="141" text-anchor="end">50</text><text x="45" y="91" text-anchor="end">75</text><text x="45" y="41" text-anchor="end">100</text>
-          <text x="57" y="263" text-anchor="middle">−650</text><text x="260" y="263" text-anchor="middle">0</text><text x="463" y="263" text-anchor="middle">650</text>
+          <text x="45" y="241" text-anchor="end" data-y-tick="0">0</text><text x="45" y="191" text-anchor="end" data-y-tick="1">25</text><text x="45" y="141" text-anchor="end" data-y-tick="2">50</text><text x="45" y="91" text-anchor="end" data-y-tick="3">75</text><text x="45" y="41" text-anchor="end" data-y-tick="4">100</text>
+          <text x="57" y="263" text-anchor="middle" data-field="x-left">−650</text><text x="260" y="263" text-anchor="middle">0</text><text x="463" y="263" text-anchor="middle" data-field="x-right">650</text>
           <text x="260" y="292" text-anchor="middle">VID / mV</text>
           <text x="70" y="327" class="demo-left">— I1 左支路</text><text x="280" y="327" class="demo-right">— I2 右支路</text>
         </g>
@@ -69,7 +74,8 @@
     </div>
   </div>
   <div class="demo-readout" aria-live="off" data-field="readout"></div>
-  <p class="demo-observation" role="status" aria-live="polite" aria-atomic="true" data-field="observation"></p>
+  <p class="demo-observation" data-field="observation"></p>
+  <span class="md-visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-field="announcement"></span>
   <details class="demo-bias">
     <summary>再试一次：改变尾电流，会更容易转向吗？</summary>
     <label for="steering-tail"><span>解析模型尾电流 I<sub>T</sub></span> <output for="steering-tail" data-field="tail"></output></label>

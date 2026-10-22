@@ -6,6 +6,7 @@ from urllib.parse import unquote, urlsplit
 
 from bs4 import BeautifulSoup
 from export_steering_demo import package, OUT
+from export_mirror_demo import package as mirror_package, OUT as MIRROR_OUT
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / 'site'
@@ -74,6 +75,20 @@ else:
         errors.append('Demo asset URL placeholders were not resolved')
 
 vendor = ROOT / 'web/assets/vendor/mathjax'
+mirror_expected=mirror_package().encode('utf-8')
+if MIRROR_OUT.read_bytes()!=mirror_expected or (SITE/'assets/demos/mirror-data.json').read_bytes()!=mirror_expected:
+    errors.append('Mirror payload stale or deployment copy differs')
+mirror_page=documents[SITE/'analog/mirrors/cascode/index.html']
+mirror_demo=mirror_page.select_one('[data-demo="mirror-compliance"]')
+if mirror_demo is None or not mirror_demo.has_attr('hidden'):
+    errors.append('Mirror must enhance progressively')
+else:
+    for svg in mirror_demo.select('svg'):
+        if not svg.find('title') or not svg.find('desc'):errors.append('Mirror SVG lacks accessible description')
+    if len(mirror_demo.select('[data-topology]'))!=2:errors.append('Mirror topologies missing')
+    if not mirror_demo.find('label',attrs={'for':'mirror-voltage'}):errors.append('Mirror slider label missing')
+    if not mirror_page.select_one('figure img[src*="mirror-compliance.svg"]'):errors.append('Static mirror fallback missing')
+
 manifest = json.loads((vendor / 'source.json').read_text(encoding='utf-8'))
 for name, expected in manifest['files'].items():
     if hashlib.sha256((vendor / name).read_bytes()).hexdigest() != expected:

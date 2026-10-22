@@ -1,0 +1,18 @@
+Ch05 reference sizing
+.include "design.ngspice"
+.lib "sm141064.ngspice" typical
+.param sw_stat_global=0 sw_stat_mismatch=0
+.temp 27
+.options reltol=1e-5 abstol=1e-13 vntol=1e-8
+Iref 0 b 40u
+Xr b b 0 0 nmos_3p3 w=10u l=1u ad=5p as=5p pd=21u ps=21u
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+set numdgt=15
+op
+wrdata op.txt v(b)
+quit
+.endc
+.end

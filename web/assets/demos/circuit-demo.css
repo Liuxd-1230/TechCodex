@@ -2,6 +2,10 @@
 .md-typeset .circuit-demo {--demo-left:#126e63;--demo-right:#a05b18;margin:1.8rem 0 2.2rem;padding:1rem;border:1px solid #bed0d8;border-top:3px solid #173c50;background:#fff;font-family:var(--md-text-font);letter-spacing:0;line-height:1.65;}
 .circuit-demo[hidden],.demo-loading[hidden] {display:none!important;}
 .circuit-demo,#steering-title {scroll-margin-top:4rem;}
+.mirror-schematics [hidden] {display:none!important;}
+.mirror-schematics text {font-family:var(--md-text-font);stroke:none;}
+.mirror-schematics path,.mirror-schematics circle {vector-effect:non-scaling-stroke;}
+#mirror-demo-title {scroll-margin-top:4rem;}
 .md-typeset .circuit-demo p {text-align:left;margin:.65rem 0;}
 .demo-kicker {font-size:.65rem;color:#566976;letter-spacing:.06em;}
 .md-typeset .demo-heading h3 {font-size:1.03rem;margin:.3rem 0 .7rem;line-height:1.6;}
@@ -9,6 +13,9 @@
 .circuit-demo fieldset {border:0;padding:0;margin:1rem 0 .3rem;display:flex;gap:.5rem 1rem;flex-wrap:wrap;}
 .circuit-demo legend {font-size:.65rem;color:#566976;margin-bottom:.25rem;}
 .demo-models label {font-size:.72rem;display:inline-flex;align-items:center;gap:.25rem;min-height:2.2rem;cursor:pointer;}
+.demo-compare,.demo-view {font-size:.7rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;min-height:2.2rem;}
+.demo-compare input {accent-color:#126e63;width:1rem;height:1rem;}
+.demo-view select {font:inherit;background:#fff;border:1px solid #bed0d8;padding:.5rem;max-width:100%;color:#203b4a;}
 .circuit-demo input[type=radio] {width:1rem;height:1rem;accent-color:#126e63;}
 .md-typeset .demo-source {font-size:.66rem;color:#47616e;background:#f0f5f7;padding:.45rem .6rem;}
 .demo-control {margin:1rem 0 .5rem;}
