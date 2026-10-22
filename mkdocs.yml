@@ -28,7 +28,8 @@ theme:
     - content.code.copy
     - content.action.view
 plugins:
-  - search
+  - search:
+      jieba_dict_user: web/search_terms.txt
 hooks:
   - web/hooks.py
 markdown_extensions:
@@ -64,10 +65,19 @@ nav:
       - 3.3 源跟随器: analog/stages/source-follower.md
       - 3.4 共栅级: analog/stages/common-gate.md
       - 3.5 共源共栅: analog/stages/cascode.md
+    - 第 4 章 · 差分放大器:
+      - analog/differential/index.md
+      - 4.1 电流如何分配: analog/differential/current-steering.md
+      - 4.2 对称性与差模增益: analog/differential/symmetry.md
+      - 4.3 共模与尾源: analog/differential/common-mode.md
+      - 4.4 余量与线性范围: analog/differential/headroom.md
+      - 4.5 MOS 负载: analog/differential/mos-loads.md
+      - 4.6 Gilbert 单元: analog/differential/gilbert.md
   - 实验与复现:
     - labs/index.md
     - Windows 环境: labs/windows.md
     - GF180MCU 模型: labs/models.md
+    - 差分对实验: labs/differential.md
   - 编辑与资料:
     - 知识覆盖与后续章节: about/curriculum.md
     - 第二版编辑说明: about/edition2.md

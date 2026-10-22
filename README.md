@@ -18,8 +18,9 @@
 | 增益不到一的电路为什么有用？ | [3.3 源跟随器样章](模拟/03-单级放大器/03-源跟随器.md) |
 | 从源端输入为什么会同相放大？ | [3.4 共栅级](模拟/03-单级放大器/04-共栅级.md) |
 | 多叠一只管，输出电阻为何能显著提高？ | [3.5 共源共栅](模拟/03-单级放大器/05-共源共栅.md) |
+| 两个输入怎样争取同一股电流，又怎样拒绝共同变化？ | [第 4 章：差分放大器](模拟/04-差分放大器/README.md) |
 
-第二版先重构了第 2、3 章。第 4～10 章尚未成稿，具体覆盖与边界见 [知识地图](docs/知识覆盖.md)。这是逐章打磨的教材，不把预留目录当作已经完成的内容。
+第二版重构了第 2、3 章，第三阶段加入第 4 章差分放大器，从电流转向讲到对称性、共模、余量、MOS 负载和 Gilbert 单元。第 5～10 章尚未成稿，具体覆盖与边界见 [知识地图](docs/知识覆盖.md)。这是逐章打磨的教材，不把预留目录当作已经完成的内容。
 
 ### 教材、暗线与实验
 
@@ -37,6 +38,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe scripts/bootstrap.py
 .\.venv\Scripts\python.exe scripts/run.py --check
+.\.venv\Scripts\python.exe scripts/run_differential.py --check
 .\.venv\Scripts\python.exe scripts/check_repo.py
 ```
 

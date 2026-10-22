@@ -4,9 +4,11 @@
 
 查证日期：2026-10-21。书籍作为理论主线，不声称已在线取得或逐页核对原书全文。
 
+第三阶段补充查证于 2026-10-22：[McGraw Hill 的第二版出版信息与总目录](https://www.mheducation.com/highered/product/Design-of-Analog-CMOS-Integrated-Circuits-Razavi.html)（ISBN 9780072524932）确认章节顺序；第 4 章按单端/差分、基本差分对及退化、共模、MOS 负载和 Gilbert 单元组织覆盖。[MIT 6.012 Lecture 19 原讲义](https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2009/9932f87a7b5ec3d088d0e0836a05c622_MIT6_012F09_lec19.pdf) 用于交叉核对差模/共模分解与半电路思路。正文的符号、推导、数值例子与原理图独立完成；[章节覆盖表](知识覆盖.md) 明确与后续电流镜、共模反馈专题的分界。
+
 | 来源 | 用于什么 | 可追溯信息 |
 |---|---|---|
-| Behzad Razavi, *Design of Analog CMOS Integrated Circuits*, Second Edition | 第 2～10 章的知识组织；现有正文对应第 2、3 章，第 3 篇有第 6 章预告 | 独立文字、推导和插图，不复制教材内容 |
+| Behzad Razavi, *Design of Analog CMOS Integrated Circuits*, Second Edition | 第 2～10 章的知识组织；现有正文对应第 2～4 章 | 独立文字、推导和插图，不复制教材内容 |
 | [GF180MCU 模型上游固定提交](https://github.com/google/globalfoundries-pdk-libs-gf180mcu_fd_pr/tree/9f992d5a9186d1f7820c58f039c484ad35b2edea) | 原始工艺模型与 Apache-2.0 许可 | [逐文件哈希](../models/manifest.json) |
 | [GF180MCU 官方模型说明](https://gf180mcu-pdk.readthedocs.io/en/latest/analog/model_parameters/LV/LV_1.html) | 器件分类、实例参数与模型使用背景 | 文档本身持续变化，具体仿真以固定文件为准 |
 | [GF180MCU 文档首页](https://gf180mcu-pdk.readthedocs.io/en/latest/) | Experimental Preview 的状态说明 | 不把公开预览模型当作制造签核 |
