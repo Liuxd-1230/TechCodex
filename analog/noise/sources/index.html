@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2478,7 +2478,7 @@ S_{v,\mathrm{in}}(f)=\frac{S_{v,o}(f)}{|A_v(f)|^2}.
 \]</div>
 <p>两者在该频率产生相同的输出噪声。它让我们比较放大器自身噪声与微弱输入信号，而不被增益差异迷惑。若增益接近零，折算可能很大甚至失去实用意义；这表示这个端口已很难传递该频率的信号。</p>
 <p>一个内部源的贡献是 <span class="arithmatex">\(S_{v,o,k}=|H_k|^2S_k\)</span>。<span class="arithmatex">\(H_k\)</span> 若将电流变成电压，单位是 Ω；若将电压变成电压，则单位是 V/V。先检查单位，常能发现漏掉平方或误用 ASD 的错误。</p>
-<figure><p><a aria-label="信号和噪声通过不同传递函数到达输出，随后按同一个输入端口折算 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-referral.svg" title="打开原图，查看细节"><img alt="信号和噪声通过不同传递函数到达输出，随后按同一个输入端口折算" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-referral.svg"/></a></p><figcaption>图 7-1　等效输入源不等于某个真实的栅电压波动。它把不同内部路径的输出效应统一换算到指定信号端口。图中的独立源按 PSD 合成；同一源的多条路径应先合并传递函数。</figcaption></figure>
+<figure><p><a aria-label="信号和噪声通过不同传递函数到达输出，随后按同一个输入端口折算 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-referral.svg" title="打开原图，查看细节"><img alt="信号和噪声通过不同传递函数到达输出，随后按同一个输入端口折算" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-referral.svg"/></a></p><figcaption>图 7-1　等效输入源不等于某个真实的栅电压波动。它把不同内部路径的输出效应统一换算到指定信号端口。图中的独立源按 PSD 合成；同一源的多条路径应先合并传递函数。 <a aria-label="信号和噪声通过不同传递函数到达输出，随后按同一个输入端口折算 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-referral.svg">查看原图</a></figcaption></figure>
 
 <h2 id="_4">有源阻抗时，单个电压指标不够<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>实际信号源有阻抗 <span class="arithmatex">\(Z_s\)</span>。放大器输入电流噪声会在它上面产生电压，输入网络的负载效应也会改变信号增益。通用输入模型需要串联电压噪声 <span class="arithmatex">\(e_n\)</span> 和并联电流噪声 <span class="arithmatex">\(i_n\)</span>；定义二者对等效输入电压均以正号贡献时，</p>

@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2377,13 +2377,16 @@
 </table>
 <h2 id="_1">四个端口，各自在控制什么<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>先考虑 p 型体区中的增强型 NMOS。两个 n+ 区提供源、漏接触，栅极与半导体之间隔着绝缘氧化层，体端 B 则决定衬底或阱的电势。</p>
-<figure><p><a aria-label="NMOS 概念截面中的栅、源、漏与体区 · 打开原图" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-section.svg" title="打开原图，查看细节"><img alt="NMOS 概念截面中的栅、源、漏与体区" src="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-section.svg"/></a></p><figcaption>图 2-1：栅压改变表面电荷，漏源电压驱动载流子沿表面输运。图只说明物理关系，不是 GF180MCU 的制造截面或真实几何比例。</figcaption></figure>
+<figure><p><a aria-label="NMOS 概念截面中的栅、源、漏与体区 · 打开原图" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-section.svg" title="打开原图，查看细节"><img alt="NMOS 概念截面中的栅、源、漏与体区" src="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-section.svg"/></a></p><figcaption>图 2-1：栅压改变表面电荷，漏源电压驱动载流子沿表面输运。图只说明物理关系，不是 GF180MCU 的制造截面或真实几何比例。 <a aria-label="NMOS 概念截面中的栅、源、漏与体区 · 查看原图" class="figure-detail" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-section.svg">查看原图</a></figcaption></figure>
 
 <p>栅极不需要向沟道持续注入传导电流，就能通过电场改变沟道里的电子数量。漏源之间有电势差时，这些电子可以沿表面运动，形成电流。输入端控制电荷，电源维持输出端的电流与能量，后来放大器的工作就依赖这两种作用的分工。</p>
 <p>源体与漏体之间还有 PN 结。对于普通 NMOS，体端通常置于较低电势，使这些结保持反偏。四端符号中的体端不是沟道的一段导线；改变源、体连接方式，会改变结偏置和阈值。独立体连接是否允许，取决于工艺的井隔离结构。</p>
 <p>物理上近似对称的低压 MOS 在一定条件下可以交换源、漏角色，但这不意味着所有工艺器件都对称，也不意味着可以忽略体二极管或网表的端口次序。高压扩展漏结构等可能本来就不对称。电路分析先按明确定义的 D、G、S、B 建模。</p>
 <h2 id="_2">栅压升高时，表面并非立刻“导通”<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>栅极相对 p 型体区施加正电压，先排斥表面的空穴，形成耗尽区；继续增加电压，表面电子浓度增加，形成反型层。强反型后，栅压的大部分新增作用表现为增加反型电荷。</p>
+<figure class="concept-figure" id="figure-mos-charge"><p class="diagram-scroll-hint">图内可左右查看，或使用下方的“查看原图”。</p><div aria-label="从耗尽到反型，区分固定受主电荷与可移动电子层的局部概念分层，窄屏可横向查看" class="diagram-viewport" role="region" tabindex="0"><a aria-label="从耗尽到反型，区分固定受主电荷与可移动电子层的局部概念分层 · 打开原图" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-charge.svg" title="打开原图，查看细节"><img alt="从耗尽到反型，区分固定受主电荷与可移动电子层的局部概念分层" src="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-charge.svg"/></a></div><figcaption>图 2-2：只看栅下的一小片区域，源、漏和接触结构在图外。源、体电势取零，漏源电压接近零；向下箭头表示栅指向体区的电场分量。A− 是空穴离开后留下的固定受主离子，e− 是可沿表面输运的反型电子。层厚、离子间距与箭头长度均不表示真实数值，也不是 GF180MCU 的制造截面。 <a aria-label="从耗尽到反型，区分固定受主电荷与可移动电子层的局部概念分层 · 查看原图" class="figure-detail" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-charge.svg">查看原图</a></figcaption></figure>
+
+<p>可以先遮住下半图，问自己：<strong>耗尽区已经有负电荷，为什么还不能把它当作导电沟道？</strong> 因为这些离化受主固定在晶格中；反型层中的电子才是后来漏源电场能够驱动的载流子。于是，“栅下有电荷”和“形成可输运的沟道”就成了两个需要分别判断的问题。</p>
 <p>这需要一定的电压来补偿平带电压、表面势变化与耗尽层电荷。对均匀掺杂、零源体偏置的长沟道近似，可写</p>
 <div class="arithmatex">\[
 V_{TH0}=V_{FB}+2\phi_F+\gamma\sqrt{2\phi_F},
@@ -2433,7 +2436,7 @@ I_D\propto
 \qquad U_T=\frac{kT}{q}.
 \]</div>
 <p>n 是亚阈值因子。漏压达到数个 UT 以后，括号内的项接近一；栅压仍通过指数项控制电流。这里 VTH 的定义与比例常数有关，应把该式作为局部近似，不把不同阈值提取方法混为同一个开关点。</p>
-<figure><p><a aria-label="真实工艺模型的对数转移曲线 · 打开原图" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-transfer.svg" title="打开原图，查看细节"><img alt="真实工艺模型的对数转移曲线" src="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-transfer.svg"/></a></p><figcaption>图 2-2：电流在强反型以前已经连续增长。曲线来自现有 GF180MCU 仿真：typical、27 °C、W/L=10/1 µm、VDS=1.65 V；完整条件与数据见 <a href="../../labs/">实验资源</a>。这张图检验“阈值不是电流开关”的判断，不用来定义一般器件的全部特性。</figcaption></figure>
+<figure><p><a aria-label="真实工艺模型的对数转移曲线 · 打开原图" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-transfer.svg" title="打开原图，查看细节"><img alt="真实工艺模型的对数转移曲线" src="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-transfer.svg"/></a></p><figcaption>图 2-3：电流在强反型以前已经连续增长。曲线来自现有 GF180MCU 仿真：typical、27 °C、W/L=10/1 µm、VDS=1.65 V；完整条件与数据见 <a href="../../labs/">实验资源</a>。这张图检验“阈值不是电流开关”的判断，不用来定义一般器件的全部特性。 <a aria-label="真实工艺模型的对数转移曲线 · 查看原图" class="figure-detail" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-transfer.svg">查看原图</a></figcaption></figure>
 
 <p>对指数关系求导，有 <span class="arithmatex">\(g_m/I_D\simeq1/(nU_T)\)</span>；对强反型平方律求导，有 <span class="arithmatex">\(g_m/I_D\simeq2/V_{OV}\)</span>。把强反型结果一直外推到 VOV→0，会得到不存在的无穷大跨导效率。模型必须在进入新区域时更换，而不是让一个公式承担所有偏置。</p>
 <p>弱反型较高的跨导效率有助于降低达到指定 gm 所需的电流，但在小电流密度下取得足够跨导，往往需要更大尺寸。面积、电容、速度、失配和大信号充放电能力仍要分别考虑；低功耗不是单独把电流旋钮调小。</p>

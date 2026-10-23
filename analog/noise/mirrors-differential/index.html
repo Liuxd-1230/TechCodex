@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2446,7 +2446,7 @@ S_{v,\mathrm{in,th}}\simeq
 \]</div>
 <p>输入对希望较大 <span class="arithmatex">\(g_{m,n}\)</span>，镜像负载却希望自身电流噪声不要太大。这解释了为什么“把所有管的跨导一起提高”不一定是最节省功耗的降噪方法。降低 PMOS 的跨导可以减轻它的热噪声，但会改变余量、参考节点阻抗及极点；长沟道和面积也会影响低频噪声及电容。</p>
 <p>真实 OTA 的尾管贡献通常很小，但不会严格为零。有限 <span class="arithmatex">\(r_o\)</span>、两边不同的漏压、镜像传递误差与内部极点，都让共模扰动有机会转成单端输出。参考管和电阻也通过尾栅偏置进入电路。</p>
-<figure><p><a aria-label="GF180原OTA各器件组在目标频带内的输入参考方差份额 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-budget.svg" title="打开原图，查看细节"><img alt="GF180原OTA各器件组在目标频带内的输入参考方差份额" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-budget.svg"/></a></p><figcaption>图 7-4　基准 OTA，typical、27 °C、<span class="arithmatex">\(V_{DD}=3.3\)</span> V、<span class="arithmatex">\(V_{CM}=1.4\)</span> V、<span class="arithmatex">\(C_L=1\)</span> pF、100 Hz–100 kHz。份额按<strong>积分方差</strong>计算；输入对约占 88.0%，PMOS 镜约占 12.0%，尾管及参考网络合计约 0.017%。这些小贡献仍保存在原始数据中，图中没有把它们宣称为零。</figcaption></figure>
+<figure><p><a aria-label="GF180原OTA各器件组在目标频带内的输入参考方差份额 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-budget.svg" title="打开原图，查看细节"><img alt="GF180原OTA各器件组在目标频带内的输入参考方差份额" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-budget.svg"/></a></p><figcaption>图 7-4　基准 OTA，typical、27 °C、<span class="arithmatex">\(V_{DD}=3.3\)</span> V、<span class="arithmatex">\(V_{CM}=1.4\)</span> V、<span class="arithmatex">\(C_L=1\)</span> pF、100 Hz–100 kHz。份额按<strong>积分方差</strong>计算；输入对约占 88.0%，PMOS 镜约占 12.0%，尾管及参考网络合计约 0.017%。这些小贡献仍保存在原始数据中，图中没有把它们宣称为零。 <a aria-label="GF180原OTA各器件组在目标频带内的输入参考方差份额 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-budget.svg">查看原图</a></figcaption></figure>
 
 <h2 id="_3">一条源走两条路：先相量相加，再求功率<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>设同一个噪声 <span class="arithmatex">\(n\)</span> 沿 <span class="arithmatex">\(H_1\)</span>、<span class="arithmatex">\(H_2\)</span> 两路到达输出。正确结果为</p>

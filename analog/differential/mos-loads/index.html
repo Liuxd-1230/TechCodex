@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2400,7 +2400,7 @@
 <div class="arithmatex">\[
 V_{OQ}=V_{DD}-V_{SG,p}(I_0).
 \]</div>
-<figure><p><a aria-label="二极管连接与固定栅偏置的 PMOS 负载 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-loads.svg" title="打开原图，查看细节"><img alt="二极管连接与固定栅偏置的 PMOS 负载" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-loads.svg"/></a></p><figcaption>图 4.5-1：只截取一侧负载，左右两侧使用相同连接。A 的输出变化直接改变 PMOS 的 VSG；B 的 VSG 在低频下固定，因而具有更高的增量阻抗。两种连接的体端都接 VDD。</figcaption></figure>
+<figure><p><a aria-label="二极管连接与固定栅偏置的 PMOS 负载 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-loads.svg" title="打开原图，查看细节"><img alt="二极管连接与固定栅偏置的 PMOS 负载" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-loads.svg"/></a></p><figcaption>图 4.5-1：只截取一侧负载，左右两侧使用相同连接。A 的输出变化直接改变 PMOS 的 VSG；B 的 VSG 在低频下固定，因而具有更高的增量阻抗。两种连接的体端都接 VDD。 <a aria-label="二极管连接与固定栅偏置的 PMOS 负载 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-loads.svg">查看原图</a></figcaption></figure>
 
 <p>左输入升高时，下方 NMOS 多吸电流，左输出降低；这又使左负载的 VSG 增大，主动多供电流，阻止输出继续下降。因此二极管负载使直流容易落定，却也强烈加载信号节点。</p>
 <p>在纯差模下，源端仍可按对称性视为增量固定。每侧输出总电导为 <span class="arithmatex">\(g_{dsn}+g_{mp}+g_{dsp}\)</span>，故差分增益是</p>
@@ -2432,7 +2432,7 @@ V_T+V_{OV,n}\lesssim V_O
 <p>若还要串入共源共栅管，提高输出电阻就会再消耗一份饱和余量。可以利用 <a href="../../stages/cascode/">第 3 章的阻抗提升方法</a> 分析对称的差模半电路，但不能把 ro 的提升倍数直接当作整个差分级的增益倍数；有效跨导、另一侧负载和偏置范围都要一同检查。</p>
 <h2 id="pmos">反过来采用 PMOS 输入对，会改变哪一端的共模范围<a class="headerlink" href="#pmos" title="Permanent link">¶</a></h2>
 <p>若信号靠近地，前面的 NMOS 输入对常先遇到下限。可以把电流方向翻转：上方用 PMOS 尾管从 VDD 提供电流，两只 PMOS 输入管共用源端，下方的相等电阻接地。输入管与尾管的体接 VDD。</p>
-<figure><p><a aria-label="PMOS 输入差分对及其上方尾源 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-pmos.svg" title="打开原图，查看细节"><img alt="PMOS 输入差分对及其上方尾源" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-pmos.svg"/></a></p><figcaption>图 4.5-2：这里的公共源端位于输入管上方，电流经输入管流向下方电阻。左输入升高使左 VSG 减小、左支路电流减小，左输出随之降低；按同一输入差与输出差定义，电压增益仍为负。</figcaption></figure>
+<figure><p><a aria-label="PMOS 输入差分对及其上方尾源 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-pmos.svg" title="打开原图，查看细节"><img alt="PMOS 输入差分对及其上方尾源" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-pmos.svg"/></a></p><figcaption>图 4.5-2：这里的公共源端位于输入管上方，电流经输入管流向下方电阻。左输入升高使左 VSG 减小、左支路电流减小，左输出随之降低；按同一输入差与输出差定义，电压增益仍为负。 <a aria-label="PMOS 输入差分对及其上方尾源 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-pmos.svg">查看原图</a></figcaption></figure>
 
 <p>本段的 I0 取从 VDD 向地流动的支路电流幅值，平衡时 <span class="arithmatex">\(V_{OQ}=I_0R_D\)</span>。设上方公共源端为 S，尾管要留出 <span class="arithmatex">\(V_{DD}-V_S\gtrsim V_{OV,Tp}\)</span>，输入管又需要 <span class="arithmatex">\(V_{ICM}=V_S-V_{SG,p}\)</span>，因此共模上限大致为</p>
 <div class="arithmatex">\[

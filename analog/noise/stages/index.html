@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2445,7 +2445,7 @@ Z_s=\frac{1}{g_m+g_{mb}+G_L},\qquad A_v=g_mZ_s.
 <h2 id="_3">共栅级：漏源噪声的两个端点会互相影响<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>共栅输入接在源端，栅和体交流接地。信号源 <span class="arithmatex">\(v_s\)</span> 经 <span class="arithmatex">\(R_s\)</span> 驱动源节点 <span class="arithmatex">\(v_x\)</span>，漏端接 <span class="arithmatex">\(R_D\)</span>。令 <span class="arithmatex">\(G_s=1/R_s\)</span>、<span class="arithmatex">\(g_\Sigma=g_m+g_{mb}\)</span>，暂忽略 <span class="arithmatex">\(g_o\)</span>。</p>
 <p>若仅把沟道噪声看成漏端对地电流源，会漏掉一条路径：同一噪声流入源端，推动 <span class="arithmatex">\(v_x\)</span>，继而通过跨导反馈到漏端。</p>
-<figure><p><a aria-label="共栅沟道噪声在漏源两端注入，源节点反馈抵消部分漏端扰动 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-cg.svg" title="打开原图，查看细节"><img alt="共栅沟道噪声在漏源两端注入，源节点反馈抵消部分漏端扰动" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-cg.svg"/></a></p><figcaption>图 7-2　蓝色的两端注入属于同一个噪声源。<span class="arithmatex">\(v_x\)</span> 能否移动，由信号源阻抗决定。体端明确交流接地，<span class="arithmatex">\(g_{mb}\)</span> 已计入 <span class="arithmatex">\(g_\Sigma\)</span>。</figcaption></figure>
+<figure><p><a aria-label="共栅沟道噪声在漏源两端注入，源节点反馈抵消部分漏端扰动 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-cg.svg" title="打开原图，查看细节"><img alt="共栅沟道噪声在漏源两端注入，源节点反馈抵消部分漏端扰动" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-cg.svg"/></a></p><figcaption>图 7-2　蓝色的两端注入属于同一个噪声源。<span class="arithmatex">\(v_x\)</span> 能否移动，由信号源阻抗决定。体端明确交流接地，<span class="arithmatex">\(g_{mb}\)</span> 已计入 <span class="arithmatex">\(g_\Sigma\)</span>。 <a aria-label="共栅沟道噪声在漏源两端注入，源节点反馈抵消部分漏端扰动 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-cg.svg">查看原图</a></figcaption></figure>
 
 <p>把沟道噪声方向定为漏到源，KCL 给出</p>
 <div class="arithmatex">\[
@@ -2465,7 +2465,7 @@ S_{v,\mathrm{in},R_D}=\frac{4kT}{g_\Sigma^2R_D}(1+g_\Sigma R_s)^2.
 <p>这项随源阻抗增加而恶化。共栅低输入阻抗可以解决带宽或匹配问题，却不能只凭较小的某一个输出噪声项就宣布它更安静。有限 <span class="arithmatex">\(r_o\)</span> 会让漏端反过来影响源端，此时重新列节点方程。</p>
 <h2 id="_4">共源共栅：上管的噪声为什么常常较小<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>下管 M1 将输入变成电流，上管 M2 维持较小的中间节点摆幅。这个“较小阻抗节点”也让 M2 的漏源噪声驱动中间节点，形成局部抵消。仅用 M2 的 <span class="arithmatex">\(g_m\)</span> 较大来解释还不够：我们需要知道抵消受什么限制。</p>
-<figure><p><a aria-label="共源共栅两节点噪声模型，M2的噪声同时注入中间节点与输出 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-cascode.svg" title="打开原图，查看细节"><img alt="共源共栅两节点噪声模型，M2的噪声同时注入中间节点与输出" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-cascode.svg"/></a></p><figcaption>图 7-3　下管源和两管体端交流接地。<span class="arithmatex">\(g_1=g_{o1}\)</span>，<span class="arithmatex">\(g_2=g_{o2}\)</span>，<span class="arithmatex">\(k_2=g_{m2}+g_{mb2}+g_2\)</span>。上管的噪声先引起 <span class="arithmatex">\(v_x\)</span> 变化，再由受控电流抵消漏端注入。</figcaption></figure>
+<figure><p><a aria-label="共源共栅两节点噪声模型，M2的噪声同时注入中间节点与输出 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-cascode.svg" title="打开原图，查看细节"><img alt="共源共栅两节点噪声模型，M2的噪声同时注入中间节点与输出" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-cascode.svg"/></a></p><figcaption>图 7-3　下管源和两管体端交流接地。<span class="arithmatex">\(g_1=g_{o1}\)</span>，<span class="arithmatex">\(g_2=g_{o2}\)</span>，<span class="arithmatex">\(k_2=g_{m2}+g_{mb2}+g_2\)</span>。上管的噪声先引起 <span class="arithmatex">\(v_x\)</span> 变化，再由受控电流抵消漏端注入。 <a aria-label="共源共栅两节点噪声模型，M2的噪声同时注入中间节点与输出 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-cascode.svg">查看原图</a></figcaption></figure>
 
 <p>输出负载电导为 <span class="arithmatex">\(G_D\)</span>，定义行列式</p>
 <div class="arithmatex">\[

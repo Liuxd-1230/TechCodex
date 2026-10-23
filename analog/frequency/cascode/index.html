@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2394,7 +2394,7 @@
 
 <h1 id="64">6.4 · 把大摆幅留在上面，下面就快了吗<a class="headerlink" href="#64" title="Permanent link">¶</a></h1>
 <p>共源级能把栅压变成漏电流，但漏节点的大反相摆幅让 <span class="arithmatex">\(C_{gd}\)</span> 很吃力。上面接一只共栅管，让下面那只管的漏极只需小幅移动，就有可能减小这份输入加载。</p>
-<figure><p><a aria-label="下管输入、共栅上管和内部 X 节点，Cgd1 跨输入与 X · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode.svg" title="打开原图，查看细节"><img alt="下管输入、共栅上管和内部 X 节点，Cgd1 跨输入与 X" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode.svg"/></a></p><figcaption>图 6-6 · <span class="arithmatex">\(C_{gd1}\)</span> 的另一端是 X，不能把总输出增益代进它的米勒公式。两只体端均接地；上管源端不接体端。输出负载经 <span class="arithmatex">\(R_D\)</span> 到 VDD，<span class="arithmatex">\(C_O\)</span> 包含 <span class="arithmatex">\(C_{gd2},C_{db2},C_L\)</span>。</figcaption></figure>
+<figure><p><a aria-label="下管输入、共栅上管和内部 X 节点，Cgd1 跨输入与 X · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode.svg" title="打开原图，查看细节"><img alt="下管输入、共栅上管和内部 X 节点，Cgd1 跨输入与 X" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode.svg"/></a></p><figcaption>图 6-6 · <span class="arithmatex">\(C_{gd1}\)</span> 的另一端是 X，不能把总输出增益代进它的米勒公式。两只体端均接地；上管源端不接体端。输出负载经 <span class="arithmatex">\(R_D\)</span> 到 VDD，<span class="arithmatex">\(C_O\)</span> 包含 <span class="arithmatex">\(C_{gd2},C_{db2},C_L\)</span>。 <a aria-label="下管输入、共栅上管和内部 X 节点，Cgd1 跨输入与 X · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode.svg">查看原图</a></figcaption></figure>
 
 <h2 id="_1">先看局部电流怎样被接走<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>低频下，下管产生 <span class="arithmatex">\(g_{m1}v_g\)</span>。上管从源端看进去的导纳约 <span class="arithmatex">\(g_{m2}+g_{mb2}\)</span>；当上管漏端没有近乎自由地跟着源端移动时，X 无须很大电压就能传递这份电流：</p>
@@ -2425,7 +2425,7 @@ g_{m1}-sC_f&amp;g_1+k_2+s(C_X+C_f)&amp;-g_2\\
 <p>如果输入由理想电压驱动，<span class="arithmatex">\(v_g\)</span> 不再是独立动态状态，但 <span class="arithmatex">\(C_f\)</span> 的前馈仍进入 X 方程。若输出极点远低于 X 极点，可以先把 X 近似为快速节点，再估算输出主极点；反过来将所有高频路径都压进一个 <span class="arithmatex">\(R_{out}C_L\)</span> 会漏掉内部限制。</p>
 </details>
 <h2 id="_2">同一个拓扑，换限制条件会得到不同答案<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<figure><p><a aria-label="两组源阻抗和负载条件下共源与共源共栅的归一化频响 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode-contrast.svg" title="打开原图，查看细节"><img alt="两组源阻抗和负载条件下共源与共源共栅的归一化频响" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode-contrast.svg"/></a></p><figcaption>图 6-7 · 全部曲线来自真实 GF180MCU。上下图均为 <span class="arithmatex">\(v_o/v_{in}\)</span> 并相对各自低频幅度归一化；两管均 10/1 µm，<span class="arithmatex">\(R_D=40\)</span> kΩ，输入直流栅压约 0.900 V，共源共栅上栅 1.8 V。两组实验只改变标明的外部源阻抗与电容，不在不同端口之间比较。</figcaption></figure>
+<figure><p><a aria-label="两组源阻抗和负载条件下共源与共源共栅的归一化频响 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode-contrast.svg" title="打开原图，查看细节"><img alt="两组源阻抗和负载条件下共源与共源共栅的归一化频响" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode-contrast.svg"/></a></p><figcaption>图 6-7 · 全部曲线来自真实 GF180MCU。上下图均为 <span class="arithmatex">\(v_o/v_{in}\)</span> 并相对各自低频幅度归一化；两管均 10/1 µm，<span class="arithmatex">\(R_D=40\)</span> kΩ，输入直流栅压约 0.900 V，共源共栅上栅 1.8 V。两组实验只改变标明的外部源阻抗与电容，不在不同端口之间比较。 <a aria-label="两组源阻抗和负载条件下共源与共源共栅的归一化频响 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode-contrast.svg">查看原图</a></figcaption></figure>
 
 <p>上图 <span class="arithmatex">\(R_S=10\)</span> kΩ、<span class="arithmatex">\(C_L=1\)</span> pF：共源约 4.05 MHz，共源共栅约 3.94 MHz。输入端原本不是主要瓶颈，增加上管结电容与内部节点，不会让大负载自动更快。</p>
 <p>下图 <span class="arithmatex">\(R_S=1\)</span> MΩ、<span class="arithmatex">\(C_L=0.05\)</span> pF：共源约 3.22 MHz，共源共栅约 4.74 MHz。输入加载变得重要，限制 X 摆幅的优势才显现。这也不是说 4.74 MHz 就是 X 的精确极点，而是指定端口在这组终接下的 −3 dB 带宽。</p>

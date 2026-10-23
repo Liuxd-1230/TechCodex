@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2442,7 +2442,7 @@
 <p>只改变一只放大器的尾电流，可以改变 gm，却不能让跨导变号。要得到正负增益，可以让两只放大器以相反极性贡献输出，再改变它们各自的权重。</p>
 <h2 id="_1">同样的输入，以相反极性汇入输出<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>取两个相同的上层 NMOS 差分对 A、B，都接收差分输入 VSIG。A 的左、右漏流分别汇入 OL、OR，B 则交叉接入 OR、OL。两个输出各用 RD 上拉到 VDD。用下层的另一只差分对控制 A、B 的尾电流 IA、IB，且 IA+IB=IT，就得到 Gilbert 单元的六管核心。</p>
-<figure><p><a aria-label="Gilbert 单元的电流分组和输出汇合方向 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-gilbert.svg" title="打开原图，查看细节"><img alt="Gilbert 单元的电流分组和输出汇合方向" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-gilbert.svg"/></a></p><figcaption>图 4.6-1：上层两个方框各代表一只由两管构成的差分对，明确标出 G 与输出网络；下层 M5、M6 分配 IA、IB。OL、OR 的同名标签表示相连，避免交叉长导线遮住电流分组。四只上管和两只下管的 B 均接地。VSIG 与 VC 各有自己的直流共模，图中只突出差分端口及电流路径。</figcaption></figure>
+<figure><p><a aria-label="Gilbert 单元的电流分组和输出汇合方向 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-gilbert.svg" title="打开原图，查看细节"><img alt="Gilbert 单元的电流分组和输出汇合方向" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-gilbert.svg"/></a></p><figcaption>图 4.6-1：上层两个方框各代表一只由两管构成的差分对，明确标出 G 与输出网络；下层 M5、M6 分配 IA、IB。OL、OR 的同名标签表示相连，避免交叉长导线遮住电流分组。四只上管和两只下管的 B 均接地。VSIG 与 VC 各有自己的直流共模，图中只突出差分端口及电流路径。 <a aria-label="Gilbert 单元的电流分组和输出汇合方向 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-gilbert.svg">查看原图</a></figcaption></figure>
 
 <p>设 A 左减右的支路电流差为 ΔIA，B 左减右为 ΔIB。按图上的连线，两个输出节点吸收的电流为</p>
 <div class="arithmatex">\[

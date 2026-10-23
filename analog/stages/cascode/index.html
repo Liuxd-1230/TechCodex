@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2483,7 +2483,7 @@
 <h1 id="35">3.5 共源共栅：让漏端少干扰一只管子<a class="headerlink" href="#35" title="Permanent link">¶</a></h1>
 <p><a href="../">本章导航</a> · <a href="../common-gate/">前一节：共栅级</a> · <a href="../../">系列首页</a></p>
 <p>共源输入管希望用栅压控制电流，输出端却会通过 gds 反过来改变这股电流。若能让输入管的漏电压变化小一些，电流就更接近由输入决定。这是共源共栅结构值得尝试的理由。</p>
-<figure><p><a aria-label="共源共栅的两只管与中间节点 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cascode.svg" title="打开原图，查看细节"><img alt="共源共栅的两只管与中间节点" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cascode.svg"/></a></p><figcaption>图 3.5-1：M1 是共源输入管，M2 的 G 固定，源端接 M1 的漏端 x。两只 NMOS 的 B 都独立接地；M2 的体端没有与 x 短接。输出负载可以是电阻或高阻电流源，二者不能不加区分地使用同一个增益近似。</figcaption></figure>
+<figure><p><a aria-label="共源共栅的两只管与中间节点 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cascode.svg" title="打开原图，查看细节"><img alt="共源共栅的两只管与中间节点" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cascode.svg"/></a></p><figcaption>图 3.5-1：M1 是共源输入管，M2 的 G 固定，源端接 M1 的漏端 x。两只 NMOS 的 B 都独立接地；M2 的体端没有与 x 短接。输出负载可以是电阻或高阻电流源，二者不能不加区分地使用同一个增益近似。 <a aria-label="共源共栅的两只管与中间节点 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cascode.svg">查看原图</a></figcaption></figure>
 
 <p>如果输入升高，M1 希望多吸电流。中间节点 x 稍微降低，M2 的 VGS、VBS 都增加，于是 M2 也增加向下流动的电流。这里 x 的小变化起到了传递电流需求的作用。至于 x 是否“几乎不动”，还要由 M2 的跨导、输出电阻和上方负载共同决定。</p>
 <h2 id="_1">先关掉输入，研究输出电压能扰动多少电流<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
@@ -2548,7 +2548,7 @@ V_O-V_X\gtrsim V_{OV,2}.
 <p>不过，中间节点还有自己的寄生电容和有限阻抗，M2 也带来额外电荷。共源共栅不能无条件宣称“更快”；负载、电流、各节点阻抗和电容都需要比较。本章先建立低频结构，频率响应在第 6 章逐节点展开。</p>
 <h2 id="_6">折叠：把电流接力放到另一条支路<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>上面的望远镜式堆叠让输入电流与上管电流流经同一支路。另一种安排是：用一个偏置支路在中间节点提供总电流，NMOS 输入管取走其中一部分，剩余电流由 PMOS 共栅管送向输出。</p>
-<figure><p><a aria-label="折叠结构的电流分配 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/folded-cascode.svg" title="打开原图，查看细节"><img alt="折叠结构的电流分配" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/folded-cascode.svg"/></a></p><figcaption>图 3.5-2：这是说明折叠原理的单端结构。上方偏置提供 IB，输入支路取 I1，余量 IF 经过 PMOS 共栅管到输出，因此 IB=I1+IF。输出另有下拉偏置支路。PMOS 的体端接 VDD，输入 NMOS 的体端接地。</figcaption></figure>
+<figure><p><a aria-label="折叠结构的电流分配 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/folded-cascode.svg" title="打开原图，查看细节"><img alt="折叠结构的电流分配" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/folded-cascode.svg"/></a></p><figcaption>图 3.5-2：这是说明折叠原理的单端结构。上方偏置提供 IB，输入支路取 I1，余量 IF 经过 PMOS 共栅管到输出，因此 IB=I1+IF。输出另有下拉偏置支路。PMOS 的体端接 VDD，输入 NMOS 的体端接地。 <a aria-label="折叠结构的电流分配 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/folded-cascode.svg">查看原图</a></figcaption></figure>
 
 <p>当输入升高，I1 增加；若上方偏置支路电流近似固定，IF 减少，输出得到的电流变少，电压下降。信号仍完成从输入电压到输出电流的反相转换，但输入管不必与共栅管简单地同向串叠。</p>
 <p>折叠给输入共模范围和器件极性安排提供了更多自由度，却增加偏置支路、功耗与噪声来源。在求输出电阻的测试中，折叠节点通常同时看到输入管的 ro 和偏置管的 ro。若这两个电阻并联为 RX，则看入共栅输出的一侧大致为</p>

@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2417,7 +2417,7 @@
 <h1 id="51">5.1 普通电流镜：共同栅压复制了什么<a class="headerlink" href="#51" title="Permanent link">¶</a></h1>
 <p><a href="../">本章导航</a> · <a href="../cascode/">下一篇：共源共栅镜</a></p>
 <p>假设差分对需要 80 µA 尾电流。直接给尾管一个固定栅电压，看起来很简单；但第 2 章已经告诉我们，同一栅压下的电流会随阈值、迁移率、温度和漏端电压变化。能不能先建立一股参考电流，再让另一只管子跟着它工作？</p>
-<figure><p><a aria-label="二极管连接参考管建立共同栅压的普通电流镜 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mirror-basic.svg" title="打开原图，查看细节"><img alt="二极管连接参考管建立共同栅压的普通电流镜" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mirror-basic.svg"/></a></p><figcaption>图 5.1-1：参考电流进入 M1 的漏栅节点 VB；M2 共享栅压与源端电位，但输出漏压由外部电路决定。两只体端分别接地。这里讨论吸收电流的 NMOS 镜；PMOS 源出电流时，把电压方向和源、体连接相应翻转。</figcaption></figure>
+<figure><p><a aria-label="二极管连接参考管建立共同栅压的普通电流镜 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mirror-basic.svg" title="打开原图，查看细节"><img alt="二极管连接参考管建立共同栅压的普通电流镜" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mirror-basic.svg"/></a></p><figcaption>图 5.1-1：参考电流进入 M1 的漏栅节点 VB；M2 共享栅压与源端电位，但输出漏压由外部电路决定。两只体端分别接地。这里讨论吸收电流的 NMOS 镜；PMOS 源出电流时，把电压方向和源、体连接相应翻转。 <a aria-label="二极管连接参考管建立共同栅压的普通电流镜 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mirror-basic.svg">查看原图</a></figcaption></figure>
 
 <h2 id="_1">参考支路先把电流翻译成电压<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>如果 VB 太低，M1 暂时不能吸收全部参考电流，多余电流便使栅漏节点电容充电；VB 升高，M1 电流增加。若 VB 太高，则反向调整。稳态由 <span class="arithmatex">\(I_{D1}(V_B,V_B)=I_{REF}\)</span> 决定，而不是先随意规定 VB。</p>

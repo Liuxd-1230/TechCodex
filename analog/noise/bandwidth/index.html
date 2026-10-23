@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2446,7 +2446,7 @@ S_v(f)=S_0\left(1+\frac{f_c}{f}\right),\qquad
 </section>
 <p class="demo-loading" hidden="">交互数据未加载；下面的静态图、公式与读图说明仍可完整阅读。</p>
 <script src="../../../assets/demos/noise-band.js" type="module"></script>
-<figure><p><a aria-label="白噪声与闪烁噪声的频带积分示意，下面的每十倍频程方差使面积与总方差一致 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-band.svg" title="打开原图，查看细节"><img alt="白噪声与闪烁噪声的频带积分示意，下面的每十倍频程方差使面积与总方差一致" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-band.svg"/></a></p><figcaption>图 7-5　静态回退采用解析模型：<span class="arithmatex">\(\sqrt{S_0}=10\)</span> nV/√Hz，<span class="arithmatex">\(f_c=1\)</span> kHz，积分 100 Hz–100 kHz，得到约 3.27 µV RMS。上图 ASD 的视觉面积不等于方差；下图纵轴为 <span class="arithmatex">\(d\sigma^2/d\log_{10}f=\ln(10)fS_v(f)\)</span>，因此在对数横轴下，着色面积才直接对应方差。交互中的 GF180 曲线来自固定电路 <code>.noise</code>，不是在线 SPICE。</figcaption></figure>
+<figure><p><a aria-label="白噪声与闪烁噪声的频带积分示意，下面的每十倍频程方差使面积与总方差一致 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-band.svg" title="打开原图，查看细节"><img alt="白噪声与闪烁噪声的频带积分示意，下面的每十倍频程方差使面积与总方差一致" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-band.svg"/></a></p><figcaption>图 7-5　静态回退采用解析模型：<span class="arithmatex">\(\sqrt{S_0}=10\)</span> nV/√Hz，<span class="arithmatex">\(f_c=1\)</span> kHz，积分 100 Hz–100 kHz，得到约 3.27 µV RMS。上图 ASD 的视觉面积不等于方差；下图纵轴为 <span class="arithmatex">\(d\sigma^2/d\log_{10}f=\ln(10)fS_v(f)\)</span>，因此在对数横轴下，着色面积才直接对应方差。交互中的 GF180 曲线来自固定电路 <code>.noise</code>，不是在线 SPICE。 <a aria-label="白噪声与闪烁噪声的频带积分示意，下面的每十倍频程方差使面积与总方差一致 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-band.svg">查看原图</a></figcaption></figure>
 
 <p>移动低频下限时，闪烁噪声积分按 <span class="arithmatex">\(\ln(f_H/f_L)\)</span> 变化。把 <span class="arithmatex">\(1/f\)</span> 模型一直积到零会发散，不能写成有限 RMS。实际观测时间、交流耦合或数字处理决定低端测量响应；简单用 <span class="arithmatex">\(1/T_{obs}\)</span> 当下限只是近似，精确估计应带上实际窗口或滤波器的权重。</p>
 <h2 id="3-db">3 dB 带宽不等于噪声带宽<a class="headerlink" href="#3-db" title="Permanent link">¶</a></h2>

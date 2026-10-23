@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2497,12 +2497,12 @@
 </tbody>
 </table>
 <p>这不是完整产品规格：没有给失真、闭环建立、输入电容上限和 PVT 良率。因此后文“满足”仅指表中的标称条件。输入参考噪声目标对应至少约 28 dB 的上述信号/噪声比，尚未计入传感器与前级噪声。</p>
-<figure><p><a aria-label="沿用的电阻参考五管OTA，包含真实尾电流镜参考支路与明确体连接 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mirror-ota.svg" title="打开原图，查看细节"><img alt="沿用的电阻参考五管OTA，包含真实尾电流镜参考支路与明确体连接" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mirror-ota.svg"/></a></p><figcaption>图 7-6　沿用第 5 章电路及端口。M1/M2 为输入对，M3/M4 为 PMOS 有源镜，Mt 为尾管；Mr 与 Rref 构成参考支路。所有 NMOS 体接地，PMOS 体接 VDD。基准尺寸和工作点不因加入噪声分析而重新调节。</figcaption></figure>
+<figure><p><a aria-label="沿用的电阻参考五管OTA，包含真实尾电流镜参考支路与明确体连接 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mirror-ota.svg" title="打开原图，查看细节"><img alt="沿用的电阻参考五管OTA，包含真实尾电流镜参考支路与明确体连接" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mirror-ota.svg"/></a></p><figcaption>图 7-6　沿用第 5 章电路及端口。M1/M2 为输入对，M3/M4 为 PMOS 有源镜，Mt 为尾管；Mr 与 Rref 构成参考支路。所有 NMOS 体接地，PMOS 体接 VDD。基准尺寸和工作点不因加入噪声分析而重新调节。 <a aria-label="沿用的电阻参考五管OTA，包含真实尾电流镜参考支路与明确体连接 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mirror-ota.svg">查看原图</a></figcaption></figure>
 
 <h2 id="_2">先看主导机制，再决定改什么<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>基准结果为 <strong>28.25 µV RMS</strong>，明显未满足 4 µV。100 Hz–100 kHz 内，模型闪烁项约占总方差的 <strong>98.7%</strong>；器件位置上，输入对约占 88.0%，PMOS 镜约占 12.0%。</p>
 <p>这两种分类回答不同问题：一个按物理机制分，一个按器件位置分。不能把“输入对 88%”与“闪烁项 98.7%”当成互斥份额相加。</p>
-<figure><p><a aria-label="真实GF180 OTA基准与面积方案的输入参考ASD，模型预测与固定条件明确标注 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-spectrum.svg" title="打开原图，查看细节"><img alt="真实GF180 OTA基准与面积方案的输入参考ASD，模型预测与固定条件明确标注" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-spectrum.svg"/></a></p><figcaption>图 7-7　实线为完整模型输入参考 ASD；基准的虚线分别为模型闪烁项与非闪烁项，虚线不能按幅度直接相加。输入端口为理想差分电压，typical、27 °C、3.3 V、1.4 V 共模、1 pF。面积方案改变器件尺寸并重新求工作点，不是把基准曲线手动缩小。</figcaption></figure>
+<figure><p><a aria-label="真实GF180 OTA基准与面积方案的输入参考ASD，模型预测与固定条件明确标注 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-spectrum.svg" title="打开原图，查看细节"><img alt="真实GF180 OTA基准与面积方案的输入参考ASD，模型预测与固定条件明确标注" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-spectrum.svg"/></a></p><figcaption>图 7-7　实线为完整模型输入参考 ASD；基准的虚线分别为模型闪烁项与非闪烁项，虚线不能按幅度直接相加。输入端口为理想差分电压，typical、27 °C、3.3 V、1.4 V 共模、1 pF。面积方案改变器件尺寸并重新求工作点，不是把基准曲线手动缩小。 <a aria-label="真实GF180 OTA基准与面积方案的输入参考ASD，模型预测与固定条件明确标注 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-spectrum.svg">查看原图</a></figcaption></figure>
 
 <p>基准的总输出闪烁/非闪烁交点约为 1.35 MHz，面积方案约为 13.8 kHz。它们由各源传递后的频谱计算得到，不是输入管单独的测量 <span class="arithmatex">\(f_c\)</span>，也不是 OTA 极点。</p>
 <p>也可以用上一节的长沟道热噪声式核对量级。把实际工作点的 <span class="arithmatex">\(g_{m,n}=0.309\)</span> mS、<span class="arithmatex">\(g_{m,p}=0.0836\)</span> mS 代入，并暂取两种管子的 <span class="arithmatex">\(\gamma=2/3\)</span>，得到约 <strong>9.54 nV/√Hz</strong>。真实模型在 1 kHz 的非闪烁输入 ASD 约为 <strong>10.23 nV/√Hz</strong>。这个接近程度支持了跨导与负载的量级判断，却不能证明长沟道式等于 BSIM；后者还保留实际传递路径和其他非闪烁机制。更不能用这个约 10 nV/√Hz 的数值，代替低频闪烁主导的完整积分。</p>

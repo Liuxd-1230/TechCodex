@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2449,7 +2449,7 @@
 <p>这是基于现有低频增益和工作电流作出的可检验目标，并非产品全角规格。<span class="arithmatex">\(g_m\approx0.309\)</span> mS、<span class="arithmatex">\(R_{out}\)</span> 为数百 kΩ，先估 <span class="arithmatex">\(1/(2\pi R_{out}C_L)\)</span> 在数百 kHz，目标具有合理量级。后续候选允许失败，负载和功耗上限不随结果改写。</p>
 <p>开环测量不连接输出反馈，也不以理想电压源钳住输出。<span class="arithmatex">\(v_{i1}\)</span> 和 <span class="arithmatex">\(v_{i2}\)</span> 围绕 1.4 V 分别激励 <span class="arithmatex">\(+0.5,-0.5\)</span>；输出没有额外直流导通负载。电容在 DC 开路，因而改变 CL 不应改变工作点。这是第一项复核。</p>
 <h2 id="_2">一张图，分开增益、带宽与单位增益频率<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<figure><p><a aria-label="真实偏置五管 OTA 在 1 pF 与 5 pF 负载下的开环幅相响应，以及一阶近似 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-ota-load.svg" title="打开原图，查看细节"><img alt="真实偏置五管 OTA 在 1 pF 与 5 pF 负载下的开环幅相响应，以及一阶近似" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-ota-load.svg"/></a></p><figcaption>图 6-9 · 原生 ngspice 47、固定版本 GF180MCU、完整 BSIM4 AC 结果。实线只改变 CL；虚线用同一工作点 <span class="arithmatex">\(g_m/(g_{ds2}+g_{ds4}+sC_L)\)</span>，没有为重合而拟合电容。相位直接对应正低频增益的右输出 <span class="arithmatex">\(v_o/v_{id}\)</span>。模型与网表见<a href="../../../labs/frequency/">实验资源</a>。</figcaption></figure>
+<figure><p><a aria-label="真实偏置五管 OTA 在 1 pF 与 5 pF 负载下的开环幅相响应，以及一阶近似 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-ota-load.svg" title="打开原图，查看细节"><img alt="真实偏置五管 OTA 在 1 pF 与 5 pF 负载下的开环幅相响应，以及一阶近似" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-ota-load.svg"/></a></p><figcaption>图 6-9 · 原生 ngspice 47、固定版本 GF180MCU、完整 BSIM4 AC 结果。实线只改变 CL；虚线用同一工作点 <span class="arithmatex">\(g_m/(g_{ds2}+g_{ds4}+sC_L)\)</span>，没有为重合而拟合电容。相位直接对应正低频增益的右输出 <span class="arithmatex">\(v_o/v_{id}\)</span>。模型与网表见<a href="../../../labs/frequency/">实验资源</a>。 <a aria-label="真实偏置五管 OTA 在 1 pF 与 5 pF 负载下的开环幅相响应，以及一阶近似 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-ota-load.svg">查看原图</a></figcaption></figure>
 
 <table>
 <thead>

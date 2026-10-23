@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2552,7 +2552,7 @@
 <p><a href="../">本章导航</a> · <a href="../analysis/">前一节：分析方法</a> · <a href="../source-follower/">下一节：源跟随器</a></p>
 <p>栅极几乎不取低频电流，为什么一个很小的栅压变化还能在漏端产生明显的电压变化？器件只完成了其中一半：把栅源电压变化转成漏电流变化。另一半由漏端所连接的网络完成——它要改变输出电压，才能容纳这股新的电流。</p>
 <p>所以，单独知道输入管 gm 还不足以知道电压增益。负载既决定如何建立直流电压，也决定漏端电流在小信号下能换成多大的电压。</p>
-<figure><p><a aria-label="共源级的电流变化和漏端电压变化 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cs-principle.svg" title="打开原图，查看细节"><img alt="共源级的电流变化和漏端电压变化" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cs-principle.svg"/></a></p><figcaption>图 3.2-1：输入加在 G，输出取自 D，S 为公共参考。输入升高使向下漏流增大，RD 必须从电源多送电流，输出因此降低。B 用独立的橙色支路接地，结箭头不表示漏源与体端的欧姆短接。</figcaption></figure>
+<figure><p><a aria-label="共源级的电流变化和漏端电压变化 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cs-principle.svg" title="打开原图，查看细节"><img alt="共源级的电流变化和漏端电压变化" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cs-principle.svg"/></a></p><figcaption>图 3.2-1：输入加在 G，输出取自 D，S 为公共参考。输入升高使向下漏流增大，RD 必须从电源多送电流，输出因此降低。B 用独立的橙色支路接地，结箭头不表示漏源与体端的欧姆短接。 <a aria-label="共源级的电流变化和漏端电压变化 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cs-principle.svg">查看原图</a></figcaption></figure>
 
 <h2 id="_1">放大之前，漏端电压先在哪里<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>先取源、体接地，RD 接理想 VDD，输入直流为 VI。漏端满足</p>
@@ -2588,7 +2588,7 @@ v_o\simeq-g_mv_iR_D.
 A_v=-\frac{g_m}{1/R_D+g_{ds}}
 =-g_m(R_D\parallel r_o).
 \]</div>
-<figure><p><a aria-label="共源级的低频增量模型 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/v1-small-signal.svg" title="打开原图，查看细节"><img alt="共源级的低频增量模型" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/v1-small-signal.svg"/></a></p><figcaption>图 3.2-2：RD 与 ro 都为输出电流提供恢复路径。S、B 固定，所以体跨导没有受到激励；这不等于器件没有体效应，而是此时 vbs=0。</figcaption></figure>
+<figure><p><a aria-label="共源级的低频增量模型 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/v1-small-signal.svg" title="打开原图，查看细节"><img alt="共源级的低频增量模型" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/v1-small-signal.svg"/></a></p><figcaption>图 3.2-2：RD 与 ro 都为输出电流提供恢复路径。S、B 固定，所以体跨导没有受到激励；这不等于器件没有体效应，而是此时 vbs=0。 <a aria-label="共源级的低频增量模型 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/v1-small-signal.svg">查看原图</a></figcaption></figure>
 
 <p>这个式子也解释了本征增益为何不能直接当作实际增益。当 RD≪ro，输出主要由 RD 加载，增益接近 −gmRD；只有外部负载足够高阻，才可能接近 −gmro。</p>
 <p>若暂时冻结器件工作点，增益对 RD 的相对敏感度是</p>
@@ -2599,7 +2599,7 @@ A_v=-\frac{g_m}{1/R_D+g_{ds}}
 <p>增加一个本来已经很大的 RD，收益会逐渐变小。但真正调整电阻后，直流工作点还会移动，所以这个偏导只解释局部机制，不能代替重新求偏置。</p>
 <h2 id="mos">负载换成 MOS，变化的不只是“电阻数值”<a class="headerlink" href="#mos" title="Permanent link">¶</a></h2>
 <p>集成电路中，大电阻要占面积。MOS 可以承担负载，但先要问：输出端移动时，它的栅源电压会不会跟着动？这决定它表现为 1/gm 量级的低阻负载，还是 ro 量级的高阻负载。</p>
-<figure><p><a aria-label="二极管连接与固定栅偏置的 PMOS 负载比较 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cs-loads.svg" title="打开原图，查看细节"><img alt="二极管连接与固定栅偏置的 PMOS 负载比较" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cs-loads.svg"/></a></p><figcaption>图 3.2-3：两只 PMOS 的源、体都接 VDD。A 的栅漏相连，输出变化会直接改变 VSG；B 的栅压由偏置源固定，低频时 VSG 不变。图中只截取负载，下面的输入 NMOS 与图 3.2-1 相同。</figcaption></figure>
+<figure><p><a aria-label="二极管连接与固定栅偏置的 PMOS 负载比较 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cs-loads.svg" title="打开原图，查看细节"><img alt="二极管连接与固定栅偏置的 PMOS 负载比较" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cs-loads.svg"/></a></p><figcaption>图 3.2-3：两只 PMOS 的源、体都接 VDD。A 的栅漏相连，输出变化会直接改变 VSG；B 的栅压由偏置源固定，低频时 VSG 不变。图中只截取负载，下面的输入 NMOS 与图 3.2-1 相同。 <a aria-label="二极管连接与固定栅偏置的 PMOS 负载比较 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cs-loads.svg">查看原图</a></figcaption></figure>
 
 <h3 id="_2">二极管连接：用跨导产生恢复电流<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <p>对图 A 的 PMOS，输出升高使 VSG 减小，负载向输出提供的电流下降。这相当于输出节点多了一项 <span class="arithmatex">\(g_{mp}v_o\)</span> 的恢复电流，再加上它的 gds。于是二极管负载的增量电阻为</p>
@@ -2629,7 +2629,7 @@ V_{OV,n}\lesssim V_O\lesssim V_{DD}-V_{OV,p}.
 <div class="arithmatex">\[
 A_v\simeq-\frac{g_{mn}+g_{mp}}{g_{dsn}+g_{dsp}}.
 \]</div>
-<figure><p><a aria-label="互补输入共源结构 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/inverter-stage.svg" title="打开原图，查看细节"><img alt="互补输入共源结构" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/inverter-stage.svg"/></a></p><figcaption>图 3.2-4：上下管共用输入和支路电流，但体端分别接各自电源轨。两个跨导共同推动输出，两个输出电导共同加载输出。</figcaption></figure>
+<figure><p><a aria-label="互补输入共源结构 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/inverter-stage.svg" title="打开原图，查看细节"><img alt="互补输入共源结构" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/inverter-stage.svg"/></a></p><figcaption>图 3.2-4：上下管共用输入和支路电流，但体端分别接各自电源轨。两个跨导共同推动输出，两个输出电导共同加载输出。 <a aria-label="互补输入共源结构 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/inverter-stage.svg">查看原图</a></figcaption></figure>
 
 <p>它能用同一支路电流同时取得两个跨导，不过两只管的 gm 不必相等，“跨导恰好翻倍”不是一般结论。输入电容增加，合适的直流输入范围与输出工作点也更依赖工艺和温度；因此它需要偏置或反馈来维持在模拟工作区。</p>
 <h2 id="vgs">源极电阻：少动一点 VGS，会怎样<a class="headerlink" href="#vgs" title="Permanent link">¶</a></h2>

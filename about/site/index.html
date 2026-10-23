@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2288,6 +2288,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        跨章节的图示与交互
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2478,6 +2489,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        跨章节的图示与交互
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2561,6 +2583,16 @@
 <p>噪声采用显式标记 <code>&lt;!-- interactive: noise-band --&gt;</code>，仅在带宽积分文章加载模块。<code>build_noise_demo.py</code>先核验实验记录，使用标准库导出固定工艺PSD；<code>noise-model.mjs</code>只负责谱插值和方差积分，DOM/动画在<code>noise-band.js</code>。优先修改教学问题，再决定是否复用，不自动给每页添加面板。</p>
 <p>全站的纸面、页边、章节位置、目录和阅读进度在<code>web/assets/book.css</code>、<code>book.js</code>与模板中统一。<code>web/hooks.py</code>把原图包装为可打开的语义figure，给全局CSS/JS加内容哈希；源Markdown仍用普通本地文件链接。<code>PRODUCT.md</code>、<code>DESIGN.md</code>及<code>.impeccable/</code>是开发规范，不在构建输入白名单内，不会出现在阅读站。</p>
 <p>重跑噪声后使用实验页的完整命令顺序。科学图必须注明数据来源、单位和频带，不对原始CSV做平滑；新绘图脚本随PNG写入来源元数据。MathJax继续自托管，无外部字体或图表运行库依赖。</p>
+<h2 id="_7">跨章节的图示与交互<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
+<p>新增章节先对照邻近章节的真实桌面、手机效果，再决定是否增加图。概念图负责解释结构或因果；电气原理图负责给出真实连接；数据图负责检验判断。三者不能相互冒充。优先复用现有电路、绘图工具和交互，新的做法只在能改善具体理解问题时回用于旧章。</p>
+<p>第 2 章的耗尽/反型分层和第 3 章的源跟随器因果路径使用 diagram-design。版本化样式在 <code>web/diagrams/techcodex.md</code>，项目标记 <code>.diagram-design</code> 指向 <code>techcodex</code>；使用 DESIGN.md 的白纸、墨蓝、青色和本地中文字体。安装目录中的默认样式不改动。新机器若要继续用 Skill 编辑，可先恢复个人配置：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span> <span class="s2">"$env:USERPROFILE/.diagram-design/profiles"</span>
+<span class="nb">Copy-Item</span> <span class="n">web</span><span class="p">/</span><span class="n">diagrams</span><span class="p">/</span><span class="n">techcodex</span><span class="p">.</span><span class="nb">md </span><span class="s2">"$env:USERPROFILE/.diagram-design/profiles/techcodex.md"</span>
+<span class="p">.\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">scripts</span><span class="p">/</span><span class="n">draw_concepts</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-skill-dir</span> <span class="s2">"$env:USERPROFILE/.codex/skills/diagram-design"</span>
+</code></pre></div>
+<p>复制前保留已有的同名个人配置。上述命令针对本机已安装的 Skill 路径，其他安装位置用 <code>--skill-dir</code> 指定。生成器先写 <code>web/diagrams/*.html</code> 编辑源，通过 Skill 的离线自检后，用其 <code>export_svg.py --system-fonts</code> 导出 <code>模拟/图/*.svg</code>；正常 MkDocs 构建只使用已提交 SVG，不需要安装此 Skill。概念层厚、场强和电荷间距不表示工艺参数；因果箭头不表示电气导线。</p>
+<p>概念图采用 320 单位的窄幅画布和不小于 13 单位的中文标注，桌面最高放到 400px 宽；更窄屏幕只在图内横向查看。所有带图注的图都有可见的原图链接，源 Markdown 保留普通图片和图注。复杂的已有原理图、真实工艺曲线保留原有电气含义和科学配色，不用概念图替代。</p>
+<p>交互统一使用原生选择框、滑块、可展开来源说明和可读的观察文字。保持“预测 → 操作 → 观察 → 理解”，即时计算、预计算插值与 SPICE 运行分别标明；不为风格统一添加无教学意义的动画。减少动态效果偏好必须仍可完成操作。新增或实质修改后检查桌面、390px 手机及必要的窄屏；同时看正文、图注、数值、键盘反馈和失效条件，不能只看首页或 CSS 是否相同。</p>
 
 
 

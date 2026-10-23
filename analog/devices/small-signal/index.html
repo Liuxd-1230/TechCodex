@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2478,7 +2478,7 @@ i_d\simeq
 i_d=g_mv_{gs}+g_{ds}v_{ds}+g_{mb}v_{bs},
 \qquad r_o=1/g_{ds}.
 \]</div>
-<figure><p><a aria-label="低频小信号模型 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-model.svg" title="打开原图，查看细节"><img alt="低频小信号模型" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-model.svg"/></a></p><figcaption>图 2.3-1：受控源反映控制端口改变电流的能力，ro 反映漏端电压对电流的干扰。低频栅、体电流忽略时，它们只作为控制电压端口出现。所有系数属于同一个工作点。</figcaption></figure>
+<figure><p><a aria-label="低频小信号模型 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-model.svg" title="打开原图，查看细节"><img alt="低频小信号模型" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-model.svg"/></a></p><figcaption>图 2.3-1：受控源反映控制端口改变电流的能力，ro 反映漏端电压对电流的干扰。低频栅、体电流忽略时，它们只作为控制电压端口出现。所有系数属于同一个工作点。 <a aria-label="低频小信号模型 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-model.svg">查看原图</a></figcaption></figure>
 
 <p>gm 的单位是 A/V，也就是 S；ro 是 Ω。gmro 因而是无量纲量，表示单管在合适高阻负载下可以提供的本征电压增益幅值。VDS/ID 则是从原点到工作点的割线，不是输出特性在工作点的切线倒数；二者不能互换。</p>
 <p>对强反型平方律求导，得到</p>
@@ -2490,7 +2490,7 @@ g_m=\beta V_{OV}=\frac{2I_D}{V_{OV}}
 <p>小信号不是“可以忽略所有变化”。它保留一阶变化，舍去高阶项。如果输出摆动很大、器件跨越工作区或进入充放电限流，就需要非线性瞬态分析；不能给 AC 输入写一个大数，就认为已经检验大信号性能。</p>
 <h2 id="_2">栅极不导电，为什么前一级仍需要供电流<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>栅压变化会改变栅上的电荷，也会重新分配沟道和耗尽区电荷。即便没有穿过氧化层的传导电流，外部仍要提供位移电流。对一个简单电容，关系是 i=C·dv/dt；对 MOS，电荷同时依赖多个端口，电容也随工作点变化。</p>
-<figure><p><a aria-label="MOS 的栅、源、漏、体之间的电容位置 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-capacitances.svg" title="打开原图，查看细节"><img alt="MOS 的栅、源、漏、体之间的电容位置" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-capacitances.svg"/></a></p><figcaption>图 2.3-2：这张图用两端电容表示常见工程近似中的连接位置，帮助追踪充放电路径。它不是完整 BSIM 电荷模型；真实紧凑模型使用端口电荷偏导，不能默认所有交叉电容都互易。</figcaption></figure>
+<figure><p><a aria-label="MOS 的栅、源、漏、体之间的电容位置 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-capacitances.svg" title="打开原图，查看细节"><img alt="MOS 的栅、源、漏、体之间的电容位置" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-capacitances.svg"/></a></p><figcaption>图 2.3-2：这张图用两端电容表示常见工程近似中的连接位置，帮助追踪充放电路径。它不是完整 BSIM 电荷模型；真实紧凑模型使用端口电荷偏导，不能默认所有交叉电容都互易。 <a aria-label="MOS 的栅、源、漏、体之间的电容位置 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-capacitances.svg">查看原图</a></figcaption></figure>
 
 <p>栅到源、漏、体的电容来自不同机制。沟道反型电荷需要在源漏端之间分配；栅与源漏扩散的重叠、边缘场还形成附加电容。漏体、源体 PN 结则形成反偏结电容，即使栅极不动，它们也会加载对应节点。</p>
 <h2 id="_3">沟道电荷分布决定本征电容怎样分配<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>

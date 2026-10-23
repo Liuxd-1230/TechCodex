@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2450,7 +2450,7 @@
 
 <h1 id="62-cgd">6.2 · Cgd 很小，输入为什么仍然吃力<a class="headerlink" href="#62-cgd" title="Permanent link">¶</a></h1>
 <p>在共源级上，栅电压升高，漏电压下降。跨在两者之间的 <span class="arithmatex">\(C_{gd}\)</span> 一端向上、另一端向下，它两端的电压变化比栅端本身更大。输入源必须为这份额外电荷提供电流。</p>
-<figure><p><a aria-label="共源级中跨接栅漏两节点的 Cgd，以及独立接地的源端和体端 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs.svg" title="打开原图，查看细节"><img alt="共源级中跨接栅漏两节点的 Cgd，以及独立接地的源端和体端" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs.svg"/></a></p><figcaption>图 6-1 · 从哪一端看电容，必须先说明另一端怎样动。上方 VO 为漏端节点，直流负载在本图省略，统一进入后文的 <span class="arithmatex">\(R_o\)</span>；源、体分别接地，<span class="arithmatex">\(C_O\)</span> 是输出对地电容。</figcaption></figure>
+<figure><p><a aria-label="共源级中跨接栅漏两节点的 Cgd，以及独立接地的源端和体端 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs.svg" title="打开原图，查看细节"><img alt="共源级中跨接栅漏两节点的 Cgd，以及独立接地的源端和体端" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs.svg"/></a></p><figcaption>图 6-1 · 从哪一端看电容，必须先说明另一端怎样动。上方 VO 为漏端节点，直流负载在本图省略，统一进入后文的 <span class="arithmatex">\(R_o\)</span>；源、体分别接地，<span class="arithmatex">\(C_O\)</span> 是输出对地电容。 <a aria-label="共源级中跨接栅漏两节点的 Cgd，以及独立接地的源端和体端 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs.svg">查看原图</a></figcaption></figure>
 
 <h2 id="_1">先算电流，再谈“变大”<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>输入端流入跨端电容的电流为</p>
@@ -2470,7 +2470,7 @@ Y_{out,gd}(s)=sC_{gd}[1-1/A(s)].
 \]</div>
 <p>这是使用实际局部电压比得到的端口电流恒等关系。它没有自动把求解变简单，因为 <span class="arithmatex">\(A(s)\)</span> 本身取决于原电路；变换后的支路一般是频率相关导纳。只有在增益可近似为常实数的频段，才得到常用的两只正值等效电容。<span class="arithmatex">\(A=0\)</span> 附近尤其不能使用含 <span class="arithmatex">\(1/A\)</span> 的形式。</p>
 <h2 id="_2">两个节点完整保留，会出现什么<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<figure><p><a aria-label="含 RS、Ci、Cf、Ro、Co 与 gmvg 的两节点共源小信号电路 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs-small.svg" title="打开原图，查看细节"><img alt="含 RS、Ci、Cf、Ro、Co 与 gmvg 的两节点共源小信号电路" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs-small.svg"/></a></p><figcaption>图 6-2 · <span class="arithmatex">\(C_f=C_{gd}\)</span>；<span class="arithmatex">\(C_i\)</span> 包括 <span class="arithmatex">\(C_{gs}\)</span>，<span class="arithmatex">\(C_o\)</span> 包括 <span class="arithmatex">\(C_{db}\)</span> 与负载，<span class="arithmatex">\(R_o=R_D\parallel r_o\)</span>。源端与体端交流接地；负载本身的附加动态尚未加入。跨导源正方向由输出流向地。</figcaption></figure>
+<figure><p><a aria-label="含 RS、Ci、Cf、Ro、Co 与 gmvg 的两节点共源小信号电路 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs-small.svg" title="打开原图，查看细节"><img alt="含 RS、Ci、Cf、Ro、Co 与 gmvg 的两节点共源小信号电路" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs-small.svg"/></a></p><figcaption>图 6-2 · <span class="arithmatex">\(C_f=C_{gd}\)</span>；<span class="arithmatex">\(C_i\)</span> 包括 <span class="arithmatex">\(C_{gs}\)</span>，<span class="arithmatex">\(C_o\)</span> 包括 <span class="arithmatex">\(C_{db}\)</span> 与负载，<span class="arithmatex">\(R_o=R_D\parallel r_o\)</span>。源端与体端交流接地；负载本身的附加动态尚未加入。跨导源正方向由输出流向地。 <a aria-label="含 RS、Ci、Cf、Ro、Co 与 gmvg 的两节点共源小信号电路 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs-small.svg">查看原图</a></figcaption></figure>
 
 <p>令 <span class="arithmatex">\(G_i=1/R_S\)</span>、<span class="arithmatex">\(G_o=1/R_o\)</span>。两个节点的 KCL 直接给出</p>
 <div class="arithmatex">\[
@@ -2511,10 +2511,10 @@ C_{Mo}=C_o+C_f\left(1+\frac1{g_mR_o}\right).
 <h2 id="_5">用一组小参数检查直觉<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>取 <span class="arithmatex">\(g_m=1\)</span> mS、<span class="arithmatex">\(R_S=10\)</span> kΩ、<span class="arithmatex">\(R_o=50\)</span> kΩ、<span class="arithmatex">\(C_i=C_o=1\)</span> pF。<span class="arithmatex">\(C_f\)</span> 仅为 0.1 pF，低频输入等效电容却达到 6.1 pF。完整二次分母的极点是 1.439 MHz、29.33 MHz；前馈 RHP 零点为 1.592 GHz。−3 dB 带宽约 1.436 MHz，接近慢极点是因为这里恰好有较好的极点分离。</p>
 <p>去掉 <span class="arithmatex">\(C_f\)</span> 后，两个极点变成 3.183 MHz、15.92 MHz，−3 dB 带宽约 3.067 MHz。<strong>跨端电容既把慢极点拉低，又把快极点推高</strong>，并非给两个原节点各增加同一比例的电容。</p>
-<figure><p><a aria-label="完整两节点解、无 Cgd 对照与固定增益米勒近似的幅相响应 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-miller-response.svg" title="打开原图，查看细节"><img alt="完整两节点解、无 Cgd 对照与固定增益米勒近似的幅相响应" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-miller-response.svg"/></a></p><figcaption>图 6-3 · 这是显式线性教学模型，已经用独立原生 ngspice 网表核对，非 GF180 曲线。固定增益米勒近似能解释低频加载；高频时，忽略耦合和零点使相位判断发生偏差。幅度为 <span class="arithmatex">\(20\log_{10}|v_o/v_{in}|\)</span>，相位相对低频反相增益。</figcaption></figure>
+<figure><p><a aria-label="完整两节点解、无 Cgd 对照与固定增益米勒近似的幅相响应 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-miller-response.svg" title="打开原图，查看细节"><img alt="完整两节点解、无 Cgd 对照与固定增益米勒近似的幅相响应" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-miller-response.svg"/></a></p><figcaption>图 6-3 · 这是显式线性教学模型，已经用独立原生 ngspice 网表核对，非 GF180 曲线。固定增益米勒近似能解释低频加载；高频时，忽略耦合和零点使相位判断发生偏差。幅度为 <span class="arithmatex">\(20\log_{10}|v_o/v_{in}|\)</span>，相位相对低频反相增益。 <a aria-label="完整两节点解、无 Cgd 对照与固定增益米勒近似的幅相响应 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-miller-response.svg">查看原图</a></figcaption></figure>
 
 <section aria-labelledby="miller-demo-title" class="circuit-demo frequency-demo" data-demo="miller-poles" hidden="">
-<header class="demo-heading"><h3 id="miller-demo-title">一只跨端电容，怎样移动两个极点？</h3><span class="demo-kicker">预测 → 操作 → 观察 → 理解</span><p>先预测：增大 Cgd 后，输入极点和输出极点会一起按比例下降吗？拖动电容，再沿曲线选择一个频率。</p></header>
+<header class="demo-heading"><h3 id="miller-demo-title">一只跨端电容，怎样移动两个极点？</h3><p>先预测：增大 Cgd 后，输入极点和输出极点会一起按比例下降吗？拖动电容，再沿曲线选择一个频率。</p></header>
 <div class="demo-control"><label for="miller-cap">跨端电容 Cgd <output for="miller-cap" id="miller-cap-value"></output></label><input aria-describedby="miller-assumptions" id="miller-cap" max="1000" min="0" step="10" type="range" value="100"/><div class="demo-range-ends"><span>0 fF</span><span>1000 fF = 1 pF</span></div></div>
 <div class="demo-control"><label for="miller-frequency">观察频率 <output for="miller-frequency" id="miller-frequency-value"></output></label><input id="miller-frequency" max="1000" min="400" step="1" type="range" value="600"/><div class="demo-range-ends"><span>10 kHz</span><span>对数刻度</span><span>10 GHz</span></div></div>
 <label class="demo-compare"><input id="miller-approx" type="checkbox"/>叠加固定低频增益的米勒近似</label>

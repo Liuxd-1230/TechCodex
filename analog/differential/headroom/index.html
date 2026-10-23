@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2504,7 +2504,7 @@ V_{O1}\gtrsim V_{I1}-V_{TH}=2.225\ \mathrm V.
 <p>若保持同一组尺寸、电流和负载，把 VCM 降到 1.5 V，这次峰值的输入管余量就宽裕得多，同时仍要检查 T 没有降到尾管下限以下。这个修正没有改变零点 gm，却改变了能否实际使用那份增益。</p>
 <h2 id="_4">给每只源极加一个电阻，电流会怎样改选路径<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>如果希望扩大差分线性范围，可以让每支路新增电流在自己的源极上产生反向电压。左支路增加电流时，左 RS 上的压降增大，左源极升高，减小它原本获得的 VGS 优势；右支路的变化相反。</p>
-<figure><p><a aria-label="各支路具有独立源极退化电阻的差分对 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-degeneration.svg" title="打开原图，查看细节"><img alt="各支路具有独立源极退化电阻的差分对" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-degeneration.svg"/></a></p><figcaption>图 4.4-1：每侧各有 RS，电阻下端汇到公共 T。纯差模的一阶 T 电压仍为零，但每只 MOS 的 S 已不再位于 T；分析时必须保留 RS 上的电压，B 仍接地。</figcaption></figure>
+<figure><p><a aria-label="各支路具有独立源极退化电阻的差分对 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-degeneration.svg" title="打开原图，查看细节"><img alt="各支路具有独立源极退化电阻的差分对" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-degeneration.svg"/></a></p><figcaption>图 4.4-1：每侧各有 RS，电阻下端汇到公共 T。纯差模的一阶 T 电压仍为零，但每只 MOS 的 S 已不再位于 T；分析时必须保留 RS 上的电压，B 仍接地。 <a aria-label="各支路具有独立源极退化电阻的差分对 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-degeneration.svg">查看原图</a></figcaption></figure>
 
 <p>先忽略体效应与 gds。设两侧电流差为 ΔI，源极电压差就是 RS·ΔI，所以输入差满足</p>
 <div class="arithmatex">\[
@@ -2546,7 +2546,7 @@ V_{OV,T}+I_0R_S+V_{GS,n}.
 \]</div>
 <p>输入管源电压升高还可能增大其体效应，VGS 要在新的体偏置下计算。电阻也带来热噪声，后续第 7 章要计入。更宽线性范围的收益因此要与增益、电压余量和噪声一起衡量。</p>
 <p>另一个变式先让两支路分别由电流源偏置，再在两只独立的 S 之间跨接一只电阻。纯差模下，这只跨接电阻的中点为增量虚地，若其值为 2RS，每边看入的差模退化恰好仍是 RS；但共模时跨接电阻没有压差，它不会像两只独立 RS 那样产生共模退化或相同的静态压降。两种电路可以具有相同的差模半电路，却有不同的共模与直流性质。这正是不能只看一张半电路就判断整个电路的例子。</p>
-<figure><p><a aria-label="两只独立电流源偏置和源间跨接电阻 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-bridge.svg" title="打开原图，查看细节"><img alt="两只独立电流源偏置和源间跨接电阻" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-bridge.svg"/></a></p><figcaption>图 4.4-2：两个电流源分别偏置 M1、M2，平衡时跨接电阻无直流压差。差模时两端反向运动，共模时两端同向运动，因而同一电阻在两种模式下具有不同作用。与图 4.4-1 的偏置连接不同，不能直接照搬其共模公式。</figcaption></figure>
+<figure><p><a aria-label="两只独立电流源偏置和源间跨接电阻 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-bridge.svg" title="打开原图，查看细节"><img alt="两只独立电流源偏置和源间跨接电阻" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-bridge.svg"/></a></p><figcaption>图 4.4-2：两个电流源分别偏置 M1、M2，平衡时跨接电阻无直流压差。差模时两端反向运动，共模时两端同向运动，因而同一电阻在两种模式下具有不同作用。与图 4.4-1 的偏置连接不同，不能直接照搬其共模公式。 <a aria-label="两只独立电流源偏置和源间跨接电阻 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/diff-bridge.svg">查看原图</a></figcaption></figure>
 
 <p>如果要实际采用这种跨接结构，两个源端还需各有合适的偏置电流路径，不能一边保留原来的源端短接，一边把电阻跨接在同一个节点的两端。这里比较的是连接方式对模态阻抗的影响，不是让一只电阻凭空建立两支路偏置。</p>
 <p>到这里可以把一次设计检查串起来：先用 IT 与尺寸选择 gm、VGS 和线性电压量级；再用 RD 决定静态输出与电流到电压的转换；沿供电堆叠检查尾管和输入管余量；最后在所需输入差、输入共模和输出摆幅的组合上重新求工作点。若某项不满足，就回到对应的尺寸、偏置或退化选择，而不是只继续增大零点增益。</p>

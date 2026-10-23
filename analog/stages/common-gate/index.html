@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2439,7 +2439,7 @@
 <h1 id="34">3.4 共栅级：低输入阻抗的用途与边界<a class="headerlink" href="#34" title="Permanent link">¶</a></h1>
 <p><a href="../">本章导航</a> · <a href="../source-follower/">前一节：源跟随器</a> · <a href="../cascode/">下一节：共源共栅</a></p>
 <p>源跟随器用栅端接收电压、源端驱动负载。现在把栅端固定，让信号从源端进入，再从漏端观察输出。输入端不再绝缘：信号源必须实际向沟道提供或吸收电流。这改变了它适合连接的前一级。</p>
-<figure><p><a aria-label="共栅级的信号作用方向 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cg-signal.svg" title="打开原图，查看细节"><img alt="共栅级的信号作用方向" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cg-signal.svg"/></a></p><figcaption>图 3.4-1：栅极为交流固定的偏置，B 独立接地。图中的 VI 还须提供合适的直流源端电位。源端输入上升，VGS、VBS 下降，漏流减小，RD 压降减小，漏端输出同向上升。</figcaption></figure>
+<figure><p><a aria-label="共栅级的信号作用方向 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cg-signal.svg" title="打开原图，查看细节"><img alt="共栅级的信号作用方向" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cg-signal.svg"/></a></p><figcaption>图 3.4-1：栅极为交流固定的偏置，B 独立接地。图中的 VI 还须提供合适的直流源端电位。源端输入上升，VGS、VBS 下降，漏流减小，RD 压降减小，漏端输出同向上升。 <a aria-label="共栅级的信号作用方向 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cg-signal.svg">查看原图</a></figcaption></figure>
 
 <h2 id="_1">为什么从源端看进去通常是低阻<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>先设漏端电压也固定。源端被信号源抬高 vi 时，NMOS 原有的 D→S 电流会减少。信号源为了维持这个更高的源电压，需要向器件提供增量电流；用输入电流 ii 流入 S 为正，有</p>

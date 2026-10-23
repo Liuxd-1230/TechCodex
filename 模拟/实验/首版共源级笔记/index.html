@@ -43,9 +43,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=b5b598497277">
+      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=8edec95abd2b">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2345,7 +2345,7 @@
 <p><a href="../../../analog/devices/">上一篇：MOS 器件</a> · <a href="../../../analog/">系列首页</a> · <a href="../../../analog/conventions/">符号约定</a></p>
 <p>本篇是第 3 章的共源级专题。源跟随器、共栅级与共源共栅结构尚未写入，不把这一篇当作整章已经覆盖。</p>
 <p>上一只 NMOS 的 gm 约 0.313 mS，本征增益约 368。现在接上 39 kΩ 漏极电阻，真实仿真得到的低频增益只有约 −11.83 V/V。差距来自电路所提供的负载；在此之前，还需要确认这只管子能在电路中保持合适的工作点。</p>
-<figure><p><a aria-label="电阻负载共源级 · 打开原图" href="../../%E5%9B%BE/v1-common-source.svg" title="打开原图，查看细节"><img alt="电阻负载共源级" src="../../%E5%9B%BE/v1-common-source.svg"/></a></p><figcaption>图 3-1：V1 取 RS=0，V1b 取 RS=1 kΩ。体端都接地。输入源的直流分量为 0.9 V，AC 幅值为 1，瞬态正弦幅值为 1 mV；这三种设置服务于不同分析，不可混为一个输入信号。所有数值见 <a href="../v1-common-source.cir">网表</a>。</figcaption></figure>
+<figure><p><a aria-label="电阻负载共源级 · 打开原图" href="../../%E5%9B%BE/v1-common-source.svg" title="打开原图，查看细节"><img alt="电阻负载共源级" src="../../%E5%9B%BE/v1-common-source.svg"/></a></p><figcaption>图 3-1：V1 取 RS=0，V1b 取 RS=1 kΩ。体端都接地。输入源的直流分量为 0.9 V，AC 幅值为 1，瞬态正弦幅值为 1 mV；这三种设置服务于不同分析，不可混为一个输入信号。所有数值见 <a href="../v1-common-source.cir">网表</a>。 <a aria-label="电阻负载共源级 · 查看原图" class="figure-detail" href="../../%E5%9B%BE/v1-common-source.svg">查看原图</a></figcaption></figure>
 
 <h2 id="_1">输出电压是解出来的<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>先取 RS=0，忽略理想电容的直流电流。漏端满足</p>
@@ -2357,7 +2357,7 @@
 <p>若凭“增益与 RD 成正比”把 RD 增加到很大，负载线会下移并改变交点，输出电压可能被压到很低。此时 gm、gds 都会改变，原来的增益预测失效。设计高增益节点时，应同时做电流预算和余量预算。</p>
 <p>输出上界也不是无条件等于 VDD。对于这里的理想电阻负载，管子趋近关断时输出可以接近 VDD；向下摆动则会逐渐损失饱和余量和线性度。以当前工作点估算，到 VDD 还有约 1.59 V，到模型 VDSAT 约有 1.49 V。它们只是静态余量估计，不是已经验证的对称线性输出摆幅；失真限制通常更严格。</p>
 <h2 id="_2">增益来自漏端的电流平衡<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<figure><p><a aria-label="共源级低频小信号模型 · 打开原图" href="../../%E5%9B%BE/v1-small-signal.svg" title="打开原图，查看细节"><img alt="共源级低频小信号模型" src="../../%E5%9B%BE/v1-small-signal.svg"/></a></p><figcaption>图 3-2：理想 VDD 是交流地；源、体也接交流地。栅压改变引起向下的 gm·vin 电流，漏端通过 RD 与 ro 提供相反方向的电流增量。低频下先忽略器件和负载电容。</figcaption></figure>
+<figure><p><a aria-label="共源级低频小信号模型 · 打开原图" href="../../%E5%9B%BE/v1-small-signal.svg" title="打开原图，查看细节"><img alt="共源级低频小信号模型" src="../../%E5%9B%BE/v1-small-signal.svg"/></a></p><figcaption>图 3-2：理想 VDD 是交流地；源、体也接交流地。栅压改变引起向下的 gm·vin 电流，漏端通过 RD 与 ro 提供相反方向的电流增量。低频下先忽略器件和负载电容。 <a aria-label="共源级低频小信号模型 · 查看原图" class="figure-detail" href="../../%E5%9B%BE/v1-small-signal.svg">查看原图</a></figcaption></figure>
 
 <p>把漏端流出的电流相加：</p>
 <div class="arithmatex">\[
@@ -2465,7 +2465,7 @@ A_v(s)\simeq\frac{-g_mR_{out}}{1+sR_{out}C_L},\qquad
 R_{out}=R_D\parallel r_o.
 \]</div>
 <p>这个单极点近似预测 <span class="arithmatex">\(f_p\approx1/(2\pi R_{out}C_L)\approx2.108\)</span> MHz，真实模型 AC 的 −3 dB 频率约为 2.097 MHz，相差约 0.55%。图中的偏差在高频相位上更容易看到，因为真实模型仍然保留了器件电荷和寄生。</p>
-<figure><p><a aria-label="共源级频率响应 · 打开原图" href="../../%E5%9B%BE/cs-bode.svg" title="打开原图，查看细节"><img alt="共源级频率响应" src="../../%E5%9B%BE/cs-bode.svg"/></a></p><figcaption>图 3-3：2 pF 负载主导时，单极点近似与真实模型接近。黑实线为 BSIM4，红虚线为只保留 Rout·CL 的解析式。下图画的是 <span class="arithmatex">\(\arg[-A_v(j\omega)]\)</span>，已去掉共源级的直流反相；它是附加动态相位，不是环路相位，也不能用来直接读相位裕度。数据见 <a href="../data/cs-Rs0-ac.csv">AC CSV</a>。</figcaption></figure>
+<figure><p><a aria-label="共源级频率响应 · 打开原图" href="../../%E5%9B%BE/cs-bode.svg" title="打开原图，查看细节"><img alt="共源级频率响应" src="../../%E5%9B%BE/cs-bode.svg"/></a></p><figcaption>图 3-3：2 pF 负载主导时，单极点近似与真实模型接近。黑实线为 BSIM4，红虚线为只保留 Rout·CL 的解析式。下图画的是 <span class="arithmatex">\(\arg[-A_v(j\omega)]\)</span>，已去掉共源级的直流反相；它是附加动态相位，不是环路相位，也不能用来直接读相位裕度。数据见 <a href="../data/cs-Rs0-ac.csv">AC CSV</a>。 <a aria-label="共源级频率响应 · 查看原图" class="figure-detail" href="../../%E5%9B%BE/cs-bode.svg">查看原图</a></figcaption></figure>
 
 <p>在这个近似里，增大 Rout 同时提高低频增益并降低极点频率，而且</p>
 <div class="arithmatex">\[
