@@ -1,6 +1,7 @@
 """Turn native Markdown image/caption pairs into semantic textbook figures."""
 from bs4 import BeautifulSoup
 from pathlib import Path
+import hashlib
 import sys
 from urllib.parse import quote
 from mkdocs.utils import get_relative_url
@@ -10,6 +11,11 @@ from book import ROUTES
 
 
 def on_page_markdown(markdown,page,config,files):
+    chapters={'devices':('2','MOS 器件'),'stages':('3','单级放大器'),'differential':('4','差分放大器'),'mirrors':('5','电流镜与偏置'),'frequency':('6','频率响应'),'noise':('7','噪声')}
+    parts=page.url.split('/')
+    if len(parts)>1 and parts[0]=='analog' and parts[1] in chapters:
+        number,subject=chapters[parts[1]]
+        page.meta.update(book_chapter=number,book_subject=subject,book_index='analog/'+parts[1]+'/')
     original=next((src for src,dest in ROUTES.items() if dest==page.file.src_uri),page.file.src_uri)
     page.edit_url='https://github.com/Liuxd-1230/TechCodex/blob/main/'+quote(original,safe='/')
     # GitHub understands Markdown inside native details. Python-Markdown needs
@@ -18,6 +24,12 @@ def on_page_markdown(markdown,page,config,files):
 
 
 def on_page_content(html,page,config,files):
+    marker='<!-- interactive: noise-band -->'
+    if marker in html:
+        template=(Path(__file__).parent/'demos/noise-band.html').read_text(encoding='utf-8')
+        for key,target in {'lab':'labs/noise/','payload':'assets/demos/noise-data.json','module':'assets/demos/noise-band.js'}.items():
+            template=template.replace('{{'+key+'}}',get_relative_url(target,page.url))
+        html=html.replace(marker,template)
     marker='<!-- interactive: miller-poles -->'
     if marker in html:
         template=(Path(__file__).parent/'demos/miller-poles.html').read_text(encoding='utf-8')
@@ -84,6 +96,35 @@ def on_page_content(html,page,config,files):
         figure.append(paragraph.extract())
         caption.name='figcaption'
         figure.append(caption.extract())
+        image=figure.find('img')
+        if not image.find_parent('a'):
+            link=soup.new_tag('a',href=image['src'],title='打开原图，查看细节')
+            link['aria-label']=image.get('alt','技术图')+' · 打开原图'
+            image.wrap(link)
     for quote in soup.find_all('blockquote'):
         quote['class']=['teaching-note']
+    if page.url=='':
+        home=(Path(__file__).parent/'home.html').read_text(encoding='utf-8')
+        for key,target in {'devices':'analog/devices/','chapters':'analog/','stages':'analog/stages/','differential':'analog/differential/','mirrors':'analog/mirrors/','frequency':'analog/frequency/','noise':'analog/noise/'}.items():
+            home=home.replace('{{'+key+'}}',get_relative_url(target,page.url))
+        heading=soup.find('h1')
+        if heading:heading.replace_with(BeautifulSoup(home,'html.parser'))
+        subtitle=soup.find('h2')
+        if subtitle and subtitle.get_text().startswith('从零开始的模电生活'):subtitle.decompose()
+        table=soup.find('table')
+        if table:
+            disclosure=soup.new_tag('details');summary=soup.new_tag('summary');summary.string='按具体问题查阅'
+            table.insert_before(disclosure);disclosure.append(summary);disclosure.append(table.extract())
     return str(soup)
+
+
+def on_post_page(output,page,config):
+    # Stable source filenames remain readable in GitHub. Content hashes prevent
+    # a newly deployed reading system being paired with a cached previous CSS.
+    for name in ('book.css','book.js','demos/circuit-demo.css'):
+        path=Path(__file__).parent/'assets'/name
+        url=get_relative_url('assets/'+name,page.url)
+        digest=hashlib.sha256(path.read_bytes()).hexdigest()[:12]
+        for attr in ('href','src'):
+            output=output.replace(f'{attr}="{url}"',f'{attr}="{url}?v={digest}"')
+    return output

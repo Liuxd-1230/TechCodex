@@ -90,6 +90,14 @@ nav:
       - 6.5 差分结构的动态: analog/frequency/differential.md
       - 6.6 五管 OTA 进入频域: analog/frequency/ota.md
       - 6.7 近似与设计判断: analog/frequency/methods.md
+    - 第 7 章 · 噪声:
+      - analog/noise/index.md
+      - 7.1 随机过程与频谱: analog/noise/statistics.md
+      - 7.2 器件与等效输入: analog/noise/sources.md
+      - 7.3 单级放大器的噪声: analog/noise/stages.md
+      - 7.4 镜像、差分与相关: analog/noise/mirrors-differential.md
+      - 7.5 带宽与积分: analog/noise/bandwidth.md
+      - 7.6 噪声预算与设计: analog/noise/design.md
   - 实验与复现:
     - labs/index.md
     - Windows 环境: labs/windows.md
@@ -97,6 +105,7 @@ nav:
     - 差分对实验: labs/differential.md
     - 电流镜与 OTA 实验: labs/mirrors.md
     - 频率响应实验: labs/frequency.md
+    - 噪声实验: labs/noise.md
   - 编辑与资料:
     - 知识覆盖与后续章节: about/curriculum.md
     - 第二版编辑说明: about/edition2.md

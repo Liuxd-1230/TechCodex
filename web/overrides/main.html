@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="book-running-head"><span>TECHCODEX / 模拟 CMOS</span><span>从零开始的模电生活</span></div>
+<div class="book-progress" role="progressbar" aria-label="本页阅读位置" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span></span></div>
+<div class="book-running-head">
+  {% if page.meta.book_chapter %}<a href="{{ page.meta.book_index | url }}">第 {{ page.meta.book_chapter }} 章 · {{ page.meta.book_subject }}</a><span>从零开始的模电生活</span>
+  {% else %}<span>TechCodex · 理解电路为何这样设计</span><span>从零开始的模电生活</span>{% endif %}
+</div>
 {{ super() }}
 {% endblock %}

@@ -33,3 +33,5 @@ CS 的低频增益取 10 Hz AC 输出实部，因为输入 AC=1、理想输入�
 运行 [绘图脚本](../../scripts/plot__device_cs__paper.py) 得到 SVG 和 600 dpi PNG。正文引用 SVG，PNG 用于视觉检查。除 `cs-bode` 的红色虚线以外，数据曲线均来自 ngspice；该虚线是明确标注的 Rout·CL 解析近似。没有对数据进行平滑、拟合或抽点。
 
 原理图由 [draw_schematics.py](../../scripts/draw_schematics.py) 确定性生成，节点名称与网表一致。它们是可缩放的原创教学图，不是版图或制造交付文件。
+
+第 7 章的 [噪声实验](噪声/README.md) 使用同一 OTA 的真实 `.noise`，校准单边谱单位，保留源分解、失败候选及追加面积方案。积分边界、输入端口、模型设置和 Windows 复现均有独立记录。

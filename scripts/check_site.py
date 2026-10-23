@@ -87,6 +87,27 @@ else:
     if '{{' in str(miller):errors.append('Miller template unresolved')
     if not miller_page.select_one('figure img[src*="frequency-miller-response.svg"]'):errors.append('Miller static fallback missing')
     if not miller.select_one('[role="status"]'):errors.append('Miller lacks live observation')
+from build_noise_demo import package as noise_package,OUT as NOISE_OUT
+expected_noise=noise_package().encode('utf-8')
+if NOISE_OUT.read_bytes()!=expected_noise or (SITE/'assets/demos/noise-data.json').read_bytes()!=expected_noise:
+    errors.append('Noise payload is stale or deployment differs')
+noise_page=documents[SITE/'analog/noise/bandwidth/index.html']
+noise=noise_page.select_one('[data-demo="noise-band"]')
+if noise is None or not noise.has_attr('hidden'):
+    errors.append('Noise must enhance progressively')
+else:
+    if len(noise.select('input[type="range"]'))!=2:errors.append('Noise band controls missing')
+    for control in noise.select('input,select'):
+        if not noise.find('label',attrs={'for':control.get('id')}):errors.append('Noise control lacks label')
+    for svg in noise.select('svg'):
+        if not svg.find('title') or not svg.find('desc'):errors.append('Noise SVG lacks accessible description')
+    if not noise.select_one('[role="status"]') or '{{' in str(noise):errors.append('Noise status/template incomplete')
+    if not noise_page.select_one('figure img[src*="noise-band.svg"]'):errors.append('Noise static fallback missing')
+for route in ('statistics','sources','stages','mirrors-differential','bandwidth','design'):
+    page=documents[SITE/'analog/noise'/route/'index.html']
+    if not page.select('.arithmatex'):errors.append('Noise math missing: '+route)
+if (SITE/'PRODUCT.md').exists() or (SITE/'DESIGN.md').exists() or (SITE/'.impeccable').exists():
+    errors.append('Internal design instructions must never be published')
 vendor = ROOT / 'web/assets/vendor/mathjax'
 mirror_expected=mirror_package().encode('utf-8')
 if MIRROR_OUT.read_bytes()!=mirror_expected or (SITE/'assets/demos/mirror-data.json').read_bytes()!=mirror_expected:

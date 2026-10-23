@@ -1,0 +1,479 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T12:42:46.920Z",
+  "title": "Design System: TechCodex",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Circuit Ink",
+        "tonalRamp": [
+          "oklch(15% 0.05472 235.26)",
+          "oklch(27% 0.05472 235.26)",
+          "oklch(39% 0.05472 235.26)",
+          "oklch(51% 0.05472 235.26)",
+          "oklch(63% 0.05472 235.26)",
+          "oklch(75% 0.05472 235.26)",
+          "oklch(87% 0.05472 235.26)",
+          "oklch(95% 0.05472 235.26)"
+        ]
+      },
+      "title-ink": {
+        "role": "neutral",
+        "displayName": "Title Ink",
+        "tonalRamp": [
+          "oklch(15% 0.04953 232.84)",
+          "oklch(27% 0.04953 232.84)",
+          "oklch(39% 0.04953 232.84)",
+          "oklch(51% 0.04953 232.84)",
+          "oklch(63% 0.04953 232.84)",
+          "oklch(75% 0.04953 232.84)",
+          "oklch(87% 0.04953 232.84)",
+          "oklch(95% 0.04953 232.84)"
+        ]
+      },
+      "prose": {
+        "role": "neutral",
+        "displayName": "Prose",
+        "tonalRamp": [
+          "oklch(15% 0.02935 242.95)",
+          "oklch(27% 0.02935 242.95)",
+          "oklch(39% 0.02935 242.95)",
+          "oklch(51% 0.02935 242.95)",
+          "oklch(63% 0.02935 242.95)",
+          "oklch(75% 0.02935 242.95)",
+          "oklch(87% 0.02935 242.95)",
+          "oklch(95% 0.02935 242.95)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.03084 238.12)",
+          "oklch(27% 0.03084 238.12)",
+          "oklch(39% 0.03084 238.12)",
+          "oklch(51% 0.03084 238.12)",
+          "oklch(63% 0.03084 238.12)",
+          "oklch(75% 0.03084 238.12)",
+          "oklch(87% 0.03084 238.12)",
+          "oklch(95% 0.03084 238.12)"
+        ]
+      },
+      "running-metadata": {
+        "role": "neutral",
+        "displayName": "Running Metadata",
+        "tonalRamp": [
+          "oklch(15% 0.03677 232.89)",
+          "oklch(27% 0.03677 232.89)",
+          "oklch(39% 0.03677 232.89)",
+          "oklch(51% 0.03677 232.89)",
+          "oklch(63% 0.03677 232.89)",
+          "oklch(75% 0.03677 232.89)",
+          "oklch(87% 0.03677 232.89)",
+          "oklch(95% 0.03677 232.89)"
+        ]
+      },
+      "caption": {
+        "role": "neutral",
+        "displayName": "Caption",
+        "tonalRamp": [
+          "oklch(15% 0.03248 228.67)",
+          "oklch(27% 0.03248 228.67)",
+          "oklch(39% 0.03248 228.67)",
+          "oklch(51% 0.03248 228.67)",
+          "oklch(63% 0.03248 228.67)",
+          "oklch(75% 0.03248 228.67)",
+          "oklch(87% 0.03248 228.67)",
+          "oklch(95% 0.03248 228.67)"
+        ]
+      },
+      "current-teal": {
+        "role": "primary",
+        "displayName": "Current Teal",
+        "tonalRamp": [
+          "oklch(15% 0.08187 182.48)",
+          "oklch(27% 0.08187 182.48)",
+          "oklch(39% 0.08187 182.48)",
+          "oklch(51% 0.08187 182.48)",
+          "oklch(63% 0.08187 182.48)",
+          "oklch(75% 0.08187 182.48)",
+          "oklch(87% 0.08187 182.48)",
+          "oklch(95% 0.08187 182.48)"
+        ]
+      },
+      "spectral-blue": {
+        "role": "secondary",
+        "displayName": "Spectral Blue",
+        "tonalRamp": [
+          "oklch(15% 0.17239 264.61)",
+          "oklch(27% 0.17239 264.61)",
+          "oklch(39% 0.17239 264.61)",
+          "oklch(51% 0.17239 264.61)",
+          "oklch(63% 0.17239 264.61)",
+          "oklch(75% 0.17239 264.61)",
+          "oklch(87% 0.17239 264.61)",
+          "oklch(95% 0.17239 264.61)"
+        ]
+      },
+      "flicker-amber": {
+        "role": "secondary",
+        "displayName": "Flicker Amber",
+        "tonalRamp": [
+          "oklch(15% 0.11341 61.04)",
+          "oklch(27% 0.11341 61.04)",
+          "oklch(39% 0.11341 61.04)",
+          "oklch(51% 0.11341 61.04)",
+          "oklch(63% 0.11341 61.04)",
+          "oklch(75% 0.11341 61.04)",
+          "oklch(87% 0.11341 61.04)",
+          "oklch(95% 0.11341 61.04)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Reading Paper",
+        "tonalRamp": [
+          "oklch(15% 0.00000 0.00)",
+          "oklch(27% 0.00000 0.00)",
+          "oklch(39% 0.00000 0.00)",
+          "oklch(51% 0.00000 0.00)",
+          "oklch(63% 0.00000 0.00)",
+          "oklch(75% 0.00000 0.00)",
+          "oklch(87% 0.00000 0.00)",
+          "oklch(95% 0.00000 0.00)"
+        ]
+      },
+      "margin": {
+        "role": "neutral",
+        "displayName": "Cool Margin",
+        "tonalRamp": [
+          "oklch(15% 0.00757 241.66)",
+          "oklch(27% 0.00757 241.66)",
+          "oklch(39% 0.00757 241.66)",
+          "oklch(51% 0.00757 241.66)",
+          "oklch(63% 0.00757 241.66)",
+          "oklch(75% 0.00757 241.66)",
+          "oklch(87% 0.00757 241.66)",
+          "oklch(95% 0.00757 241.66)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Book Rule",
+        "tonalRamp": [
+          "oklch(15% 0.01616 239.12)",
+          "oklch(27% 0.01616 239.12)",
+          "oklch(39% 0.01616 239.12)",
+          "oklch(51% 0.01616 239.12)",
+          "oklch(63% 0.01616 239.12)",
+          "oklch(75% 0.01616 239.12)",
+          "oklch(87% 0.01616 239.12)",
+          "oklch(95% 0.01616 239.12)"
+        ]
+      },
+      "source-soft": {
+        "role": "neutral",
+        "displayName": "Source Soft",
+        "tonalRamp": [
+          "oklch(15% 0.01080 256.70)",
+          "oklch(27% 0.01080 256.70)",
+          "oklch(39% 0.01080 256.70)",
+          "oklch(51% 0.01080 256.70)",
+          "oklch(63% 0.01080 256.70)",
+          "oklch(75% 0.01080 256.70)",
+          "oklch(87% 0.01080 256.70)",
+          "oklch(95% 0.01080 256.70)"
+        ]
+      },
+      "teaching-note": {
+        "role": "neutral",
+        "displayName": "Teaching Note",
+        "tonalRamp": [
+          "oklch(15% 0.00747 164.94)",
+          "oklch(27% 0.00747 164.94)",
+          "oklch(39% 0.00747 164.94)",
+          "oklch(51% 0.00747 164.94)",
+          "oklch(63% 0.00747 164.94)",
+          "oklch(75% 0.00747 164.94)",
+          "oklch(87% 0.00747 164.94)",
+          "oklch(95% 0.00747 164.94)"
+        ]
+      },
+      "teaching-rule": {
+        "role": "neutral",
+        "displayName": "Teaching Rule",
+        "tonalRamp": [
+          "oklch(15% 0.02288 175.88)",
+          "oklch(27% 0.02288 175.88)",
+          "oklch(39% 0.02288 175.88)",
+          "oklch(51% 0.02288 175.88)",
+          "oklch(63% 0.02288 175.88)",
+          "oklch(75% 0.02288 175.88)",
+          "oklch(87% 0.02288 175.88)",
+          "oklch(95% 0.02288 175.88)"
+        ]
+      },
+      "focus-on-ink": {
+        "role": "neutral",
+        "displayName": "Focus on Ink",
+        "tonalRamp": [
+          "oklch(15% 0.03475 176.11)",
+          "oklch(27% 0.03475 176.11)",
+          "oklch(39% 0.03475 176.11)",
+          "oklch(51% 0.03475 176.11)",
+          "oklch(63% 0.03475 176.11)",
+          "oklch(75% 0.03475 176.11)",
+          "oklch(87% 0.03475 176.11)",
+          "oklch(95% 0.03475 176.11)"
+        ]
+      },
+      "demo-border": {
+        "role": "neutral",
+        "displayName": "Demo Border",
+        "tonalRamp": [
+          "oklch(15% 0.02249 226.18)",
+          "oklch(27% 0.02249 226.18)",
+          "oklch(39% 0.02249 226.18)",
+          "oklch(51% 0.02249 226.18)",
+          "oklch(63% 0.02249 226.18)",
+          "oklch(75% 0.02249 226.18)",
+          "oklch(87% 0.02249 226.18)",
+          "oklch(95% 0.02249 226.18)"
+        ]
+      },
+      "demo-focus": {
+        "role": "secondary",
+        "displayName": "Demo Focus",
+        "tonalRamp": [
+          "oklch(15% 0.09230 235.08)",
+          "oklch(27% 0.09230 235.08)",
+          "oklch(39% 0.09230 235.08)",
+          "oklch(51% 0.09230 235.08)",
+          "oklch(63% 0.09230 235.08)",
+          "oklch(75% 0.09230 235.08)",
+          "oklch(87% 0.09230 235.08)",
+          "oklch(95% 0.09230 235.08)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Home Display",
+        "purpose": "Home title, with a smaller mobile override."
+      },
+      "headline": {
+        "displayName": "Chapter Headline",
+        "purpose": "Article h1 and chapter openings."
+      },
+      "section": {
+        "displayName": "Section Heading",
+        "purpose": "Major derivation divisions."
+      },
+      "subsection": {
+        "displayName": "Subsection Heading",
+        "purpose": "Local explanations."
+      },
+      "body": {
+        "displayName": "Chinese Reading Prose",
+        "purpose": "Continuous explanatory text."
+      },
+      "label": {
+        "displayName": "Running Metadata",
+        "purpose": "Quiet reading-position and chapter labels."
+      },
+      "code": {
+        "displayName": "Code and Outputs",
+        "purpose": "Preformatted code; its family also appears in circuit output readouts."
+      },
+      "result": {
+        "displayName": "Primary RMS Result",
+        "purpose": "One prominent result, with tabular numerals."
+      }
+    },
+    "shadows": [
+      {
+        "name": "header-separation",
+        "value": "0 2px 12px #173c5014",
+        "purpose": "Soft masthead separation; article, details and tables use borders or tonal layers."
+      }
+    ],
+    "motion": [
+      {
+        "name": "book-ease",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Incoming native page fade."
+      },
+      {
+        "name": "page-out",
+        "value": ".1s ease-out",
+        "purpose": "Outgoing native view transition to opacity zero."
+      },
+      {
+        "name": "page-in",
+        "value": ".18s cubic-bezier(.16,1,.3,1)",
+        "purpose": "Incoming native view transition from opacity .7."
+      },
+      {
+        "name": "surface-hover",
+        "value": ".18s",
+        "purpose": "Background changes for the primary link, atlas, feature and details."
+      },
+      {
+        "name": "navigation-hover",
+        "value": ".16s",
+        "purpose": "Background-only native navigation change."
+      },
+      {
+        "name": "noise-band",
+        "value": "180ms; ease(u) = 1 - (1 - u)^3",
+        "purpose": "Interruptible band interpolation from the displayed bounds; every frame recomputes area and RMS."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "immediate",
+        "purpose": "CSS removes transitions and animations; band bounds settle immediately. Source changes are also immediate."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-max",
+        "value": "44.984em"
+      },
+      {
+        "name": "paired-circuit-min",
+        "value": "64em"
+      },
+      {
+        "name": "home-columns-min",
+        "value": "70em"
+      },
+      {
+        "name": "compact-article-max",
+        "value": "76.234em"
+      },
+      {
+        "name": "desktop-sidebar-min",
+        "value": "76.25em"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Start Link",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The home page's direct entry to MOS devices; retain link semantics.",
+      "html": "<a class=\"ds-primary\" href=\"#devices\">从 MOS 器件开始</a>",
+      "css": ".ds-primary{display:inline-block;background:var(--md-primary-fg-color,#173c50);color:#fff;padding:.65rem .9rem;border-radius:4px;font-family:var(--md-text-font,\"Microsoft YaHei\",\"PingFang SC\",\"Noto Sans CJK SC\",sans-serif);font-size:.73rem;text-decoration:none;transition:background .18s}.ds-primary:hover{background:var(--md-accent-fg-color,#126e63);text-decoration:none}.ds-primary:focus-visible{outline:2px solid var(--book-blue,#315bc5);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none}}"
+    },
+    {
+      "name": "Experiment Reset Button",
+      "kind": "button",
+      "refersTo": "button-reset",
+      "description": "A secondary native action inside a circuit experiment.",
+      "html": "<button class=\"ds-reset\" type=\"button\">恢复初值</button>",
+      "css": ".ds-reset{color:#126e63;border:1px solid #b5ccc7;padding:.4rem .6rem;background:white;border-radius:3px;font-family:var(--md-text-font,\"Microsoft YaHei\",\"PingFang SC\",\"Noto Sans CJK SC\",sans-serif);font-size:.68rem;min-height:2.2rem;cursor:pointer;white-space:nowrap}.ds-reset:hover{background:#eff7f5}.ds-reset:focus-visible{outline:3px solid #327aa0;outline-offset:3px}"
+    },
+    {
+      "name": "Frequency Source Select",
+      "kind": "input",
+      "refersTo": "source-select",
+      "description": "Explicitly names live analytic and fixed precomputed data sources.",
+      "html": "<div class=\"ds-source\"><label for=\"ds-source\">频谱来源</label><select id=\"ds-source\"><option>解析 · 白噪声</option><option selected>解析 · 白噪声 + 1/f</option><option>GF180 · 原 OTA 预计算</option></select></div>",
+      "css": ".ds-source{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;font-family:var(--md-text-font,\"Microsoft YaHei\",\"PingFang SC\",\"Noto Sans CJK SC\",sans-serif);font-size:.75rem;margin:1rem 0 .6rem}.ds-source label{font-weight:600}.ds-source select{font:inherit;color:#173c50;border:1px solid #aac0cb;border-radius:4px;background:#fff;min-height:2.2rem;padding:.4rem .6rem;max-width:100%;accent-color:#126e63}.ds-source select:focus-visible{outline:2px solid var(--book-blue,#315bc5);outline-offset:4px}@media(max-width:44.984em){.ds-source{gap:.4rem}}"
+    },
+    {
+      "name": "Native Frequency Slider",
+      "kind": "input",
+      "description": "A native input with measured output and room for touch/pointer input.",
+      "html": "<div class=\"ds-control\"><label for=\"ds-low\">下限频率 <output for=\"ds-low\">100 Hz</output></label><input id=\"ds-low\" type=\"range\" min=\"0\" max=\"600\" value=\"200\" aria-valuetext=\"100 Hz\"></div>",
+      "css": ".ds-control{margin:.6rem 0 0;font-family:var(--md-text-font,\"Microsoft YaHei\",\"PingFang SC\",\"Noto Sans CJK SC\",sans-serif)}.ds-control label{display:flex;justify-content:space-between;align-items:baseline;font-size:.78rem;font-weight:600;gap:.5rem}.ds-control output{font-family:var(--md-code-font,\"Cascadia Code\",\"Consolas\",monospace);font-size:.85rem;color:#173c50;white-space:nowrap}.ds-control input{display:block;width:100%;height:2.25rem;margin:0;accent-color:#126e63;cursor:ew-resize;touch-action:pan-y}.ds-control input:focus-visible{outline:3px solid #327aa0;outline-offset:3px}.ds-control input:disabled{cursor:not-allowed;opacity:.5}"
+    },
+    {
+      "name": "Active Chapter Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Native book navigation with a quiet active row and visible focus.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"教材章节\"><a href=\"#devices\">第 2 章 · MOS 器件</a><a class=\"ds-active\" href=\"#noise\" aria-current=\"page\">第 7 章 · 噪声</a></nav>",
+      "css": ".ds-nav{font-family:var(--md-text-font,\"Microsoft YaHei\",\"PingFang SC\",\"Noto Sans CJK SC\",sans-serif);font-size:.7rem;line-height:1.6}.ds-nav a{display:block;padding:.24rem .4rem;border-radius:4px;color:#126e63;text-decoration:none;transition:background .16s}.ds-nav a:hover{background:#e1eaef}.ds-nav .ds-active{font-weight:700;background:#e0eee9}.ds-nav a:focus-visible{outline:2px solid var(--book-blue,#315bc5);outline-offset:4px}@media(max-width:44.984em){.ds-nav a{min-height:2.2rem}}@media(prefers-reduced-motion:reduce){.ds-nav a{transition:none}}"
+    },
+    {
+      "name": "Chapter Atlas Row",
+      "kind": "nav",
+      "refersTo": "chapter-row",
+      "description": "A ruled curriculum link whose number is actual chapter identity.",
+      "html": "<a class=\"ds-chapter\" href=\"#noise\"><span class=\"ds-digit\">07</span><span><strong>噪声</strong><small>统计量、频谱与设计取舍</small></span><svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M5 19L19 5M5 5H19V19\"/></svg></a>",
+      "css": ".ds-chapter{display:flex;align-items:center;gap:.9rem;border-bottom:1px solid var(--book-rule,#d5e0e8);padding:1rem .2rem;min-width:0;transition:background .18s;font-family:var(--md-text-font,\"Microsoft YaHei\",\"PingFang SC\",\"Noto Sans CJK SC\",sans-serif);color:var(--md-typeset-a-color,#126e63);text-decoration:none}.ds-chapter:hover{background:#f3f7f8;text-decoration:none}.ds-digit{font:700 1.5rem/1 var(--book-serif,\"Noto Serif SC\",\"Source Han Serif SC\",\"Songti SC\",\"SimSun\",serif);color:#7a929f;min-width:1.8rem}.ds-chapter strong{font-size:.9rem;color:#17394a}.ds-chapter small{display:block;font-size:.65rem;color:#637985;line-height:1.6}.ds-arrow{margin-left:auto;width:1rem;height:1rem;flex:none}.ds-chapter:focus-visible{outline:2px solid var(--book-blue,#315bc5);outline-offset:4px}@media(max-width:44.984em){.ds-chapter{min-height:3.4rem}}@media(prefers-reduced-motion:reduce){.ds-chapter{transition:none}}"
+    },
+    {
+      "name": "Teaching Note",
+      "kind": "card",
+      "refersTo": "teaching-note",
+      "description": "Supporting physical interpretation within the continuous article.",
+      "html": "<aside class=\"ds-note\"><p>继续提高上限，会纳入越来越多的宽带噪声；降低低频噪声不能代替带宽预算。</p></aside>",
+      "css": ".ds-note{color:#334e5d;border:1px solid #c9ddd7;background:#f2f8f5;border-radius:5px;margin:1.8rem 0;padding:.35rem 1.15rem;font-family:var(--md-text-font,\"Microsoft YaHei\",\"PingFang SC\",\"Noto Sans CJK SC\",sans-serif);font-size:.9rem;line-height:1.95;letter-spacing:.01em}.ds-note p{margin:.7em 0}@media(max-width:44.984em){.ds-note{padding:.25rem .8rem;font-size:.85rem;letter-spacing:0}}"
+    },
+    {
+      "name": "Native Disclosure",
+      "kind": "custom",
+      "description": "A reversible derivation or model detail that remains usable without scripts.",
+      "html": "<details class=\"ds-details\"><summary>模型与积分方法</summary><p>先对 PSD 在频带内积分，再取平方根得到 RMS。</p></details>",
+      "css": ".ds-details{border:1px solid var(--book-rule,#d5e0e8);box-shadow:none;border-radius:5px;padding:.25rem 1rem;overflow:hidden;font-family:var(--md-text-font,\"Microsoft YaHei\",\"PingFang SC\",\"Noto Sans CJK SC\",sans-serif);font-size:.9rem;line-height:1.95;color:var(--md-default-fg-color,#253440)}.ds-details summary{background:#f3f6f9;color:#294656;font-size:.8rem;margin:-.25rem -1rem;padding:.7rem 1rem .7rem 2rem;transition:background .18s;cursor:pointer}.ds-details summary:hover{background:#e9f0f5}.ds-details summary:focus-visible{outline:2px solid var(--book-blue,#315bc5);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-details summary{transition:none}}"
+    },
+    {
+      "name": "Primary Noise Result",
+      "kind": "custom",
+      "refersTo": "noise-result",
+      "description": "One RMS decision with variance fractions beneath it; preview shows the live analytic white-plus-1/f model at 100 Hz–100 kHz.",
+      "html": "<div class=\"ds-result\"><span>所选频带的输入参考噪声</span><strong>3.27 µV RMS</strong><span>闪烁方差 6.5% · 白噪声方差 93.5%</span></div>",
+      "css": ".ds-result{display:flex;flex-direction:column;gap:.3rem;padding:1.1rem 0 1rem;margin:.8rem 0;border-top:1px solid #d5e0e8;border-bottom:1px solid #d5e0e8;font-family:var(--md-text-font,\"Microsoft YaHei\",\"PingFang SC\",\"Noto Sans CJK SC\",sans-serif);line-height:1.65}.ds-result>span{font-size:.66rem;color:#526974}.ds-result strong{font-size:1.75rem;line-height:1.5;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em;color:#17394a}.ds-result>span:last-child{font-variant-numeric:tabular-nums}@media(max-width:44.984em){.ds-result strong{font-size:1.6rem}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Circuit Reading Atlas",
+    "overview": "The existing ink-blue and current-teal book identity provides the frame for rigorous Chinese CMOS learning. White reading paper sits within cool margins; Chinese serif headings mark the chapter structure, while system sans prose carries long explanations. Actual curriculum numbers, circuit paths and scientific plots supply the visual character.\n\nThe system is quiet during reading and responsive during an experiment. Interaction supports a specific physical judgment: change a band, inspect its variance contribution and read one primary RMS result. The full chapter remains meaningful as Markdown, without scripts, and in print. This is an extension of the incumbent MkDocs Material reading world; no replacement identity or approved visual comp is implied.",
+    "keyCharacteristics": [
+      "Continuous reading on white paper within cool blue margins.",
+      "Serif Chinese chapter hierarchy paired with system sans explanations.",
+      "Actual chapter numbers, ruled atlas rows and a visible reading spine.",
+      "Circuit and spectral evidence with explicit source identity.",
+      "Native controls and brief, interruptible motion."
+    ],
+    "rules": [
+      {
+        "name": "The Evidence Color Rule",
+        "body": "Scientific color identifies a curve, branch or selected region; preserve its label and meaning when extending a figure.",
+        "section": "colors"
+      },
+      {
+        "name": "The Surface Focus Rule",
+        "body": "Use the pale focus outline on the ink header and the blue outline on the reading surface; retain the established demo-specific outline in circuit controls.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reading and Measurement Rule",
+        "body": "Keep sustained prose in the sans reading face. Use tabular numerals for tables, controls and measured results; do not apply them as a general decorative treatment.",
+        "section": "typography"
+      },
+      {
+        "name": "The Reading Spine Rule",
+        "body": "Keep native chapter navigation, contents, running chapter identity and the reading-progress line aligned with continuous article reading. Chapter numbers represent the actual curriculum sequence.",
+        "section": "layout"
+      }
+    ],
+    "dos": [
+      "**Do** preserve native MkDocs navigation, search, math, disclosure semantics and the complete static reading path.",
+      "**Do** pair scientific colors with explicit labels and retain a figure's source identity.",
+      "**Do** keep the primary noise result synchronized with the displayed selected band.",
+      "**Do** provide a visible focus treatment appropriate to its adjacent surface.",
+      "**Do** retain the one-column reading measure and stack experiment controls at the existing mobile breakpoint."
+    ],
+    "donts": [
+      "**Don't** substitute decorative interface structure for a derivation, circuit or scientific plot.",
+      "**Don't** present fixed precomputed process data as a live simulation.",
+      "**Don't** animate between different data sources or require motion to understand a result.",
+      "**Don't** make scripts or externally downloaded fonts a prerequisite for reading."
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+<section class="circuit-demo noise-demo" data-demo="noise-band" data-payload="{{payload}}" aria-labelledby="noise-demo-title" hidden>
+  <header class="demo-heading"><h3 id="noise-demo-title">选一段频带，看看噪声从哪里累积</h3><p>预测 → 操作 → 观察 → 理解。先保持下限不动，把上限提高十倍：RMS 也会提高十倍吗？</p></header>
+  <div class="noise-source-control"><label for="noise-source">频谱来源</label><select id="noise-source"><option value="white">解析 · 白噪声</option><option value="flicker" selected>解析 · 白噪声 + 1/f</option><option value="gf">GF180 · 原 OTA 预计算</option></select></div>
+  <p class="demo-source" data-noise="source"></p>
+  <div class="noise-band-controls">
+    <div class="demo-control"><label for="noise-low">积分下限 <output for="noise-low" data-noise="low"></output></label><input id="noise-low" type="range" min="0" max="595" step="5" value="200" aria-describedby="noise-band-help"></div>
+    <div class="demo-control"><label for="noise-high">积分上限 <output for="noise-high" data-noise="high"></output></label><input id="noise-high" type="range" min="5" max="600" step="5" value="500" aria-describedby="noise-band-help"></div>
+  </div>
+  <p id="noise-band-help" class="demo-chart-caption">对数刻度，1 Hz–1 MHz。两边界保持至少 0.05 decade 间隔；频带不超出数据范围。</p>
+  <div class="noise-result"><span>所选频带的输入参考噪声</span><strong data-noise="rms"></strong><span data-noise="fraction"></span></div>
+  <div class="demo-chart noise-chart"><svg viewBox="0 0 620 405" role="img" aria-labelledby="noise-chart-title noise-chart-desc"><title id="noise-chart-title">噪声幅度谱密度与每十倍频程方差</title><desc id="noise-chart-desc">上图为对数 ASD，不能从视觉面积读取方差。下图为每十倍频程方差，纵轴线性；选中区域的面积对应积分方差。频率一赫兹到一兆赫兹。</desc>
+    <g class="demo-grid" data-noise="grid"></g><g fill="#526974" font-size="18" data-noise="ticks"></g>
+    <g fill="#315bc5" opacity=".08"><path data-noise="band"/></g>
+    <path data-noise="area" fill="#315bc5" opacity=".22"/>
+    <g fill="none" stroke-width="2.5"><path data-noise="asd" stroke="#173c50"/><path data-noise="density" stroke="#315bc5"/><path data-noise="edges" stroke="#315bc5" stroke-dasharray="4 4" stroke-width="1.3"/></g>
+  </svg></div>
+  <p class="demo-chart-caption">上：ASD / nV·Hz⁻½（对数）。下：方差 / µV²·decade⁻¹（线性）。蓝色频带与数值同步更新；下图面积积分的是方差，RMS 最后开平方。</p>
+  <p class="demo-observation" data-noise="observation"></p><span class="demo-live" role="status" aria-live="polite" aria-atomic="true" data-noise="announcement"></span>
+  <details><summary>数据来源、模型与积分方法</summary><p>解析源：固定白噪声 ASD 10 nV/√Hz；含闪烁模式的 fc=1 kHz。使用精确积分 S₀[(fH−fL)+fc ln(fH/fL)]，不是 SPICE。</p><p>GF180 源：原五管 OTA 加真实参考支路，typical、27 °C、VDD=3.3 V、VCM=1.4 V、CL=1 pF；输入管各 10/1 µm，理想完整差分电压端口。固定 ngspice 47 `.noise` 预计算，1 Hz–1 MHz，每 decade 100 点。这里只改积分边界，没有重算工作点或缩放工艺曲线。正 PSD 采样间按幂律插值并解析积分。</p><p>模型提交 9f992d5，单边 PSD，fnoimod=1、tnoimod=0。“非闪烁”包含模型其余项，不等同于单个理想热源。尺寸与频率外推不代表实测保证。版本、原始 CSV、哈希和全部尺寸见<a href="{{lab}}">噪声实验资源</a>。</p></details>
+</section>
+<p class="demo-loading" hidden>交互数据未加载；下面的静态图、公式与读图说明仍可完整阅读。</p>
+<script type="module" src="{{module}}"></script>

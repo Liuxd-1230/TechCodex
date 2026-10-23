@@ -1,0 +1,78 @@
+Ch06 original Chapter 5 OTA
+.include "design.ngspice"
+.lib "sm141064.ngspice" typical
+.param sw_stat_global=0 sw_stat_mismatch=0
+.temp 27
+.options reltol=1e-5 abstol=1e-13 vntol=1e-8
+.options reltol=1e-9 abstol=1e-16 vntol=1e-12
+Vdd vdd 0 3.3
+Rref vdd b 59995.7461474
+Xr b b 0 0 nmos_3p3 w=10u l=1u ad=5p as=5p pd=21u ps=21u
+Xt t b 0 0 nmos_3p3 w=20u l=1u ad=5p as=5p pd=21u ps=21u
+Vcm cm 0 dc 1.4 ac 0
+Vdiff diff 0 dc 0 ac 1
+Ep ip cm diff 0 .5
+En inn cm diff 0 -.5
+X1 x ip t 0 nmos_3p3 w=10u l=1u ad=5p as=5p pd=21u ps=21u
+X2 o inn t 0 nmos_3p3 w=10u l=1u ad=5p as=5p pd=21u ps=21u
+X3 x x vdd vdd pmos_3p3 w=3.70816731131u l=1u ad=5p as=5p pd=21u ps=21u
+X4 o x vdd vdd pmos_3p3 w=3.70816731131u l=1u ad=5p as=5p pd=21u ps=21u
+Cl o 0 1e-12
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+set numdgt=15
+save all @m.x1.m0[gm] @m.x1.m0[gmbs] @m.x1.m0[gds] @m.x1.m0[vdsat] @m.x2.m0[gm] @m.x2.m0[gmbs] @m.x2.m0[gds] @m.x2.m0[vdsat] @m.x3.m0[gm] @m.x3.m0[gmbs] @m.x3.m0[gds] @m.x3.m0[vdsat] @m.x4.m0[gm] @m.x4.m0[gmbs] @m.x4.m0[gds] @m.x4.m0[vdsat] @m.xt.m0[gm] @m.xt.m0[gmbs] @m.xt.m0[gds] @m.xt.m0[vdsat] @m.xr.m0[gm] @m.xr.m0[gmbs] @m.xr.m0[gds] @m.xr.m0[vdsat]
+op
+let q1_gm = @m.x1.m0[gm]
+let q1_gmbs = @m.x1.m0[gmbs]
+let q1_gds = @m.x1.m0[gds]
+let q1_vdsat = @m.x1.m0[vdsat]
+let q2_gm = @m.x2.m0[gm]
+let q2_gmbs = @m.x2.m0[gmbs]
+let q2_gds = @m.x2.m0[gds]
+let q2_vdsat = @m.x2.m0[vdsat]
+let q3_gm = @m.x3.m0[gm]
+let q3_gmbs = @m.x3.m0[gmbs]
+let q3_gds = @m.x3.m0[gds]
+let q3_vdsat = @m.x3.m0[vdsat]
+let q4_gm = @m.x4.m0[gm]
+let q4_gmbs = @m.x4.m0[gmbs]
+let q4_gds = @m.x4.m0[gds]
+let q4_vdsat = @m.x4.m0[vdsat]
+let qt_gm = @m.xt.m0[gm]
+let qt_gmbs = @m.xt.m0[gmbs]
+let qt_gds = @m.xt.m0[gds]
+let qt_vdsat = @m.xt.m0[vdsat]
+wrdata op.txt v(o) v(x) v(t) v(b) i(Vdd) q1_gm q1_gmbs q1_gds q1_vdsat q2_gm q2_gmbs q2_gds q2_vdsat q3_gm q3_gmbs q3_gds q3_vdsat q4_gm q4_gmbs q4_gds q4_vdsat qt_gm qt_gmbs qt_gds qt_vdsat
+ac dec 100 1 1G
+wrdata ac.txt v(o)
+set sqrnoise
+noise v(o) Vdiff dec 100 1 1G 1
+setplot noise1
+let n1 = onoise.m.x1.m0
+let n1_id = onoise.m.x1.m0.id
+let n1_1overf = onoise.m.x1.m0.1overf
+let n2 = onoise.m.x2.m0
+let n2_id = onoise.m.x2.m0.id
+let n2_1overf = onoise.m.x2.m0.1overf
+let n3 = onoise.m.x3.m0
+let n3_id = onoise.m.x3.m0.id
+let n3_1overf = onoise.m.x3.m0.1overf
+let n4 = onoise.m.x4.m0
+let n4_id = onoise.m.x4.m0.id
+let n4_1overf = onoise.m.x4.m0.1overf
+let nt = onoise.m.xt.m0
+let nt_id = onoise.m.xt.m0.id
+let nt_1overf = onoise.m.xt.m0.1overf
+let nr = onoise.m.xr.m0
+let nr_id = onoise.m.xr.m0.id
+let nr_1overf = onoise.m.xr.m0.1overf
+wrdata spectrum.txt onoise_spectrum inoise_spectrum n1 n2 n3 n4 nt nr onoise_rref n1_id n2_id n3_id n4_id nt_id nr_id n1_1overf n2_1overf n3_1overf n4_1overf nt_1overf nr_1overf
+setplot noise2
+wrdata totals.txt onoise_total inoise_total
+
+quit
+.endc
+.end

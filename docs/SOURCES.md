@@ -36,3 +36,11 @@ ngspice 下载 URL：`https://downloads.sourceforge.net/project/ngspice/ng-spice
 此哈希来自本次官方来源下载的文件，作为后续复现的锁定值，不是声称上游提供了同算法的签名证明。可执行文件不提交到 Git。版本完整输出记录在 [run.json](../模拟/实验/data/run.json)，Python 依赖记录在 [requirements-lock.txt](../requirements-lock.txt)。
 
 编辑阶段使用本机 pe-plots-paper 技能的 `eeplot` 辅助布局，并用其审图脚本检查印刷尺寸。仓库绘图脚本默认使用自带的独立 Matplotlib 样式，读者不依赖 Codex 技能、个人路径或其辅助库；数值数据相同，排版可能有细微差异。正文 SVG/PNG 的最终审图状态见 [验证记录](VALIDATION.md)。
+
+## 第 7 章噪声的核对来源
+
+- Razavi 第二版 Chapter 7 的 §7.1–7.10 组织由 [JPRO/国立国会图书馆的第二版目录](https://ndlsearch.ndl.go.jp/books/R100000137-I62131036100010000000)核对。教材采用独立叙述、自行推导与自绘图，没有复制原书图文。
+- [ngspice 官方手册](https://ngspice.sourceforge.io/docs/ngspice-manual.pdf)：noise 的输入源端口、sqrnoise 的 PSD/ASD 与积分单位。以本地 47 实际 RC 校准和日志为执行证据。
+- [GF180MCU 官方低频噪声说明](https://gf180mcu-pdk.readthedocs.io/en/latest/analog/model_parameters/LV/LV_2_3.html)：BSIM 统一闪烁模型、拟合频率/尺寸/偏置范围。模型卡版本与 SHA 仍以仓库 manifest 为准。
+
+本章只核实这些具体问题；没有声称完成系统文献综述。实验频段或尺寸的模型外推不是测量精度证据。
