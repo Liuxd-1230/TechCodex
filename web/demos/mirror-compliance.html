@@ -1,5 +1,5 @@
 <section class="circuit-demo mirror-demo" data-demo="mirror-compliance" aria-labelledby="mirror-demo-title" hidden>
-  <header class="demo-heading"><h3 id="mirror-demo-title">电流还接近目标，管子就一定都在饱和吗？</h3><span class="demo-kicker">动手想一想 · 5.2</span><p>先预测：降低输出电压，普通镜与经典共源共栅镜会先在哪个节点改变工作状态？</p></header>
+  <header class="demo-heading"><h3 id="mirror-demo-title">电流还接近目标，管子就一定都在饱和吗？</h3><p>先预测：降低输出电压，普通镜与经典共源共栅镜会先在哪个节点改变工作状态？</p></header>
   <label class="demo-view" for="mirror-topology">观察电路 <select id="mirror-topology"><option value="medium">普通镜 · L=1 µm</option><option value="cascode">经典共源共栅镜 · L=1 µm</option></select></label>
   <p class="demo-source">GF180MCU · ngspice DC 预计算插值 · 固定 40 µA 参考</p>
   <div class="demo-control"><label for="mirror-voltage"><span>输出电压 V<sub>O</sub></span><output for="mirror-voltage" data-mirror-field="voltage">1.650 V</output></label><input id="mirror-voltage" type="range" min="50" max="3000" step="5" value="1650" aria-describedby="mirror-keyboard"><small id="mirror-keyboard">范围固定 0.05–3.00 V。拖动，或用方向键微调 5 mV；Home / End 到两端。</small></div>

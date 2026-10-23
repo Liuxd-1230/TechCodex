@@ -97,10 +97,29 @@ def on_page_content(html,page,config,files):
         caption.name='figcaption'
         figure.append(caption.extract())
         image=figure.find('img')
+        if Path(image.get('src','')).stem in ('mos-charge','sf-feedback'):
+            figure['class']=['concept-figure']
+            figure['id']='figure-'+Path(image['src']).stem
+            paragraph.name='div'
+            paragraph['class']=['diagram-viewport']
+            paragraph['role']='region'
+            paragraph['tabindex']='0'
+            paragraph['aria-label']=image.get('alt','概念图')+'，窄屏可横向查看'
+            hint=soup.new_tag('p',attrs={'class':'diagram-scroll-hint'})
+            hint.string='图内可左右查看，或使用下方的“查看原图”。'
+            paragraph.insert_before(hint)
         if not image.find_parent('a'):
             link=soup.new_tag('a',href=image['src'],title='打开原图，查看细节')
             link['aria-label']=image.get('alt','技术图')+' · 打开原图'
             image.wrap(link)
+        # A visible, native link makes detail viewing discoverable on phones.
+        # Keep the ordinary Markdown image/caption untouched in the repository.
+        detail=soup.new_tag('a',href=image['src'])
+        detail['class']=['figure-detail']
+        detail['aria-label']=image.get('alt','技术图')+' · 查看原图'
+        detail.string='查看原图'
+        caption.append(' ')
+        caption.append(detail)
     for quote in soup.find_all('blockquote'):
         quote['class']=['teaching-note']
     if page.url=='':

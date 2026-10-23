@@ -101,6 +101,7 @@ components:
     textColor: "{colors.ink}"
     rounded: "{rounded.control}"
     padding: ".4rem .6rem"
+    height: "2.2rem"
   circuit-panel:
     backgroundColor: "{colors.paper}"
     rounded: "{rounded.surface}"
@@ -214,7 +215,7 @@ Radio buttons and sliders remain native, with teal accents and associated labels
 
 ### Navigation
 
-The Material header keeps native search and navigation. Article navigation uses compact sans text, gentle hover fill and a pale teal active row with heavier type. The contents rail uses a fine left rule. On mobile, native drawers and navigation continue to own the shell behavior.
+The Material header keeps native search and navigation. Article navigation uses compact sans text, gentle hover fill and a pale teal active row with heavier type. The contents rail uses a fine left rule. On mobile, native drawers and navigation continue to own the shell behavior. The native back-to-top action sits in the bottom-right corner (0.8rem from both edges), where it retains its native action and visible focus without covering chapter headings.
 
 The home chapter atlas uses actual curriculum numbers, a title, one descriptive line and an inline SVG arrow. Its ruled rows are links; their hover is a subtle surface change.
 
@@ -231,6 +232,16 @@ Native disclosure preserves keyboard behavior and no-script availability. Its su
 The noise experiment pairs logarithmic ASD with variance per frequency decade, then presents one prominent RMS result. The selected region and variance curve use spectral blue. Only the lower chart's area represents integrated variance. Controls, band edges, area and result follow the same displayed bounds during the interruptible band transition (180ms, cubic ease-out). A new input interrupts from the displayed state; source changes settle immediately without mixing curves. Reduced motion and a hidden document settle to the target immediately.
 
 Source text distinguishes live analytic models from fixed precomputed GF180 data. If enhancement cannot initialize, static chapter explanations and figures remain available; the experiment's error message explains the fallback. Print hides interactive panels and the site shell.
+
+### Concept Figures
+
+Concept figures add a narrow causal or physical explanation to the reading sequence; they do not replace circuit schematics or measured plots. Keep their SVG viewBox at (320 units), cap the displayed figure at (400px), and preserve its label size instead of shrinking it to fit a narrow viewport. The diagram alone scrolls horizontally and receives keyboard focus; show its scroll hint at widths up to (374px). Every figure caption includes a visible link to the original image. Use the book's existing ink, teal, paper and Chinese system-font stacks, while retaining established scientific colors and meaning in legacy circuits and plots.
+
+**The Figure Reading Rule.** A reader can identify the figure, read its caption and open the original image without relying on a script; narrow causal diagrams keep their label size inside a focusable, diagram-local scroll region.
+
+### Shared Select
+
+Native source selectors keep an associated visible label, the white field, pale border and control radius. Their minimum height is (2.2rem), or (44px) at a (20px) root size; retain a visible blue focus outline. This shared control sizing does not change the existing radio, slider or chapter-navigation patterns.
 
 Native page view transitions use a short fade (100ms out, 180ms in) where supported. Reduced-motion CSS removes animations and transitions. No perpetual motion is part of this system.
 
@@ -251,4 +262,4 @@ Native page view transitions use a short fade (100ms out, 180ms in) where suppor
 - **Don't** animate between different data sources or require motion to understand a result.
 - **Don't** make scripts or externally downloaded fonts a prerequisite for reading.
 
-Recorded scope: the final review disposition in `.impeccable/review/finish-verdict.md` resolves three specific finishing fixes, not a whole-site certification. Screenshot evidence spans desktop, tablet, mobile and the supplied intermediate width; physical touch and broad browser coverage were not certified. The surviving legacy `demo-kicker` CSS selector is not a reusable component or a licensed decorative eyebrow. Local scientific branch colors and native Material defaults remain contextual; this extraction does not normalize them into a new global palette.
+Recorded scope: the final review disposition in `.impeccable/review/finish-verdict.md` resolves three specific finishing fixes, not a whole-site certification. Screenshot evidence spans desktop, tablet, mobile and the supplied intermediate width; physical touch and broad browser coverage were not certified. Local scientific branch colors and native Material defaults remain contextual; this extraction does not normalize them into a new global palette.

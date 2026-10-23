@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-23T12:42:46.920Z",
+  "generatedAt": "2026-10-23T13:48:54Z",
   "title": "Design System: TechCodex",
   "extensions": {
     "colorMeta": {
@@ -428,6 +428,13 @@
       "description": "One RMS decision with variance fractions beneath it; preview shows the live analytic white-plus-1/f model at 100 Hz–100 kHz.",
       "html": "<div class=\"ds-result\"><span>所选频带的输入参考噪声</span><strong>3.27 µV RMS</strong><span>闪烁方差 6.5% · 白噪声方差 93.5%</span></div>",
       "css": ".ds-result{display:flex;flex-direction:column;gap:.3rem;padding:1.1rem 0 1rem;margin:.8rem 0;border-top:1px solid #d5e0e8;border-bottom:1px solid #d5e0e8;font-family:var(--md-text-font,\"Microsoft YaHei\",\"PingFang SC\",\"Noto Sans CJK SC\",sans-serif);line-height:1.65}.ds-result>span{font-size:.66rem;color:#526974}.ds-result strong{font-size:1.75rem;line-height:1.5;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em;color:#17394a}.ds-result>span:last-child{font-variant-numeric:tabular-nums}@media(max-width:44.984em){.ds-result strong{font-size:1.6rem}}"
+    },
+    {
+      "name": "Concept Figure Reading Frame",
+      "kind": "custom",
+      "description": "A narrow physical or causal SVG with a focusable local viewport, caption and visible link to the original image.",
+      "html": "<figure class=\"ds-concept-figure\"><p class=\"ds-scroll-hint\">图内可左右查看，或使用下方的“查看原图”。</p><div class=\"ds-viewport\" role=\"region\" tabindex=\"0\" aria-label=\"源跟随器因果图，窄屏可横向查看\"><a href=\"#ds-original\" title=\"打开原图，查看细节\"><svg viewBox=\"0 0 320 120\" role=\"img\" aria-labelledby=\"ds-title ds-desc\"><title id=\"ds-title\">源跟随器的局部纠偏路径</title><desc id=\"ds-desc\">输入抬高引起沟道电流增加，输出上升后减小栅源电压增量。</desc><rect width=\"320\" height=\"120\" fill=\"#fff\"/><text x=\"160\" y=\"35\" text-anchor=\"middle\" fill=\"#173c50\">输入变化</text><path d=\"M160 45v26\" stroke=\"#566976\"/><rect x=\"48\" y=\"74\" width=\"224\" height=\"32\" rx=\"6\" fill=\"#f2f8f5\" stroke=\"#126e63\"/><text x=\"160\" y=\"95\" text-anchor=\"middle\" fill=\"#173c50\">输出反馈</text></svg></a></div><figcaption>源跟随器的因果关系。 <a class=\"ds-figure-detail\" href=\"#ds-original\" aria-label=\"源跟随器因果图 · 查看原图\">查看原图</a></figcaption></figure>",
+      "css": ".ds-concept-figure{display:block;max-width:100%;margin:2rem 0 2.4rem;padding:.8rem 0;font-family:var(--md-text-font,\"Microsoft YaHei\",\"PingFang SC\",\"Noto Sans CJK SC\",sans-serif)}.ds-viewport{overflow-x:auto;max-width:100%;scrollbar-color:#8ca8b5 #eff4f8}.ds-viewport>a{display:block;min-width:320px}.ds-viewport:focus-visible{outline:2px solid #315bc5;outline-offset:3px}.ds-concept-figure svg{display:block;width:100%;min-width:320px;max-width:400px;height:auto;margin:0 auto}.ds-scroll-hint{display:none;font-size:.65rem;line-height:1.7;color:#526974;margin:0 0 .6rem}.ds-concept-figure figcaption{font-size:.72rem;line-height:1.8;color:#526974;text-align:left;margin:1rem auto 0;max-width:38rem}.ds-figure-detail{display:inline-flex;align-items:center;min-height:2.2rem;margin-left:.4rem;font-size:.66rem;white-space:nowrap;text-decoration:underline;text-underline-offset:.2em}@media(max-width:374px){.ds-scroll-hint{display:block}}@media print{.ds-figure-detail,.ds-scroll-hint{display:none}.ds-viewport{overflow:visible}.ds-viewport>a,.ds-concept-figure svg{min-width:0}}"
     }
   ],
   "narrative": {
@@ -460,6 +467,16 @@
         "name": "The Reading Spine Rule",
         "body": "Keep native chapter navigation, contents, running chapter identity and the reading-progress line aligned with continuous article reading. Chapter numbers represent the actual curriculum sequence.",
         "section": "layout"
+      },
+      {
+        "name": "The Figure Reading Rule",
+        "body": "A reader can identify the figure, read its caption and open the original image without relying on a script; narrow causal diagrams keep their label size inside a focusable, diagram-local scroll region.",
+        "section": "components"
+      },
+      {
+        "name": "The Shared Select Rule",
+        "body": "Native source selectors keep an associated visible label, a minimum height of 2.2rem (44px at a 20px root size), a visible blue focus outline and the existing white field treatment.",
+        "section": "components"
       }
     ],
     "dos": [
