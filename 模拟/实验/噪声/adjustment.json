@@ -1,0 +1,14 @@
+{
+  "stage": "Additional candidate after the first genuine noise run; original requirements remain unchanged",
+  "observed_baseline_input_rms_V_100Hz_100kHz": 0.00002824994704292798,
+  "reason": "Baseline variance is about 98.7% flicker; the input pair contributes about 88%, PMOS mirror about 12%. More current alone misses the power limit and does not meet noise. Spend area and increase input gm/I instead.",
+  "candidate": "area-budget",
+  "input_each_branch_parallel_units": 10,
+  "input_each_unit_W_L_um": [100, 1],
+  "input_total_width_um": 1000,
+  "pmos_W_scale": 10,
+  "pmos_L_um": 10,
+  "tail_and_reference": "Unchanged",
+  "implementation_note": "A 1000 um single device and its nf=10 variant were rejected by the model's total-W bins. The wrapper declares m but does not forward it; an m=10 probe left the operating point unchanged. Use ten explicit parallel 100/1 um units per branch and sum their independent PSD contributions. Each unit retains the teaching junction geometry, so total junction geometry also increases.",
+  "limitations": "Large area and input loading are costs, not a silicon-verified optimum. Model noise scaling is not a measured-device accuracy guarantee."
+}

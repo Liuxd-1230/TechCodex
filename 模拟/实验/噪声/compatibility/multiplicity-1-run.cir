@@ -1,0 +1,29 @@
+Ch06 original Chapter 5 OTA
+.include "design.ngspice"
+.lib "sm141064.ngspice" typical
+.param sw_stat_global=0 sw_stat_mismatch=0
+.temp 27
+.options reltol=1e-5 abstol=1e-13 vntol=1e-8
+.options reltol=1e-9 abstol=1e-16 vntol=1e-12
+Vdd vdd 0 3.3
+Rref vdd b 59995.7461474
+Xr b b 0 0 nmos_3p3 w=10u l=1u ad=5p as=5p pd=21u ps=21u
+Xt t b 0 0 nmos_3p3 w=20u l=1u ad=5p as=5p pd=21u ps=21u
+Vcm cm 0 dc 1.4 ac 0
+Vdiff diff 0 dc 0 ac 1
+Ep ip cm diff 0 .5
+En inn cm diff 0 -.5
+X1 x ip t 0 nmos_3p3 w=100u l=1u m=1 ad=5p as=5p pd=21u ps=21u
+X2 o inn t 0 nmos_3p3 w=100u l=1u m=1 ad=5p as=5p pd=21u ps=21u
+X3 x x vdd vdd pmos_3p3 w=3.70816731131u l=1u ad=5p as=5p pd=21u ps=21u
+X4 o x vdd vdd pmos_3p3 w=3.70816731131u l=1u ad=5p as=5p pd=21u ps=21u
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+set numdgt=15
+op
+wrdata op.txt v(o) v(t) @m.x1.m0[gm]
+quit
+.endc
+.end

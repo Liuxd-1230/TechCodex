@@ -1,0 +1,19 @@
+Ch07 calibrate one-sided PSD with an ideal resistor
+.temp 27
+Vin in 0 dc 0 ac 1
+R1 in o 10k
+C1 o 0 1n
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+set numdgt=15
+set sqrnoise
+noise v(o) Vin dec 100 1 1meg
+setplot noise1
+wrdata spectrum.txt onoise_spectrum inoise_spectrum
+setplot noise2
+wrdata total.txt onoise_total inoise_total
+quit
+.endc
+.end
