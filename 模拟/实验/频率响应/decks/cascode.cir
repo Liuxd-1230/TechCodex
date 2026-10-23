@@ -1,0 +1,26 @@
+Ch06 independent GF180 stage
+.include "design.ngspice"
+.lib "sm141064.ngspice" typical
+.param sw_stat_global=0 sw_stat_mismatch=0
+.temp 27
+.options reltol=1e-5 abstol=1e-13 vntol=1e-8
+Vdd vdd 0 3.3
+Vin in 0 dc .900170154106 ac 1
+Rsig in g 10k
+Vb bg 0 1.8
+Rd vdd o 40k
+X1 x g 0 0 nmos_3p3 w=10u l=1u ad=5p as=5p pd=21u ps=21u
+X2 o bg x 0 nmos_3p3 w=10u l=1u ad=5p as=5p pd=21u ps=21u
+Cl o 0 1p
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+set numdgt=15
+op
+wrdata op.txt v(o) @m.x1.m0[gm] @m.x1.m0[gmbs] @m.x1.m0[gds] @m.x1.m0[vdsat] v(x) @m.x2.m0[vdsat]
+ac dec 80 1 10G
+wrdata ac.txt v(o) v(g)
+quit
+.endc
+.end

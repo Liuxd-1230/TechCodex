@@ -55,6 +55,12 @@ def main():
             path=(ROOT/name).resolve()
             if not path.is_relative_to(ROOT.resolve()) or hashlib.sha256(path.read_bytes()).hexdigest()!=digest:
                 raise AssertionError(f'Chapter 5 artifact changed since simulation: {name}')
+    frequency_record=ROOT/'模拟/实验/频率响应/data/run.json'
+    if frequency_record.exists():
+        for name,digest in json.loads(frequency_record.read_text(encoding='utf-8'))['sha256'].items():
+            path=(ROOT/name).resolve()
+            if not path.is_relative_to(ROOT.resolve()) or hashlib.sha256(path.read_bytes()).hexdigest()!=digest:
+                raise AssertionError(f'Chapter 6 artifact changed since simulation: {name}')
     print(f'PASS: {links} local links; all SVG XML; Markdown fences; model/netlist hashes; path/credential scan')
 
 
