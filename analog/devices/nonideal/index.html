@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
+      <link rel="stylesheet" href="../../../assets/book.css?v=220fa8fdcf37">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2095,14 +2095,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2126,7 +2118,7 @@
   <span class="md-ellipsis">
     
   
-    编辑与资料
+    资料与路线
   
 
     
@@ -2142,7 +2134,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    编辑与资料
+    资料与路线
   
 
           </label>
@@ -2183,34 +2175,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/edition2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版编辑说明
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../about/sources/" class="md-nav__link">
         
   
@@ -2219,90 +2183,6 @@
     
   
     资料来源
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/site/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    网站维护
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首版验证记录
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版验收
   
 
     
@@ -2454,7 +2334,7 @@ V_{TH}(V_{SB})=V_{TH0}
 \]</div>
 <p>这里 gm 是对 VGS 的电流偏导，gmb 是对 VBS=VB−VS 的偏导。VBS 与 VSB 的符号相反，因此在标准电流小信号式中 gmb 作为正系数乘 vbs。固定栅、体后让源极升高，vgs 与 vbs 都减小，两项都会减小漏流。</p>
 <p>体效应对不同电路有不同后果：共源级源端固定时，体效应没有受到输入激励；源跟随器的源端正是输出，体效应会降低跟随增益；共源共栅上管的体端若固定，gmb 则会参与局部恢复作用。</p>
-<p>在工艺允许独立体连接时，使 B 跟随 S 可以消除相应 vbs 激励。但不能只在原理图上随意短接体端，忽略井隔离、体二极管与结电压限制。体效应是端口连接问题，也是工艺实现问题。</p>
+<p>若工艺提供合适的独立井，B 跟随 S 可以消除相应的 vbs 激励。实现这种连接还要满足井隔离和体二极管的结偏置要求；普通共衬底 NMOS 的体端不能随意接到移动的源节点。</p>
 <h2 id="_2">漏压升高，为什么饱和电流仍在变化<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>在长沟道图像里，漏压增加会扩展靠近漏端的高场区域，使有效受栅控制的沟道长度缩短。粗略地可用</p>
 <div class="arithmatex">\[
@@ -2507,12 +2387,12 @@ r_o=\frac1{g_{ds}}\simeq\frac1{\lambda I_D}.
 </tr>
 <tr>
 <td>GF180MCU BSIM4</td>
-<td>检查明确尺寸、偏置、角落下的器件和电路行为</td>
-<td>代替一般原理，或证明未做过的硅片/版图验证</td>
+<td>检查明确尺寸、偏置、工艺角下的器件和电路行为</td>
+<td>在未计算的尺寸、偏置之外保证数值，或替代硅片与版图验证</td>
 </tr>
 </tbody>
 </table>
-<p>例如，增加沟道长度可能减弱漏端控制、提高 ro，但在固定 W 与电压下也会改变电流、gm、面积和电荷。只有先规定同电流、同功耗、同面积或同速度中的哪些约束，才能讨论“更好”。首版 <a href="../../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A6%96%E7%89%88%E5%99%A8%E4%BB%B6%E7%AC%94%E8%AE%B0/">长度扫描</a> 保留了固定宽度与电压的条件，不能被解释为同功耗设计优劣。</p>
+<p>例如，增加沟道长度可能减弱漏端控制、提高 ro，但在固定 W 与电压下也会改变电流、gm、面积和电荷。只有先规定同电流、同功耗、同面积或同速度中的哪些约束，才能讨论“更好”。首版 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A6%96%E7%89%88%E5%99%A8%E4%BB%B6%E7%AC%94%E8%AE%B0.md">长度扫描</a> 保留了固定宽度与电压的条件，不能被解释为同功耗设计优劣。</p>
 <p>下一篇将把这些敏感路径组成 <a href="../small-signal/">小信号模型</a>，再加入器件电容。那时的每个受控源和每条电流路径，都能回到这里的物理原因。</p>
 
 
@@ -2620,14 +2500,16 @@ r_o=\frac1{g_{ds}}\simeq\frac1{\lambda I_D}.
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
+
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../assets/math-config.js"></script>
-      
-        <script src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
-      
-        <script src="../../../assets/book.js?v=f58388eee04d"></script>
+        <script src="../../../assets/book.js?v=fd6e790bd6d7"></script>
       
     
+
+<script src="../../../assets/math-config.js"></script>
+<script defer src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
+
+
   </body>
 </html>

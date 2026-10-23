@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
+      <link rel="stylesheet" href="../../../assets/book.css?v=220fa8fdcf37">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2084,14 +2084,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2115,7 +2107,7 @@
   <span class="md-ellipsis">
     
   
-    编辑与资料
+    资料与路线
   
 
     
@@ -2131,7 +2123,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    编辑与资料
+    资料与路线
   
 
           </label>
@@ -2172,34 +2164,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/edition2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版编辑说明
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../about/sources/" class="md-nav__link">
         
   
@@ -2208,90 +2172,6 @@
     
   
     资料来源
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/site/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    网站维护
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首版验证记录
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版验收
   
 
     
@@ -2432,8 +2312,8 @@ S_v(f)=S_0\left(1+\frac{f_c}{f}\right),\qquad
 <div class="demo-control"><label for="noise-low">积分下限 <output data-noise="low" for="noise-low"></output></label><input aria-describedby="noise-band-help" id="noise-low" max="595" min="0" step="5" type="range" value="200"/></div>
 <div class="demo-control"><label for="noise-high">积分上限 <output data-noise="high" for="noise-high"></output></label><input aria-describedby="noise-band-help" id="noise-high" max="600" min="5" step="5" type="range" value="500"/></div>
 </div>
-<p class="demo-chart-caption" id="noise-band-help">对数刻度，1 Hz–1 MHz。两边界保持至少 0.05 decade 间隔；频带不超出数据范围。</p>
-<div class="noise-result"><span>所选频带的输入参考噪声</span><strong data-noise="rms"></strong><span data-noise="fraction"></span></div>
+<p class="demo-chart-caption" id="noise-band-help">拖动改变观察频带，频谱源保持不变。对数刻度 1 Hz–1 MHz；上下限至少相隔 0.05 decade。</p>
+<div class="noise-result"><span>所选频带的输入参考噪声</span><strong data-noise="rms"></strong><span data-noise="fraction"></span><span data-noise="comparison"></span></div>
 <div class="demo-chart noise-chart"><svg aria-labelledby="noise-chart-title noise-chart-desc" role="img" viewbox="0 0 620 405"><title id="noise-chart-title">噪声幅度谱密度与每十倍频程方差</title><desc id="noise-chart-desc">上图为对数 ASD，不能从视觉面积读取方差。下图为每十倍频程方差，纵轴线性；选中区域的面积对应积分方差。频率一赫兹到一兆赫兹。</desc>
 <g class="demo-grid" data-noise="grid"></g><g data-noise="ticks" fill="#526974" font-size="18"></g>
 <g fill="#315bc5" opacity=".08"><path data-noise="band"></path></g>
@@ -2445,7 +2325,7 @@ S_v(f)=S_0\left(1+\frac{f_c}{f}\right),\qquad
 <details><summary>数据来源、模型与积分方法</summary><p>解析源：固定白噪声 ASD 10 nV/√Hz；含闪烁模式的 fc=1 kHz。使用精确积分 S₀[(fH−fL)+fc ln(fH/fL)]，不是 SPICE。</p><p>GF180 源：原五管 OTA 加真实参考支路，typical、27 °C、VDD=3.3 V、VCM=1.4 V、CL=1 pF；输入管各 10/1 µm，理想完整差分电压端口。固定 ngspice 47 `.noise` 预计算，1 Hz–1 MHz，每 decade 100 点。这里只改积分边界，没有重算工作点或缩放工艺曲线。正 PSD 采样间按幂律插值并解析积分。</p><p>模型提交 9f992d5，单边 PSD，fnoimod=1、tnoimod=0。“非闪烁”包含模型其余项，不等同于单个理想热源。尺寸与频率外推不代表实测保证。版本、原始 CSV、哈希和全部尺寸见<a href="../../../labs/noise/">噪声实验资源</a>。</p></details>
 </section>
 <p class="demo-loading" hidden="">交互数据未加载；下面的静态图、公式与读图说明仍可完整阅读。</p>
-<script src="../../../assets/demos/noise-band.js" type="module"></script>
+<script src="../../../assets/demos/noise-band.js?v=608dae7b081b" type="module"></script>
 <figure><p><a aria-label="白噪声与闪烁噪声的频带积分示意，下面的每十倍频程方差使面积与总方差一致 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-band.svg" title="打开原图，查看细节"><img alt="白噪声与闪烁噪声的频带积分示意，下面的每十倍频程方差使面积与总方差一致" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-band.svg"/></a></p><figcaption>图 7-5　静态回退采用解析模型：<span class="arithmatex">\(\sqrt{S_0}=10\)</span> nV/√Hz，<span class="arithmatex">\(f_c=1\)</span> kHz，积分 100 Hz–100 kHz，得到约 3.27 µV RMS。上图 ASD 的视觉面积不等于方差；下图纵轴为 <span class="arithmatex">\(d\sigma^2/d\log_{10}f=\ln(10)fS_v(f)\)</span>，因此在对数横轴下，着色面积才直接对应方差。交互中的 GF180 曲线来自固定电路 <code>.noise</code>，不是在线 SPICE。 <a aria-label="白噪声与闪烁噪声的频带积分示意，下面的每十倍频程方差使面积与总方差一致 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-band.svg">查看原图</a></figcaption></figure>
 
 <p>移动低频下限时，闪烁噪声积分按 <span class="arithmatex">\(\ln(f_H/f_L)\)</span> 变化。把 <span class="arithmatex">\(1/f\)</span> 模型一直积到零会发散，不能写成有限 RMS。实际观测时间、交流耦合或数字处理决定低端测量响应；简单用 <span class="arithmatex">\(1/T_{obs}\)</span> 当下限只是近似，精确估计应带上实际窗口或滤波器的权重。</p>
@@ -2612,14 +2492,16 @@ B_n=\int_0^\infty\frac{df}{1+(f/f_p)^2}
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
+
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../assets/math-config.js"></script>
-      
-        <script src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
-      
-        <script src="../../../assets/book.js?v=f58388eee04d"></script>
+        <script src="../../../assets/book.js?v=fd6e790bd6d7"></script>
       
     
+
+<script src="../../../assets/math-config.js"></script>
+<script defer src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
+
+
   </body>
 </html>

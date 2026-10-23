@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
+      <link rel="stylesheet" href="../../../assets/book.css?v=220fa8fdcf37">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2095,14 +2095,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2126,7 +2118,7 @@
   <span class="md-ellipsis">
     
   
-    编辑与资料
+    资料与路线
   
 
     
@@ -2142,7 +2134,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    编辑与资料
+    资料与路线
   
 
           </label>
@@ -2183,34 +2175,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/edition2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版编辑说明
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../about/sources/" class="md-nav__link">
         
   
@@ -2219,90 +2183,6 @@
     
   
     资料来源
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/site/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    网站维护
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首版验证记录
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版验收
   
 
     
@@ -2438,15 +2318,19 @@
 
 <h1 id="66-206">6.6 · 206 倍增益，究竟能维持多久<a class="headerlink" href="#66-206" title="Permanent link">¶</a></h1>
 <p>我们不重新调一只“适合画频响”的 OTA。第 5 章已经决定的参考支路、尺寸、输入共模和输出静态点全部保留，只在右输出端增加明确的负载电容。</p>
-<p>基准电路仍是五管核心加 MR、RREF：NMOS 输入管 10/1 µm，尾管 20/1 µm，MR 为 10/1 µm，PMOS 为 3.708167/1 µm，RREF 为 59.995746 kΩ。VDD = 3.3 V，VCM = 1.4 V，典型角、27 ℃；体端和结面积约定沿用<a href="../../mirrors/design/">第 5 章</a>。实际尾电流约 78.53 µA，VO = 1.658714 V，功耗约 0.39114 mW，增益 206.0108 V/V。</p>
+<p>基准电路仍是五管核心加 MR、RREF；尺寸和工作点沿用第 5 章的设计。这里只在右输出端加负载电容，先看原有增益能维持到什么频率。</p>
 <h2 id="_1">先把要驱动的负载与指标写下来<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>在开始频域仿真之前，<a href="../../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/design.json">design.json</a> 固定了这次典型条件的教学目标：</p>
+<p>在开始频域仿真之前，<a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/design.json">design.json</a> 固定了这次典型条件的教学目标：</p>
 <ul>
 <li>驱动 1 pF 纯电容负载；低频开环 <span class="arithmatex">\(|v_o/v_{id}|\ge150\)</span> V/V。</li>
 <li>同一端口的 −3 dB 带宽至少 100 kHz。</li>
 <li>全部参考与核心的静态供电功耗不超过 0.45 mW。</li>
 </ul>
 <p>这是基于现有低频增益和工作电流作出的可检验目标，并非产品全角规格。<span class="arithmatex">\(g_m\approx0.309\)</span> mS、<span class="arithmatex">\(R_{out}\)</span> 为数百 kΩ，先估 <span class="arithmatex">\(1/(2\pi R_{out}C_L)\)</span> 在数百 kHz，目标具有合理量级。后续候选允许失败，负载和功耗上限不随结果改写。</p>
+<details>
+<summary>复用的基准尺寸与工作点</summary>
+<p>基准电路为五管核心加 MR、RREF：NMOS 输入管 10/1 µm，尾管 20/1 µm，MR 为 10/1 µm，PMOS 为 3.708167/1 µm，RREF 为 59.995746 kΩ。VDD = 3.3 V，VCM = 1.4 V，典型角、27 ℃；体端和结面积约定沿用<a href="../../mirrors/design/">第 5 章</a>。实际尾电流约 78.53 µA，VO = 1.658714 V，功耗约 0.39114 mW，增益 206.0108 V/V。</p>
+</details>
 <p>开环测量不连接输出反馈，也不以理想电压源钳住输出。<span class="arithmatex">\(v_{i1}\)</span> 和 <span class="arithmatex">\(v_{i2}\)</span> 围绕 1.4 V 分别激励 <span class="arithmatex">\(+0.5,-0.5\)</span>；输出没有额外直流导通负载。电容在 DC 开路，因而改变 CL 不应改变工作点。这是第一项复核。</p>
 <h2 id="_2">一张图，分开增益、带宽与单位增益频率<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <figure><p><a aria-label="真实偏置五管 OTA 在 1 pF 与 5 pF 负载下的开环幅相响应，以及一阶近似 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-ota-load.svg" title="打开原图，查看细节"><img alt="真实偏置五管 OTA 在 1 pF 与 5 pF 负载下的开环幅相响应，以及一阶近似" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-ota-load.svg"/></a></p><figcaption>图 6-9 · 原生 ngspice 47、固定版本 GF180MCU、完整 BSIM4 AC 结果。实线只改变 CL；虚线用同一工作点 <span class="arithmatex">\(g_m/(g_{ds2}+g_{ds4}+sC_L)\)</span>，没有为重合而拟合电容。相位直接对应正低频增益的右输出 <span class="arithmatex">\(v_o/v_{id}\)</span>。模型与网表见<a href="../../../labs/frequency/">实验资源</a>。 <a aria-label="真实偏置五管 OTA 在 1 pF 与 5 pF 负载下的开环幅相响应，以及一阶近似 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-ota-load.svg">查看原图</a></figcaption></figure>
@@ -2522,7 +2406,7 @@
 <details>
 <summary>为什么不把 BSIM 的 Cgd、Cgs 拿出来直接拼几只电容</summary>
 <p>实际模型线性化得到端口电荷偏导。提取的四节点 C 矩阵中，<span class="arithmatex">\(C_{XO}\approx-0.593\)</span> fF，<span class="arithmatex">\(C_{OX}\approx-4.655\)</span> fF，并不对称。一只互易二端电容在两个非对角位置应产生相等的负值，因此不能给这两个数随便取平均，再声称得到精确小信号模型。</p>
-<p>通过端口导纳提取保留了准静态电荷分配、重叠与结电容，也保留了受控源、真实参考支路和器件内部串联效应在这些端口上的表现。<a href="../../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/data/nodal.json">nodal.json</a> 保存完整单位和节点顺序，AC 钳位网表也全部保留。</p>
+<p>通过端口导纳提取保留了准静态电荷分配、重叠与结电容，也保留了受控源、真实参考支路和器件内部串联效应在这些端口上的表现。<a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/data/nodal.json">nodal.json</a> 保存完整单位和节点顺序，AC 钳位网表也全部保留。</p>
 <p>由 <span class="arithmatex">\(G^{-1}\)</span> 得到在其余节点自由响应时的输出电阻约 673.2 kΩ。忽略跨节点项、只用对角电容，会得到不同估计；将所有寄生“并到输出”也可能重复计数。重建模型中 <span class="arithmatex">\((G^{-1}C)_{OO}/(G^{-1})_{OO}\)</span> 约为 18.8 fF，可作为这一固定网络的等效输出时间常数贡献，<strong>不是一只物理电容的测量值</strong>。</p>
 </details>
 <h2 id="_4">尾节点和偏置节点是否真的可以忽略<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
@@ -2687,14 +2571,16 @@ A_0\approx G_mR_{out},\quad f_{3dB}\approx\frac1{2\pi R_{out}C_L},
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
+
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../assets/math-config.js"></script>
-      
-        <script src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
-      
-        <script src="../../../assets/book.js?v=f58388eee04d"></script>
+        <script src="../../../assets/book.js?v=fd6e790bd6d7"></script>
       
     
+
+<script src="../../../assets/math-config.js"></script>
+<script defer src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
+
+
   </body>
 </html>

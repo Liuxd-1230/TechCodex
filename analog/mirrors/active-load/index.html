@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
+      <link rel="stylesheet" href="../../../assets/book.css?v=220fa8fdcf37">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2095,14 +2095,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2126,7 +2118,7 @@
   <span class="md-ellipsis">
     
   
-    编辑与资料
+    资料与路线
   
 
     
@@ -2142,7 +2134,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    编辑与资料
+    资料与路线
   
 
           </label>
@@ -2183,34 +2175,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/edition2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版编辑说明
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../about/sources/" class="md-nav__link">
         
   
@@ -2219,90 +2183,6 @@
     
   
     资料来源
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/site/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    网站维护
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首版验证记录
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版验收
   
 
     
@@ -2507,7 +2387,7 @@ A_{vd}=\frac gh\left[1-\frac{ke+th/2}D\right].
 V_T+V_{DSAT2}\le V_O\le V_{DD}-V_{SD,sat4}.
 \]</div>
 <p>左支路也要同时满足 <span class="arithmatex">\(V_X-V_T\ge V_{DSAT1}\)</span>。输入共模下限约为 <span class="arithmatex">\(V_{GS,n}+V_{DSAT,T}\)</span>；上限来自 <span class="arithmatex">\(V_X\ge V_{ICM}-V_{TH,n}\)</span>，其中阈值随体偏置改变。以上是工作点附近的估算，不能把不同工作点提取的阈值、VDSAT 任意混用。</p>
-<p>本章最终电路的标称 VO 约为 1.659 V，T 约为 0.373 V，尾电流约 78.5 µA。1 Hz 增益为 206.0 V/V，共模增益约 −0.0254 V/V，按上述端口定义 CMRR 约为 78 dB。输出固定电压扫描的全管饱和网格约为 0.60–2.63 V；自由输出的输入共模扫描约为 1.20–2.71 V。这是 <strong>DC 工作区边界</strong>，不是某个 THD 或满摆幅线性度保证。</p>
+<p>本章 OTA 的最终静态点、1 Hz 增益与共模响应，以及两种扫描下的饱和网格，集中列在 <a href="../design/">5.5 的检查表</a>。这些扫描只给出 DC 工作区边界，不是 THD 或满摆幅线性度保证。</p>
 <p>这些结果依赖下一节的实际偏置。单独给 MT 一个恰好合适的理想栅电压，只能说明放大核心可能工作，还没有完成偏置设计。</p>
 
 
@@ -2615,14 +2495,16 @@ V_T+V_{DSAT2}\le V_O\le V_{DD}-V_{SD,sat4}.
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
+
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../assets/math-config.js"></script>
-      
-        <script src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
-      
-        <script src="../../../assets/book.js?v=f58388eee04d"></script>
+        <script src="../../../assets/book.js?v=fd6e790bd6d7"></script>
       
     
+
+<script src="../../../assets/math-config.js"></script>
+<script defer src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
+
+
   </body>
 </html>

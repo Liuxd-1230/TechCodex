@@ -10,13 +10,14 @@ async function start(){
   const reduce=matchMedia('(prefers-reduced-motion: reduce)');
   let kind=source.value,current=[+low.value,+high.value],target=[...current],from=[...current],began=0,frame=0,announce;
   const frequencies=Array.from({length:241},(_,i)=>10**(i/40));
-  let logMin,logMax,yMax;
+  let logMin,logMax,yMax,referenceVariance;
   const x=f=>65+Math.log10(f)*87.5,yASD=p=>170-(Math.log10(Math.sqrt(p)*1e9)-logMin)/(logMax-logMin)*125;
   const yVariance=(f,p)=>345-Math.LN10*f*p*1e12/yMax*125;
   const psd=f=>kind==='gf'?sample(rows,f):analytic(f,kind);
   const hz=f=>f>=1e6?'1 MHz':f>=1e3?`${+(f/1000).toPrecision(3)} kHz`:`${+f.toPrecision(3)} Hz`;
   const path=points=>points.map(([a,b],i)=>`${i?'L':'M'}${a.toFixed(2)} ${b.toFixed(2)}`).join('');
   function spectra(){
+    referenceVariance=budget(kind,rows,100,1e5).total;
     const levels=frequencies.map(f=>Math.sqrt(psd(f))*1e9);
     logMin=Math.floor(Math.log10(Math.min(...levels)))-.1;logMax=Math.ceil(Math.log10(Math.max(...levels)))+.1;
     yMax=Math.max(...frequencies.map(f=>Math.LN10*f*psd(f)*1e12))*1.08;
@@ -43,6 +44,7 @@ async function start(){
     const [lo,hi]=current.map(v=>10**(v/100)),b=budget(kind,rows,lo,hi);
     get('low').textContent=hz(lo);get('high').textContent=hz(hi);
     get('rms').textContent=`${(Math.sqrt(b.total)*1e6).toFixed(2)} µV RMS`;
+    get('comparison').textContent=`相对初始 100 Hz–100 kHz：频带宽度 ${((hi-lo)/99900).toFixed(2)} 倍，RMS ${Math.sqrt(b.total/referenceVariance).toFixed(2)} 倍。`;
     const fraction=b.flicker/b.total;
     get('fraction').textContent=`闪烁方差 ${(fraction*100).toFixed(1)}% · ${kind==='gf'?'非闪烁':'白噪声'}方差 ${((1-fraction)*100).toFixed(1)}%`;
     const a=x(lo),z=x(hi);
@@ -75,7 +77,7 @@ async function start(){
   function settle(){if(frame){cancelAnimationFrame(frame);frame=0;current=[...target];render();}}
   reduce.addEventListener('change',()=>{if(reduce.matches)settle();});document.addEventListener('visibilitychange',()=>{if(document.hidden)settle();});
   spectra();render();root.hidden=false;
-  low.setAttribute('aria-valuetext',hz(100));high.setAttribute('aria-valuetext',hz(1e5));
+  low.setAttribute('aria-valuetext',hz(10**(current[0]/100)));high.setAttribute('aria-valuetext',hz(10**(current[1]/100)));
   if(location.hash==='#noise-demo-title')requestAnimationFrame(()=>root.scrollIntoView({block:'start',behavior:'instant'}));
 }
 if(root)start().catch(()=>{const fallback=root.nextElementSibling;if(fallback?.classList.contains('demo-loading'))fallback.hidden=false;});

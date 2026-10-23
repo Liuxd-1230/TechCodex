@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
+      <link rel="stylesheet" href="../../../assets/book.css?v=220fa8fdcf37">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2101,14 +2101,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2132,7 +2124,7 @@
   <span class="md-ellipsis">
     
   
-    编辑与资料
+    资料与路线
   
 
     
@@ -2148,7 +2140,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    编辑与资料
+    资料与路线
   
 
           </label>
@@ -2189,34 +2181,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/edition2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版编辑说明
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../about/sources/" class="md-nav__link">
         
   
@@ -2225,90 +2189,6 @@
     
   
     资料来源
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/site/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    网站维护
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首版验证记录
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版验收
   
 
     
@@ -2514,13 +2394,28 @@ C_{Mo}=C_o+C_f\left(1+\frac1{g_mR_o}\right).
 <figure><p><a aria-label="完整两节点解、无 Cgd 对照与固定增益米勒近似的幅相响应 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-miller-response.svg" title="打开原图，查看细节"><img alt="完整两节点解、无 Cgd 对照与固定增益米勒近似的幅相响应" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-miller-response.svg"/></a></p><figcaption>图 6-3 · 这是显式线性教学模型，已经用独立原生 ngspice 网表核对，非 GF180 曲线。固定增益米勒近似能解释低频加载；高频时，忽略耦合和零点使相位判断发生偏差。幅度为 <span class="arithmatex">\(20\log_{10}|v_o/v_{in}|\)</span>，相位相对低频反相增益。 <a aria-label="完整两节点解、无 Cgd 对照与固定增益米勒近似的幅相响应 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-miller-response.svg">查看原图</a></figcaption></figure>
 
 <section aria-labelledby="miller-demo-title" class="circuit-demo frequency-demo" data-demo="miller-poles" hidden="">
-<header class="demo-heading"><h3 id="miller-demo-title">一只跨端电容，怎样移动两个极点？</h3><p>先预测：增大 Cgd 后，输入极点和输出极点会一起按比例下降吗？拖动电容，再沿曲线选择一个频率。</p></header>
+<header class="demo-heading"><h3 id="miller-demo-title">电容两端都在动，输入要多供多少电流？</h3><p>先保持频率为 1 MHz，把 Cgd 归零，再加到 100 fF：栅节点电压为何下降？沿蓝色跨端支路看压差与电流，再看频率响应。</p></header>
 <div class="demo-control"><label for="miller-cap">跨端电容 Cgd <output for="miller-cap" id="miller-cap-value"></output></label><input aria-describedby="miller-assumptions" id="miller-cap" max="1000" min="0" step="10" type="range" value="100"/><div class="demo-range-ends"><span>0 fF</span><span>1000 fF = 1 pF</span></div></div>
 <div class="demo-control"><label for="miller-frequency">观察频率 <output for="miller-frequency" id="miller-frequency-value"></output></label><input id="miller-frequency" max="1000" min="400" step="1" type="range" value="600"/><div class="demo-range-ends"><span>10 kHz</span><span>对数刻度</span><span>10 GHz</span></div></div>
 <label class="demo-compare"><input id="miller-approx" type="checkbox"/>叠加固定低频增益的米勒近似</label>
-<div class="frequency-schematic"><svg aria-labelledby="miller-schematic-title miller-schematic-desc" height="270" role="img" viewbox="0 0 680 270" width="680" xmlns="http://www.w3.org/2000/svg"><title id="miller-schematic-title">共源级完整两节点小信号电路：所有电容均与方程逐项对应</title><desc id="miller-schematic-desc">Original two-node small-signal circuit: input through RS to gate node, Ci to ground, Cf between gate and output. Output has Ro and Co to ground, and a downward controlled current gm times vg.</desc><rect fill="white" height="100%" width="100%"></rect><g fill="none" stroke="#203b4a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><text data-frequency="gate" fill="#203b4a" font-size="20" text-anchor="start" x="20" y="40">vin → RS → vg</text><text data-frequency="output" fill="#127b70" font-size="20" text-anchor="start" x="455" y="40">vo</text><path d="M25 90L60 90" stroke="#203b4a"></path><path d="M60 90L70 80" stroke="#203b4a"></path><path d="M70 80L82 100" stroke="#203b4a"></path><path d="M82 100L94 80" stroke="#203b4a"></path><path d="M94 80L106 100" stroke="#203b4a"></path><path d="M106 100L118 80" stroke="#203b4a"></path><path d="M118 80L130 90" stroke="#203b4a"></path><path d="M130 90L170 90" stroke="#203b4a"></path><text fill="#203b4a" font-size="18" text-anchor="start" x="75" y="65">RS</text><circle cx="170" cy="90" fill="#203b4a" r="3.5" stroke="none"></circle><path d="M170 90L170 140" stroke="#203b4a"></path><path d="M170 140L170 165" stroke="#203b4a"></path><path d="M156 165L184 165" stroke="#203b4a"></path><path d="M156 173L184 173" stroke="#203b4a"></path><path d="M170 173L170 200" stroke="#203b4a"></path><text fill="#203b4a" font-size="19" text-anchor="start" x="191" y="175">Ci</text><path d="M170 200L170 208" stroke="#203b4a"></path><path d="M157 208L183 208" stroke="#203b4a"></path><path d="M162 215L178 215" stroke="#203b4a"></path><path d="M167 222L173 222" stroke="#203b4a"></path><path d="M170 90L318.5 90.0" stroke="#203b4a"></path><path d="M326.5 90.0L475 90" stroke="#203b4a"></path><path d="M318.5 102.0L318.5 78.0" stroke="#203b4a"></path><path d="M326.5 102.0L326.5 78.0" stroke="#203b4a"></path><text data-frequency="capLabel" fill="#127b70" font-size="19" text-anchor="start" x="300" y="65">Cf = Cgd</text><circle cx="475" cy="90" fill="#203b4a" r="3.5" stroke="none"></circle><path d="M475 90L610 90" stroke="#203b4a"></path><path d="M610 90L610 140" stroke="#203b4a"></path><path d="M610 140L610 165" stroke="#203b4a"></path><path d="M596 165L624 165" stroke="#203b4a"></path><path d="M596 173L624 173" stroke="#203b4a"></path><path d="M610 173L610 200" stroke="#203b4a"></path><text fill="#203b4a" font-size="19" text-anchor="start" x="631" y="175">Co</text><path d="M610 200L610 208" stroke="#203b4a"></path><path d="M597 208L623 208" stroke="#203b4a"></path><path d="M602 215L618 215" stroke="#203b4a"></path><path d="M607 222L613 222" stroke="#203b4a"></path><path d="M475 90L475 140" stroke="#203b4a"></path><path d="M475 140L475 150" stroke="#203b4a"></path><path d="M475 150L468 155.0" stroke="#203b4a"></path><path d="M468 155.0L482 162.66666666666666" stroke="#203b4a"></path><path d="M482 162.66666666666666L468 170.33333333333334" stroke="#203b4a"></path><path d="M468 170.33333333333334L482 178.0" stroke="#203b4a"></path><path d="M482 178.0L468 185.66666666666666" stroke="#203b4a"></path><path d="M468 185.66666666666666L482 193.33333333333334" stroke="#203b4a"></path><path d="M482 193.33333333333334L475 206" stroke="#203b4a"></path><path d="M475 206L475 216" stroke="#203b4a"></path><text fill="#203b4a" font-size="19" text-anchor="start" x="493" y="184.0">Ro</text><path d="M475 216L475 224" stroke="#203b4a"></path><path d="M462 224L488 224" stroke="#203b4a"></path><path d="M467 231L483 231" stroke="#203b4a"></path><path d="M472 238L478 238" stroke="#203b4a"></path><path d="M350 140L350 155" stroke="#203b4a"></path><path d="M350 155l24 27l-24 27l-24 -27Z"></path><path d="M350 170L350 194" stroke="#203b4a"></path><path d="M354.0 184.0L350 194L346.0 184.0" stroke="#203b4a"></path><path d="M350 209L350 224" stroke="#203b4a"></path><text fill="#203b4a" font-size="19" text-anchor="start" x="385" y="188">gm vg</text><path d="M350 224L350 232" stroke="#203b4a"></path><path d="M337 232L363 232" stroke="#203b4a"></path><path d="M342 239L358 239" stroke="#203b4a"></path><path d="M347 246L353 246" stroke="#203b4a"></path><path d="M475 115L350 115" stroke="#203b4a"></path><path d="M350 115L350 140" stroke="#203b4a"></path><circle cx="475" cy="115" fill="#203b4a" r="3.5" stroke="none"></circle></g></svg></div>
+<div class="frequency-schematic"><svg aria-labelledby="miller-schematic-title miller-schematic-desc" role="img" viewbox="0 0 520 274" xmlns="http://www.w3.org/2000/svg">
+<title id="miller-schematic-title">跨端电容连接两个动态节点</title>
+<desc id="miller-schematic-desc">输入经 RS 到栅节点，Ci 接地；输出并联 gm vg 受控源、Ro 和 Co；Cgd 跨接栅与输出。蓝箭头定义从栅到输出的电容电流正方向。</desc>
+<defs><marker id="miller-current-arrow" markerheight="6" markerwidth="7" orient="auto" refx="6" refy="3"><path d="M0 0L7 3L0 6Z" fill="#315bc5"></path></marker></defs>
+<g fill="none" stroke="#173c50" stroke-linejoin="round" stroke-width="1.7">
+<path d="M20 104H44l6-7l10 14l10-14l10 14l6-7H145M145 104H250m8 0H365H470M145 104V144m-13 0h26m-26 8h26m-13 0v54M365 104V126m0 0l-7 6l14 10l-14 10l14 10l-7 6v38M470 104V144m-13 0h26m-26 8h26m-13 0v54M280 104V126M280 126l20 24l-20 24l-20-24ZM280 174V206M280 139v22m-5-6l5 6l5-6"></path>
+<path d="M145 206v7m-10 0h20m-16 6h12m-8 6h4M280 206v7m-10 0h20m-16 6h12m-8 6h4M365 206v7m-10 0h20m-16 6h12m-8 6h4M470 206v7m-10 0h20m-16 6h12m-8 6h4"></path>
+<path class="signal-coupling" d="M250 90V118M258 90V118" stroke="#315bc5" stroke-width="2.5"></path>
+<path d="M210 60H298" marker-end="url(#miller-current-arrow)" stroke="#315bc5"></path>
+</g>
+<g fill="#173c50" font-size="19"><text data-frequency="gate" x="20" y="27"></text><text data-frequency="output" x="295" y="27"></text><text x="56" y="84">RS</text><text x="159" y="171">Ci</text><text text-anchor="end" x="250" y="173">gm vg</text><text x="381" y="171">Ro</text><text x="483" y="171">Co</text><text data-frequency="capLabel" fill="#315bc5" text-anchor="middle" x="254" y="84"></text><rect fill="#fff" height="24" width="180" x="164" y="28"></rect><text fill="#315bc5" text-anchor="middle" x="254" y="48">i_gd 的正方向</text></g>
+<circle cx="145" cy="104" fill="#126e63" r="4"></circle><circle cx="365" cy="104" fill="#126e63" r="4"></circle>
+<text fill="#315bc5" font-size="19" text-anchor="middle" x="260" y="261">i_gd = jω Cgd (vg − vo)</text>
+</svg>
+</div>
+<p class="demo-circuit-note" data-frequency="coupling"></p>
 <p class="frequency-node-values" data-frequency="nodeValues"></p>
-<p class="demo-chart-caption">小信号等效图。vin = 1∠0° 只是归一化；以下数值是每伏输入的稳态相量，不是 1 V 大信号瞬态，也不是电子运动轨迹。</p>
+<p class="demo-chart-caption">相量按每伏输入归一化。蓝箭头定义从栅到输出的电容电流正方向；幅值与相位由两节点方程计算。</p>
 <div class="demo-chart"><svg aria-labelledby="miller-chart-title miller-chart-desc" role="img" viewbox="0 0 600 400"><title id="miller-chart-title">完整两节点响应与可选米勒近似</title><desc id="miller-chart-desc">固定对数频率轴 10 kHz 至 10 GHz。增益 −80 至 40 dB，相对低频的附加相位 0 至 −270 度。竖线标出观察频率。</desc>
 <defs><clippath id="miller-plot-clip"><path d="M70 20H570V340H70Z"></path></clippath><clippath id="miller-gain-clip"><path d="M70 20H570V170H70Z"></path></clippath></defs>
 <g class="demo-grid" fill="none"><path d="M70 20H570M70 70H570M70 120H570M70 170H570M70 220H570M70 260H570M70 300H570M70 340H570M70 20V340M153.33 20V340M236.67 20V340M320 20V340M403.33 20V340M486.67 20V340M570 20V340"></path></g>
@@ -2529,10 +2424,10 @@ C_{Mo}=C_o+C_f\left(1+\frac1{g_mR_o}\right).
 </svg></div>
 <p class="demo-chart-caption">实线：完整两节点解析解。虚线：固定低频增益米勒近似（勾选显示）。相位相对 H(0) 连续展开；完整 CS 还含低频反相的 180°。</p>
 <div class="demo-readout" data-frequency="readout"></div><p class="demo-observation" data-frequency="observation"></p><span aria-atomic="true" aria-live="polite" class="demo-live" data-frequency="announcement" role="status"></span>
-<details><summary>模型、参数与读图边界</summary><p id="miller-assumptions">实时解析教学模型：gm = 1 mS，RS = 10 kΩ，Ro = 50 kΩ，Ci = Co = 1 pF，源极与体端交流接地。只改变显式 Cgd，未改变工作点或其他电容。没有 GF180 数据、插值或后台 SPICE。精确指该模型的精确解，不代表完整器件。极点由二次分母求根；零点为 +gm/Cgd，Cgd = 0 时无有限前馈零点。</p><p>低频输入电容 Ci+Cgd(1+gmRo) 只是近似的起点。高频输入导纳包含电导项与频率相关的虚部，不能始终看作固定电容。数值与原生 ngspice 线性模型检查见<a href="../../../labs/frequency/">实验资源</a>。</p></details>
+<details><summary>模型、参数与输入导纳</summary><p id="miller-assumptions">实时解析教学模型：gm = 1 mS，RS = 10 kΩ，Ro = 50 kΩ，Ci = Co = 1 pF，源极与体端交流接地。只改变显式 Cgd，工作点和其他电容固定；结果为该线性模型的精确解。极点由二次分母求根；零点为 +gm/Cgd，Cgd = 0 时无有限前馈零点。这里使用解析计算，GF180 的实例见后续 OTA 实验。</p><p data-frequency="admittance"></p><p>低频输入电容 Ci+Cgd(1+gmRo) 用来估计输入加载。高频输入导纳包含电导项与频率相关的虚部。数值与原生 ngspice 线性模型检查见<a href="../../../labs/frequency/">实验资源</a>；此处按小信号相量计算，不能用来判断 1 V 大信号阶跃或电子的运动轨迹。</p></details>
 </section>
 <p class="demo-loading" hidden="">交互模块未加载；本页的静态原理图、曲线与推导仍可完整阅读。</p>
-<script src="../../../assets/demos/miller-poles.js" type="module"></script>
+<script src="../../../assets/demos/miller-poles.js?v=7b2b40b2c0e8" type="module"></script>
 <p>可以依次做三次预测：把 <span class="arithmatex">\(C_f\)</span> 减到零，零点会去哪？增加 <span class="arithmatex">\(C_f\)</span>，两个精确极点是否同时降低？把观察频率移到很高处，输入是否仍能用 6.1 pF 解释？上面的静态图和公式已经给出完整答案；交互用于把这些关系放到同一次操作中观察。</p>
 <p>提高 <span class="arithmatex">\(g_m\)</span> 一方面增加驱动电流，另一方面在这里增加低频反相增益和输入端的米勒负担。若限制来自输出电容，较大 <span class="arithmatex">\(g_m\)</span> 未必移动该输出 RC 极点；若输入受限，变化方向还要连同 <span class="arithmatex">\(R_S\)</span> 和 <span class="arithmatex">\(R_o\)</span> 判断。</p>
 <p>下一节：<a href="../follower-gate/">换一个端口，电容的命运也变了</a></p>
@@ -2642,14 +2537,16 @@ C_{Mo}=C_o+C_f\left(1+\frac1{g_mR_o}\right).
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
+
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../assets/math-config.js"></script>
-      
-        <script src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
-      
-        <script src="../../../assets/book.js?v=f58388eee04d"></script>
+        <script src="../../../assets/book.js?v=fd6e790bd6d7"></script>
       
     
+
+<script src="../../../assets/math-config.js"></script>
+<script defer src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
+
+
   </body>
 </html>

@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/book.css?v=7c933ee1af57">
+      <link rel="stylesheet" href="../../assets/book.css?v=220fa8fdcf37">
     
-      <link rel="stylesheet" href="../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
+      <link rel="stylesheet" href="../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2082,14 +2082,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2113,7 +2105,7 @@
   <span class="md-ellipsis">
     
   
-    编辑与资料
+    资料与路线
   
 
     
@@ -2129,7 +2121,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    编辑与资料
+    资料与路线
   
 
           </label>
@@ -2170,34 +2162,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about/edition2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版编辑说明
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/sources/" class="md-nav__link">
         
   
@@ -2206,90 +2170,6 @@
     
   
     资料来源
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../about/site/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    网站维护
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../about/validation-v1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首版验证记录
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../about/validation-v2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版验收
   
 
     
@@ -2414,12 +2294,12 @@
 <h1 id="ota">电流镜与真实偏置 OTA：复现资源<a class="headerlink" href="#ota" title="Permanent link">¶</a></h1>
 <p>这里支持 <a href="../../analog/mirrors/">第 5 章</a> 的设计检查，正文不依赖先运行这些资源。</p>
 <h2 id="_1">设计输入与数据读法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/design.json">design.json</a> 先固定电流窗口、误差、功耗和 OTA 标称工作点。先后检查短沟道失败候选、两种长沟道普通镜、经典自偏置共源共栅镜，然后从 40 µA 参考建立 OTA 的电阻偏置。原始展开网表在 <code>decks/</code>，完整程序日志在 <code>logs/</code>，全部数值在 <code>data/</code>，不是从绘图曲线反读数据。</p>
+<p><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/design.json">design.json</a> 先固定电流窗口、误差、功耗和 OTA 标称工作点。先后检查短沟道失败候选、两种长沟道普通镜、经典自偏置共源共栅镜，然后从 40 µA 参考建立 OTA 的电阻偏置。原始展开网表在 <code>decks/</code>，完整程序日志在 <code>logs/</code>，全部数值在 <code>data/</code>，不是从绘图曲线反读数据。</p>
 <ul>
-<li><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/metrics.json">metrics.json</a>：设计指标、候选结果、最终尺寸、OTA 工作点/增益、PVT 与启动结果。</li>
-<li><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/run.json">run.json</a>：Windows、ngspice 版本及可执行文件哈希、GF180 模型版本、网表和数据逐文件 SHA-256。</li>
-<li><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/medium.csv">普通镜 L=1 µm</a> · <a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/cascode.csv">共源共栅镜</a>：交互的两条原始曲线。</li>
-<li><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/decks/ota.cir">OTA 网表</a> · <a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/ota-output-compliance.csv">输出钳位扫描</a> · <a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/ota-large-signal.csv">大信号输入扫描</a> · <a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/ota-startup.csv">上电轨迹</a>。</li>
+<li><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/metrics.json">metrics.json</a>：设计指标、候选结果、最终尺寸、OTA 工作点/增益、PVT 与启动结果。</li>
+<li><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/run.json">run.json</a>：Windows、ngspice 版本及可执行文件哈希、GF180 模型版本、网表和数据逐文件 SHA-256。</li>
+<li><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/medium.csv">普通镜 L=1 µm</a> · <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/cascode.csv">共源共栅镜</a>：交互的两条原始曲线。</li>
+<li><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/decks/ota.cir">OTA 网表</a> · <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/ota-output-compliance.csv">输出钳位扫描</a> · <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/ota-large-signal.csv">大信号输入扫描</a> · <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E7%94%B5%E6%B5%81%E9%95%9C/data/ota-startup.csv">上电轨迹</a>。</li>
 </ul>
 <h2 id="_2">固定条件与端口<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>仿真使用 Windows 原生 ngspice-47，GF180MCU <code>nmos_3p3</code> / <code>pmos_3p3</code>，固定模型提交 <code>9f992d5a9186d1f7820c58f039c484ad35b2edea</code>，来源及 Apache-2.0 许可见 <a href="../models/">模型说明</a>。默认 VDD=3.3 V、typical、27 °C，全局和局部统计开关均为零。MOS 使用固定 AD=AS=5 µm²、PD=PS=21 µm；它们是已记录的结面积假设，不是版图提取值。</p>
@@ -2542,14 +2422,13 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
+
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../assets/math-config.js"></script>
-      
-        <script src="../../assets/vendor/mathjax/tex-chtml-full.js"></script>
-      
-        <script src="../../assets/book.js?v=f58388eee04d"></script>
+        <script src="../../assets/book.js?v=fd6e790bd6d7"></script>
       
     
+
+
   </body>
 </html>

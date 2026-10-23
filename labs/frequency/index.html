@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/book.css?v=7c933ee1af57">
+      <link rel="stylesheet" href="../../assets/book.css?v=220fa8fdcf37">
     
-      <link rel="stylesheet" href="../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
+      <link rel="stylesheet" href="../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2082,14 +2082,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2113,7 +2105,7 @@
   <span class="md-ellipsis">
     
   
-    编辑与资料
+    资料与路线
   
 
     
@@ -2129,7 +2121,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    编辑与资料
+    资料与路线
   
 
           </label>
@@ -2170,34 +2162,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about/edition2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版编辑说明
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/sources/" class="md-nav__link">
         
   
@@ -2206,90 +2170,6 @@
     
   
     资料来源
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../about/site/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    网站维护
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../about/validation-v1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首版验证记录
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../about/validation-v2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版验收
   
 
     
@@ -2416,7 +2296,7 @@
 <h2 id="_1">模型、工具与固定条件<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>继续采用 <a href="../models/">官方来源与锁定哈希</a> 的 GF180MCU 3.3 V NMOS/PMOS，模型提交 <code>9f992d5a9186d1f7820c58f039c484ad35b2edea</code>，Apache-2.0；没有商业工艺。Windows 原生 ngspice 47 的 console 版，无 WSL、容器、Cadence 或版图工具依赖。<code>NGSPICE</code> 环境变量可选择其他平台的原生可执行文件。</p>
 <p>全部 GF180 实验：典型角、27 ℃、VDD 3.3 V，统计全局和失配开关均为 0，AD=AS=5 µm²、PD=PS=21 µm。结几何是第 5 章沿用的固定教学约定，宽度变体也不冒充版图提取。每个网表明确端口、尺寸与激励，模型文件由公共运行器复制到隔离工作目录。</p>
-<p><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/design.json">design.json</a> 固定 1 pF、增益 ≥150 V/V、−3 dB 带宽 ≥100 kHz、功耗 ≤0.45 mW，先于频域结果生成。基准参数从已归档的第 5 章 metrics.json 读取，不重新调整。<code>run_frequency.py</code> 不调用第 5 章的主程序，也不覆盖其数据。</p>
+<p><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/design.json">design.json</a> 固定 1 pF、增益 ≥150 V/V、−3 dB 带宽 ≥100 kHz、功耗 ≤0.45 mW，先于频域结果生成。基准参数从已归档的第 5 章 metrics.json 读取，不重新调整。<code>run_frequency.py</code> 不调用第 5 章的主程序，也不覆盖其数据。</p>
 <p>AC 扫描 1 Hz～10 GHz、每十倍频 80 点。高频端用于看清模型路径，不表示已经验证工艺在 10 GHz 的实际精度。AC CSV 第一列为 Hz，其后依次为各电压的实部、虚部，列名保留端口名并增加 real/imag 后缀；导纳测试电流采用相同约定。端口均注明；没有把电流增益、差分电压增益与单端电压增益混画。</p>
 <h2 id="_2">各实验回答什么<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <table>
@@ -2481,9 +2361,9 @@
 <span class="p">.\.</span><span class="n">venv-site</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">scripts</span><span class="p">/</span><span class="n">check_site</span><span class="p">.</span><span class="n">py</span>
 </code></pre></div>
 <p>运行器保留失败信息；每次删除预期临时输出以防陈旧文件误通过。<code>--check</code> 先与已提交主要增益/带宽比较，容差 0.5%，再写新运行记录；不会根据新结果改变指标。图像只读取归档 CSV，不平滑、拟合或将解析曲线伪装为工艺数据。线性模型与真实模型各自明确标注。</p>
-<p><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/data/metrics.json">metrics.json</a> 保存工作点、饱和余量、功耗、带宽和第一次向下 0 dB 穿越。带宽用相邻扫描点的 <strong>dB 对 log(f)</strong> 线性插值，相对 1 Hz 幅度降低 <span class="arithmatex">\(10\log_{10}2\)</span>；它不是极点提取。相位由复数结果 atan2 后连续展开，单位度。反相电路的恒定 180° 与附加相位分开解释；<code>unity_Hz=null</code> 表示没有找到穿越，不虚构单位增益频率。</p>
-<p><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/data/nodal.json">nodal.json</a> 的 G 单位 S、C 单位 F，顺序 X、O、T、B；输入项为 S 和 F。通过 1/10/100 kHz AC 端口测试提取矩阵，检查其频率一致性，再与未钳位直接 AC 在 30 MHz 以下对照。模态由 <span class="arithmatex">\(-C^{-1}G\)</span> 特征值求得，并检查稳定性、矩阵可逆与时间常数系数恒等式。左右特征向量参与度支持输出、镜节点和偏置模态的关联；快速模态仍只是当前准静态网络结果。</p>
-<p><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/data/run.json">run.json</a> 记录平台、Python/ngspice 版本、可执行文件与模型哈希，以及指标文件、生成脚本、原始网表、日志、CSV 和汇总的 SHA-256。原始 ngspice 输出只规范换行和文件末尾空白，不过滤警告或计算信息。前五章资源保持独立。</p>
+<p><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/data/metrics.json">metrics.json</a> 保存工作点、饱和余量、功耗、带宽和第一次向下 0 dB 穿越。带宽用相邻扫描点的 <strong>dB 对 log(f)</strong> 线性插值，相对 1 Hz 幅度降低 <span class="arithmatex">\(10\log_{10}2\)</span>；它不是极点提取。相位由复数结果 atan2 后连续展开，单位度。反相电路的恒定 180° 与附加相位分开解释；<code>unity_Hz=null</code> 表示没有找到穿越，不虚构单位增益频率。</p>
+<p><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/data/nodal.json">nodal.json</a> 的 G 单位 S、C 单位 F，顺序 X、O、T、B；输入项为 S 和 F。通过 1/10/100 kHz AC 端口测试提取矩阵，检查其频率一致性，再与未钳位直接 AC 在 30 MHz 以下对照。模态由 <span class="arithmatex">\(-C^{-1}G\)</span> 特征值求得，并检查稳定性、矩阵可逆与时间常数系数恒等式。左右特征向量参与度支持输出、镜节点和偏置模态的关联；快速模态仍只是当前准静态网络结果。</p>
+<p><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/data/run.json">run.json</a> 记录平台、Python/ngspice 版本、可执行文件与模型哈希，以及指标文件、生成脚本、原始网表、日志、CSV 和汇总的 SHA-256。原始 ngspice 输出只规范换行和文件末尾空白，不过滤警告或计算信息。前五章资源保持独立。</p>
 <h2 id="_4">当前验证边界<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>已实现全部主要拓扑的标称工艺 AC；CS 解析式与独立 SPICE、SF/CG 节点式、级联三节点式与镜像路径模型用独立数值方程核验。OTA 保留原 DC、体端、参考支路并检查所有核心管饱和，完整导纳重建与直接 AC 对照。交互计算 2525 个控制状态检查 KCL、极点和边界，不代表真实工艺扫描。</p>
 <p>未进行第 6 章全 PVT、Monte Carlo、高频 CMRR、版图/封装提取、非准静态模型验收、噪声或闭环稳定性验收；不将 GHz 级模型结果作为芯片保证。EET、ZVTC 高阶递推与米勒对偶只安排深入阅读，没有宣称完成其全部一般证明。静态公式与简化电容用于解释机制，真实器件结果以原生 ngspice 档案为准。</p>
@@ -2590,14 +2470,16 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
+
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../assets/math-config.js"></script>
-      
-        <script src="../../assets/vendor/mathjax/tex-chtml-full.js"></script>
-      
-        <script src="../../assets/book.js?v=f58388eee04d"></script>
+        <script src="../../assets/book.js?v=fd6e790bd6d7"></script>
       
     
+
+<script src="../../assets/math-config.js"></script>
+<script defer src="../../assets/vendor/mathjax/tex-chtml-full.js"></script>
+
+
   </body>
 </html>

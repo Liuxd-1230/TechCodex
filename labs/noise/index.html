@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/book.css?v=7c933ee1af57">
+      <link rel="stylesheet" href="../../assets/book.css?v=220fa8fdcf37">
     
-      <link rel="stylesheet" href="../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
+      <link rel="stylesheet" href="../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2104,14 +2104,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2135,7 +2127,7 @@
   <span class="md-ellipsis">
     
   
-    编辑与资料
+    资料与路线
   
 
     
@@ -2151,7 +2143,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    编辑与资料
+    资料与路线
   
 
           </label>
@@ -2192,34 +2184,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about/edition2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版编辑说明
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/sources/" class="md-nav__link">
         
   
@@ -2228,90 +2192,6 @@
     
   
     资料来源
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../about/site/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    网站维护
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../about/validation-v1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首版验证记录
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../about/validation-v2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版验收
   
 
     
@@ -2460,13 +2340,13 @@
 <h2 id="_1">条件与证据<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <ul>
 <li>平台：Windows，原生 ngspice 47，实际噪声求解日志使用 SPARSE 1.3；Python 及 NumPy 版本沿用仓库锁定环境。</li>
-<li>模型：<a href="https://github.com/google/gf180mcu-pdk">官方 GF180MCU</a> 3.3 V NMOS/PMOS，提交 <code>9f992d5a9186d1f7820c58f039c484ad35b2edea</code>，Apache-2.0；文件与许可见<a href="../../models/manifest.json">模型清单</a>。</li>
+<li>模型：<a href="https://github.com/google/gf180mcu-pdk">官方 GF180MCU</a> 3.3 V NMOS/PMOS，提交 <code>9f992d5a9186d1f7820c58f039c484ad35b2edea</code>，Apache-2.0；文件与许可见<a href="https://github.com/Liuxd-1230/TechCodex/blob/main/models/manifest.json">模型清单</a>。</li>
 <li>设置：typical、27 °C、VDD=3.3 V、VCM=1.4 V；默认 CL=1 pF。NMOS 体接地，PMOS 体接电源。没有商业工艺模型。</li>
 <li>端口：理想 Vdiff，经 +0.5/-0.5 的无噪声受控源驱动两输入。<code>.noise v(o) Vdiff</code> 折算到<strong>完整差分电压</strong>，不多乘或少乘二。</li>
 <li>频率：1 Hz–1 GHz、每十倍频程 100 点；目标带为 100 Hz–100 kHz，另外检查 1 Hz–100 kHz 和 100 Hz–1 MHz。</li>
 </ul>
 <p>按实验技能的适用轴，本次属于信号处理/硬件电路教学验证：证据是固定基线、源分解和可复现积分；主要风险是比较条件不一致、单位错误和模型精度外推。流程先固定指标，再运行基准和候选，最后记录失败后的尺寸调整。</p>
-<p><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/design.json">design.json</a> 在第一次噪声运行前固定规格；<a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/adjustment.json">adjustment.json</a> 记录看到失败后追加的面积方案，不改变原指标。所有数据见 <a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/metrics.json">metrics.json</a>，源、网表和运行记录的 SHA-256 见 <a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/run.json">run.json</a>。</p>
+<p><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/design.json">design.json</a> 在第一次噪声运行前固定规格；<a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/adjustment.json">adjustment.json</a> 记录看到失败后追加的面积方案，不改变原指标。所有数据见 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/metrics.json">metrics.json</a>，源、网表和运行记录的 SHA-256 见 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/run.json">run.json</a>。</p>
 <h2 id="windows">Windows 复现<a class="headerlink" href="#windows" title="Permanent link">¶</a></h2>
 <p>在仓库根目录运行；Python 环境安装方法见 <a href="../windows/">Windows 环境</a>：</p>
 <div class="highlight"><pre><span></span><code><span class="p">.\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">scripts</span><span class="p">/</span><span class="n">run_noise</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-check</span>
@@ -2495,50 +2375,50 @@
 <tbody>
 <tr>
 <td>基准</td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/decks/baseline.cir">baseline</a></td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/baseline-spectrum.csv">spectrum</a></td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/logs/baseline.txt">log</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/decks/baseline.cir">baseline</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/baseline-spectrum.csv">spectrum</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/logs/baseline.txt">log</a></td>
 </tr>
 <tr>
 <td>输入宽度 ×2</td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/decks/input-width-2x.cir">input-width-2x</a></td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/input-width-2x-spectrum.csv">spectrum</a></td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/logs/input-width-2x.txt">log</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/decks/input-width-2x.cir">input-width-2x</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/input-width-2x-spectrum.csv">spectrum</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/logs/input-width-2x.txt">log</a></td>
 </tr>
 <tr>
 <td>全部宽度、电流 ×2</td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/decks/all-width-current-2x.cir">all-width-current-2x</a></td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/all-width-current-2x-spectrum.csv">spectrum</a></td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/logs/all-width-current-2x.txt">log</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/decks/all-width-current-2x.cir">all-width-current-2x</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/all-width-current-2x-spectrum.csv">spectrum</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/logs/all-width-current-2x.txt">log</a></td>
 </tr>
 <tr>
 <td>仅负载 5 pF</td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/decks/baseline-5p.cir">baseline-5p</a></td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/baseline-5p-spectrum.csv">spectrum</a></td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/logs/baseline-5p.txt">log</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/decks/baseline-5p.cir">baseline-5p</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/baseline-5p-spectrum.csv">spectrum</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/logs/baseline-5p.txt">log</a></td>
 </tr>
 <tr>
 <td>追加面积方案</td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/decks/area-budget.cir">area-budget</a></td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/area-budget-spectrum.csv">spectrum</a></td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/logs/area-budget.txt">log</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/decks/area-budget.cir">area-budget</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/area-budget-spectrum.csv">spectrum</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/logs/area-budget.txt">log</a></td>
 </tr>
 <tr>
 <td>电阻校准</td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/decks/resistor.cir">resistor</a></td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/resistor-spectrum.csv">spectrum</a></td>
-<td><a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/logs/resistor.txt">log</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/decks/resistor.cir">resistor</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/data/resistor-spectrum.csv">spectrum</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/logs/resistor.txt">log</a></td>
 </tr>
 </tbody>
 </table>
-<p>同目录还保存各案例的 <code>-op.csv</code>、<code>-ac.csv</code> 与 <code>-totals.csv</code>。CSV 列名写明单位，原文件不做平滑或删点。绘图源为 <a href="../../scripts/plot_noise.py">plot_noise.py</a>，积分源为 <a href="../../scripts/noise_math.py">noise_math.py</a>。</p>
+<p>同目录还保存各案例的 <code>-op.csv</code>、<code>-ac.csv</code> 与 <code>-totals.csv</code>。CSV 列名写明单位，原文件不做平滑或删点。绘图源为 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/scripts/plot_noise.py">plot_noise.py</a>，积分源为 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/scripts/noise_math.py">noise_math.py</a>。</p>
 <h2 id="_4">模型分组与适用范围<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>当前模型 <code>fnoimod=1</code>、<code>tnoimod=0</code>。实际可读的每器件总贡献、<code>.id</code>、<code>.1overf</code> 被保存。正文“闪烁”指 <code>.1overf</code>；“非闪烁”是总量减闪烁，包括模型其余机制，并不伪装成长沟道独立源。没有虚构感应栅噪声或互谱数据。电路层面的同源多路径已由 ngspice 传递函数合成。</p>
 <p>输入对、PMOS 镜、尾管、参考网络的份额以<strong>逐频率折回输入后的积分方差</strong>计算。不能相加 ASD 或 RMS 百分比。基准的目标频带输入 RMS 为 28.249947 µV；面积方案为 2.588965 µV，后者在同一频带满足 4 µV 目标。其他指标与失效原因见<a href="../../analog/noise/design/">设计正文</a>。</p>
-<p>面积方案采用显式并联单元，避免超出宽度分箱，以及 wrapper 未转发 <code>m</code> 的问题。每个输入支路十个 100/1 µm 单元；PMOS 每只约 37.08/10 µm；尾管与参考不变。每个输入单元 AD=AS=5 µm²、PD=PS=21 µm，因此总寄生几何也增加。兼容性探针保留 <a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/compatibility/multiplicity-1-run.cir">m=1 网表</a>、<a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/compatibility/multiplicity-10-run.cir">m=10 网表</a>、<a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/compatibility/multiplicity-10-op.txt">相同工作点</a>和<a href="../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/compatibility/finger-probe-ngspice.txt">超宽 nf 探针的失败日志</a>，这些诊断失败没有进入合格结果。单元独立性、共享扩散、版图匹配与面积约束尚未验证。</p>
+<p>面积方案采用显式并联单元，避免超出宽度分箱，以及 wrapper 未转发 <code>m</code> 的问题。每个输入支路十个 100/1 µm 单元；PMOS 每只约 37.08/10 µm；尾管与参考不变。每个输入单元 AD=AS=5 µm²、PD=PS=21 µm，因此总寄生几何也增加。兼容性探针保留 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/compatibility/multiplicity-1-run.cir">m=1 网表</a>、<a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/compatibility/multiplicity-10-run.cir">m=10 网表</a>、<a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/compatibility/multiplicity-10-op.txt">相同工作点</a>和<a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/compatibility/finger-probe-ngspice.txt">超宽 nf 探针的失败日志</a>，这些诊断失败没有进入合格结果。单元独立性、共享扩散、版图匹配与面积约束尚未验证。</p>
 <p>GF 的<a href="https://gf180mcu-pdk.readthedocs.io/en/latest/analog/model_parameters/LV/LV_2_3.html">官方低频噪声说明</a>采用指定测试尺寸与偏置，频段 10 Hz–100 kHz。本实验的尺寸与部分频率超出其列出的测试条件。1 GHz 端点用于数学与全扫描积分检查，<strong>不作为工艺实测精度承诺</strong>；目标也只在 typical、27 °C 下检查。未声称 PVT 良率、闭环稳定性或硅片最优设计。</p>
 <h2 id="_5">交互数据怎样生成<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
-<p><a href="../../scripts/build_noise_demo.py">build_noise_demo.py</a> 先校验运行记录哈希，再直接提取基准的 1 Hz–1 MHz 输入 PSD、闪烁项与非闪烁项，保持每十倍频程 100 点。不改变偏置，不按用户操作任意缩放工艺曲线。</p>
+<p><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/scripts/build_noise_demo.py">build_noise_demo.py</a> 先校验运行记录哈希，再直接提取基准的 1 Hz–1 MHz 输入 PSD、闪烁项与非闪烁项，保持每十倍频程 100 点。不改变偏置，不按用户操作任意缩放工艺曲线。</p>
 <p>交互的“白噪声”“白噪声 + 1/f”是独立的解析模型，参数固定为 10 nV/√Hz 与 <span class="arithmatex">\(f_c=1\)</span> kHz。用户只选择数据来源和积分上下限。动画每一帧对当前显示的同一频带重新积分；工艺源切换即时完成，不在不同电路之间制造虚假的插值。无 JS 或数据加载失败时，静态图与完整公式仍在。</p>
 
 
@@ -2643,14 +2523,16 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
+
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../assets/math-config.js"></script>
-      
-        <script src="../../assets/vendor/mathjax/tex-chtml-full.js"></script>
-      
-        <script src="../../assets/book.js?v=f58388eee04d"></script>
+        <script src="../../assets/book.js?v=fd6e790bd6d7"></script>
       
     
+
+<script src="../../assets/math-config.js"></script>
+<script defer src="../../assets/vendor/mathjax/tex-chtml-full.js"></script>
+
+
   </body>
 </html>

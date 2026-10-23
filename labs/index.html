@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../assets/book.css?v=7c933ee1af57">
+      <link rel="stylesheet" href="../assets/book.css?v=220fa8fdcf37">
     
-      <link rel="stylesheet" href="../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
+      <link rel="stylesheet" href="../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1995,14 +1995,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2026,7 +2018,7 @@
   <span class="md-ellipsis">
     
   
-    编辑与资料
+    资料与路线
   
 
     
@@ -2042,7 +2034,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    编辑与资料
+    资料与路线
   
 
           </label>
@@ -2083,34 +2075,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/edition2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版编辑说明
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../about/sources/" class="md-nav__link">
         
   
@@ -2119,90 +2083,6 @@
     
   
     资料来源
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../about/site/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    网站维护
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../about/validation-v1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首版验证记录
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../about/validation-v2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版验收
   
 
     
@@ -2293,7 +2173,7 @@
 
 <h1 id="_1">可复现实验<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p><a href="../analog/">系列首页</a> · <a href="windows/">安装步骤</a> · <a href="models/">模型说明</a></p>
-<p>第二版把详细参数与误差统计留在实验阅读路径。原有分析和结果完整保存在 <a href="../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A6%96%E7%89%88%E5%99%A8%E4%BB%B6%E7%AC%94%E8%AE%B0/">首版器件笔记</a> 与 <a href="../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A6%96%E7%89%88%E5%85%B1%E6%BA%90%E7%BA%A7%E7%AC%94%E8%AE%B0/">首版共源级笔记</a>；按教材顺序阅读可从 <a href="../analog/devices/">第 2 章</a> 和 <a href="../analog/stages/">第 3 章</a> 开始。</p>
+<p>第二版把详细参数与误差统计留在实验阅读路径。原有分析和结果完整保存在 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A6%96%E7%89%88%E5%99%A8%E4%BB%B6%E7%AC%94%E8%AE%B0.md">首版器件笔记</a> 与 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A6%96%E7%89%88%E5%85%B1%E6%BA%90%E7%BA%A7%E7%AC%94%E8%AE%B0.md">首版共源级笔记</a>；按教材顺序阅读可从 <a href="../analog/devices/">第 2 章</a> 和 <a href="../analog/stages/">第 3 章</a> 开始。</p>
 <p>第 4 章新增 <a href="differential/">差分对实验</a>，包括同工作点的理想/真实尾源比较、电流转向和不等负载的共模转换。它使用独立入口 <code>scripts/run_differential.py --check</code>，原有入口和数据保持独立。</p>
 <p>第 5 章的 <a href="mirrors/">电流镜与 OTA 实验</a> 先固定设计指标，比较普通/共源共栅镜，再实现电阻参考的五管 OTA 核心。入口是 <code>scripts/run_mirrors.py --check</code>，包括工作区、DC/AC 增益、少量 PVT 与一条上电轨迹。</p>
 <p>第 6 章的 <a href="frequency/">频率响应实验</a> 保留第 5 章基准，研究 OTA 的负载、节点导纳、尺寸和电流取舍；同时独立验证 CS/SF/CG/cascode 与电阻负载差分对。实时米勒解析交互与真实 GF180 数据分开，原始复数 AC、完整网表和日志全部保留。</p>
@@ -2308,27 +2188,27 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/v0-device.cir">v0-device.cir</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/v0-device.cir">v0-device.cir</a></td>
 <td>W=10 µm，L=0.28/1/2 µm；VDS=1.65 V，VGS=0.3～1.5 V，步进 5 mV</td>
 <td>转移特性、gm/ID、gm/gds；中心差分核对 gm</td>
 </tr>
 <tr>
-<td><a href="../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/v0-output.cir">v0-output.cir</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/v0-output.cir">v0-output.cir</a></td>
 <td>W/L=10/1 µm；VGS=0.8/0.9/1.1/1.3 V；VDS=0～3.3 V，步进 10 mV</td>
 <td>输出曲线；中心差分核对 gds</td>
 </tr>
 <tr>
-<td><a href="../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/v0-body.cir">v0-body.cir</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/v0-body.cir">v0-body.cir</a></td>
 <td>VGS=0.9 V、VDS=1.65 V 固定；VSB=0～0.8 V，步进 10 mV</td>
 <td>隔离体效应，检查阈值方向</td>
 </tr>
 <tr>
-<td><a href="../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/v1-common-source.cir">v1-common-source.cir</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/v1-common-source.cir">v1-common-source.cir</a></td>
 <td>VDD=3.3 V、VG=0.9 V、RD=39 kΩ、CL=2 pF、RS=0/1 kΩ</td>
 <td>偏置、低频 AC、DC 斜率、瞬态</td>
 </tr>
 <tr>
-<td><a href="../scripts/run.py">run.py 中的 PVT 网表生成</a></td>
+<td><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/scripts/run.py">run.py 中的 PVT 网表生成</a></td>
 <td>NMOS/PMOS 同时测试，typical/ff/ss × −40/27/125 °C</td>
 <td>兼容性冒烟测试，非放大器全 PVT 验收</td>
 </tr>
@@ -2339,8 +2219,8 @@
 <p><code>data/*.csv</code> 是实际仿真的数字结果。<code>metrics.json</code> 是若干工作点和测量汇总，<code>run.json</code> 记录工具版本、模型哈希、网表哈希和默认条件。工作点记录并非随机生成，也不是解析公式构造的曲线。</p>
 <p><code>run.py --check</code> 在写入新汇总前，将主要参考指标与已经提交的数据比较，容许 2% 的跨版本数值变化；同时始终执行更严格的内部物理检查：gm/gds 与有限差分相差小于 1%，KCL/AC/DC 的低频增益相差小于 0.3%。跨版本门限不能代替工作点与物理一致性检查。运行前的参考 <code>metrics.json</code> 必须存在。</p>
 <p>CS 的低频增益取 10 Hz AC 输出实部，因为输入 AC=1、理想输入源阻抗为 0。−3 dB 频率相对于低频增益幅值定义，在 80 点/十倍频的对数频率扫描上作相邻点插值。瞬态为 1 mV、10 kHz 正弦，步长上限 0.2 µs、总时长 0.4 ms。暂不由该瞬态报告 THD 或最大摆幅。</p>
-<p>运行 <a href="../scripts/plot__device_cs__paper.py">绘图脚本</a> 得到 SVG 和 600 dpi PNG。正文引用 SVG，PNG 用于视觉检查。除 <code>cs-bode</code> 的红色虚线以外，数据曲线均来自 ngspice；该虚线是明确标注的 Rout·CL 解析近似。没有对数据进行平滑、拟合或抽点。</p>
-<p>原理图由 <a href="../scripts/draw_schematics.py">draw_schematics.py</a> 确定性生成，节点名称与网表一致。它们是可缩放的原创教学图，不是版图或制造交付文件。</p>
+<p>运行 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/scripts/plot__device_cs__paper.py">绘图脚本</a> 得到 SVG 和 600 dpi PNG。正文引用 SVG，PNG 用于视觉检查。除 <code>cs-bode</code> 的红色虚线以外，数据曲线均来自 ngspice；该虚线是明确标注的 Rout·CL 解析近似。没有对数据进行平滑、拟合或抽点。</p>
+<p>原理图由 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/scripts/draw_schematics.py">draw_schematics.py</a> 确定性生成，节点名称与网表一致。它们是可缩放的原创教学图，不是版图或制造交付文件。</p>
 <p>第 7 章的 <a href="noise/">噪声实验</a> 使用同一 OTA 的真实 <code>.noise</code>，校准单边谱单位，保留源分解、失败候选及追加面积方案。积分边界、输入端口、模型设置和 Windows 复现均有独立记录。</p>
 
 
@@ -2445,14 +2325,13 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
+
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../assets/math-config.js"></script>
-      
-        <script src="../assets/vendor/mathjax/tex-chtml-full.js"></script>
-      
-        <script src="../assets/book.js?v=f58388eee04d"></script>
+        <script src="../assets/book.js?v=fd6e790bd6d7"></script>
       
     
+
+
   </body>
 </html>

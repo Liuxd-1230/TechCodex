@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
+      <link rel="stylesheet" href="../../../assets/book.css?v=220fa8fdcf37">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2106,14 +2106,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2137,7 +2129,7 @@
   <span class="md-ellipsis">
     
   
-    编辑与资料
+    资料与路线
   
 
     
@@ -2153,7 +2145,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    编辑与资料
+    资料与路线
   
 
           </label>
@@ -2194,34 +2186,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/edition2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版编辑说明
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../about/sources/" class="md-nav__link">
         
   
@@ -2230,90 +2194,6 @@
     
   
     资料来源
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/site/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    网站维护
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首版验证记录
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版验收
   
 
     
@@ -2461,7 +2341,7 @@
 <h1 id="76-ota">7.6 花电流，还是花面积？设计一次安静的 OTA<a class="headerlink" href="#76-ota" title="Permanent link">¶</a></h1>
 <p>第 5 章的 OTA 已经建立工作点，第 6 章给出了它约 206 V/V 的低频增益和 1 pF 负载下约 232 kHz 的开环带宽。现在加入一个新要求：在输入为 100 µV RMS 的小信号测量中，放大器自身不能掩盖信号。</p>
 <h2 id="_1">在运行噪声仿真前，把要求写下来<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>本次采用标称教学规格，见先于噪声实验写下的 <a href="../../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/design.json">design.json</a>：</p>
+<p>本次采用标称教学规格，见先于噪声实验写下的 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/design.json">design.json</a>：</p>
 <table>
 <thead>
 <tr>
@@ -2566,7 +2446,7 @@
 </table>
 <p>全部噪声数值采用同一 100 Hz–100 kHz 积分定义。5 pF 行是一个控制实验，负载条件有意不同，不能拿它当作 1 pF 规格的候选合格者。</p>
 <h2 id="_4">看到失败以后，再花面积<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
-<p>先声明的三种尺寸/电流候选都未解决问题，所以保持原指标不动，在 <a href="../../../%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/adjustment.json">adjustment.json</a> 中记录追加方案：每个输入支路由十只 100/1 µm 的 MOS 并联；每只 PMOS 的宽和长同时增加十倍，成为约 37.08/10 µm。尾管、参考管和 Rref 不变。</p>
+<p>先声明的三种尺寸/电流候选都未解决问题，所以保持原指标不动，在 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E5%99%AA%E5%A3%B0/adjustment.json">adjustment.json</a> 中记录追加方案：每个输入支路由十只 100/1 µm 的 MOS 并联；每只 PMOS 的宽和长同时增加十倍，成为约 37.08/10 µm。尾管、参考管和 Rref 不变。</p>
 <p>与基准每只输入管 10/1 µm 相比，每支路输入栅面积增加到 100 倍；PMOS 栅面积也增加到 100 倍，保持其 W/L。较大的输入宽度在近似相同电流下提升 <span class="arithmatex">\(g_m/I_D\)</span>，较大的面积压低模型中的低频噪声。它花的是显著的面积和输入驱动负担。</p>
 <p>工作点确实变了：输出从约 1.659 V 变为 1.597 V，尾节点从 0.373 V 变为 0.604 V，输入支路总跨导从 0.309 mS 增到 0.947 mS。每个候选都重新执行 <code>.op</code>、AC 和 <code>.noise</code>，并检查核心器件的模型饱和余量为正。</p>
 <p>这组结果还提醒我们：更低噪声并不代表所有速度指标都更好。面积方案的单位增益频率约 40.3 MHz，基准约 47.4 MHz；即使 3 dB 带宽提高，内部极点、零点和增益分布仍发生变化。这里没有以单个交越频率宣称闭环稳定。</p>
@@ -2698,14 +2578,16 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
+
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../assets/math-config.js"></script>
-      
-        <script src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
-      
-        <script src="../../../assets/book.js?v=f58388eee04d"></script>
+        <script src="../../../assets/book.js?v=fd6e790bd6d7"></script>
       
     
+
+<script src="../../../assets/math-config.js"></script>
+<script defer src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
+
+
   </body>
 </html>

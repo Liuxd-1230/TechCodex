@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/book.css?v=7c933ee1af57">
+      <link rel="stylesheet" href="../../assets/book.css?v=220fa8fdcf37">
     
-      <link rel="stylesheet" href="../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
+      <link rel="stylesheet" href="../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2082,14 +2082,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2113,7 +2105,7 @@
   <span class="md-ellipsis">
     
   
-    编辑与资料
+    资料与路线
   
 
     
@@ -2129,7 +2121,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    编辑与资料
+    资料与路线
   
 
           </label>
@@ -2170,34 +2162,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about/edition2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版编辑说明
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../about/sources/" class="md-nav__link">
         
   
@@ -2206,90 +2170,6 @@
     
   
     资料来源
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../about/site/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    网站维护
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../about/validation-v1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首版验证记录
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../about/validation-v2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版验收
   
 
     
@@ -2427,7 +2307,7 @@
 <span class="p">.\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">scripts</span><span class="p">/</span><span class="n">draw_schematics</span><span class="p">.</span><span class="n">py</span>
 <span class="p">.\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">scripts</span><span class="p">/</span><span class="n">check_repo</span><span class="p">.</span><span class="n">py</span>
 </code></pre></div>
-<p><code>requirements.txt</code> 固定三项直接依赖；<a href="../../requirements-lock.txt">完整依赖快照</a> 保存本次 Python 3.13 环境的间接依赖，可用 <code>pip install -r requirements-lock.txt</code> 复建同一组版本。运行脚本无需激活环境，因此不需要修改 PowerShell 执行策略。</p>
+<p><code>requirements.txt</code> 固定三项直接依赖；<a href="https://github.com/Liuxd-1230/TechCodex/blob/main/requirements-lock.txt">完整依赖快照</a> 保存本次 Python 3.13 环境的间接依赖，可用 <code>pip install -r requirements-lock.txt</code> 复建同一组版本。运行脚本无需激活环境，因此不需要修改 PowerShell 执行策略。</p>
 <p><code>bootstrap.py</code> 先验证仓库内模型 SHA-256，再依次检查 <code>NGSPICE</code>、本项目 <code>.tools/Spice64/bin/ngspice_con.exe</code> 与 PATH。如果已安装则复用；否则下载官方 ngspice 47 Windows 64 位压缩包，核对 SHA-256 后解压到 <code>.tools/</code>。不修改系统 PATH、注册表或用户 <code>.spiceinit</code>。压缩包来源和实测 SHA 见 <a href="../../about/sources/">来源记录</a>。</p>
 <p>如果要使用已有的原生版本：</p>
 <div class="highlight"><pre><span></span><code><span class="nv">$env:NGSPICE</span> <span class="p">=</span> <span class="s1">'C:\tools\ngspice\bin\ngspice_con.exe'</span>
@@ -2549,14 +2429,13 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
+
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../assets/math-config.js"></script>
-      
-        <script src="../../assets/vendor/mathjax/tex-chtml-full.js"></script>
-      
-        <script src="../../assets/book.js?v=f58388eee04d"></script>
+        <script src="../../assets/book.js?v=fd6e790bd6d7"></script>
       
     
+
+
   </body>
 </html>

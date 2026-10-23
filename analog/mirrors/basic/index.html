@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
+      <link rel="stylesheet" href="../../../assets/book.css?v=220fa8fdcf37">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2084,14 +2084,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2115,7 +2107,7 @@
   <span class="md-ellipsis">
     
   
-    编辑与资料
+    资料与路线
   
 
     
@@ -2131,7 +2123,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    编辑与资料
+    资料与路线
   
 
           </label>
@@ -2172,34 +2164,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/edition2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版编辑说明
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../about/sources/" class="md-nav__link">
         
   
@@ -2208,90 +2172,6 @@
     
   
     资料来源
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/site/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    网站维护
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首版验证记录
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版验收
   
 
     
@@ -2455,7 +2335,7 @@ r_{in,REF}=\frac1{g_{m1}+g_{ds1}}\simeq\frac1{g_{m1}}.
 <p>输出顺从电压来自 <span class="arithmatex">\(V_O\ge V_{GS2}-V_{TH2}=V_{OV2}\)</span>。输出低于它以后，继续把饱和区的 <span class="arithmatex">\(g_{ds}\)</span> 直线外推没有依据。电流不会突然归零，而会沿三极区关系降低。真实模型的 VDSAT 是工作点诊断量，也不等于“误差小于 5% 的最低电压”；后者必须按指定电流容差检查。</p>
 <h2 id="_2">多花一点面积，会买到什么<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>加长 L 常能减小漏端调制，但如果只加长 L、不增加 W，β 就变小。固定电流时过驱动增大，顺从电压也随之增加。若希望保持近似相同的电流密度和过驱动，应同时增大 W，使 W/L 大致保持不变；代价是面积和栅电容增加。真实阈值、迁移率和短沟道效应也会变，保持 W/L 并不是保持所有参数。</p>
-<p>对于本章 40 µA 的任务，初始取 W/L=2.8/0.28 µm，随后比较 10/1 和 20/2 µm。这三者的几何比都为 10。GF180 nominal 测试中，0.4–2.6 V 内最大电流误差分别约为 <strong>47.6%、3.82%、2.79%</strong>。长沟道候选改善了准确性，但第二次加长只获得较小的进一步改善，面积却从 10 增到 40 µm²。完整选择过程在 <a href="../design/">5.5</a>。</p>
+<p>本章 40 µA 任务比较了短沟道初始方案与两种保持 W/L=10 的长沟道方案。GF180 nominal 结果显示，加长沟道显著减小了窗口内的复制误差；从 1 µm 再加长到 2 µm，改善已较小，几何面积却增至四倍。完整误差、输出电阻与面积对照见 <a href="../design/">5.5</a>。</p>
 <h2 id="_3">器件并不完全相同时<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>在相同源、体偏置、近似相同 VDS 的条件下，令 M2 相对 M1 的小差异为 <span class="arithmatex">\(\Delta\beta\)</span>、<span class="arithmatex">\(\Delta V_{TH}\)</span>，在平方律工作点线性化：</p>
 <div class="arithmatex">\[
@@ -2572,14 +2452,16 @@ r_{in,REF}=\frac1{g_{m1}+g_{ds1}}\simeq\frac1{g_{m1}}.
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
+
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../assets/math-config.js"></script>
-      
-        <script src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
-      
-        <script src="../../../assets/book.js?v=f58388eee04d"></script>
+        <script src="../../../assets/book.js?v=fd6e790bd6d7"></script>
       
     
+
+<script src="../../../assets/math-config.js"></script>
+<script defer src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
+
+
   </body>
 </html>

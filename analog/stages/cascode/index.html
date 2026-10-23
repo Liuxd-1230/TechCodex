@@ -47,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=7c933ee1af57">
+      <link rel="stylesheet" href="../../../assets/book.css?v=220fa8fdcf37">
     
-      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=3e3ef8a8974c">
+      <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2117,14 +2117,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2148,7 +2140,7 @@
   <span class="md-ellipsis">
     
   
-    编辑与资料
+    资料与路线
   
 
     
@@ -2164,7 +2156,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    编辑与资料
+    资料与路线
   
 
           </label>
@@ -2205,34 +2197,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/edition2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版编辑说明
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../about/sources/" class="md-nav__link">
         
   
@@ -2241,90 +2205,6 @@
     
   
     资料来源
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/site/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    网站维护
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    首版验证记录
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/validation-v2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第二版验收
   
 
     
@@ -2501,12 +2381,12 @@ R_{\mathrm{cas}}=\frac{v_o}{i_x}
 =r_{o1}+r_{o2}+g_{t2}r_{o1}r_{o2}.
 \]</div>
 <p>这正是 <a href="../common-source/">源极退化</a> 的输出阻抗公式，把 RS 换成 ro1。我们不必为每个新拓扑重新记一个结果，只要看清测试源问题已经化成什么已知结构。</p>
-<p>输出抬高时，有限 ro2 会试图增加支路电流；电流增量使 x 升高，减小 M2 的 VGS、VBS，抵消刚才的电流增加。因此相同输出电压变化引起的电流变化更小，输出电阻提高。恢复作用由 gmt2 与 ro1 的组合提供。</p>
+<p>输出抬高时，有限 ro2 会试图增加支路电流；电流增量使 x 升高，减小 M2 的 VGS、VBS，抵消刚才的电流增加。因此相同输出电压变化引起的电流变化更小，输出电阻提高。恢复作用由 <span class="arithmatex">\(g_{t2}\)</span> 与 ro1 的组合提供。</p>
 <p>若 <span class="arithmatex">\(g_{t2}r_{o1}\)</span>、<span class="arithmatex">\(g_{t2}r_{o2}\)</span> 都足够大，可取</p>
 <div class="arithmatex">\[
 R_{\mathrm{cas}}\simeq g_{t2}r_{o1}r_{o2}.
 \]</div>
-<p>这是长于“两个电阻串联”的那一项；它来自受控源参与，不是把两只 MOS 当作被动电阻相加。</p>
+<p>乘积项是比“两个电阻串联”多出来的部分：受控源参与了电流平衡，因而能用很小的电流变化承受较大的输出电压变化。</p>
 <h2 id="_2">阻抗提高了，输入跨导会不会也成倍提高<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>不会。为得到端口有效跨导，把输出增量短接交流地，令输入为 vi。这里只短接小信号，直流工作点仍保持原值。用 <span class="arithmatex">\(g_{o1}=1/r_{o1}\)</span>、<span class="arithmatex">\(g_{o2}=1/r_{o2}\)</span> 表示输出电导，在中间节点列 KCL：</p>
 <div class="arithmatex">\[
@@ -2666,14 +2546,16 @@ R_{\mathrm{fold,branch}}
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.top", "toc.follow", "search.highlight", "content.code.copy", "content.action.view"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
+
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../assets/math-config.js"></script>
-      
-        <script src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
-      
-        <script src="../../../assets/book.js?v=f58388eee04d"></script>
+        <script src="../../../assets/book.js?v=fd6e790bd6d7"></script>
       
     
+
+<script src="../../../assets/math-config.js"></script>
+<script defer src="../../../assets/vendor/mathjax/tex-chtml-full.js"></script>
+
+
   </body>
 </html>
