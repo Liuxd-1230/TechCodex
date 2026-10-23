@@ -1,16 +1,18 @@
 """Build one reading site from the repository's original Markdown sources."""
 import argparse
-import os
 from pathlib import Path
 import posixpath
 import re
 import shutil
 import subprocess
 import sys
-from urllib.parse import unquote
+from urllib.parse import quote, unquote, urlsplit, urlunsplit
 
 ROOT=Path(__file__).resolve().parents[1]
 STAGE=ROOT/'build/book-source'
+REPOSITORY_URL='https://github.com/Liuxd-1230/TechCodex'
+IMAGE_SUFFIXES={'.svg','.png'}
+MARKDOWN_LINK=re.compile(r'(!?\[[^\]]*\]\()([^)]+)(\))')
 ROUTES={
     'README.md':'index.md',
     '模拟/README.md':'analog/index.md',
@@ -69,19 +71,71 @@ ROUTES={
 }
 
 
+def repository_url(original):
+    """Return a stable GitHub source URL for a repository-relative path."""
+    path=ROOT/Path(original)
+    kind='tree' if path.is_dir() else 'blob'
+    return f'{REPOSITORY_URL}/{kind}/main/{quote(original,safe="/")}'
+
+
+def _local_destination(url,source):
+    """Return the staged path for a routed page or local image, if any."""
+    parts=urlsplit(url)
+    if parts.scheme or parts.netloc or not parts.path or parts.path.startswith('/'):
+        return None,parts
+    original=posixpath.normpath(posixpath.join(posixpath.dirname(source),unquote(parts.path)))
+    if original in ROUTES:
+        return ROUTES[original],parts
+    if original.startswith('web/assets/'):
+        return original.removeprefix('web/'),parts
+    source_path=ROOT/Path(original)
+    if Path(original).suffix.lower() in IMAGE_SUFFIXES and source_path.is_file():
+        return original,parts
+    return None,parts
+
+
+def _rewrite_url(url,source,target):
+    if url.startswith('#') or url.startswith('/'):
+        return url
+    destination,parts=_local_destination(url,source)
+    if destination is None:
+        if parts.scheme or parts.netloc or not parts.path:
+            return url
+        original=posixpath.normpath(posixpath.join(posixpath.dirname(source),unquote(parts.path)))
+        base=repository_url(original)
+    else:
+        base=posixpath.relpath(destination,posixpath.dirname(target) or '.')
+    return urlunsplit(('', '', base, parts.query, parts.fragment))
+
+
 def rewrite_links(text,source,target):
-    def replace(match):
+    def replace_markdown(match):
         url=match.group(2)
-        if re.match(r'^[a-zA-Z][\w+.-]*:',url) or url.startswith(('#','/')):
-            return match.group(0)
-        path,sep,fragment=url.partition('#')
-        original=posixpath.normpath(posixpath.join(posixpath.dirname(source),unquote(path)))
-        destination=ROUTES.get(original,original)
-        if original.startswith('web/assets/'):
-            destination=original.removeprefix('web/')
-        relative=posixpath.relpath(destination,posixpath.dirname(target) or '.')
-        return match.group(1)+relative+(sep+fragment if sep else '')+')'
-    return re.sub(r'(!?\[[^\]]*\]\()([^)]+)\)',replace,text)
+        return match.group(1)+_rewrite_url(url,source,target)+match.group(3)
+    return MARKDOWN_LINK.sub(replace_markdown,text)
+
+
+def referenced_images(text,source):
+    """Find local images referenced by ordinary Markdown links or images."""
+    urls=(match.group(2) for match in MARKDOWN_LINK.finditer(text))
+    images=set()
+    for url in urls:
+        destination,_=_local_destination(url,source)
+        if destination and (destination in ROUTES.values() or destination.startswith('assets/')):
+            continue
+        if destination and Path(destination).suffix.lower() in IMAGE_SUFFIXES:
+            images.add(destination)
+    return images
+
+
+SEARCH_EXCLUDED_ABOUT={'about/roadmap.md','about/validation-v1.md','about/edition2.md',
+                       'about/site.md','about/validation-v2.md'}
+
+
+def _page_metadata(target):
+    if target not in SEARCH_EXCLUDED_ABOUT:
+        return ''
+    return '---\nsearch:\n  exclude: true\n---\n\n'
 
 
 def prepare():
@@ -92,20 +146,24 @@ def prepare():
     if STAGE.exists():
         shutil.rmtree(STAGE)
     STAGE.mkdir(parents=True)
-    sources=[ROOT/'README.md',ROOT/'LICENSE',ROOT/'requirements.txt',ROOT/'requirements-lock.txt']
-    for directory in ('模拟','docs','models','scripts'):
-        sources.extend(p for p in (ROOT/directory).rglob('*') if p.is_file() and
-                       '__pycache__' not in p.parts and not p.name.endswith(('.pyc','.lint.txt')) and '__on_page' not in p.name)
-    for source in sources:
-        original=source.relative_to(ROOT).as_posix()
-        target=ROUTES.get(original,original)
+    images=set()
+    for original,target in ROUTES.items():
+        source=ROOT/original
+        if not source.is_file():
+            raise FileNotFoundError(f'Mapped reading source is missing: {original}')
         dest=STAGE/target
         dest.parent.mkdir(parents=True,exist_ok=True)
-        if source.suffix=='.md':
-            content=rewrite_links(source.read_text(encoding='utf-8'),original,target)
-            dest.write_text(content,encoding='utf-8',newline='\n')
-        else:
-            shutil.copyfile(source,dest)
+        content=source.read_text(encoding='utf-8')
+        images.update(referenced_images(content,original))
+        content=rewrite_links(content,original,target)
+        dest.write_text(_page_metadata(target)+content,encoding='utf-8',newline='\n')
+    for original in sorted(images):
+        source=ROOT/Path(original)
+        dest=STAGE/Path(original)
+        if not source.resolve().is_relative_to(ROOT.resolve()):
+            raise RuntimeError(f'Image reference escapes repository: {original}')
+        dest.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(source,dest)
     shutil.copytree(ROOT/'web/assets',STAGE/'assets',dirs_exist_ok=True)
 
 

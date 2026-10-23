@@ -64,6 +64,11 @@ async function enhance(root) {
     const p = point(vid, source, tail);
     const zero = point(0, source, tail);
     const tailShift = (p.vt - zero.vt) * 1000;
+    const tailSpan = Math.max(
+      Math.abs(point(extent, source, tail).vt - zero.vt),
+      Math.abs(point(-extent, source, tail).vt - zero.vt)
+    );
+    const haloOpacity = .08 + .27 * (tailSpan ? Math.min(1, Math.abs(tailShift) / tailSpan) : 0);
     const tangent = p.slope * vid;
     const compression = Math.abs(vid) < 1e-12 ? 0 : 100 * (1 - p.delta / tangent);
     text('vid', `${Number(vidControl.value) > 0 ? '+' : ''}${vidControl.value} mV`);
@@ -77,6 +82,8 @@ async function enhance(root) {
     text('vt', `T ${fmt(p.vt)} V`);
     text('it', `IT ${tail} µA`);
     text('circuit-description', `电阻负载 NMOS 差分对。两管体端各自接地，不与公共源节点 T 短接。箭头均向下，粗细表示漏电流大小。${source === 'analytic' ? '平方律实时计算' : 'GF180 预计算数据插值'}：输入 VI1 ${fmt(1.4 + vid / 2)} 伏、VI2 ${fmt(1.4 - vid / 2)} 伏；I1 ${current(p.i1)}、I2 ${current(p.i2)}；VO1 ${fmt(p.o1)} 伏、VO2 ${fmt(p.o2)} 伏；T ${fmt(p.vt)} 伏。理想尾源 ${tail} 微安。`);
+    text('branch-balance', `I1 + I2 = ${current(p.i1 + p.i2)} · IT = ${tail} µA · T−T₀ = ${tailShift > 0 ? '+' : ''}${fmt(tailShift, 1)} mV`);
+    fields['tail-halo'].setAttribute('opacity', fmt(haloOpacity, 3));
     text('tail', `${tail} µA`);
     tailControl.value = String(tail);
     tailControl.disabled = source === 'process';
@@ -96,7 +103,7 @@ async function enhance(root) {
       dot.setAttribute('cy', y(p[branch]));
     }
     fields.cursor.setAttribute('d', `M${x(vid)} 35V235`);
-    text('readout', `ΔI = ${fmt(p.delta * 1e6, 2)} µA　·　VOD = ${fmt(p.o1 - p.o2)} V　·　T 比平衡点升高 ${fmt(tailShift, 1)} mV${extent < .1 ? `　·　零点 dΔI/dVID = ${fmt(p.slope * 1000, 4)} mS` : ''}`);
+    text('readout', `ΔI = ${fmt(p.delta * 1e6, 2)} µA　·　VOD = ${fmt(p.o1 - p.o2)} V${extent < .1 ? `　·　零点 dΔI/dVID = ${fmt(p.slope * 1000, 4)} mS` : ''}`);
     let observation;
     if (vid === 0) {
       observation = `观察：两边各分约 ${fmt(p.i1 * 1e6, 2)} µA。试着向右移，再向左移同样距离：电流互换，T 的变化方向是否也互换？`;

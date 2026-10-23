@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 274" role="img" aria-labelledby="miller-schematic-title miller-schematic-desc">
+  <title id="miller-schematic-title">跨端电容连接两个动态节点</title>
+  <desc id="miller-schematic-desc">输入经 RS 到栅节点，Ci 接地；输出并联 gm vg 受控源、Ro 和 Co；Cgd 跨接栅与输出。蓝箭头定义从栅到输出的电容电流正方向。</desc>
+  <defs><marker id="miller-current-arrow" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#315bc5"/></marker></defs>
+  <g fill="none" stroke="#173c50" stroke-width="1.7" stroke-linejoin="round">
+    <path d="M20 104H44l6-7l10 14l10-14l10 14l6-7H145M145 104H250m8 0H365H470M145 104V144m-13 0h26m-26 8h26m-13 0v54M365 104V126m0 0l-7 6l14 10l-14 10l14 10l-7 6v38M470 104V144m-13 0h26m-26 8h26m-13 0v54M280 104V126M280 126l20 24l-20 24l-20-24ZM280 174V206M280 139v22m-5-6l5 6l5-6"/>
+    <path d="M145 206v7m-10 0h20m-16 6h12m-8 6h4M280 206v7m-10 0h20m-16 6h12m-8 6h4M365 206v7m-10 0h20m-16 6h12m-8 6h4M470 206v7m-10 0h20m-16 6h12m-8 6h4"/>
+    <path d="M250 90V118M258 90V118" class="signal-coupling" stroke="#315bc5" stroke-width="2.5"/>
+    <path d="M210 60H298" stroke="#315bc5" marker-end="url(#miller-current-arrow)"/>
+  </g>
+  <g fill="#173c50" font-size="19"><text x="20" y="27" data-frequency="gate"/><text x="295" y="27" data-frequency="output"/><text x="56" y="84">RS</text><text x="159" y="171">Ci</text><text x="250" y="173" text-anchor="end">gm vg</text><text x="381" y="171">Ro</text><text x="483" y="171">Co</text><text x="254" y="84" text-anchor="middle" fill="#315bc5" data-frequency="capLabel"/><rect x="164" y="28" width="180" height="24" fill="#fff"/><text x="254" y="48" text-anchor="middle" fill="#315bc5">i_gd 的正方向</text></g>
+  <circle cx="145" cy="104" r="4" fill="#126e63"/><circle cx="365" cy="104" r="4" fill="#126e63"/>
+  <text x="260" y="261" text-anchor="middle" fill="#315bc5" font-size="19">i_gd = jω Cgd (vg − vo)</text>
+</svg>

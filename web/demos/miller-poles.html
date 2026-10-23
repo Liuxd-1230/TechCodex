@@ -1,11 +1,12 @@
 <section class="circuit-demo frequency-demo" data-demo="miller-poles" aria-labelledby="miller-demo-title" hidden>
-  <header class="demo-heading"><h3 id="miller-demo-title">一只跨端电容，怎样移动两个极点？</h3><p>先预测：增大 Cgd 后，输入极点和输出极点会一起按比例下降吗？拖动电容，再沿曲线选择一个频率。</p></header>
+  <header class="demo-heading"><h3 id="miller-demo-title">电容两端都在动，输入要多供多少电流？</h3><p>先保持频率为 1 MHz，把 Cgd 归零，再加到 100 fF：栅节点电压为何下降？沿蓝色跨端支路看压差与电流，再看频率响应。</p></header>
   <div class="demo-control"><label for="miller-cap">跨端电容 Cgd <output id="miller-cap-value" for="miller-cap"></output></label><input id="miller-cap" type="range" min="0" max="1000" step="10" value="100" aria-describedby="miller-assumptions"><div class="demo-range-ends"><span>0 fF</span><span>1000 fF = 1 pF</span></div></div>
   <div class="demo-control"><label for="miller-frequency">观察频率 <output id="miller-frequency-value" for="miller-frequency"></output></label><input id="miller-frequency" type="range" min="400" max="1000" step="1" value="600"><div class="demo-range-ends"><span>10 kHz</span><span>对数刻度</span><span>10 GHz</span></div></div>
   <label class="demo-compare"><input id="miller-approx" type="checkbox">叠加固定低频增益的米勒近似</label>
   <div class="frequency-schematic">{{schematic}}</div>
+  <p class="demo-circuit-note" data-frequency="coupling"></p>
   <p class="frequency-node-values" data-frequency="nodeValues"></p>
-  <p class="demo-chart-caption">小信号等效图。vin = 1∠0° 只是归一化；以下数值是每伏输入的稳态相量，不是 1 V 大信号瞬态，也不是电子运动轨迹。</p>
+  <p class="demo-chart-caption">相量按每伏输入归一化。蓝箭头定义从栅到输出的电容电流正方向；幅值与相位由两节点方程计算。</p>
   <div class="demo-chart"><svg viewBox="0 0 600 400" role="img" aria-labelledby="miller-chart-title miller-chart-desc"><title id="miller-chart-title">完整两节点响应与可选米勒近似</title><desc id="miller-chart-desc">固定对数频率轴 10 kHz 至 10 GHz。增益 −80 至 40 dB，相对低频的附加相位 0 至 −270 度。竖线标出观察频率。</desc>
     <defs><clipPath id="miller-plot-clip"><path d="M70 20H570V340H70Z"/></clipPath><clipPath id="miller-gain-clip"><path d="M70 20H570V170H70Z"/></clipPath></defs>
     <g class="demo-grid" fill="none"><path d="M70 20H570M70 70H570M70 120H570M70 170H570M70 220H570M70 260H570M70 300H570M70 340H570M70 20V340M153.33 20V340M236.67 20V340M320 20V340M403.33 20V340M486.67 20V340M570 20V340"/></g>
@@ -14,7 +15,7 @@
   </svg></div>
   <p class="demo-chart-caption">实线：完整两节点解析解。虚线：固定低频增益米勒近似（勾选显示）。相位相对 H(0) 连续展开；完整 CS 还含低频反相的 180°。</p>
   <div class="demo-readout" data-frequency="readout"></div><p class="demo-observation" data-frequency="observation"></p><span class="demo-live" role="status" aria-live="polite" aria-atomic="true" data-frequency="announcement"></span>
-  <details><summary>模型、参数与读图边界</summary><p id="miller-assumptions">实时解析教学模型：gm = 1 mS，RS = 10 kΩ，Ro = 50 kΩ，Ci = Co = 1 pF，源极与体端交流接地。只改变显式 Cgd，未改变工作点或其他电容。没有 GF180 数据、插值或后台 SPICE。精确指该模型的精确解，不代表完整器件。极点由二次分母求根；零点为 +gm/Cgd，Cgd = 0 时无有限前馈零点。</p><p>低频输入电容 Ci+Cgd(1+gmRo) 只是近似的起点。高频输入导纳包含电导项与频率相关的虚部，不能始终看作固定电容。数值与原生 ngspice 线性模型检查见<a href="{{lab}}">实验资源</a>。</p></details>
+  <details><summary>模型、参数与输入导纳</summary><p id="miller-assumptions">实时解析教学模型：gm = 1 mS，RS = 10 kΩ，Ro = 50 kΩ，Ci = Co = 1 pF，源极与体端交流接地。只改变显式 Cgd，工作点和其他电容固定；结果为该线性模型的精确解。极点由二次分母求根；零点为 +gm/Cgd，Cgd = 0 时无有限前馈零点。这里使用解析计算，GF180 的实例见后续 OTA 实验。</p><p data-frequency="admittance"></p><p>低频输入电容 Ci+Cgd(1+gmRo) 用来估计输入加载。高频输入导纳包含电导项与频率相关的虚部。数值与原生 ngspice 线性模型检查见<a href="{{lab}}">实验资源</a>；此处按小信号相量计算，不能用来判断 1 V 大信号阶跃或电子的运动轨迹。</p></details>
 </section>
 <p class="demo-loading" hidden>交互模块未加载；本页的静态原理图、曲线与推导仍可完整阅读。</p>
 <script type="module" src="{{module}}"></script>

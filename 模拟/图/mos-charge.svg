@@ -3,7 +3,7 @@
 <title id="mos-charge-title">从耗尽到反型</title><desc id="mos-charge-desc">正栅压排斥空穴，留下固定受主电荷；继续升高栅压后，表面形成可移动的电子反型层。</desc><defs>
       <style>#mos-charge-root { color: #173c50; font-family: "Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif; }
       #mos-charge-root .diagram-container { max-width:420px;min-width:0;margin:auto;overflow-x:auto }
-      #mos-charge-root text { font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif }
+      #mos-charge-root text { font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;stroke:none }
       @media print {
 #mos-charge-root .diagram-container { overflow:visible }
 }</style><marker id="mos-charge-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#566976"/></marker><marker id="mos-charge-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#126e63"/></marker><marker id="mos-charge-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#315bc5"/></marker></defs>

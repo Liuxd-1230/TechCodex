@@ -6,8 +6,8 @@
     <div class="demo-control"><label for="noise-low">积分下限 <output for="noise-low" data-noise="low"></output></label><input id="noise-low" type="range" min="0" max="595" step="5" value="200" aria-describedby="noise-band-help"></div>
     <div class="demo-control"><label for="noise-high">积分上限 <output for="noise-high" data-noise="high"></output></label><input id="noise-high" type="range" min="5" max="600" step="5" value="500" aria-describedby="noise-band-help"></div>
   </div>
-  <p id="noise-band-help" class="demo-chart-caption">对数刻度，1 Hz–1 MHz。两边界保持至少 0.05 decade 间隔；频带不超出数据范围。</p>
-  <div class="noise-result"><span>所选频带的输入参考噪声</span><strong data-noise="rms"></strong><span data-noise="fraction"></span></div>
+  <p id="noise-band-help" class="demo-chart-caption">拖动改变观察频带，频谱源保持不变。对数刻度 1 Hz–1 MHz；上下限至少相隔 0.05 decade。</p>
+  <div class="noise-result"><span>所选频带的输入参考噪声</span><strong data-noise="rms"></strong><span data-noise="fraction"></span><span data-noise="comparison"></span></div>
   <div class="demo-chart noise-chart"><svg viewBox="0 0 620 405" role="img" aria-labelledby="noise-chart-title noise-chart-desc"><title id="noise-chart-title">噪声幅度谱密度与每十倍频程方差</title><desc id="noise-chart-desc">上图为对数 ASD，不能从视觉面积读取方差。下图为每十倍频程方差，纵轴线性；选中区域的面积对应积分方差。频率一赫兹到一兆赫兹。</desc>
     <g class="demo-grid" data-noise="grid"></g><g fill="#526974" font-size="18" data-noise="ticks"></g>
     <g fill="#315bc5" opacity=".08"><path data-noise="band"/></g>

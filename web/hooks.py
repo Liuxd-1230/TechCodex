@@ -7,7 +7,7 @@ from urllib.parse import quote
 from mkdocs.utils import get_relative_url
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from book import ROUTES
+from book import ROUTES, repository_url
 
 
 def on_page_markdown(markdown,page,config,files):
@@ -33,18 +33,7 @@ def on_page_content(html,page,config,files):
     marker='<!-- interactive: miller-poles -->'
     if marker in html:
         template=(Path(__file__).parent/'demos/miller-poles.html').read_text(encoding='utf-8')
-        schematic=BeautifulSoup((Path(__file__).resolve().parents[1]/'模拟/图/frequency-cs-small.svg').read_text(encoding='utf-8'),'html.parser')
-        for style in schematic.select('style'):style.decompose()
-        for label in schematic.select('text'):
-            key={'vin → RS → vg':'gate','vo':'output','Cf = Cgd':'capLabel'}.get(label.get_text())
-            if key:label['data-frequency']=key
-            if float(label.get('y',0))>=300:label.decompose()
-        # html.parser lowercases SVG attributes; update the existing key rather
-        # than serializing two differently-cased viewBox attributes.
-        schematic.svg['viewbox']='0 0 680 270';schematic.svg['height']='270'
-        schematic.svg.title['id']='miller-schematic-title';schematic.svg.desc['id']='miller-schematic-desc'
-        schematic.svg['aria-labelledby']='miller-schematic-title miller-schematic-desc'
-        template=template.replace('{{schematic}}',str(schematic.svg))
+        template=template.replace('{{schematic}}',(Path(__file__).parent/'demos/miller-schematic.svg').read_text(encoding='utf-8'))
         for key,target in {'lab':'labs/frequency/','module':'assets/demos/miller-poles.js'}.items():
             template=template.replace('{{'+key+'}}',get_relative_url(target,page.url))
         html=html.replace(marker,template)
@@ -55,12 +44,12 @@ def on_page_content(html,page,config,files):
         template=(Path(__file__).parent/'demos/current-steering.html').read_text(encoding='utf-8')
         targets={
             'lab':'labs/differential/',
-            'csv':'模拟/实验/差分对/data/ideal-steering-sweep.csv',
             'payload':'assets/demos/steering-data.json',
             'module':'assets/demos/current-steering.js',
         }
         for key,target in targets.items():
             template=template.replace('{{'+key+'}}',get_relative_url(target,page.url))
+        template=template.replace('{{csv}}',repository_url('模拟/实验/差分对/data/ideal-steering-sweep.csv'))
         html=html.replace(marker,template)
     marker='<!-- interactive: mirror-compliance -->'
     if marker in html:
@@ -140,7 +129,9 @@ def on_page_content(html,page,config,files):
 def on_post_page(output,page,config):
     # Stable source filenames remain readable in GitHub. Content hashes prevent
     # a newly deployed reading system being paired with a cached previous CSS.
-    for name in ('book.css','book.js','demos/circuit-demo.css'):
+    for name in ('book.css','book.js','demos/circuit-demo.css',
+                 'demos/current-steering.js','demos/mirror-compliance.js',
+                 'demos/miller-poles.js','demos/noise-band.js'):
         path=Path(__file__).parent/'assets'/name
         url=get_relative_url('assets/'+name,page.url)
         digest=hashlib.sha256(path.read_bytes()).hexdigest()[:12]

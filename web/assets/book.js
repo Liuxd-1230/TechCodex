@@ -2,6 +2,18 @@
 document.querySelectorAll('.md-content figure img').forEach(img => {
   img.decoding = 'async';
 });
+// Keep the narrow reading area clear while manipulating a circuit.
+const demos=document.querySelectorAll('.circuit-demo');
+if(demos.length){
+  const visible=new Set();
+  const observer=new IntersectionObserver(entries=>{
+    for(const entry of entries){
+      if(entry.isIntersecting)visible.add(entry.target);else visible.delete(entry.target);
+    }
+    document.body.classList.toggle('book-in-demo',visible.size>0);
+  });
+  demos.forEach(demo=>observer.observe(demo));
+}
 const progress=document.querySelector('.book-progress'),article=document.querySelector('article');
 if(progress&&article){
   let pending=false;

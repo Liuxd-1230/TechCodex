@@ -30,5 +30,6 @@ body{background:var(--book-margin);caret-color:#126e63;scrollbar-color:#8ca8b5 #
 /* Keep Material's native action away from chapter and experiment headings. */
 .md-top{top:auto!important;bottom:.8rem;left:auto;right:.8rem;margin:0;transform:none;max-width:calc(100vw - 1.6rem);min-height:2.2rem;border:1px solid var(--book-rule);border-radius:4px;color:#173c50;background:#fff;box-shadow:0 2px 12px #173c5014}
 .md-top:focus-visible{outline:2px solid var(--book-blue);outline-offset:3px}
+@media(max-width:44.984em){body.book-in-demo .md-top{display:none}}
 @media(max-width:374px){.md-typeset .diagram-scroll-hint{display:block}}
 @media print{.md-typeset .figure-detail,.md-typeset .diagram-scroll-hint{display:none}.md-typeset .diagram-viewport{overflow:visible}.md-typeset .diagram-viewport>a,.md-typeset .concept-figure img{min-width:0}}

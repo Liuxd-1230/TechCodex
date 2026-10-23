@@ -1,4 +1,12 @@
 /* The diagram is the experiment. Colours identify branches, never success/failure. */
+.demo-tail-halo{fill:#126e63;stroke:none;transition:opacity .15s ease-out}
+.demo-device-outline{fill:none;stroke:#9b5b18;stroke-width:2;opacity:0;transition:opacity .15s ease-out,stroke .15s ease-out;pointer-events:none}
+.demo-device-outline[data-state="invalid"]{opacity:1;stroke-dasharray:5 3}
+.md-typeset .demo-circuit-note,.md-typeset .demo-device-state{font-size:.75rem;line-height:1.8;color:#173c50;margin:.7rem 0}
+.demo-device-state{font-variant-numeric:tabular-nums}
+.frequency-schematic .signal-coupling{transition:opacity .15s ease-out,stroke-width .15s ease-out}
+.frequency-demo:focus-within .signal-coupling{stroke-width:3.5}
+@media(prefers-reduced-motion:reduce){.demo-tail-halo,.demo-device-outline,.frequency-schematic .signal-coupling{transition:none}}
 .frequency-schematic svg {display:block;width:100%;height:auto;}
 .frequency-schematic text {font-family:var(--md-text-font);stroke:none;}
 .frequency-schematic path,.frequency-schematic circle {vector-effect:non-scaling-stroke;}

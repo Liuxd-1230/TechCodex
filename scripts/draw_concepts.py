@@ -33,7 +33,7 @@ def page(slug, title, desc, height, body):
     markers = ''.join(f'<marker id="{name}" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="{C[color]}"/></marker>' for name, color in [('arrow','muted'),('arrow-accent','accent'),('arrow-link','link')])
     return f'''<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title>
-<style>body{{margin:0;padding:16px;background:{C['paper']};color:{C['ink']};font-family:{SANS}}}.diagram-container{{max-width:420px;min-width:0;margin:auto;overflow-x:auto}}svg{{display:block;width:100%;min-width:320px}}svg text{{font-family:{SANS}}}@media print{{.diagram-container{{overflow:visible}}svg{{min-width:0}}}}</style></head><body><main class="diagram-container">
+<style>body{{margin:0;padding:16px;background:{C['paper']};color:{C['ink']};font-family:{SANS}}}.diagram-container{{max-width:420px;min-width:0;margin:auto;overflow-x:auto}}svg{{display:block;width:100%;min-width:320px}}svg text{{font-family:{SANS};stroke:none}}@media print{{.diagram-container{{overflow:visible}}svg{{min-width:0}}}}</style></head><body><main class="diagram-container">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 {height}" role="img" aria-labelledby="{slug}-title {slug}-desc">
 <title id="{slug}-title">{title}</title><desc id="{slug}-desc">{desc}</desc><defs>{markers}</defs>
 <rect width="320" height="{height}" fill="{C['paper']}"/>
@@ -66,22 +66,26 @@ def mos():
 
 
 def follower():
-    b = text(160,24,'输入抬高后',18,weight=600)
-    b += text(160,48,'什么让输出停下来？',18,weight=600)
-    # Causal arrows are explanatory relationships, not electrical wires.
-    b += f'<g fill="none" stroke="{C["muted"]}" stroke-width="1.4" marker-end="url(#arrow)"><path d="M184 132V172"/><path d="M184 236V276"/><path d="M184 340V380"/></g>'
-    b += f'<path d="M72 412H32Q24 412 24 404V108Q24 100 32 100H70" fill="none" stroke="{C["accent"]}" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrow-accent)"/>'
-    nodes=[(68,'vgs = vi − vo','输入阶跃，vo 起初不变'),(172,'沟道电流增加','ΔiD ≈ gm Δvgs'),(276,'净电流给输出电容充电','偏置源仍取原来的电流'),(380,'源极输出 vo 上升','反过来减小 Δvgs')]
-    for n,(y,label,sub) in enumerate(nodes):
-        b += rect(72,y,224,64,'accent-tint' if n==3 else 'paper','accent' if n==3 else 'muted',6)
-        b += text(184,y+27,label,16,weight=600)+text(184,y+49,sub,13,'muted')
-    b += text(160,488,'输入固定后：推动电流逐渐减小',15,'accent',weight=600)
-    b += text(160,516,'直到流入与流出重新平衡',15)
-    b += f'<line x1="24" y1="544" x2="296" y2="544" stroke="{C["rule"]}"/>'
-    b += text(24,572,'实线：最初的因果方向',13,'muted','start')
-    b += text(24,596,'虚线：输出对栅源电压的反作用',13,'muted','start')
-    b += text(24,624,'饱和区小扰动；暂忽略体效应与 ro',13,'muted','start')
-    return page('sf-feedback','源跟随器的局部纠偏路径','栅源电压增量增加沟道电流，净电流给输出电容充电，源极抬高又减小栅源电压增量，直至电流重新平衡。',644,b)
+    # Reuse the same four-terminal electrical vocabulary as the book. Diagram
+    # Design governs the causal annotation; the wires remain real circuit nets.
+    from circuit_art import Canvas
+    c=Canvas('源跟随器的充电与反作用',320,504)
+    m=c.mos(100,164,'M1')
+    c.line(130,64,*m['d']);c.text(130,52,'VDD',16,anchor='middle')
+    c.text(24,140,'vi ↑',17,color=C['accent'])
+    c.wire(m['b'],(210,164),(210,200),color='#a46723');c.ground(210,200,'#a46723')
+    c.line(*m['s'],130,248);c.node(130,248)
+    c.wire((130,248),(248,248),(248,264));c.cap(248,264);c.ground(248,324)
+    c.text(268,300,'CL',15);c.text(248,234,'vo ↑',17,color=C['accent'],anchor='middle')
+    c.line(130,248,130,276);c.current(130,276);c.ground(130,360);c.text(166,323,'IB 不变',15)
+    c.arrow((162,94),(162,128),C['accent']);c.text(182,104,'iD 增加',15,color=C['accent'])
+    c.arrow((164,236),(218,236),C['link'])
+    c.text(24,426,'多出的电流流进 CL，输出升高。',15)
+    c.text(24,454,'vo ↑ → vgs = vi − vo 减小',15,color=C['accent'])
+    c.text(24,486,'直到 iD 回到 IB，净充电电流为零。',14)
+    b=text(160,26,'电流怎样把源极抬高？',17,weight=600)
+    b+=f'<g fill="none" stroke="{C["ink"]}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+''.join(c.parts)+'</g>'
+    return page('sf-feedback','源跟随器的充电与反作用','NMOS 源极连接偏置电流源与输出电容，输入抬高使多出的漏电流给电容充电，源极升高又减小栅源电压增量。',504,b)
 
 
 if __name__ == '__main__':

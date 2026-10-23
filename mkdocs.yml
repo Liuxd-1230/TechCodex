@@ -7,6 +7,12 @@ edit_uri: blob/main/
 docs_dir: build/book-source
 site_dir: site
 use_directory_urls: true
+not_in_nav: |
+  /about/roadmap.md
+  /about/validation-v1.md
+  /about/edition2.md
+  /about/site.md
+  /about/validation-v2.md
 theme:
   name: material
   language: zh
@@ -47,8 +53,6 @@ extra_css:
   - assets/book.css
   - assets/demos/circuit-demo.css
 extra_javascript:
-  - assets/math-config.js
-  - assets/vendor/mathjax/tex-chtml-full.js
   - assets/book.js
 nav:
   - 阅读起点: index.md
@@ -106,11 +110,7 @@ nav:
     - 电流镜与 OTA 实验: labs/mirrors.md
     - 频率响应实验: labs/frequency.md
     - 噪声实验: labs/noise.md
-  - 编辑与资料:
+  - 资料与路线:
     - 知识覆盖与后续章节: about/curriculum.md
-    - 第二版编辑说明: about/edition2.md
     - 资料来源: about/sources.md
-    - 网站维护: about/site.md
-    - 首版验证记录: about/validation-v1.md
-    - 第二版验收: about/validation-v2.md
 copyright: 原创文字与图示 © TechCodex · 开源实验可独立复现

@@ -7,6 +7,7 @@ from urllib.parse import unquote, urlsplit
 from bs4 import BeautifulSoup
 from export_steering_demo import package, OUT
 from export_mirror_demo import package as mirror_package, OUT as MIRROR_OUT
+from book import ROUTES, SEARCH_EXCLUDED_ABOUT
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / 'site'
@@ -14,7 +15,42 @@ errors = []
 documents = {p: BeautifulSoup(p.read_text(encoding='utf-8'), 'html.parser')
              for p in SITE.rglob('*.html')}
 checked = 0
+
+def output_for_route(route):
+    source = Path(route)
+    if source.name == 'index.md':
+        return SITE / source.parent / 'index.html'
+    return SITE / source.with_suffix('') / 'index.html'
+
+for route in ROUTES.values():
+    if not output_for_route(route).is_file():
+        errors.append(f'Mapped reading route missing from site: {route}')
+
+for suffix in ('.csv', '.py', '.cir', '.ngspice', '.spice', '.lib'):
+    if any(SITE.rglob(f'*{suffix}')):
+        errors.append(f'Unpublished source artifact found in site: *{suffix}')
+for directory in ('models', 'scripts'):
+    if (SITE / directory).exists():
+        errors.append(f'Repository source directory leaked into site: {directory}')
+for name in ('LICENSE', 'requirements.txt', 'requirements-lock.txt'):
+    if (SITE / name).exists():
+        errors.append(f'Repository root file leaked into site: {name}')
+
+search_index_path = SITE / 'search/search_index.json'
+if not search_index_path.is_file():
+    errors.append('Search index is missing')
+else:
+    search_locations = {entry.get('location', '').split('#', 1)[0].strip('/')
+                        for entry in json.loads(search_index_path.read_text(encoding='utf-8')).get('docs', [])}
+    for route in SEARCH_EXCLUDED_ABOUT:
+        location = route.removesuffix('.md').removeprefix('about/')
+        if f'about/{location}' in search_locations:
+            errors.append(f'Management page was included in search: {route}')
+
 for path, soup in documents.items():
+    math_script=soup.find('script',src=lambda value:value and 'tex-chtml-full.js' in value)
+    if bool(soup.select('.arithmatex')) != bool(math_script):
+        errors.append(f'{path.relative_to(SITE)}: math runtime must match actual math content')
     for element in soup.select('[href], [src]'):
         value = element.get('href') or element.get('src')
         url = urlsplit(value)

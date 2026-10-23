@@ -1,7 +1,7 @@
 <section class="circuit-demo" data-demo="current-steering" aria-labelledby="steering-title" hidden>
   <header class="demo-heading">
     <h3 id="steering-title">同一份尾电流，怎样在左右之间转移？</h3>
-    <p><strong>先预测：</strong>保持输入平均值不变，左栅升高、右栅降低。T 会一直停在原处吗？</p>
+    <p><strong>先预测：</strong>切到零点附近视角，依次试 +40 mV、−40 mV。两支路电流怎样互换？T 相对零点的移动方向会相同还是相反？</p>
   </header>
   <details class="demo-options">
   <summary>模型选择与曲线对照</summary>
@@ -26,6 +26,7 @@
         <title id="steering-circuit-title">电阻负载 NMOS 差分对</title>
         <desc id="steering-circuit-desc" data-field="circuit-description">两只 NMOS 源端共享 T，体端分别接地；两个漏端经 20 千欧电阻接 3.3 伏。箭头均向下，粗细表示漏电流大小。</desc>
         <defs><marker id="steering-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="context-stroke"/></marker></defs>
+        <circle class="demo-tail-halo" cx="245" cy="255" r="12" data-field="tail-halo" aria-hidden="true" opacity=".08"/>
         <g class="demo-wire" fill="none" stroke-width="2" stroke-linejoin="round">
           <path d="M145 45H345M145 45V60m0 0l-7 6l14 10l-14 10l14 10l-7 6v25M345 45V60m0 0l-7 6l14 10l-14 10l14 10l-7 6v25"/>
           <!-- Four-terminal NMOS. Broken channels and separate bulk-to-ground leads. -->
@@ -51,6 +52,7 @@
         <path class="demo-current demo-left" d="M52 195V220" data-current="i1" marker-end="url(#steering-arrow)"/>
         <path class="demo-current demo-right" d="M453 195V220" data-current="i2" marker-end="url(#steering-arrow)"/>
       </svg>
+      <p class="demo-circuit-note" data-field="branch-balance"></p>
     </div>
     <div class="demo-chart">
       <svg viewBox="0 0 480 340" role="img" aria-labelledby="steering-plot-title steering-plot-desc">
