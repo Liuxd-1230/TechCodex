@@ -74,6 +74,19 @@ else:
     if '{{' in str(demo):
         errors.append('Demo asset URL placeholders were not resolved')
 
+miller_page=documents[SITE/'analog/frequency/miller/index.html']
+miller=miller_page.select_one('[data-demo="miller-poles"]')
+if miller is None or not miller.has_attr('hidden'):
+    errors.append('Miller demo must enhance progressively')
+else:
+    for control in miller.select('input[type="range"]'):
+        if not miller.find('label',attrs={'for':control.get('id')}):errors.append('Miller range lacks label')
+    if len(miller.select('input[type="range"]'))!=2:errors.append('Miller controls missing')
+    for svg in miller.select('svg'):
+        if not svg.find('title') or not svg.find('desc'):errors.append('Miller SVG lacks accessible description')
+    if '{{' in str(miller):errors.append('Miller template unresolved')
+    if not miller_page.select_one('figure img[src*="frequency-miller-response.svg"]'):errors.append('Miller static fallback missing')
+    if not miller.select_one('[role="status"]'):errors.append('Miller lacks live observation')
 vendor = ROOT / 'web/assets/vendor/mathjax'
 mirror_expected=mirror_package().encode('utf-8')
 if MIRROR_OUT.read_bytes()!=mirror_expected or (SITE/'assets/demos/mirror-data.json').read_bytes()!=mirror_expected:

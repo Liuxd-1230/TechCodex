@@ -1,5 +1,9 @@
 # 资料、模型与工具来源
 
+第六阶段查证于 2026-10-23：[McGraw Hill 第二版出版页](https://www.mheducation.com/highered/product/Design-of-Analog-CMOS-Integrated-Circuits-Razavi.html) 与 [NDL 收录的出版方 JPRO 详细目录](https://ndlsearch.ndl.go.jp/books/R100000137-I62131036100010000000) 交叉确认第 6 章 §6.1～6.7 的全部主要拓扑及 §6.8 EET、§6.9 ZVTC、§6.10 米勒对偶。NDL 条目为原著第二版日译本，来源与版本明确；未声称逐页取得英文原书全文。米勒、节点极点关联、差分被动/主动负载与单/多极点的覆盖映射见[知识覆盖](知识覆盖.md)。
+
+[MIT 6.012 官方 Lecture 21](https://web.mit.edu/6.012/FALL00/www/handouts/lec21.pdf) 用于交叉检查共源频响、输入电流与米勒概念；[官方课程目录](https://web.mit.edu/6.012/) 进一步提供电压增益频响与时间常数课程位置。正文推导、两节点交互、图示与工艺实验独立完成，未复制教材图文。引文只用于来源定位，不以第三方转载全文代替授权资料。
+
 第二版教学组织参考、阅读方式及独立核验原则见 [编辑说明](第二版编辑说明.md)。器件与单级放大器的补充一手资料包括 [MIT 6.012 官方讲义目录](https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-spring-2009/pages/lecture-notes/) 和 [Clif Fonstad 的单管放大级讲义](https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2009/18a2d9a52234f9e962d74b5599759767_MIT6_012F09_lec18.pdf)，用于交叉核对端口模型、体效应与电容近似；没有复制讲义图文。
 
 查证日期：2026-10-21。书籍作为理论主线，不声称已在线取得或逐页核对原书全文。

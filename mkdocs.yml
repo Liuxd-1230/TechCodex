@@ -81,12 +81,22 @@ nav:
       - 5.3 有源镜与五管 OTA: analog/mirrors/active-load.md
       - 5.4 偏置与启动: analog/mirrors/biasing.md
       - 5.5 从指标到电路: analog/mirrors/design.md
+    - 第 6 章 · 频率响应:
+      - analog/frequency/index.md
+      - 6.1 节点、电荷与极点: analog/frequency/nodes.md
+      - 6.2 米勒效应与共源级: analog/frequency/miller.md
+      - 6.3 源跟随与共栅: analog/frequency/follower-gate.md
+      - 6.4 共源共栅: analog/frequency/cascode.md
+      - 6.5 差分结构的动态: analog/frequency/differential.md
+      - 6.6 五管 OTA 进入频域: analog/frequency/ota.md
+      - 6.7 近似与设计判断: analog/frequency/methods.md
   - 实验与复现:
     - labs/index.md
     - Windows 环境: labs/windows.md
     - GF180MCU 模型: labs/models.md
     - 差分对实验: labs/differential.md
     - 电流镜与 OTA 实验: labs/mirrors.md
+    - 频率响应实验: labs/frequency.md
   - 编辑与资料:
     - 知识覆盖与后续章节: about/curriculum.md
     - 第二版编辑说明: about/edition2.md

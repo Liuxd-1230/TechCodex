@@ -1,0 +1,18 @@
+{
+  "intent": "Chapter 6 requirements fixed before frequency-domain simulation; nominal feasibility study",
+  "baseline": "Chapter 5 OTA: preserve every W/L, Rref, input common mode and supply",
+  "supply_V": 3.3,
+  "temperature_C": 27,
+  "input_common_V": 1.4,
+  "target": {
+    "load_F": 1e-12,
+    "minimum_dc_gain_V_V": 150,
+    "minimum_3dB_bandwidth_Hz": 100000,
+    "maximum_supply_power_W": 0.00045
+  },
+  "load_comparison_F": [0, 1e-12, 5e-12],
+  "input_width_comparison_um": [10, 20],
+  "frequency_Hz": [1, 10000000000],
+  "points_per_decade": 80,
+  "scope": "Open-loop differential-input, right single-ended output. Ideal zero-impedance differential source. No feedback stability claim. No layout parasitics."
+}

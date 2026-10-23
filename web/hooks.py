@@ -18,6 +18,24 @@ def on_page_markdown(markdown,page,config,files):
 
 
 def on_page_content(html,page,config,files):
+    marker='<!-- interactive: miller-poles -->'
+    if marker in html:
+        template=(Path(__file__).parent/'demos/miller-poles.html').read_text(encoding='utf-8')
+        schematic=BeautifulSoup((Path(__file__).resolve().parents[1]/'模拟/图/frequency-cs-small.svg').read_text(encoding='utf-8'),'html.parser')
+        for style in schematic.select('style'):style.decompose()
+        for label in schematic.select('text'):
+            key={'vin → RS → vg':'gate','vo':'output','Cf = Cgd':'capLabel'}.get(label.get_text())
+            if key:label['data-frequency']=key
+            if float(label.get('y',0))>=300:label.decompose()
+        # html.parser lowercases SVG attributes; update the existing key rather
+        # than serializing two differently-cased viewBox attributes.
+        schematic.svg['viewbox']='0 0 680 270';schematic.svg['height']='270'
+        schematic.svg.title['id']='miller-schematic-title';schematic.svg.desc['id']='miller-schematic-desc'
+        schematic.svg['aria-labelledby']='miller-schematic-title miller-schematic-desc'
+        template=template.replace('{{schematic}}',str(schematic.svg))
+        for key,target in {'lab':'labs/frequency/','module':'assets/demos/miller-poles.js'}.items():
+            template=template.replace('{{'+key+'}}',get_relative_url(target,page.url))
+        html=html.replace(marker,template)
     # Only this explicit marker opts a chapter into a demo. Native Markdown keeps
     # its ordinary static diagrams; JS or data failures never remove that text.
     marker='<!-- interactive: differential-steering -->'
