@@ -27,7 +27,7 @@ def main():
     fig,axs=plt.subplots(2,1,figsize=(7.3,6.7),sharex=True)
     for label,h,color,style in curves:
         axs[0].semilogx(f,20*np.log10(abs(h)),color=color,ls=style,label=label)
-        axs[1].semilogx(f,np.unwrap(np.angle(h/h[0]))*180/np.pi,color=color,ls=style)
+        axs[1].semilogx(f,np.unwrap(np.angle(h/(-A)))*180/np.pi,color=color,ls=style)
     axs[0].set_ylim(-85,40);axs[0].set_ylabel('Voltage gain (dB)');axs[0].legend()
     axs[1].set_ylabel('Additional phase (deg)');axs[1].set_xlabel('Frequency (Hz)');axs[1].set_yticks([0,-90,-180,-270])
     for ax in axs:ax.grid(alpha=.18);ax.set_xlim(1e4,1e10)
