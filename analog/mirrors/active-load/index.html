@@ -47,7 +47,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=220fa8fdcf37">
+      <link rel="stylesheet" href="../../../assets/book.css?v=d783f6b192e5">
     
       <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
@@ -57,6 +57,8 @@
 
     
     
+
+
 
 
 
@@ -2098,6 +2100,8 @@
       
         
       
+        
+      
     
     
     
@@ -2158,6 +2162,34 @@
     
   
     知识覆盖与后续章节
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2～7 章教例地图
   
 
     
@@ -2331,6 +2363,9 @@
 i_{inj}\simeq \frac{g_{mn}v_{id}}2-\left(-\frac{g_{mn}v_{id}}2\right)
 =g_{mn}v_{id}.
 \]</div>
+<p>先把输出短路、暂时固定 <span class="arithmatex">\(v_o=0\)</span>，沿着各支路追踪增量方向：</p>
+<figure id="figure-ota-current-sum"><p><a aria-label="放大五管OTA右输出支路，观察M4多供与M2少取的增量电流合成 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/ota-current-sum.svg" title="打开原图，查看细节"><img alt="放大五管OTA右输出支路，观察M4多供与M2少取的增量电流合成" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/ota-current-sum.svg"/></a></p><figcaption>图 5.3-3：放大图 5.3-1 的 M4、M2 支路，X 与 T 仍接原电路的镜像栅与公共尾节点。NMOS 体接地，PMOS 体接 VDD。箭头表示电流增量；M2 向上表示少取电流，总漏流仍向下。数值取 <span class="arithmatex">\(v_o=0\)</span> 的解析条件；输出移动后还会产生恢复电流，<span class="arithmatex">\(+0.6\,\mathrm{\mu A}\)</span> 是驱动增量，不是 DC 稳态电流。 <a aria-label="放大五管OTA右输出支路，观察M4多供与M2少取的增量电流合成 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/ota-current-sum.svg">查看原图</a></figcaption></figure>
+
 <p>若暂接一个输出电容，<span class="arithmatex">\(C_L\,d v_o/dt=i_{inj}\)</span>，所以正差分输入使右输出上升。这与原先“左共源输出反相”的说法不冲突：现在读的是右端，而且左电流经过了一个有源镜。</p>
 <p>不要把这一过程解释成 M4 的漏端短接 M3，或两只电流源永远完全相等。只有栅极相连；电压改变后，两只管仍各自服从自己的输出特性。</p>
 <h2 id="_2">先找跨导，再找输出电阻<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
@@ -2501,7 +2536,7 @@ V_T+V_{DSAT2}\le V_O\le V_{DD}-V_{SD,sat4}.
 
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../assets/book.js?v=fd6e790bd6d7"></script>
+        <script src="../../../assets/book.js?v=29fab0b6e4cc"></script>
       
     
 

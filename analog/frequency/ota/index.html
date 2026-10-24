@@ -47,7 +47,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=220fa8fdcf37">
+      <link rel="stylesheet" href="../../../assets/book.css?v=d783f6b192e5">
     
       <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
@@ -58,6 +58,10 @@
     
     
 
+
+
+
+<link rel="stylesheet" href="../../../assets/demos/ota-frequency.css?v=832f3df5bbc5">
 
 
   </head>
@@ -2098,6 +2102,8 @@
       
         
       
+        
+      
     
     
     
@@ -2158,6 +2164,34 @@
     
   
     知识覆盖与后续章节
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2～7 章教例地图
   
 
     
@@ -2365,6 +2399,68 @@
 <p>直流增益没变，因为静态电流路径没变；输出电压每秒需要搬运的电荷随 CL 增多，响应更早衰减。−3 dB 是相对低频幅度降低到 <span class="arithmatex">\(1/\sqrt2\)</span>；单位增益频率则是幅度降到 1 V/V。两者相差约两百倍，与较高的直流增益有关。</p>
 <p>对于真正单极点模型，<span class="arithmatex">\(f_u=f_p\sqrt{A_0^2-1}\approx A_0f_p\)</span>。此处 <span class="arithmatex">\(206\times232\)</span> kHz 约为 47.8 MHz，接近实际 47.4 MHz，但高频镜节点与其他路径已经开始贡献相位。不能把乘积公式升级成所有多极点系统的恒等式。</p>
 <p>开环输出在 <span class="arithmatex">\(f_u\)</span> 处的相位也不等于某个已经接好的闭环系统的相位裕度。连接反馈后会改变激励、加载和环路定义；本章不据此宣称闭环稳定或某一闭环带宽。</p>
+<p>先预测：把负载从 1 pF 增至 5 pF，哪项指标先不满足目标？若将所有 MOS 的宽度加倍并把 RREF 减半，带宽提高后，功耗还在预算内吗？下面的比较只切换已存档的仿真点，不在不同尺寸或偏置之间插值。</p>
+<section aria-labelledby="ota-frequency-title" class="circuit-demo ota-frequency-demo" data-demo="ota-frequency" data-payload="../../../assets/demos/ota-frequency-data.json" hidden="">
+<header class="demo-heading">
+<h3 id="ota-frequency-title">把设计选择放回真实频响曲线</h3>
+<p>基准是第 5 章的五管核心与参考支路，右输出加 1 pF。下面只切换已存档的 GF180 仿真点，不在不同尺寸或偏置之间插值。</p>
+</header>
+<div class="ota-frequency-controls">
+<label for="ota-frequency-purpose">比较内容
+      <select id="ota-frequency-purpose">
+<option value="load">改变输出负载</option>
+<option value="design">固定 1 pF，改变设计</option>
+</select>
+</label>
+<label for="ota-frequency-candidate">比较候选
+      <select id="ota-frequency-candidate">
+<option value="ota-5p">负载 · 5 pF</option>
+</select>
+</label>
+</div>
+<div class="ota-frequency-chart">
+<svg aria-labelledby="ota-frequency-chart-title ota-frequency-chart-desc" role="img" viewbox="0 0 600 630">
+<title id="ota-frequency-chart-title">五管 OTA 的开环增益与相位响应</title>
+<desc data-ota-frequency="chart-desc" id="ota-frequency-chart-desc">曲线显示窗口为 100 Hz 至 1 GHz；原始开环 AC 扫描为 1 Hz 至 10 GHz，全部频点保留，窗口外部分由图框裁切。上图是 v(o) 对差分输入的开环增益 dB，下图是复数响应按频率递增展开的开环相位，不是闭环相位裕度。蓝色虚线为 1 pF 基准，绿色实线为选中的实际仿真候选。</desc>
+<defs>
+<clippath id="ota-frequency-gain-clip"><rect height="217" width="504" x="78" y="48"></rect></clippath>
+<clippath id="ota-frequency-phase-clip"><rect height="215" width="504" x="78" y="345"></rect></clippath>
+</defs>
+<g aria-hidden="true" data-ota-frequency="grid"></g>
+<g clip-path="url(#ota-frequency-gain-clip)" fill="none" stroke-width="2.7">
+<path class="ota-frequency-baseline" data-ota-frequency="baseline-gain"></path>
+<path class="ota-frequency-candidate" data-ota-frequency="candidate-gain"></path>
+</g>
+<g clip-path="url(#ota-frequency-phase-clip)" fill="none" stroke-width="2.7">
+<path class="ota-frequency-baseline" data-ota-frequency="baseline-phase"></path>
+<path class="ota-frequency-candidate" data-ota-frequency="candidate-phase"></path>
+</g>
+</svg>
+</div>
+<div aria-label="曲线说明" class="ota-frequency-legend">
+<span class="ota-frequency-key ota-frequency-key-baseline">1 pF 基准 · 虚线</span>
+<span class="ota-frequency-key ota-frequency-key-candidate">所选仿真 · 实线</span>
+</div>
+<p class="demo-chart-caption">上：20 log₁₀|v(o)/v<sub>id</sub>|。下：同一复数响应的开环连续展开相位，不是闭环相位裕度。显示窗口为 100 Hz–1 GHz；原始 ngspice 扫描为 1 Hz–10 GHz，全部 801 点保留，窗口外曲线由图框裁切。</p>
+<p aria-live="polite" class="ota-frequency-observation" data-ota-frequency="observation" role="status">5 pF 时，−3 dB 带宽降到 47.11 kHz；这一负载下若沿用 100 kHz 目标就无法达标。</p>
+<dl aria-label="所选仿真点指标" class="ota-frequency-metrics">
+<div><dt>候选</dt><dd data-ota-frequency="label">负载 · 5 pF</dd></div>
+<div><dt>CL</dt><dd data-ota-frequency="load">5 pF</dd></div>
+<div><dt>低频增益</dt><dd data-ota-frequency="gain">206.01 V/V</dd></div>
+<div><dt>−3 dB</dt><dd data-ota-frequency="bandwidth">47.11 kHz</dd></div>
+<div><dt>单位增益</dt><dd data-ota-frequency="unity">9.70 MHz</dd></div>
+<div><dt>功耗</dt><dd data-ota-frequency="power">0.391 mW</dd></div>
+</dl>
+<details>
+<summary>尺寸、来源与读图边界</summary>
+<p class="demo-source ota-frequency-source" data-ota-frequency="provenance">GF180MCU · ngspice-47 · typical · 27 °C · 开环 AC</p>
+<p data-ota-frequency="change">相对基准只将输出电容从 1 pF 改为 5 pF。</p>
+<p>模型提交 <code>9f992d5a9186d1f7820c58f039c484ad35b2edea</code>；AC 端口为理想差分输入，右侧单端输出。曲线是固定 GF180MCU 模型的 nominal 仿真，不是硅片实测；高频端也不构成 GHz 精度保证。图示为 100 Hz–1 GHz 窗口，完整 1 Hz–10 GHz 扫描点仍保留。</p>
+<p><a href="../../../labs/frequency/">完整网表、CSV、指标与复现条件</a> · <a data-ota-frequency="payload-link" href="../../../assets/demos/ota-frequency-data.json">图中数据</a></p>
+</details>
+</section>
+<p class="demo-loading ota-frequency-loading" hidden="">交互数据暂不可用；本节原有频响图、候选表和节点矩阵推导仍可阅读。</p>
+<script src="../../../assets/demos/ota-frequency.js?v=2ab7bf44233a" type="module"></script>
 <h2 id="_3">检查主极点：从端口测试重建节点系统<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>仅因 232 kHz 附近下降 3 dB，还不足以称它为一个精确极点。我们以原 DC 值钳住 X、O、T、B，逐一用 1 V AC 测试源激励各节点，其余节点交流置零，测每个端口流入原电路的电流，得到四节点导纳矩阵 <span class="arithmatex">\(\mathbf Y(j\omega)\)</span>。另外施加差分输入，测强制保持各节点时所需的电流，得到输入项。</p>
 <p>这些钳位源<strong>只用于测量导纳</strong>。重建响应时要撤去钳位，求解</p>
@@ -2577,7 +2673,7 @@ A_0\approx G_mR_{out},\quad f_{3dB}\approx\frac1{2\pi R_{out}C_L},
 
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../assets/book.js?v=fd6e790bd6d7"></script>
+        <script src="../../../assets/book.js?v=29fab0b6e4cc"></script>
       
     
 

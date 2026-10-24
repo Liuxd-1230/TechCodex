@@ -30,6 +30,13 @@ body{background:var(--book-margin);caret-color:#126e63;scrollbar-color:#8ca8b5 #
 /* Keep Material's native action away from chapter and experiment headings. */
 .md-top{top:auto!important;bottom:.8rem;left:auto;right:.8rem;margin:0;transform:none;max-width:calc(100vw - 1.6rem);min-height:2.2rem;border:1px solid var(--book-rule);border-radius:4px;color:#173c50;background:#fff;box-shadow:0 2px 12px #173c5014}
 .md-top:focus-visible{outline:2px solid var(--book-blue);outline-offset:3px}
-@media(max-width:44.984em){body.book-in-demo .md-top{display:none}}
+@media(max-width:44.984em){body.book-in-evidence .md-top{display:none}}
 @media(max-width:374px){.md-typeset .diagram-scroll-hint{display:block}}
 @media print{.md-typeset .figure-detail,.md-typeset .diagram-scroll-hint{display:none}.md-typeset .diagram-viewport{overflow:visible}.md-typeset .diagram-viewport>a,.md-typeset .concept-figure img{min-width:0}}
+/* Circuit comparisons keep native Markdown figures and readable symbol sizes. */
+.md-typeset figure[id]{scroll-margin-top:4rem}
+.load-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem 1.3rem;align-items:start}
+.md-typeset .load-comparison figure{margin:.5rem 0;min-width:0}
+.load-comparison figure:last-child{grid-column:1/-1;max-width:360px;justify-self:center}
+.md-typeset .load-comparison img{max-height:none}
+@media(max-width:44.984em){.load-comparison{grid-template-columns:1fr;gap:.6rem}.load-comparison figure:last-child{grid-column:auto;max-width:none;justify-self:stretch}}

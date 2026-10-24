@@ -47,7 +47,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=220fa8fdcf37">
+      <link rel="stylesheet" href="../../../assets/book.css?v=d783f6b192e5">
     
       <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
@@ -57,6 +57,8 @@
 
     
     
+
+
 
 
 
@@ -2098,6 +2100,8 @@
       
         
       
+        
+      
     
     
     
@@ -2158,6 +2162,34 @@
     
   
     知识覆盖与后续章节
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2～7 章教例地图
   
 
     
@@ -2361,8 +2393,10 @@ S_{v,\mathrm{in}}(f)=\frac{S_{v,o}(f)}{|A_v(f)|^2}.
 \]</div>
 <p>两者在该频率产生相同的输出噪声。它让我们比较放大器自身噪声与微弱输入信号，而不被增益差异迷惑。若增益接近零，折算可能很大甚至失去实用意义；这表示这个端口已很难传递该频率的信号。</p>
 <p>一个内部源的贡献是 <span class="arithmatex">\(S_{v,o,k}=|H_k|^2S_k\)</span>。<span class="arithmatex">\(H_k\)</span> 若将电流变成电压，单位是 Ω；若将电压变成电压，则单位是 V/V。先检查单位，常能发现漏掉平方或误用 ASD 的错误。</p>
-<figure><p><a aria-label="信号和噪声通过不同传递函数到达输出，随后按同一个输入端口折算 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-referral.svg" title="打开原图，查看细节"><img alt="信号和噪声通过不同传递函数到达输出，随后按同一个输入端口折算" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-referral.svg"/></a></p><figcaption>图 7-1　等效输入源不等于某个真实的栅电压波动。它把不同内部路径的输出效应统一换算到指定信号端口。图中的独立源按 PSD 合成；同一源的多条路径应先合并传递函数。 <a aria-label="信号和噪声通过不同传递函数到达输出，随后按同一个输入端口折算 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-referral.svg">查看原图</a></figcaption></figure>
+<figure class="concept-figure" id="figure-noise-referral"><p class="diagram-scroll-hint">图内可左右查看，或使用下方的“查看原图”。</p><div aria-label="信号和噪声通过不同传递函数到达输出，随后按同一个输入端口折算，窄屏可横向查看" class="diagram-viewport" role="region" tabindex="0"><a aria-label="信号和噪声通过不同传递函数到达输出，随后按同一个输入端口折算 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-referral.svg" title="打开原图，查看细节"><img alt="信号和噪声通过不同传递函数到达输出，随后按同一个输入端口折算" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-referral.svg"/></a></div><figcaption>图 7-1　等效输入源不等于某个真实的栅电压波动。它把不同内部路径的输出效应统一换算到指定信号端口。图中的独立源按 PSD 合成；同一源的多条路径应先合并传递函数。 <a aria-label="信号和噪声通过不同传递函数到达输出，随后按同一个输入端口折算 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-referral.svg">查看原图</a></figcaption></figure>
 
+<p>拿共源级核对一次。先忽略 ro，取 gm=1 mS、RD=10 kΩ，信号增益为 −10。1 mV 的输入信号产生 −10 mV 输出；另有 10 pA/√Hz 的沟道电流噪声，经 RD 产生 100 nV/√Hz 的输出噪声，折回输入为 10 nV/√Hz。前一条计算的是信号幅值，后一条计算的是 ASD；它们不能在图上合成一个标为“PSD”的结果。</p>
+<p>现在把 RD 加倍：输出信号与这项输出噪声都加倍，输入参考仍为 10 nV/√Hz。这个解析例暂未加入电阻自身的热噪声；<a href="../stages/">7.3 的共源级</a>会把它放回原电路。先做这次对照，就能理解为什么输出更安静不一定意味着输入分辨率更好。</p>
 <h2 id="_4">有源阻抗时，单个电压指标不够<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>实际信号源有阻抗 <span class="arithmatex">\(Z_s\)</span>。放大器输入电流噪声会在它上面产生电压，输入网络的负载效应也会改变信号增益。通用输入模型需要串联电压噪声 <span class="arithmatex">\(e_n\)</span> 和并联电流噪声 <span class="arithmatex">\(i_n\)</span>；定义二者对等效输入电压均以正号贡献时，</p>
 <div class="arithmatex">\[
@@ -2486,7 +2520,7 @@ S_{\mathrm{eq}}=S_e+|Z_s|^2S_i+2\operatorname{Re}\{Z_s^*S_{ei}\}.
 
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../assets/book.js?v=fd6e790bd6d7"></script>
+        <script src="../../../assets/book.js?v=29fab0b6e4cc"></script>
       
     
 

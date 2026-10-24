@@ -2,17 +2,17 @@
 document.querySelectorAll('.md-content figure img').forEach(img => {
   img.decoding = 'async';
 });
-// Keep the narrow reading area clear while manipulating a circuit.
-const demos=document.querySelectorAll('.circuit-demo');
-if(demos.length){
+// Keep mobile diagrams, captions and controls clear of floating navigation.
+const evidence=document.querySelectorAll('.circuit-demo, .md-content figure');
+if(evidence.length){
   const visible=new Set();
   const observer=new IntersectionObserver(entries=>{
     for(const entry of entries){
       if(entry.isIntersecting)visible.add(entry.target);else visible.delete(entry.target);
     }
-    document.body.classList.toggle('book-in-demo',visible.size>0);
+    document.body.classList.toggle('book-in-evidence',visible.size>0);
   });
-  demos.forEach(demo=>observer.observe(demo));
+  evidence.forEach(element=>observer.observe(element));
 }
 const progress=document.querySelector('.book-progress'),article=document.querySelector('article');
 if(progress&&article){

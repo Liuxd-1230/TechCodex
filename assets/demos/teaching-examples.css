@@ -1,0 +1,13 @@
+.channel-controls{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.channel-figure{max-width:26rem;margin:1rem auto 0}
+.channel-figure svg,.modes-schematic svg{display:block;width:100%;height:auto}
+.channel-figure text,.modes-schematic text{font-family:var(--md-text-font);stroke:none;font-variant-numeric:tabular-nums}
+.modes-schematic{max-width:31rem;margin:1rem auto}
+.modes-schematic path{vector-effect:non-scaling-stroke}
+.modes-choices{display:flex;gap:.75rem 1.2rem;flex-wrap:wrap}
+.modes-choices label{display:flex;flex-direction:column;gap:.3rem;font-size:.75rem;min-width:0}
+.md-typeset .channel-result,.md-typeset .modes-result{border-top:1px solid #d5e0e8;padding-top:.8rem;font-size:.8rem;line-height:1.8;color:#173c50}
+.channel-enhanced #figure-mos-channel,.modes-enhanced #figure-diff-modes{display:none}
+#channel-demo-title,#modes-demo-title{scroll-margin-top:4rem}
+@media(max-width:44.984em){.channel-controls{grid-template-columns:1fr;gap:0}.channel-figure,.modes-schematic{margin-left:-.2rem;margin-right:-.2rem}.modes-choices{gap:.5rem}.modes-choices label{flex:1 1 8rem}.modes-choices select{width:100%;font-size:.7rem}}
+@media print{.channel-enhanced #figure-mos-channel,.modes-enhanced #figure-diff-modes{display:block}}

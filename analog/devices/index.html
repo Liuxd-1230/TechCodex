@@ -47,7 +47,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/book.css?v=220fa8fdcf37">
+      <link rel="stylesheet" href="../../assets/book.css?v=d783f6b192e5">
     
       <link rel="stylesheet" href="../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
@@ -57,6 +57,10 @@
 
     
     
+
+
+
+<link rel="stylesheet" href="../../assets/demos/teaching-examples.css?v=1026e18e89a6">
 
 
 
@@ -2000,6 +2004,8 @@
       
         
       
+        
+      
     
     
     
@@ -2060,6 +2066,34 @@
     
   
     知识覆盖与后续章节
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2～7 章教例地图
   
 
     
@@ -2284,6 +2318,22 @@ V_{TH0}=V_{FB}+2\phi_F+\gamma\sqrt{2\phi_F},
 Q_i(x)\simeq-C_{ox}\,[V_{GS}-V_{TH}-V(x)].
 \]</div>
 <p>沿源端走向电势更高的漏端，局部沟道相对于栅极的电压差减小，反型电荷的幅值也减小。这已经预告：漏源电压不仅驱动电流，还会改变沿途可用的电荷，所以电流不能一直与 VDS 成正比。</p>
+<p>先用一个可见的对照判断方向：固定栅压，缓慢抬高漏压，漏端的电子会更多还是更少？再提高栅压，刚才减少的电荷能否补回来？下面让电荷分布与电流曲线共用同一组偏置。</p>
+<section aria-labelledby="channel-demo-title" class="circuit-demo channel-demo" data-demo="mos-channel" hidden="">
+<div class="demo-heading"><h3 id="channel-demo-title">漏端的电荷变少，电流会停吗？</h3>
+<p>先固定栅压，把漏压从零缓慢增加。预测：漏端反型电荷接近零时，电流曲线会向下掉，还是逐渐变平？</p></div>
+<div class="channel-controls">
+<div class="demo-control"><label for="channel-gate">栅源电压 <output id="channel-gate-value">1.00 V</output></label><input id="channel-gate" max="140" min="80" step="1" type="range" value="100"/></div>
+<div class="demo-control"><label for="channel-drain">漏源电压 <output id="channel-drain-value">0.20 V</output></label><input id="channel-drain" max="120" min="0" step="1" type="range" value="20"/></div>
+</div>
+<div class="channel-figure" data-channel="figure"></div>
+<p aria-live="polite" class="channel-result" data-channel="result"></p>
+<p class="demo-chart-caption">实时长沟道解析模型。绿色带的深度编码电荷幅值，绝非实际沟道厚度；只计算受栅控制沟道，不绘制未求解的夹断区长度。</p>
+<details><summary>这张图怎样从电流积分得到</summary><p>VTH = 0.6 V，β = 200 µA/V²，S、B 接地；强反型、渐变沟道、常迁移率、λ = 0。取 d = min(VDS, VOV)，则 |Qi(x)|/Cox = √[VOV² − (2VOV·d − d²)x/L]。饱和后新增漏压落在模型未展开的漏端高场区域。此处没有计算弱反型、体效应或真实工艺电荷。</p></details>
+</section>
+<script src="../../assets/demos/mos-channel.js?v=d181a812757a" type="module"></script>
+<figure id="figure-mos-channel"><p><a aria-label="长沟道解析模型中沿沟道的反型电荷与同一偏置下的输出电流 · 打开原图" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-channel.svg" title="打开原图，查看细节"><img alt="长沟道解析模型中沿沟道的反型电荷与同一偏置下的输出电流" src="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-channel.svg"/></a></p><figcaption>图 2-2a：长沟道强反型解析例，VTH=0.6 V、β=200 µA/V²、VGS=1.0 V、VDS=0.2 V。绿色带的深度表示 <span class="arithmatex">\(|Q_i|/C_{ox}\)</span>，不是反型层厚度。源到漏的电荷逐渐减少，对应 ID=12 µA；继续把漏压提高到 VOV=0.4 V，理想电流趋近 16 µA，漏端反型电荷趋零。图没有给夹断区指定几何长度。 <a aria-label="长沟道解析模型中沿沟道的反型电荷与同一偏置下的输出电流 · 查看原图" class="figure-detail" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-channel.svg">查看原图</a></figcaption></figure>
+
 <p>设迁移率近似常数，忽略扩散项，漂移电流可写成</p>
 <div class="arithmatex">\[
 I_D=-WQ_i(x)\mu_n\frac{dV(x)}{dx}.
@@ -2309,6 +2359,8 @@ I_{D,\mathrm{sat}}\simeq\frac12\beta V_{OV}^2.
 \]</div>
 <p>夹断发生在靠近漏端的一小段区域，电子仍会被高场区收集。长沟道理想模型的意思是：继续增加漏压，对源端所控制的反型电荷与电流影响较弱，新增压差主要落在漏端区域。它没有说载流子被堵住。</p>
 <p>在这个理想模型中，饱和电流不随 VDS 变化，输出电阻为无穷大。真实器件不会如此，下一篇会解释输出斜率的来源。速度饱和还可能让电流在低于上述长沟道边界的条件下显著偏离平方律，因此“饱和”的具体物理机制需要看器件尺寸与电场条件。</p>
+<figure><p><a aria-label="GF180MCU在四档栅压下的完整漏源输出扫描 · 打开原图" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-output.svg" title="打开原图，查看细节"><img alt="GF180MCU在四档栅压下的完整漏源输出扫描" src="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-output.svg"/></a></p><figcaption>图 2-2b：回到真实 GF180MCU 模型，W/L=10/1 µm、typical、27 °C，VGS 分别为 0.8、0.9、1.1、1.3 V，VDS 从 0 扫到 3.3 V。曲线进入较平坦区域后仍有斜率；它与上面的 λ=0 解析图在这个判断上不同。两图没有共用阈值或 β 拟合，不能逐点当成同一器件的预测误差；<a href="../../labs/">原始输出扫描</a>保留了所有数据。 <a aria-label="GF180MCU在四档栅压下的完整漏源输出扫描 · 查看原图" class="figure-detail" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-output.svg">查看原图</a></figcaption></figure>
+
 <p>这些关系足以开始做一个放大器的余量估算：NMOS 想在合适的饱和区工作，漏端必须比源端高出一定电压。但“满足工作区边界”和“满足增益、线性度指标”是两个不同要求。</p>
 <h2 id="_5">弱反型：电流为何近似指数变化<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>在弱反型、其他偏置与温度固定时，电流可近似写成</p>
@@ -2441,7 +2493,7 @@ I_{SD}\simeq\frac12\mu_pC_{ox}\frac WL
 
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../assets/book.js?v=fd6e790bd6d7"></script>
+        <script src="../../assets/book.js?v=29fab0b6e4cc"></script>
       
     
 

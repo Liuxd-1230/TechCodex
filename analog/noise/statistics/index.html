@@ -47,7 +47,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=220fa8fdcf37">
+      <link rel="stylesheet" href="../../../assets/book.css?v=d783f6b192e5">
     
       <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
@@ -57,6 +57,8 @@
 
     
     
+
+
 
 
 
@@ -2087,6 +2089,8 @@
       
         
       
+        
+      
     
     
     
@@ -2147,6 +2151,34 @@
     
   
     知识覆盖与后续章节
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2～7 章教例地图
   
 
     
@@ -2325,6 +2357,9 @@ p(n)=\frac{1}{\sqrt{2\pi}\sigma}
 <p>约 68.3% 的瞬时样本落在 <span class="arithmatex">\(\pm\sigma\)</span> 内，约 99.7% 落在 <span class="arithmatex">\(\pm3\sigma\)</span> 内。它没有有限的理论峰峰值；“噪声峰峰值等于六倍 RMS”只是有条件的观察约定，记录越长，遇到较大极值的机会越多。</p>
 <h2 id="psd">PSD 把方差分配到频率上<a class="headerlink" href="#psd" title="Permanent link">¶</a></h2>
 <p>两个电路的 RMS 都是 10 µV，其中一个主要在低频缓慢漂移，另一个主要在高频起伏。对于只测 1 kHz 信号的系统，它们不一定同样糟糕。功率谱密度 PSD 正是用来区分这种情况。</p>
+<figure id="figure-noise-statistics"><p><a aria-label="两个RMS同为10微伏的合成随机相位记录，其起伏速度和单边周期图分布不同 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-statistics.svg" title="打开原图，查看细节"><img alt="两个RMS同为10微伏的合成随机相位记录，其起伏速度和单边周期图分布不同" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-statistics.svg"/></a></p><figcaption>图 7-0　先看前两幅波形：A 变化慢，B 变化快，但两段完整记录的 RMS 都是 10 µV。最下方将同一记录的均方值分配到频率，在线性频率轴下两块面积都为 100 µV²。若只观察 1–32 Hz，A 与 B 就不能再用相同的总 RMS 比较。 <a aria-label="两个RMS同为10微伏的合成随机相位记录，其起伏速度和单边周期图分布不同 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-statistics.svg">查看原图</a></figcaption></figure>
+
+<p>这里的样本由带限、随机相位的正弦分量合成，完整记录长 1 s、采样率 8192 Hz；波形只显示其中 125 ms，频谱采用完整记录的单边周期图。它是可复现的统计教例，没有使用 ngspice 随机瞬态，也没有仅凭频谱假定高斯分布。有限记录的周期图是谱的一个估计表示，接下来用 PSD 写出一般关系。</p>
 <p>本书统一采用<strong>单边谱</strong>，只对 <span class="arithmatex">\(f\ge0\)</span> 积分。电压噪声 PSD <span class="arithmatex">\(S_v(f)\)</span> 的单位是 V²/Hz，频带 <span class="arithmatex">\([f_L,f_H]\)</span> 内的方差为</p>
 <div class="arithmatex">\[
 \sigma_v^2=\int_{f_L}^{f_H}S_v(f)\,df,\qquad
@@ -2499,7 +2534,7 @@ R_n(0)=\sigma_n^2=\int_{-\infty}^{\infty}S_n^{(2)}(f)df.
 
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../assets/book.js?v=fd6e790bd6d7"></script>
+        <script src="../../../assets/book.js?v=29fab0b6e4cc"></script>
       
     
 
