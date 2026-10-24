@@ -1,5 +1,10 @@
 export const POINT_INDEX = Object.freeze({frequency: 0, gainDb: 1, phaseDeg: 2});
 export const DISPLAY_WINDOW_HZ = Object.freeze([100, 1e9]);
+export function unityWindowNote(frequency) {
+  return Number.isFinite(frequency) && frequency > DISPLAY_WINDOW_HZ[1]
+    ? `单位增益穿越点 ${(frequency / 1e9).toFixed(3)} GHz 位于当前 1 GHz 图窗右侧；完整扫描已覆盖该点。`
+    : '';
+}
 export function chartPoint(point, quantity) {
   const valueIndex = quantity === 'gain' ? POINT_INDEX.gainDb :
     quantity === 'phase' ? POINT_INDEX.phaseDeg : null;
@@ -130,7 +135,8 @@ async function start() {
     field('unity').textContent = formatHz(selected.metrics.unity_Hz);
     field('power').textContent = formatPower(selected.metrics.power_W);
     field('change').textContent = selected.change + (selected.deck_load_note ? ` ${selected.deck_load_note}` : '');
-    field('chart-desc').textContent = `曲线显示窗口为 100 Hz 至 1 GHz；原始开环 AC 扫描为 1 Hz 至 10 GHz，全部频点保留，窗口外部分由图框裁切。上图显示 ${base.label} 的蓝色虚线与 ${selected.label} 的绿色实线开环增益 dB；下图显示同两条复数响应按频率递增展开的开环相位，不是闭环相位裕度。所选负载为 ${formatLoad(selected.external_load_F)}。`;
+    const windowNote = unityWindowNote(selected.metrics.unity_Hz);
+    field('chart-desc').textContent = `曲线显示窗口为 100 Hz 至 1 GHz；原始开环 AC 扫描为 1 Hz 至 10 GHz，全部频点保留，窗口外部分由图框裁切。上图显示 ${base.label} 的蓝色虚线与 ${selected.label} 的绿色实线开环增益 dB；下图显示同两条复数响应按频率递增展开的开环相位，不是闭环相位裕度。所选负载为 ${formatLoad(selected.external_load_F)}。${windowNote}`;
 
     const target = data.target;
     if (purpose.value === 'load') {
@@ -153,6 +159,7 @@ async function start() {
         ? `${selected.label}：${failures.join('；')}。曲线和指标来自这一尺寸与偏置的独立 AC 仿真。`
         : `${selected.label} 在 1 pF 标称条件下满足增益、带宽和功耗目标；此结果不代表 PVT 或版图后保证。`;
     }
+    if (windowNote) field('observation').textContent += ` ${windowNote}`;
   }
 
   if (!data.groups.load || !data.groups.design) throw new Error('Incomplete OTA candidate manifest');

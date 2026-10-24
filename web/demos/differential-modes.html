@@ -3,7 +3,7 @@
   <div class="modes-choices"><label for="modes-kind">输入与负载 <select id="modes-kind"><option value="differential">差模 · 两侧 40 kΩ</option><option value="common">共模 · 两侧 40 kΩ</option><option value="unequal">共模 · 右侧改为 44 kΩ</option></select></label><label for="modes-tail">尾端输出电阻 <select id="modes-tail"><option value="10000">10 kΩ</option><option value="100000" selected>100 kΩ</option><option value="Infinity">理想尾源 · ∞</option></select></label></div>
   <div class="demo-control"><label for="modes-input"><span data-mode="input-label">差分输入 vid</span><output data-mode="input">10.0 mV</output></label><input id="modes-input" type="range" min="-10" max="10" step=".5" value="10"></div>
   <div class="modes-schematic">{{schematic}}</div>
-  <p class="modes-result" data-mode="result" aria-live="polite"></p>
+  <p class="modes-result" data-mode="result" role="status" aria-live="polite"></p>
   <p class="demo-chart-caption">实时解析 · 固定工作点附近的电压/电流增量。箭头表示增量方向，反向箭头表示原偏置电流减小，不表示 MOS 总电流反流。RT 是尾管的增量输出电阻。</p>
   <details><summary>用三条 KCL 核对</summary><p>每管 gm = 0.3 mS、gmb = 0.1 mS、gds = 1 µS。每侧满足 vo/RD + gm·vi − (gm + gmb + gds)vt + gds·vo = 0；尾节点满足 vt/RT = δi1 + δi2。体端均接交流地。比较只改变增量终接、冻结器件系数；实际换负载应重新求偏置。这是低频线性解，不是大共模范围或实时 SPICE；正文后面的 GF180 扫描会重新求每个工作点。</p></details>
 </section>

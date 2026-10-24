@@ -1,4 +1,4 @@
-import {channel,channelFigure} from './channel-model.mjs';
+import {channel,channelFigure} from './channel-model.mjs?v=2';
 const root=document.querySelector('[data-demo="mos-channel"]');
 if(root){
   const gate=root.querySelector('#channel-gate'),drain=root.querySelector('#channel-drain');

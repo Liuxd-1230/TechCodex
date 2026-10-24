@@ -3,7 +3,7 @@ import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
-import {chartPoint, DISPLAY_WINDOW_HZ, POINT_INDEX} from '../web/assets/demos/ota-frequency.js';
+import {chartPoint, DISPLAY_WINDOW_HZ, POINT_INDEX, unityWindowNote} from '../web/assets/demos/ota-frequency.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const readJson = relative => JSON.parse(readFileSync(path.join(root, relative), 'utf8'));
@@ -35,6 +35,10 @@ assert.deepEqual(data.groups.design, {baseline: 'ota-1p', candidates: ['ota-wide
 assert.deepEqual(Object.keys(data.cases).sort(), ['ota-1p', 'ota-5p', 'ota-current', 'ota-long', 'ota-unloaded', 'ota-wide'].sort());
 assert.deepEqual(POINT_INDEX, {frequency: 0, gainDb: 1, phaseDeg: 2});
 assert.deepEqual(DISPLAY_WINDOW_HZ, [100, 1e9]);
+assert.match(unityWindowNote(data.cases['ota-unloaded'].metrics.unity_Hz),/1\.384 GHz.*图窗右侧/);
+assert.equal(unityWindowNote(1e9),'');
+assert.equal(unityWindowNote(9.7e6),'');
+assert.equal(unityWindowNote(null),'');
 assert.deepEqual(chartPoint([123, 4.5, -90], 'gain'), [123, 4.5]);
 assert.deepEqual(chartPoint([123, 4.5, -90], 'phase'), [123, -90]);
 assert.throws(() => chartPoint([123, 4.5, -90], 'complex'), RangeError);

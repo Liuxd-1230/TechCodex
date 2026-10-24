@@ -82,6 +82,37 @@ for route in ('analog/stages/common-source', 'analog/devices/small-signal'):
     soup = documents[SITE / route / 'index.html']
     if not soup.select('details .arithmatex'):
         errors.append(f'{route}: expandable derivation was not parsed')
+
+# These checks cover injected, executable modules, not merely asset existence.
+for name,route,module,fallback,control_count in (
+    ('mos-channel','analog/devices','mos-channel.js','mos-channel.svg',2),
+    ('differential-modes','analog/differential/common-mode','differential-modes.js','diff-modes.svg',3),
+    ('ota-frequency','analog/frequency/ota','ota-frequency.js','frequency-ota-load.svg',2),
+):
+    page=documents[SITE/route/'index.html']
+    demo=page.select_one(f'[data-demo="{name}"]')
+    if demo is None or not demo.has_attr('hidden'):
+        errors.append(f'{name}: progressive enhancement root missing')
+        continue
+    if not page.select_one(f'script[type="module"][src*="/{module}"]'):
+        errors.append(f'{name}: executable module was not injected')
+    if len(demo.select('input,select'))!=control_count:
+        errors.append(f'{name}: controls missing')
+    for control in demo.select('input,select'):
+        if not demo.find('label',attrs={'for':control.get('id')}):
+            errors.append(f'{name}: control lacks label')
+    if not demo.select_one('[role="status"]') or '{{' in str(demo):
+        errors.append(f'{name}: observation or resolved template missing')
+    for svg in demo.select('svg'):
+        if not svg.find('title') or not svg.find('desc'):
+            errors.append(f'{name}: SVG lacks accessible description')
+    if not page.select_one(f'figure img[src*="{fallback}"]'):
+        errors.append(f'{name}: static reading fallback missing')
+
+if (SITE/'assets/demos/ota-frequency-data.json').read_bytes()!=(ROOT/'web/assets/demos/ota-frequency-data.json').read_bytes():
+    errors.append('OTA frequency payload differs from the published copy')
+if (SITE/'about/examples').exists() or any(s.select_one('nav a[href*="about/examples"]') for s in documents.values()):
+    errors.append('Source-only example map leaked into reader routes/navigation')
 sample = documents[SITE / 'analog/stages/source-follower/index.html']
 if sample.select_one('details strong') is None:
     errors.append('Sample exercise Markdown was not parsed')
