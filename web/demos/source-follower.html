@@ -1,0 +1,65 @@
+<section class="circuit-demo sf-step" data-demo="source-follower" aria-labelledby="sf-step-title" hidden>
+  <h3 id="sf-step-title">输入先跳一步，输出怎样追过去？</h3>
+  <p class="sf-intro">先预测：输入升高 10 mV，输出会立刻升高 10 mV 吗？播放一次，再拖动时间，把电容电流与输出曲线对起来看。</p>
+  <div class="sf-toolbar">
+    <label class="sf-mode" for="sf-scenario">比较情形
+      <select id="sf-scenario"><option value="ideal">理想：只保留 gm</option><option value="body" selected>开路：保留体效应与输出电导</option><option value="load10k">再接 10 kΩ 交流负载</option><option value="load1k">再接 1 kΩ 交流负载</option></select>
+    </label>
+    <div class="sf-amplitude"><label for="sf-amplitude">输入阶跃幅度 <output for="sf-amplitude" data-sf="amplitude">+10 mV</output></label><input id="sf-amplitude" type="range" min="-10" max="10" step="1" value="10" aria-describedby="sf-step-help"></div>
+  </div>
+  <p class="sf-model-line">线性小信号 · CL = 100 pF · 0–600 ns 的物理过程慢放</p>
+  <div class="sf-time">
+    <div class="sf-time-head"><button type="button" class="sf-play" data-sf="play" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="sf-play-icon" d="M5 3L17 10L5 17Z"/><path class="sf-pause-icon" d="M4 3H8V17H4ZM12 3H16V17H12Z"/></svg><span data-sf="play-label">施加阶跃</span></button><label for="sf-time">观察时刻 <output for="sf-time" data-sf="time">阶跃前</output></label></div>
+    <input id="sf-time" type="range" min="0" max="1000" step="1" value="0" aria-describedby="sf-step-help"><div class="sf-time-ends"><span>0⁺ · 阶跃刚发生</span><span>600 ns</span></div>
+  </div>
+  <div class="sf-stage">
+    <div>
+      <svg class="sf-circuit" viewBox="0 0 360 400" role="img" aria-labelledby="sf-circuit-title sf-circuit-desc">
+        <title id="sf-circuit-title">源跟随器的电流与输出电荷</title><desc id="sf-circuit-desc" data-sf="circuit-description">NMOS 漏端接电源，体端独立接地，源极连接偏置支路、输出电容和可选交流负载。标注是工作点附近的电压、电流增量。</desc>
+        <defs><marker id="sf-current-arrow" viewBox="0 0 10 10" markerWidth="4" markerHeight="4" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="context-stroke"/></marker></defs>
+        <g class="sf-wire">
+          <path d="M134 44V119H104M104 113V132M104 138V150M104 156V175M104 169H134V238M79 113V175M24 144H79"/>
+          <path class="sf-bulk" d="M106 144H234V178m-12 0h24m-19 6h14m-10 6h6M117 138L107 144L117 150"/>
+          <path d="M134 238H300V278m-15 0h30m-30 10h30m-15 0v50m-12 0h24m-19 6h14m-10 6h6"/>
+          <path d="M134 238V270m0 44v24m-12 0h24m-19 6h14m-10 6h6"/><circle cx="134" cy="292" r="22"/>
+          <path d="M134 280V303m-5-6l5 6l5-6"/>
+          <g data-sf="load-branch" hidden><path d="M218 238V250l-6 6l12 10l-12 10l12 10l-12 10l6 6v36m-12 0h24m-19 6h14m-10 6h6"/></g>
+        </g>
+        <path class="sf-current" data-sf="id-path" d="M134 44V119H104M104 113V132M104 138V150M104 156V175M104 169H134V238" stroke-width="2.2"/>
+        <circle class="sf-node" cx="134" cy="238" r="4"/>
+        <g font-size="16">
+          <text x="134" y="27" text-anchor="middle">VDD</text><text x="145" y="87">D</text><text x="22" y="165">G</text><text x="145" y="199">S</text><text class="sf-bulk" x="214" y="132">B</text><text x="83" y="101">M1</text>
+          <text class="sf-voltage" x="14" y="199" style="font-size:16px" data-sf="vi">vi 0.00 mV</text><text class="sf-voltage" x="151" y="222" data-sf="vo">vo 0.00 mV</text>
+          <text x="43" y="68">δiD</text><text class="sf-storage" x="326" y="254">iC</text><text x="316" y="315">CL</text>
+          <text x="134" y="375" text-anchor="middle">偏置支路</text><text x="258" y="396" text-anchor="middle" class="sf-storage" data-sf="charge">ΔQ 0.000 pC</text>
+          <text x="218" y="375" text-anchor="middle" data-sf="load-label"></text>
+          <text x="267" y="268" class="sf-storage" data-sf="top-charge"></text><text x="267" y="310" class="sf-storage" data-sf="bottom-charge"></text>
+        </g>
+        <path class="sf-current" d="M67 78V104" data-sf="id-arrow" marker-end="url(#sf-current-arrow)"/>
+        <path class="sf-current sf-cap-current" d="M334 270V312" data-sf="ic-arrow" marker-end="url(#sf-current-arrow)"/>
+      </svg>
+    </div>
+    <div>
+      <svg class="sf-response" viewBox="0 0 360 256" role="img" aria-labelledby="sf-response-title sf-response-desc"><title id="sf-response-title">同一阶跃下的输入与输出响应</title><desc id="sf-response-desc" data-sf="response-description">固定时间轴零至六百纳秒，电压轴负十至正十毫伏。实线是输出，虚线是输入，游标对应电路当前时刻。</desc>
+        <g class="sf-grid"><path d="M40 37H340M40 117H340M40 197H340M140 22V212M240 22V212M340 22V212"/><path d="M40 22V212H340"/></g>
+        <g font-size="15"><text x="40" y="14">mV</text><text x="31" y="43" text-anchor="end">10</text><text x="31" y="123" text-anchor="end">0</text><text x="31" y="203" text-anchor="end">−10</text><text x="40" y="233" text-anchor="middle">0</text><text x="140" y="233" text-anchor="middle">200</text><text x="240" y="233" text-anchor="middle">400</text><text x="340" y="233" text-anchor="middle">600</text><text x="340" y="254" text-anchor="end">时间 / ns</text></g>
+        <path class="sf-final" data-sf="target-path"/><path class="sf-input" data-sf="input-path"/><path class="sf-output" data-sf="output-path"/>
+        <path class="sf-cursor" data-sf="cursor"/><circle class="sf-point" r="4" data-sf="point"/>
+      </svg>
+      <div class="sf-legend"><span><svg aria-hidden="true" viewBox="0 0 24 6"><path d="M0 3H24" stroke="#173c50" stroke-dasharray="4 3"/></svg>输入 vi</span><span><svg aria-hidden="true" viewBox="0 0 24 6"><path d="M0 3H24" stroke="#126e63" stroke-width="2.8"/></svg>输出 vo</span></div>
+      <p class="sf-now"><span class="sf-phase" data-sf="phase">先预测，再施加阶跃</span><span data-sf="observation">电容电压需要通过电流逐渐改变。先想一想：输入跳变后，哪一股电流最先改变？</span></p>
+      <div class="sf-ledger"><span>vgs <strong data-sf="vgs">0.00 mV</strong></span><span>δiD <strong data-sf="id">0.00 µA</strong></span><span>iC <strong data-sf="ic">0.00 µA</strong></span></div>
+      <p class="sf-help" data-sf="balance">电流增量守恒：δiD = iC + δiB + iL。</p>
+    </div>
+  </div>
+  <p id="sf-step-help" class="sf-help">可暂停播放，或用方向键逐格查看。改变情形或幅度会回到原偏置点，重新比较同一步输入。</p>
+  <p class="sf-help sf-reduce" data-sf="reduce" hidden>已减少动态效果：播放直接展示末帧，仍可拖动时间逐点观察。</p>
+  <span class="demo-live" role="status" aria-live="polite" aria-atomic="true" data-sf="announcement"></span>
+  <details><summary>这个演示怎样计算</summary>
+    <p>采用正文的一阶小信号方程，实时解析计算；没有调用 SPICE。gm = 1 mS，CL = 100 pF。理想情形只保留 gm；其余情形 gmb = 0.2 mS、ro = rB = 100 kΩ，与后文端口例子相同。RL 只改变同一偏置点下的交流加载。</p>
+    <p>图中 vi、vo、δiD、δiB、iL、iC 均为增量；δiD 箭头定义注入源节点为正，负读数表示漏电流相对偏置减小。电容箭头随充、放电改变方向，正负号表示增量电荷，不表示电子数量。B 独立接地；理想情形在计算中忽略体效应和输出电导。</p>
+    <p>忽略 MOS 寄生电容、输入源阻抗和大信号限流，以突出输出节点的充电与反馈。播放只放慢时间，所有电流、电压与曲线使用同一个物理时刻。正文后面再讨论真实电压余量和压摆限制。</p>
+  </details>
+</section>
+<p class="demo-loading" data-sf-fallback>启用 JavaScript 后可播放与拖动阶跃过程；下方静态图和推导保留完整解释。</p>
+<script type="module" src="{{module}}"></script>

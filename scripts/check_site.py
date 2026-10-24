@@ -110,6 +110,24 @@ else:
     if '{{' in str(demo):
         errors.append('Demo asset URL placeholders were not resolved')
 
+follower_page=documents[SITE/'analog/stages/source-follower/index.html']
+follower=follower_page.select_one('[data-demo="source-follower"]')
+if follower is None or not follower.has_attr('hidden'):
+    errors.append('Source follower must enhance progressively')
+else:
+    for control in follower.select('input,select'):
+        if not follower.find('label',attrs={'for':control.get('id')}):
+            errors.append('Source follower control lacks label')
+    for svg in follower.select('svg[role="img"]'):
+        if not svg.find('title') or not svg.find('desc'):
+            errors.append('Source follower diagram lacks description')
+    if not follower.select_one('[role="status"]') or '{{' in str(follower):
+        errors.append('Source follower status/template incomplete')
+    if not follower_page.select_one('#figure-sf-feedback img'):
+        errors.append('Source follower static circuit fallback missing')
+    if len(follower_page.select('.sf-loading-pair figure'))!=2:
+        errors.append('Source follower port comparison missing')
+
 miller_page=documents[SITE/'analog/frequency/miller/index.html']
 miller=miller_page.select_one('[data-demo="miller-poles"]')
 if miller is None or not miller.has_attr('hidden'):

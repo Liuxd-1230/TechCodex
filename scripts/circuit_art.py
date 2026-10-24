@@ -78,8 +78,8 @@ class Canvas:
         return {'g':(x-75,y),'d':(x+30,y+(60 if pmos else -60)),
                 's':(x+30,y+(-60 if pmos else 60)),'b':(x+95,y)}
 
-    def save(self,name,out):
+    def save(self,name,out,description='TechCodex original teaching schematic. D, G, S, B are explicitly distinguished. Colored arrows show perturbations, not wires.'):
         css='text{font-family:"Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;stroke:none}path,circle{vector-effect:non-scaling-stroke}'
-        svg=f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {self.w} {self.h}" width="{self.w}" height="{self.h}" role="img"><title>{escape(self.title)}</title><desc>TechCodex original teaching schematic. D, G, S, B are explicitly distinguished. Colored arrows show perturbations, not wires.</desc><style>{css}</style><rect width="100%" height="100%" fill="white"/><g fill="none" stroke="{INK}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+''.join(self.parts)+'</g></svg>\n'
+        svg=f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {self.w} {self.h}" width="{self.w}" height="{self.h}" role="img"><title>{escape(self.title)}</title><desc>{escape(description)}</desc><style>{css}</style><rect width="100%" height="100%" fill="white"/><g fill="none" stroke="{INK}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+''.join(self.parts)+'</g></svg>\n'
         Path(out).mkdir(parents=True,exist_ok=True)
         (Path(out)/(name+'.svg')).write_text(svg,encoding='utf-8',newline='\n')

@@ -5,6 +5,36 @@ from circuit_art import Canvas, INK, SIGNAL, BODY, MUTED
 OUT=Path(__file__).resolve().parents[1]/'模拟/图'
 
 
+def sf_loading():
+    """Matched low-frequency port circuits; a buffer changes the load seen upstream."""
+    for buffered in (False,True):
+        c=Canvas('增加缓冲级后的负载信号' if buffered else '高输出电阻直接驱动负载',360,300)
+        c.text(20,27,'加一个源跟随器' if buffered else '直接接上负载',19)
+        c.parts.append('<circle cx="28" cy="172" r="20"/>')
+        c.text(28,179,'~',22,anchor='middle')
+        c.wire((28,152),(28,104),(48,104))
+        c.parts.append('<path d="M48 104h8l5 -6l8 12l8 -12l8 12l5 -6h12"/>')
+        c.text(76,78,'100 kΩ',16,anchor='middle');c.line(102,104,132,104)
+        c.line(28,192,28,220);c.ground(28,220)
+        if buffered:
+            c.parts.append('<path d="M144 72L200 104L144 136Z"/>')
+            c.line(132,104,144,104);c.line(200,104,208,104)
+            c.parts.append('<path d="M208 104h4l5 -6l8 12l8 -12l8 12l5 -6h10"/>')
+            c.line(256,104,284,104)
+            c.text(170,110,'0.8',16,anchor='middle');c.text(233,78,'1 kΩ',16,anchor='middle')
+            c.text(132,164,'输入几乎不取电流',15,anchor='middle',color=MUTED)
+            c.text(284,58,'72.73 mV',18,SIGNAL,anchor='middle')
+        else:
+            c.line(132,104,284,104);c.text(284,58,'9.09 mV',18,SIGNAL,anchor='middle')
+        c.node(284,104);c.line(284,104,284,128);c.resistor(284,128,height=72)
+        c.text(303,173,'10 kΩ',15);c.line(284,200,284,220);c.ground(284,220)
+        c.text(20,266,'vth = 100 mV · 低频端口模型',15,MUTED)
+        c.text(20,292,'负载保留 72.7% 的开路信号' if buffered else '负载只保留 9.1% 的开路信号',16,SIGNAL)
+        description='同一百毫伏开路信号，一百千欧输出电阻，十千欧负载。'
+        description+='加入开路增益零点八、输出电阻一千欧的缓冲级，负载信号为七十二点七三毫伏。' if buffered else '直接分压后，负载信号为九点零九毫伏。'
+        c.save('sf-load-buffer' if buffered else 'sf-load-direct',OUT,description)
+
+
 def sf_action():
     c=Canvas('源跟随器：输出回升减小栅源电压',600,490)
     m=c.mos(250,180)
@@ -188,5 +218,5 @@ def capacitances():
 
 
 if __name__=='__main__':
-    sf_action();sf_test();sf_equivalent();laboratory();stage_basics();loads();device();more_stages();capacitances()
+    sf_loading();sf_action();sf_test();sf_equivalent();laboratory();stage_basics();loads();device();more_stages();capacitances()
     print('Generated original teaching schematics with explicit bulk terminals.')

@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% block extrahead %}
+{{ super() }}
+{% if page and page.url == 'analog/stages/source-follower/' %}
+<link rel="stylesheet" href="{{ 'assets/demos/source-follower.css' | url }}">
+{% endif %}
+{% endblock %}
 {% block scripts %}
 {{ super() }}
 {% if page and 'class="arithmatex"' in page.content %}

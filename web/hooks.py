@@ -24,6 +24,11 @@ def on_page_markdown(markdown,page,config,files):
 
 
 def on_page_content(html,page,config,files):
+    marker='<!-- interactive: source-follower -->'
+    if marker in html:
+        template=(Path(__file__).parent/'demos/source-follower.html').read_text(encoding='utf-8')
+        template=template.replace('{{module}}',get_relative_url('assets/demos/source-follower.js',page.url))
+        html=html.replace(marker,template)
     marker='<!-- interactive: noise-band -->'
     if marker in html:
         template=(Path(__file__).parent/'demos/noise-band.html').read_text(encoding='utf-8')
@@ -109,6 +114,13 @@ def on_page_content(html,page,config,files):
         detail.string='查看原图'
         caption.append(' ')
         caption.append(detail)
+    direct=soup.find('img',src=lambda value:value and 'sf-load-direct.svg' in value)
+    if direct:
+        before=direct.find_parent('figure')
+        after=before.find_next_sibling('figure') if before else None
+        if after and after.find('img',src=lambda value:value and 'sf-load-buffer.svg' in value):
+            pair=soup.new_tag('div',attrs={'class':'sf-loading-pair'})
+            before.insert_before(pair);pair.append(before.extract());pair.append(after.extract())
     for quote in soup.find_all('blockquote'):
         quote['class']=['teaching-note']
     if page.url=='':
@@ -131,7 +143,8 @@ def on_post_page(output,page,config):
     # a newly deployed reading system being paired with a cached previous CSS.
     for name in ('book.css','book.js','demos/circuit-demo.css',
                  'demos/current-steering.js','demos/mirror-compliance.js',
-                 'demos/miller-poles.js','demos/noise-band.js'):
+                 'demos/miller-poles.js','demos/noise-band.js',
+                 'demos/source-follower.css','demos/source-follower.js'):
         path=Path(__file__).parent/'assets'/name
         url=get_relative_url('assets/'+name,page.url)
         digest=hashlib.sha256(path.read_bytes()).hexdigest()[:12]
