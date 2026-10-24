@@ -1,0 +1,61 @@
+<section class="circuit-demo ota-frequency-demo" data-demo="ota-frequency" data-payload="{{payload}}" aria-labelledby="ota-frequency-title" hidden>
+  <header class="demo-heading">
+    <h3 id="ota-frequency-title">把设计选择放回真实频响曲线</h3>
+    <p>基准是第 5 章的五管核心与参考支路，右输出加 1 pF。下面只切换已存档的 GF180 仿真点，不在不同尺寸或偏置之间插值。</p>
+  </header>
+  <div class="ota-frequency-controls">
+    <label for="ota-frequency-purpose">比较内容
+      <select id="ota-frequency-purpose">
+        <option value="load">改变输出负载</option>
+        <option value="design">固定 1 pF，改变设计</option>
+      </select>
+    </label>
+    <label for="ota-frequency-candidate">比较候选
+      <select id="ota-frequency-candidate">
+        <option value="ota-5p">负载 · 5 pF</option>
+      </select>
+    </label>
+  </div>
+  <div class="ota-frequency-chart">
+    <svg viewBox="0 0 600 630" role="img" aria-labelledby="ota-frequency-chart-title ota-frequency-chart-desc">
+      <title id="ota-frequency-chart-title">五管 OTA 的开环增益与相位响应</title>
+      <desc id="ota-frequency-chart-desc" data-ota-frequency="chart-desc">曲线显示窗口为 100 Hz 至 1 GHz；原始开环 AC 扫描为 1 Hz 至 10 GHz，全部频点保留，窗口外部分由图框裁切。上图是 v(o) 对差分输入的开环增益 dB，下图是复数响应按频率递增展开的开环相位，不是闭环相位裕度。蓝色虚线为 1 pF 基准，绿色实线为选中的实际仿真候选。</desc>
+      <defs>
+        <clipPath id="ota-frequency-gain-clip"><rect x="78" y="48" width="504" height="217"/></clipPath>
+        <clipPath id="ota-frequency-phase-clip"><rect x="78" y="345" width="504" height="215"/></clipPath>
+      </defs>
+      <g data-ota-frequency="grid" aria-hidden="true"></g>
+      <g clip-path="url(#ota-frequency-gain-clip)" fill="none" stroke-width="2.7">
+        <path data-ota-frequency="baseline-gain" class="ota-frequency-baseline"/>
+        <path data-ota-frequency="candidate-gain" class="ota-frequency-candidate"/>
+      </g>
+      <g clip-path="url(#ota-frequency-phase-clip)" fill="none" stroke-width="2.7">
+        <path data-ota-frequency="baseline-phase" class="ota-frequency-baseline"/>
+        <path data-ota-frequency="candidate-phase" class="ota-frequency-candidate"/>
+      </g>
+    </svg>
+  </div>
+  <div class="ota-frequency-legend" aria-label="曲线说明">
+    <span class="ota-frequency-key ota-frequency-key-baseline">1 pF 基准 · 虚线</span>
+    <span class="ota-frequency-key ota-frequency-key-candidate">所选仿真 · 实线</span>
+  </div>
+  <p class="demo-chart-caption">上：20 log₁₀|v(o)/v<sub>id</sub>|。下：同一复数响应的开环连续展开相位，不是闭环相位裕度。显示窗口为 100 Hz–1 GHz；原始 ngspice 扫描为 1 Hz–10 GHz，全部 801 点保留，窗口外曲线由图框裁切。</p>
+  <p class="ota-frequency-observation" data-ota-frequency="observation" role="status" aria-live="polite">5 pF 时，−3 dB 带宽降到 47.11 kHz；这一负载下若沿用 100 kHz 目标就无法达标。</p>
+  <dl class="ota-frequency-metrics" aria-label="所选仿真点指标">
+    <div><dt>候选</dt><dd data-ota-frequency="label">负载 · 5 pF</dd></div>
+    <div><dt>CL</dt><dd data-ota-frequency="load">5 pF</dd></div>
+    <div><dt>低频增益</dt><dd data-ota-frequency="gain">206.01 V/V</dd></div>
+    <div><dt>−3 dB</dt><dd data-ota-frequency="bandwidth">47.11 kHz</dd></div>
+    <div><dt>单位增益</dt><dd data-ota-frequency="unity">9.70 MHz</dd></div>
+    <div><dt>功耗</dt><dd data-ota-frequency="power">0.391 mW</dd></div>
+  </dl>
+  <details>
+    <summary>尺寸、来源与读图边界</summary>
+    <p class="demo-source ota-frequency-source" data-ota-frequency="provenance">GF180MCU · ngspice-47 · typical · 27 °C · 开环 AC</p>
+    <p data-ota-frequency="change">相对基准只将输出电容从 1 pF 改为 5 pF。</p>
+    <p>模型提交 <code>9f992d5a9186d1f7820c58f039c484ad35b2edea</code>；AC 端口为理想差分输入，右侧单端输出。曲线是固定 GF180MCU 模型的 nominal 仿真，不是硅片实测；高频端也不构成 GHz 精度保证。图示为 100 Hz–1 GHz 窗口，完整 1 Hz–10 GHz 扫描点仍保留。</p>
+    <p><a href="{{lab}}">完整网表、CSV、指标与复现条件</a> · <a data-ota-frequency="payload-link" href="{{payload}}">图中数据</a></p>
+  </details>
+</section>
+<p class="demo-loading ota-frequency-loading" hidden>交互数据暂不可用；本节原有频响图、候选表和节点矩阵推导仍可阅读。</p>
+<script type="module" src="{{module}}"></script>

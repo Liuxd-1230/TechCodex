@@ -24,6 +24,19 @@ def on_page_markdown(markdown,page,config,files):
 
 
 def on_page_content(html,page,config,files):
+    for slug in ('mos-channel','differential-modes','ota-frequency'):
+        marker=f'<!-- interactive: {slug} -->'
+        if marker not in html:
+            continue
+        template=(Path(__file__).parent/'demos'/f'{slug}.html').read_text(encoding='utf-8')
+        for key,target in {'module':f'assets/demos/{slug}.js','payload':'assets/demos/ota-frequency-data.json','lab':'labs/frequency/'}.items():
+            template=template.replace('{{'+key+'}}',get_relative_url(target,page.url))
+        if slug=='differential-modes':
+            drawing=BeautifulSoup((Path(__file__).resolve().parents[1]/'模拟/图/diff-modes.svg').read_text(encoding='utf-8'),'html.parser')
+            for style in drawing.select('style'):
+                style.decompose()
+            template=template.replace('{{schematic}}',str(drawing.svg))
+        html=html.replace(marker,template)
     marker='<!-- interactive: source-follower -->'
     if marker in html:
         template=(Path(__file__).parent/'demos/source-follower.html').read_text(encoding='utf-8')
@@ -91,7 +104,10 @@ def on_page_content(html,page,config,files):
         caption.name='figcaption'
         figure.append(caption.extract())
         image=figure.find('img')
-        if Path(image.get('src','')).stem in ('mos-charge','sf-feedback'):
+        stem=Path(image.get('src','')).stem
+        if stem in ('mos-channel','diff-modes','cs-load-resistor','cs-load-diode','cs-load-current','ota-current-sum','noise-statistics'):
+            figure['id']='figure-'+stem
+        if stem in ('mos-charge','sf-feedback','noise-referral'):
             figure['class']=['concept-figure']
             figure['id']='figure-'+Path(image['src']).stem
             paragraph.name='div'
@@ -121,6 +137,12 @@ def on_page_content(html,page,config,files):
         if after and after.find('img',src=lambda value:value and 'sf-load-buffer.svg' in value):
             pair=soup.new_tag('div',attrs={'class':'sf-loading-pair'})
             before.insert_before(pair);pair.append(before.extract());pair.append(after.extract())
+    load_figures=[soup.find(id='figure-cs-load-'+name) for name in ('resistor','diode','current')]
+    if all(load_figures):
+        comparison=soup.new_tag('div',attrs={'class':'load-comparison'})
+        load_figures[0].insert_before(comparison)
+        for figure in load_figures:
+            comparison.append(figure.extract())
     for quote in soup.find_all('blockquote'):
         quote['class']=['teaching-note']
     if page.url=='':
@@ -144,7 +166,9 @@ def on_post_page(output,page,config):
     for name in ('book.css','book.js','demos/circuit-demo.css',
                  'demos/current-steering.js','demos/mirror-compliance.js',
                  'demos/miller-poles.js','demos/noise-band.js',
-                 'demos/source-follower.css','demos/source-follower.js'):
+                 'demos/source-follower.css','demos/source-follower.js',
+                 'demos/teaching-examples.css','demos/mos-channel.js',
+                 'demos/differential-modes.js','demos/ota-frequency.css','demos/ota-frequency.js'):
         path=Path(__file__).parent/'assets'/name
         url=get_relative_url('assets/'+name,page.url)
         digest=hashlib.sha256(path.read_bytes()).hexdigest()[:12]

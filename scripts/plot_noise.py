@@ -23,6 +23,36 @@ def save(fig,name):
     fig.savefig(OUT/(name+'.png'),dpi=180,metadata={**metadata,'impeccable:prompt':origin});plt.close(fig)
 
 
+def statistics():
+    """Finite random-phase samples: periodogram area equals record variance.
+
+    This is an analytic statistics example, never a SPICE noise transient.
+    No Gaussian amplitude distribution is asserted by the spectrum.
+    """
+    n=8192;fs=8192;rng=np.random.default_rng(71)
+    f=np.fft.rfftfreq(n,1/fs);time=np.arange(n)/fs
+    fig,axs=plt.subplots(3,1,figsize=(4.4,6.8))
+    for column,(lo,hi,color,label) in enumerate([(1,32,TEAL,'A: 1-32 Hz'),(256,1024,BLUE,'B: 256-1024 Hz')]):
+        bins=(f>=lo)&(f<=hi);z=np.zeros(len(f),complex)
+        z[bins]=np.exp(1j*rng.uniform(0,2*np.pi,bins.sum()))
+        x=np.fft.irfft(z,n);x=x/np.sqrt(np.mean(x*x))*10
+        psd=2*np.abs(np.fft.rfft(x))**2/(fs*n);psd[[0,-1]]/=2
+        # The uniform frequency grid and Parseval give an exact finite-record check.
+        assert abs(psd.sum()*(fs/n)-np.mean(x*x))<1e-10
+        assert abs(np.sqrt(np.mean(x*x))-10)<1e-12
+        axs[column].plot(time[:1024]*1000,x[:1024],color=color,lw=1.1)
+        axs[column].set_title(label+' · 10 µV RMS',color=color,loc='left',fontsize=12)
+        axs[column].set(xlabel='Time (ms)',ylabel='Sample (µV)',xlim=(0,125),ylim=(-35,35))
+        # Plot complete periodogram values on a linear frequency axis: area is variance.
+        axs[2].plot(f,psd,color=color,lw=1.3,label=label)
+        axs[2].fill_between(f,psd,color=color,alpha=.12)
+        axs[2].set(xlabel='Frequency (Hz)',ylabel='PSD estimate\n(µV²/Hz)',xlim=(0,1200),ylim=(0,3.5))
+    axs[2].text(.95,.86,'Both areas = 100 µV²',transform=axs[2].transAxes,ha='right',fontsize=10)
+    axs[2].legend(loc='center right',frameon=False,fontsize=10)
+    for ax in axs.flat:ax.spines[['top','right']].set_visible(False);ax.grid(alpha=.15)
+    save(fig,'noise-statistics')
+
+
 def main():
     # Evidence role: how physical mechanism and sizing change an actual input PSD.
     fig,ax=plt.subplots(figsize=(7.2,4.8))
@@ -55,4 +85,4 @@ def main():
     save(fig,'noise-band')
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':statistics();main()

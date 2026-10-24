@@ -66,6 +66,27 @@ def ota():
     c.save('mirror-ota',OUT)
 
 
+def ota_current_sum():
+    """Enlarge the actual output branch; the complete OTA remains above it."""
+    c=Canvas('五管 OTA 输出支路的增量电流合成',360,540)
+    c.text(20,25,'放大看右支路：多供、少取',19)
+    p=c.mos(130,125,'M4',True);n=c.mos(130,345,'M2')
+    c.line(*p['s'],160,52);c.text(160,45,'VDD',17,anchor='middle')
+    c.wire(p['b'],(300,125),(300,52),(160,52),color=BODY)
+    c.wire(p['d'],n['d']);c.node(160,235)
+    c.wire((20,125),p['g']);c.text(20,95,'X ↓',18,SIGNAL)
+    c.wire((20,345),n['g']);c.text(20,315,'vi2 ↓',18,SIGNAL)
+    c.wire(n['b'],(245,345),(245,392),color=BODY);c.ground(245,392,BODY)
+    c.line(*n['s'],160,430);c.text(160,455,'T · 接公共尾节点',17,anchor='middle')
+    c.line(160,235,310,235);c.arrow((245,235),(300,235),SIGNAL)
+    c.text(308,223,'vo',18,SIGNAL,anchor='middle')
+    c.arrow((190,191),(190,215),SIGNAL);c.text(207,202,'δi4 +0.3 µA',17,SIGNAL)
+    c.arrow((190,279),(190,255),SIGNAL);c.text(207,275,'δi2 −0.3 µA',17,SIGNAL)
+    c.text(20,489,'理想镜：δi4 = δi1',18)
+    c.text(20,521,'iout = +0.3 − (−0.3) = +0.6 µA',18,SIGNAL)
+    c.save('ota-current-sum',OUT,'放大完整五管 OTA 的 M4、M2 输出支路。左支路经镜像栅节点 X 使 M4 多供零点三微安，右输入使 M2 少取零点三微安，净输出增加零点六微安。箭头是增量，不表示总电流反流。PMOS 体接 VDD，NMOS 体接地，T 接原电路公共尾节点。解析例，非 SPICE。')
+
+
 def reference():
     c=Canvas('电阻参考支路与各级偏置：同名 VB 是电气连接',620,470)
     r=c.mos(140,300,'MR');c.resistor(170,60,'RREF');c.line(170,136,170,240);c.text(170,40,'VDD',18,anchor='middle')
@@ -108,4 +129,4 @@ def self_bias():
 
 
 if __name__=='__main__':
-    basic();cascode();ota();reference();small_signal();self_bias()
+    basic();cascode();ota();ota_current_sum();reference();small_signal();self_bias()

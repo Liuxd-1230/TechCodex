@@ -1,0 +1,104 @@
+.md-typeset .ota-frequency-demo {
+  --ota-ink: #173c50;
+  --ota-muted: #526974;
+  --ota-rule: #d5e0e8;
+  --ota-blue: #315bc5;
+  --ota-teal: #126e63;
+  color: var(--ota-ink);
+}
+
+.ota-frequency-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: .8rem 1rem;
+  margin: 1rem 0 .5rem;
+}
+
+.ota-frequency-controls label {
+  display: grid;
+  gap: .35rem;
+  align-content: start;
+  font-size: .78rem;
+  font-weight: 600;
+}
+
+.ota-frequency-controls select {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.75rem;
+  max-width: 100%;
+  padding: .45rem .6rem;
+  border: 1px solid #bed0d8;
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ota-ink);
+  font: inherit;
+}
+
+.ota-frequency-controls select:focus-visible {
+  outline: 3px solid #327aa0;
+  outline-offset: 3px;
+}
+
+.md-typeset .ota-frequency-source {
+  margin: .7rem 0 .5rem;
+  color: var(--ota-muted);
+  background: #eef3fa;
+  font-variant-numeric: tabular-nums;
+}
+
+.ota-frequency-metrics {
+  display: grid;
+  grid-template-columns: 1.35fr repeat(5, minmax(0, 1fr));
+  gap: .3rem .8rem;
+  margin: .5rem 0 .8rem;
+  padding: .65rem 0;
+  border-top: 1px solid var(--ota-rule);
+  border-bottom: 1px solid var(--ota-rule);
+  font-variant-numeric: tabular-nums;
+}
+
+.ota-frequency-metrics div { min-width: 0; }
+.ota-frequency-metrics dt { color: var(--ota-muted); font-size: .68rem; line-height: 1.45; }
+.ota-frequency-metrics dd { margin: .12rem 0 0; color: var(--ota-ink); font-size: .8rem; font-weight: 600; overflow-wrap: anywhere; }
+
+.md-typeset .ota-frequency-observation {
+  margin: .65rem 0 .8rem;
+  padding: .55rem .7rem;
+  border: 1px solid #c9ddd7;
+  border-radius: 4px;
+  background: #f2f8f5;
+  color: #334e5d;
+  font-size: .78rem;
+  line-height: 1.65;
+}
+
+.ota-frequency-chart { min-width: 0; max-width: 26rem; margin: .35rem auto 0; }
+.ota-frequency-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.ota-frequency-chart path { vector-effect: non-scaling-stroke; }
+.ota-frequency-chart text { fill: var(--ota-muted); font-family: var(--md-text-font); font-size: 19px; font-variant-numeric: tabular-nums; }
+.ota-frequency-grid { stroke: #e0e8ec; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.ota-frequency-axis { stroke: #567787; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.ota-frequency-baseline { stroke: var(--ota-blue); stroke-dasharray: 7 5; }
+.ota-frequency-candidate { stroke: var(--ota-teal); }
+.ota-frequency-legend { display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; margin: .1rem .25rem .35rem; color: var(--ota-muted); font-size: .75rem; }
+.ota-frequency-key { display: inline-flex; align-items: center; gap: .45rem; }
+.ota-frequency-key::before { width: 1.3rem; border-top: 2px solid currentColor; content: ""; }
+.ota-frequency-key-baseline { color: var(--ota-blue); }
+.ota-frequency-key-baseline::before { border-top-style: dashed; }
+.ota-frequency-key-candidate { color: var(--ota-teal); }
+.ota-frequency-demo details p { overflow-wrap: anywhere; }
+
+@media (max-width: 44.984em) {
+  .ota-frequency-controls { grid-template-columns: 1fr; gap: .5rem; }
+  .ota-frequency-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .45rem .55rem; }
+  .ota-frequency-metrics dt { font-size: .7rem; }
+  .ota-frequency-metrics dd { font-size: .82rem; }
+  .ota-frequency-chart text { font-size: 22px; }
+  .ota-frequency-chart .ota-frequency-mobile-hide { display: none; }
+  .ota-frequency-chart { margin-right: -.3rem; margin-left: -.3rem; }
+}
+
+@media print {
+  .ota-frequency-demo, .ota-frequency-loading { display: none !important; }
+}

@@ -4,6 +4,12 @@
 {% if page and page.url == 'analog/stages/source-follower/' %}
 <link rel="stylesheet" href="{{ 'assets/demos/source-follower.css' | url }}">
 {% endif %}
+{% if page and page.url in ['analog/devices/', 'analog/differential/common-mode/'] %}
+<link rel="stylesheet" href="{{ 'assets/demos/teaching-examples.css' | url }}">
+{% endif %}
+{% if page and page.url == 'analog/frequency/ota/' %}
+<link rel="stylesheet" href="{{ 'assets/demos/ota-frequency.css' | url }}">
+{% endif %}
 {% endblock %}
 {% block scripts %}
 {{ super() }}

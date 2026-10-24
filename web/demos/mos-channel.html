@@ -1,0 +1,13 @@
+<section class="circuit-demo channel-demo" data-demo="mos-channel" aria-labelledby="channel-demo-title" hidden>
+  <div class="demo-heading"><h3 id="channel-demo-title">漏端的电荷变少，电流会停吗？</h3>
+  <p>先固定栅压，把漏压从零缓慢增加。预测：漏端反型电荷接近零时，电流曲线会向下掉，还是逐渐变平？</p></div>
+  <div class="channel-controls">
+    <div class="demo-control"><label for="channel-gate">栅源电压 <output id="channel-gate-value">1.00 V</output></label><input id="channel-gate" type="range" min="80" max="140" step="1" value="100"></div>
+    <div class="demo-control"><label for="channel-drain">漏源电压 <output id="channel-drain-value">0.20 V</output></label><input id="channel-drain" type="range" min="0" max="120" step="1" value="20"></div>
+  </div>
+  <div data-channel="figure" class="channel-figure"></div>
+  <p class="channel-result" data-channel="result" aria-live="polite"></p>
+  <p class="demo-chart-caption">实时长沟道解析模型。绿色带的深度编码电荷幅值，绝非实际沟道厚度；只计算受栅控制沟道，不绘制未求解的夹断区长度。</p>
+  <details><summary>这张图怎样从电流积分得到</summary><p>VTH = 0.6 V，β = 200 µA/V²，S、B 接地；强反型、渐变沟道、常迁移率、λ = 0。取 d = min(VDS, VOV)，则 |Qi(x)|/Cox = √[VOV² − (2VOV·d − d²)x/L]。饱和后新增漏压落在模型未展开的漏端高场区域。此处没有计算弱反型、体效应或真实工艺电荷。</p></details>
+</section>
+<script type="module" src="{{module}}"></script>

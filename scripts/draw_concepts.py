@@ -88,12 +88,34 @@ def follower():
     return page('sf-feedback','源跟随器的充电与反作用','NMOS 源极连接偏置电流源与输出电容，输入抬高使多出的漏电流给电容充电，源极升高又减小栅源电压增量。',504,b)
 
 
+def noise_referral():
+    # Architecture layout: two parallel transfer maps, never a signal/PSD sum.
+    b=text(160,28,'同一输出端口，分开计算',19,weight=600)
+    for x in (80,240):
+        b+=f'<path d="M{x} 100V144M{x} 208V252" fill="none" stroke="{C["muted"]}" marker-end="url(#arrow)"/>'
+    for x in (24,184):
+        b+=rect(x,144,112,64,'paper','ink',4)
+    b+=text(80,70,'信号 vi',17)+text(240,70,'内部噪声 nk',16)
+    b+=text(80,184,'Av(f)',20)+text(240,184,'Hk(f)',20)
+    b+=text(80,280,'vo,s',20)+text(240,280,'vo,nk',20)
+    b+=text(24,324,'信号幅值：vo,s = Av·vi',17,'ink','start')
+    b+=text(24,360,'噪声 PSD：Sv,o = Σ |Hk|²Sk',16,'ink','start')
+    b+=text(24,390,'上式对不相关源求和。',14,'muted','start')
+    b+=rect(24,424,272,96,'accent-tint','accent',4)
+    b+=text(160,452,'折回同一个信号输入端口',16,'accent')
+    b+=text(160,488,'Sv,in = Sv,o / |Av|²',20,'accent')
+    b+=f'<line x1="24" y1="544" x2="296" y2="544" stroke="{C["rule"]}"/>'
+    b+=text(24,573,'箭头表示传递关系，不是电路导线。',14,'muted','start')
+    b+=text(24,600,'同源多路径先合并 H，再求模平方。',14,'muted','start')
+    return page('noise-referral','信号与噪声的输入参考','确定性输入经信号增益产生输出信号，内部噪声经各自路径产生输出噪声；二者分开计算，再用信号增益的模平方定义输入参考噪声。',624,b)
+
+
 if __name__ == '__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--skill-dir',type=Path,required=True)
     args=parser.parse_args()
     C=tokens()
-    for slug,html in [('mos-charge',mos()),('sf-feedback',follower())]:
+    for slug,html in [('mos-charge',mos()),('sf-feedback',follower()),('noise-referral',noise_referral())]:
         src=SOURCE/f'{slug}.html'
         src.write_text(html,encoding='utf-8')
         subprocess.run([sys.executable,str(args.skill_dir/'scripts/self_check.py'),'--offline',str(src)],check=True)

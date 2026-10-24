@@ -66,6 +66,7 @@ ROUTES={
     'docs/VALIDATION.md':'about/validation-v1.md',
     'docs/第二版编辑说明.md':'about/edition2.md',
     'docs/知识覆盖.md':'about/curriculum.md',
+    'docs/教例地图.md':'about/examples.md',
     'docs/网站维护.md':'about/site.md',
     'docs/第二版验收.md':'about/validation-v2.md',
 }

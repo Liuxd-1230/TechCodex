@@ -112,5 +112,6 @@ nav:
     - 噪声实验: labs/noise.md
   - 资料与路线:
     - 知识覆盖与后续章节: about/curriculum.md
+    - 第 2～7 章教例地图: about/examples.md
     - 资料来源: about/sources.md
 copyright: 原创文字与图示 © TechCodex · 开源实验可独立复现

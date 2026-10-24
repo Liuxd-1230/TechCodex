@@ -150,6 +150,44 @@ def loads():
     c.save('cs-loads',OUT)
 
 
+def cs_load_comparison():
+    """Generate three independent full-circuit views of the frozen CS load cases."""
+    cases=(
+        ('resistor','电阻负载共源级增量电路','RD=10 kΩ','vo=−9.09 mV','RD +0.909 µA；go,n −0.091 µA',
+         '电阻负载从 VDD 接到输出，NMOS 的 S、B 接地。输出增量为 −9.09 mV；RD 注入 +0.909 µA，NMOS 输出电导项抵消 0.091 µA。'),
+        ('diode','二极管连接 PMOS 负载共源级增量电路','二极管 PMOS','vo=−1.923 mV','MP +0.981 µA；go,n −0.019 µA',
+         'PMOS 的 S、B 接 VDD，G、D 接输出；NMOS 的 S、B 接地。输出增量为 −1.923 mV；PMOS 增量电流注入 +0.981 µA，NMOS 输出电导项抵消 0.019 µA。'),
+        ('current','固定栅 PMOS 负载共源级增量电路','固定栅 PMOS','vo=−50.0 mV','MP +0.500 µA；go,n −0.500 µA',
+         'PMOS 的 S、B 接 VDD，栅压 VB 固定，D 接输出；NMOS 的 S、B 接地。输出增量为 −50.0 mV；PMOS 注入 +0.500 µA，NMOS 输出电导项抵消 0.500 µA。'),
+    )
+    for kind,title,load,result,recovery,description in cases:
+        c=Canvas(title,360,420)
+        c.text(18,27,load+' · 共源级',18)
+        c.line(95,50,265,50);c.text(180,43,'VDD',16,anchor='middle')
+        if kind=='resistor':
+            c.resistor(180,50,load,height=76)
+            c.line(180,126,180,188)
+        else:
+            p=c.mos(150,115,'MP',pmos=True)
+            c.line(*p['s'],180,50)
+            c.line(*p['b'],265,115,color=BODY);c.line(265,115,265,50,color=BODY);c.line(265,50,180,50,color=BODY)
+            c.text(270,140,'VDD',16,BODY)
+            if kind=='diode':
+                c.wire(p['g'],(38,115),(38,188),(180,188));c.node(180,188)
+                c.text(20,100,load,16,MUTED)
+            else:
+                c.wire((20,115),p['g']);c.text(20,98,'VB 固定',16,SIGNAL)
+        n=c.mos(150,260,'MN')
+        if kind!='resistor':c.wire(p['d'],(180,188),n['d'])
+        else:c.line(180,188,*n['d'])
+        c.node(180,188);c.text(193,182,'vo',17,SIGNAL)
+        c.wire((20,260),n['g']);c.text(20,242,'vi',16,SIGNAL)
+        c.ground(*n['s']);c.line(*n['b'],n['b'][0],315,color=BODY);c.ground(n['b'][0],315,BODY)
+        c.text(18,365,result,17,SIGNAL)
+        c.text(18,398,recovery,16,MUTED)
+        c.save('cs-load-'+kind,OUT,description)
+
+
 def device():
     c=Canvas('NMOS 的概念截面：栅电场改变反型电荷',600,390)
     c.parts.append('<rect x="45" y="180" width="510" height="150" fill="#eef3f6" stroke="#6e8895"/><rect x="90" y="180" width="85" height="52" fill="#d1e9e4"/><rect x="425" y="180" width="85" height="52" fill="#d1e9e4"/>')
@@ -218,5 +256,5 @@ def capacitances():
 
 
 if __name__=='__main__':
-    sf_loading();sf_action();sf_test();sf_equivalent();laboratory();stage_basics();loads();device();more_stages();capacitances()
+    sf_loading();sf_action();sf_test();sf_equivalent();laboratory();stage_basics();loads();cs_load_comparison();device();more_stages();capacitances()
     print('Generated original teaching schematics with explicit bulk terminals.')

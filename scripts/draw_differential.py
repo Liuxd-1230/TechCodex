@@ -5,6 +5,31 @@ from circuit_art import Canvas, INK, SIGNAL, BODY, MUTED
 OUT=Path(__file__).resolve().parents[1]/'模拟/图'
 
 
+def modes_example():
+    """Fixed-bias incremental circuit, not a DC tail-resistor implementation."""
+    c=Canvas('差模与共模的两支路和尾节点',480,510)
+    a=c.mos(130,250,'M1');b=right_mos(c,350,250,'M2')
+    c.parts=[p for p in c.parts if not any('>'+label+'</text>' in p for label in ('D','G','S'))]
+    c.line(160,32,320,32);c.text(240,22,'VDD · 交流地',18,anchor='middle')
+    for x in (160,320):
+        c.line(x,32,x,48);c.resistor(x,48,height=76);c.line(x,124,x,190);c.node(x,160)
+    c.text(24,80,'RD1',18);c.text(24,104,'40 kΩ',18)
+    c.text(348,68,'RD2 · 40 kΩ',17)
+    c.line(30,250,55,250);c.line(425,250,450,250)
+    for terminal,x in [(a['b'],225),(b['b'],255)]:
+        c.wire(terminal,(x,290),color=BODY);c.ground(x,290,BODY)
+    c.wire(a['s'],(160,350),(320,350),b['s']);c.node(240,350)
+    c.line(240,350,240,368);c.resistor(240,368,height=60);c.ground(240,428)
+    labels=[('vi1',24,245,'vi1 +5.00 mV'),('vi2',330,245,'vi2 −5.00 mV'),('vo1',24,180,'vo1 −57.69 mV'),('vo2',330,180,'vo2 +57.69 mV'),('vt',260,378,'vt 0.00 mV'),('i1',24,135,'δi1 +1.442 µA'),('i2',335,135,'δi2 −1.442 µA'),('it',24,423,'δit 0.000 µA'),('rt',260,417,'rT · 100 kΩ')]
+    for key,x,y,label in labels:
+        c.parts.append(f'<text x="{x}" y="{y}" font-size="17" fill="{SIGNAL}" data-mode="{key}">{label}</text>')
+    for key in ['i1','i2','it']:
+        c.parts.append(f'<path data-mode="{key}-arrow" d="" stroke="{SIGNAL}" stroke-width="2.5"/>')
+    c.parts=[p.replace('>RD2 · 40 kΩ</text>',' data-mode="r2">RD2 · 40 kΩ</text>') for p in c.parts]
+    c.text(24,487,'低频增量电路 · NMOS 体端均接交流地',18,MUTED)
+    c.save('diff-modes',OUT,'对称差模输入正负五毫伏时，两侧输出正负相反，尾节点增量为零。rT 是维持原偏置后尾管的增量输出电阻。')
+
+
 def right_mos(c,x,y,name,pmos=False):
     """Right-facing NMOS; labels stay upright and the bulk lead stays separate."""
     c.line(x+25,y-31,x+25,y+31)
@@ -154,5 +179,5 @@ def gilbert():
 
 if __name__=='__main__':
     for kind in ('ideal','mos','degenerated','bridge'):pair(kind)
-    half();half(True);loads();pmos_pair();gilbert()
-    print('Generated 9 original Chapter 4 circuit diagrams.')
+    half();half(True);loads();pmos_pair();gilbert();modes_example()
+    print('Generated 10 original Chapter 4 circuit diagrams.')

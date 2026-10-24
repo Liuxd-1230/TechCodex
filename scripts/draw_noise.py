@@ -6,16 +6,9 @@ OUT=Path(__file__).resolve().parents[1]/'模拟/图';BLUE='#315bc5'
 
 
 def referral():
-    c=Canvas('内部噪声经各自传递函数到输出，统一用信号端口增益折回输入',720,335)
-    for x,y,w,h in [(260,55,155,60),(260,190,155,60),(540,110,140,80)]:
-        c.parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="3"/>')
-    c.text(338,93,'Av(f)',22,anchor='middle');c.text(338,228,'Hk(f)',22,anchor='middle');c.text(610,143,'同一输出',18,anchor='middle');c.text(610,174,'Sv,o(f)',20,BLUE,anchor='middle')
-    c.arrow((80,85),(250,85),INK);c.text(90,60,'信号 vi',20)
-    c.arrow((80,220),(250,220),BLUE);c.text(90,195,'内部源 nk',20,BLUE)
-    c.wire((415,85),(490,85),(490,150),(530,150));c.arrow((490,150),(535,150),INK)
-    c.wire((415,220),(490,220),(490,150),color=BLUE);c.node(490,150)
-    c.text(55,303,'输入参考：Sv,in(f) = Sv,o(f) / |Av(f)|²',22,SIGNAL)
-    c.save('noise-referral',OUT)
+    # This is a transfer map, not an electrical schematic. Its editable HTML
+    # and SVG export are owned by the branded concept-figure generator.
+    print('noise-referral: run draw_concepts.py --skill-dir <diagram-design>')
 
 
 def cg():
