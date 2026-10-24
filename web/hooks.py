@@ -105,9 +105,10 @@ def on_page_content(html,page,config,files):
         figure.append(caption.extract())
         image=figure.find('img')
         stem=Path(image.get('src','')).stem
-        if stem in ('mos-channel','diff-modes','cs-load-resistor','cs-load-diode','cs-load-current','ota-current-sum','noise-statistics'):
+        if stem in ('mos-channel','diff-modes','cs-load-resistor','cs-load-diode','cs-load-current','ota-current-sum','noise-statistics',
+                    'mos-charge-increment','cg-termination','cascode-feedback'):
             figure['id']='figure-'+stem
-        if stem in ('mos-charge','sf-feedback','noise-referral'):
+        if stem in ('mos-charge','sf-feedback','noise-referral','noise-paths'):
             figure['class']=['concept-figure']
             figure['id']='figure-'+Path(image['src']).stem
             paragraph.name='div'
