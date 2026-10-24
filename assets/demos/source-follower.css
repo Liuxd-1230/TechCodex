@@ -1,0 +1,73 @@
+/* Local to section 3.3. Circuit, response and prose share the book's paper. */
+.sf-enhanced #figure-sf-feedback{display:none}
+.md-typeset .sf-loading-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1.5rem 0 2rem}
+.md-typeset .sf-loading-pair figure{margin:0;padding:.4rem 0;border:0}
+.sf-loading-pair img{display:block;width:100%;height:auto}
+.md-typeset .sf-loading-pair figcaption{font-size:.7rem;line-height:1.75;margin:.4rem .2rem 0}
+.md-typeset .sf-step.circuit-demo{padding:1.25rem 0 1rem;border:0;border-top:1px solid var(--book-rule);border-bottom:1px solid var(--book-rule);border-radius:0;margin:1.6rem 0 2rem;scroll-margin-top:4rem}
+.md-typeset .sf-step h3{font-size:1.15rem;margin:0 0 .6rem;line-height:1.6}
+.md-typeset .sf-step .sf-intro{font-size:.8rem;margin:0 0 1.2rem;line-height:1.85}
+.sf-toolbar{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:1.3rem}
+.sf-mode{display:flex;flex-direction:column;gap:.35rem;font-size:.75rem;flex:1;min-width:12rem}
+.sf-step .sf-mode select{width:100%;font-size:.75rem}
+.sf-step .sf-play{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--md-primary-fg-color);color:white;border:1px solid var(--md-primary-fg-color);border-radius:4px;padding:.55rem .85rem;min-height:2.3rem;font:inherit;font-size:.75rem;cursor:pointer;transition:background .15s ease-out}
+.sf-step .sf-play:hover{background:var(--md-accent-fg-color);border-color:var(--md-accent-fg-color)}
+.sf-play svg{width:1rem;height:1rem;fill:currentColor;flex:none}
+.sf-play .sf-pause-icon{display:none}.sf-play[aria-pressed=true] .sf-pause-icon{display:block}.sf-play[aria-pressed=true] .sf-play-icon{display:none}
+.sf-amplitude{margin:0}
+.sf-amplitude label,.sf-time label{display:flex;align-items:center;justify-content:space-between;gap:.6rem;font-size:.75rem}
+.md-typeset .sf-step .sf-model-line{font-size:.69rem;color:var(--md-default-fg-color--light);margin:.4rem 0 1rem}
+.sf-stage{display:grid;grid-template-columns:1.02fr 1fr;align-items:center;gap:.8rem;margin:.3rem 0 1rem}
+.sf-stage>div{min-width:0}
+.sf-circuit{width:100%;height:auto;display:block}
+.sf-circuit text,.sf-response text{font-family:var(--md-text-font);stroke:none;fill:var(--md-primary-fg-color);font-variant-numeric:tabular-nums}
+.sf-circuit .sf-wire{fill:none;stroke:var(--md-primary-fg-color);stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round}
+.sf-circuit .sf-bulk{stroke:#9b5b18}.sf-circuit text.sf-bulk{fill:#9b5b18;stroke:none}
+.sf-circuit .sf-node{fill:var(--md-accent-fg-color);stroke:none}
+.sf-circuit .sf-voltage{fill:var(--md-accent-fg-color);font-size:19px;font-weight:600}
+.sf-circuit .sf-storage{fill:var(--book-blue)}
+.sf-circuit .sf-current{fill:none;stroke:var(--md-accent-fg-color);stroke-linecap:round}
+.sf-circuit .sf-cap-current{stroke:var(--book-blue)}
+.sf-circuit [hidden]{display:none}
+.sf-response{display:block;width:100%;height:auto;overflow:visible}
+.sf-response .sf-grid{stroke:var(--book-rule);stroke-width:1;fill:none}
+.sf-response .sf-input{stroke:var(--md-primary-fg-color);stroke-width:1.6;stroke-dasharray:5 4;fill:none}
+.sf-response .sf-output{stroke:var(--md-accent-fg-color);stroke-width:2.8;fill:none;stroke-linejoin:round}
+.sf-response .sf-final{stroke:var(--md-accent-fg-color);stroke-dasharray:2 5;stroke-width:1;fill:none}
+.sf-response .sf-cursor{stroke:var(--book-blue);stroke-width:1;fill:none}
+.sf-response .sf-point{fill:var(--md-accent-fg-color);stroke:white;stroke-width:1.5}
+.sf-response path,.sf-response circle,.sf-circuit path,.sf-circuit circle{vector-effect:non-scaling-stroke}
+.sf-legend{display:flex;gap:1rem;font-size:.69rem;line-height:1.6;margin:.45rem 0 .6rem;color:var(--md-default-fg-color--light)}
+.sf-legend span{display:inline-flex;align-items:center;gap:.35rem}
+.sf-legend svg{width:1.2rem;height:.4rem;overflow:visible}
+.md-typeset .sf-step .sf-now{font-size:.8rem;line-height:1.85;margin:.75rem 0;color:var(--md-primary-fg-color);min-height:5.6em}
+.sf-phase{display:block;font-weight:600;color:var(--md-accent-fg-color);margin-bottom:.2rem}
+.sf-ledger{display:flex;justify-content:space-between;gap:.3rem .8rem;flex-wrap:wrap;padding:.65rem 0;border-top:1px solid var(--book-rule);font-size:.69rem;line-height:1.85;font-variant-numeric:tabular-nums}
+.sf-ledger strong{font-weight:600}
+.sf-time{margin:1rem 0 .5rem}
+.sf-time-head{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-bottom:.2rem}
+.sf-time-head label{flex:1;justify-content:end;flex-wrap:wrap}
+.sf-time .sf-time-ends{display:flex;justify-content:space-between;font-size:.65rem;color:var(--md-default-fg-color--light)}
+.md-typeset .sf-step .sf-help{font-size:.69rem;color:var(--md-default-fg-color--light);line-height:1.8;margin:.4rem 0}
+.md-typeset .sf-step details{font-size:.73rem;padding:0;border:0;background:none;margin-top:1rem}
+.md-typeset .sf-step details summary{font-size:.73rem;background:none;margin:0;padding:.6rem 0;min-height:2.2rem;color:var(--md-accent-fg-color);text-decoration:underline;text-underline-offset:.25em}
+.md-typeset .sf-step details p{font-size:.73rem;line-height:1.85}
+.md-typeset .sf-step details table{font-size:.7rem}
+.sf-step .sf-reduce[hidden]{display:none}
+@media(max-width:44.984em){
+  .md-typeset .sf-loading-pair{grid-template-columns:1fr;gap:1rem;margin:1.2rem 0 1.7rem}
+  .sf-loading-pair figure{max-width:21rem;width:100%;margin:auto!important}
+  .md-typeset .sf-step.circuit-demo{margin-left:0;margin-right:0;padding:.9rem 0}
+  .sf-toolbar{grid-template-columns:1fr;gap:.8rem}
+  .sf-mode{min-width:0;width:100%}
+  .sf-time{position:sticky;top:2.4rem;z-index:2;background:var(--book-paper);padding:.4rem 0;border-bottom:1px solid var(--book-rule);margin-top:.5rem}
+  .sf-time-head{gap:.5rem}
+  .sf-step .sf-play{flex:none}
+  .sf-stage{grid-template-columns:1fr;gap:.2rem}
+  .sf-stage>div:first-child{max-width:21rem;margin:auto;width:100%}
+  .sf-stage>div:last-child{margin-top:.5rem}
+  .sf-step .sf-now{min-height:0}
+  .sf-ledger{justify-content:start;gap:.2rem 1rem}
+}
+@media(prefers-reduced-motion:reduce){.sf-step .sf-play{transition:none}}
+@media print{.sf-enhanced #figure-sf-feedback{display:block}.sf-loading-pair{grid-template-columns:1fr 1fr!important}.sf-time{position:static}}
