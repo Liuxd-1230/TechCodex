@@ -14,8 +14,10 @@ const path=points=>points.map(([x,y],i)=>`${i?'L':'M'}${x.toFixed(2)} ${y.toFixe
 export function channelFigure(vgs,vds,prefix='channel'){
   const s=channel(vgs,vds),q0=channel(vgs,vds,0).q;
   const profile=Array.from({length:101},(_,i)=>[80+i*3.2,156+channel(vgs,vds,i/100).q*75]);
-  const curve=Array.from({length:121},(_,i)=>[64+i*3.1,480-channel(vgs,i/100).id*1e6*2.5]);
-  const cx=64+vds/1.2*372,cy=480-s.id*1e6*2.5;
+  // The full control range reaches 64 µA; a fixed 0–80 scale preserves comparisons.
+  const currentY=id=>480-id*1e6*135/80;
+  const curve=Array.from({length:121},(_,i)=>[64+i*3.1,currentY(channel(vgs,i/100).id)]);
+  const cx=64+vds/1.2*372,cy=currentY(s.id);
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 540" role="img" aria-labelledby="${prefix}-title ${prefix}-desc">
   <title id="${prefix}-title">漏端电荷与输出电流</title><desc id="${prefix}-desc">VGS ${vgs.toFixed(2)} 伏，VDS ${vds.toFixed(2)} 伏，${s.saturated?'饱和区':'三极区'}，漏电流 ${(s.id*1e6).toFixed(2)} 微安。绿色带的深度表示反型电荷幅值，不是沟道厚度。</desc>
   <style>text{font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#173c50;font-size:20px}path,line{vector-effect:non-scaling-stroke}</style>
@@ -34,9 +36,9 @@ export function channelFigure(vgs,vds,prefix='channel'){
   <text x="24" y="285" font-size="18">|Qi|/Cox：源 ${q0.toFixed(2)} V → 漏 ${s.q.toFixed(2)} V</text>
   <text x="24" y="314" fill="#126e63" font-size="19">${s.saturated?'漏端反型电荷趋零，电流仍然存在。':'漏压升高，整条沟道上的电荷分布也改变。'}</text>
   <path d="M64 345V480H436" fill="none" stroke="#173c50"/>
-  <text x="24" y="340" font-size="18">ID / µA</text>
-  <g stroke="#d5e0e8" fill="none"><path d="M64 430H436M64 380H436"/></g>
-  <text x="52" y="486" text-anchor="end" font-size="17">0</text><text x="52" y="436" text-anchor="end" font-size="17">20</text><text x="52" y="386" text-anchor="end" font-size="17">40</text>
+  <text x="436" y="338" text-anchor="end" font-size="18">ID / µA</text>
+  <g stroke="#d5e0e8" fill="none"><path d="M64 412.5H436M64 345H436"/></g>
+  <text x="52" y="486" text-anchor="end" font-size="17">0</text><text x="52" y="418.5" text-anchor="end" font-size="17">40</text><text x="52" y="351" text-anchor="end" font-size="17">80</text>
   <path d="M${64+s.ov/1.2*372} 350V480" stroke="#9b5b18" stroke-dasharray="4 4" fill="none"/>
   <path d="${path(curve)}" stroke="#126e63" fill="none" stroke-width="2.5"/>
   <path d="M${cx} 480V${cy}H64" stroke="#315bc5" stroke-dasharray="3 4" fill="none"/>

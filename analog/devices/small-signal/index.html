@@ -2111,8 +2111,6 @@
       
         
       
-        
-      
     
     
     
@@ -2173,34 +2171,6 @@
     
   
     知识覆盖与后续章节
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/examples/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 2～7 章教例地图
   
 
     
@@ -2411,6 +2381,11 @@ g_m=\beta V_{OV}=\frac{2I_D}{V_{OV}}
 <p>栅到源、漏、体的电容来自不同机制。沟道反型电荷需要在源漏端之间分配；栅与源漏扩散的重叠、边缘场还形成附加电容。漏体、源体 PN 结则形成反偏结电容，即使栅极不动，它们也会加载对应节点。</p>
 <h2 id="_3">沟道电荷分布决定本征电容怎样分配<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>先采用长沟道、准静态、强反型近似，把重叠和边缘电容暂时分开。低 VDS 时，沟道电荷较均匀，栅端电荷变化大致由源漏两端分担；进入饱和后，漏端附近沟道夹断，漏端电压对受栅控制电荷的作用减弱，栅电容主要落在源端。</p>
+<p>回到 2.1 的电荷分布，做一次相同的操作：源、体固定，栅压增加 40 mV。前一级需要补充多少栅电荷？先看新增的面积，而不是急着把电容分成 Cgs 和 Cgd。</p>
+<figure id="figure-mos-charge-increment"><p><a aria-label="低漏压与饱和时，同样增加栅压所需的新增电荷 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-charge-increment.svg" title="打开原图，查看细节"><img alt="低漏压与饱和时，同样增加栅压所需的新增电荷" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-charge-increment.svg"/></a></p><figcaption>图 2.3-2b：灰线是原来的电荷幅值，绿线是加栅压以后的电荷幅值，绿色条带表示两者之差。上图 VDS=0；下图漏压固定，且两次栅压下均保持饱和。长沟道模型取固定阈值，VOV 从 0.40 增至 0.44 V；图中省略耗尽、重叠与边缘电荷。 <a aria-label="低漏压与饱和时，同样增加栅压所需的新增电荷 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-charge-increment.svg">查看原图</a></figcaption></figure>
+
+<p>上图每一处都增加 <span class="arithmatex">\(C_{ox}\Delta V_G\)</span>，沿长度累加便得到 <span class="arithmatex">\(\Delta Q_g=WLC_{ox}\Delta V_G\)</span>。下图则按 <span class="arithmatex">\(\sqrt{1-x/L}\)</span> 加权，新增电荷只有前者的 2/3。<strong>电容测量的是增加电压所需补充的电荷，不是栅下已有多少电荷。</strong> 同一块栅面积，换一个工作区，增量电容就可能改变。</p>
+<p>这一步得到的是源、体和漏电势固定时的总本征栅电荷斜率。它还没有逐项决定源、漏各承担多少位移电流；端口分配仍须结合偏置下的电荷模型。常用的结果是：</p>
 <table>
 <thead>
 <tr>

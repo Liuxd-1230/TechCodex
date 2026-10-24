@@ -2089,8 +2089,6 @@
       
         
       
-        
-      
     
     
     
@@ -2151,34 +2149,6 @@
     
   
     知识覆盖与后续章节
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/examples/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 2～7 章教例地图
   
 
     
@@ -2369,6 +2339,10 @@ S_{v,\mathrm{in,th}}\simeq
 S_y=|H_1+H_2|^2S_n.
 \]</div>
 <p>若写成 <span class="arithmatex">\((|H_1|^2+|H_2|^2)S_n\)</span>，就把同一个源误当成两个独立源，丢掉了抵消或增强。上一节共栅、共源共栅的漏源双端注入，正是这个问题在节点方程中的形式。</p>
+<p>这里的 <span class="arithmatex">\(H_1,H_2\)</span> 包含各自的幅度和相位。同一个零均值源沿两条同相、等幅路径时，<span class="arithmatex">\(y=2n\)</span>，输出方差为 <span class="arithmatex">\(4\sigma^2\)</span>；两路符号相反时则抵消。尾源噪声是后者的理想差分例子：它同相推动两端，但差分端口相减，等效传递系数一正一负。M1、M2 的沟道噪声属于另一类：它们是两个独立源，各自经过一条路径后在输出相加，方差在统计期望上相加。</p>
+<figure class="concept-figure" id="figure-noise-paths"><p class="diagram-scroll-hint">图内可左右查看，或使用下方的“查看原图”。</p><div aria-label="同源噪声经同相路径加倍、经差分反相路径抵消；两个独立输入管噪声的理论方差相加，窄屏可横向查看" class="diagram-viewport" role="region" tabindex="0"><a aria-label="同源噪声经同相路径加倍、经差分反相路径抵消；两个独立输入管噪声的理论方差相加 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-paths.svg" title="打开原图，查看细节"><img alt="同源噪声经同相路径加倍、经差分反相路径抵消；两个独立输入管噪声的理论方差相加" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-paths.svg"/></a></div><figcaption>图 7-4a　路径示意：<span class="arithmatex">\(n\)</span> 为零均值，<span class="arithmatex">\(n_1,n_2\)</span> 的方差均为 <span class="arithmatex">\(\sigma^2\)</span>，传递系数取 1。箭头表示传递关系，不代表导线或 GF180 波形。 <a aria-label="同源噪声经同相路径加倍、经差分反相路径抵消；两个独立输入管噪声的理论方差相加 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/noise-paths.svg">查看原图</a></figcaption></figure>
+
+<p>有限记录的样本协方差通常不会恰好为零。对独立源，这是抽样波动，不等于电路存在物理互相关；不能凭一次非零估计就把独立源改成相关源。</p>
 <p>更一般地，令零均值源向量为 <span class="arithmatex">\(\mathbf n\)</span>，输出为 <span class="arithmatex">\(Y=\mathbf h\mathbf N\)</span>，<span class="arithmatex">\(\mathbf h\)</span> 是行向量。单边互谱矩阵 <span class="arithmatex">\(\mathbf S_n\)</span> 的元素定义为 <span class="arithmatex">\(S_{ij}=E[N_iN_j^*]\)</span> 的谱密度，则</p>
 <div class="arithmatex">\[
 S_y=\mathbf h\mathbf S_n\mathbf h^\dagger

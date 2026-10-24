@@ -2004,8 +2004,6 @@
       
         
       
-        
-      
     
     
     
@@ -2066,34 +2064,6 @@
     
   
     知识覆盖与后续章节
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../about/examples/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 2～7 章教例地图
   
 
     
@@ -2327,11 +2297,11 @@ Q_i(x)\simeq-C_{ox}\,[V_{GS}-V_{TH}-V(x)].
 <div class="demo-control"><label for="channel-drain">漏源电压 <output id="channel-drain-value">0.20 V</output></label><input id="channel-drain" max="120" min="0" step="1" type="range" value="20"/></div>
 </div>
 <div class="channel-figure" data-channel="figure"></div>
-<p aria-live="polite" class="channel-result" data-channel="result"></p>
+<p aria-live="polite" class="channel-result" data-channel="result" role="status"></p>
 <p class="demo-chart-caption">实时长沟道解析模型。绿色带的深度编码电荷幅值，绝非实际沟道厚度；只计算受栅控制沟道，不绘制未求解的夹断区长度。</p>
 <details><summary>这张图怎样从电流积分得到</summary><p>VTH = 0.6 V，β = 200 µA/V²，S、B 接地；强反型、渐变沟道、常迁移率、λ = 0。取 d = min(VDS, VOV)，则 |Qi(x)|/Cox = √[VOV² − (2VOV·d − d²)x/L]。饱和后新增漏压落在模型未展开的漏端高场区域。此处没有计算弱反型、体效应或真实工艺电荷。</p></details>
 </section>
-<script src="../../assets/demos/mos-channel.js?v=d181a812757a" type="module"></script>
+<script src="../../assets/demos/mos-channel.js?v=f8921f8b1f6c" type="module"></script>
 <figure id="figure-mos-channel"><p><a aria-label="长沟道解析模型中沿沟道的反型电荷与同一偏置下的输出电流 · 打开原图" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-channel.svg" title="打开原图，查看细节"><img alt="长沟道解析模型中沿沟道的反型电荷与同一偏置下的输出电流" src="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-channel.svg"/></a></p><figcaption>图 2-2a：长沟道强反型解析例，VTH=0.6 V、β=200 µA/V²、VGS=1.0 V、VDS=0.2 V。绿色带的深度表示 <span class="arithmatex">\(|Q_i|/C_{ox}\)</span>，不是反型层厚度。源到漏的电荷逐渐减少，对应 ID=12 µA；继续把漏压提高到 VOV=0.4 V，理想电流趋近 16 µA，漏端反型电荷趋零。图没有给夹断区指定几何长度。 <a aria-label="长沟道解析模型中沿沟道的反型电荷与同一偏置下的输出电流 · 查看原图" class="figure-detail" href="../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-channel.svg">查看原图</a></figcaption></figure>
 
 <p>设迁移率近似常数，忽略扩散项，漂移电流可写成</p>

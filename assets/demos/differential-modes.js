@@ -1,4 +1,4 @@
-import {modes} from './modes-model.mjs';
+import {modes,modeObservation} from './modes-model.mjs?v=2';
 const root=document.querySelector('[data-demo="differential-modes"]');
 if(root){
   const kind=root.querySelector('#modes-kind'),tail=root.querySelector('#modes-tail'),input=root.querySelector('#modes-input'),get=k=>root.querySelector(`[data-mode="${k}"]`);
@@ -14,7 +14,7 @@ if(root){
       const i=s[key],dir=i<0?-1:1,len=Math.abs(i)<1e-12?0:12+Math.min(1,Math.abs(i)/1.5e-6)*24;
       get(key+'-arrow').setAttribute('d',len?`M${x} ${y-dir*len/2}V${y+dir*len/2}m-4 ${-dir*7}l4 ${dir*7}l4 ${-dir*7}`:'');
     }
-    get('result').textContent=`输出差 vod = ${mv(s.vod)}。`+(kind.value==='differential'?'对称差模下，支路一增一减，尾节点无需改变。':kind.value==='common'?'尾节点移动；两边输出相同，相减仍为零。':'负载不同，共同的电流变化不能换成相同的输出电压。')+` 尾端 KCL：${ua(s.i1)} + ${ua(s.i2)} = ${ua(s.it)}。`;
+    get('result').textContent=`输出差 vod = ${mv(s.vod)}。`+modeObservation(kind.value,s)+` 尾端 KCL：${ua(s.i1)} + ${ua(s.i2)} = ${ua(s.it)}。`;
     root.querySelector('svg desc').textContent=`${get('result').textContent} 尾节点 ${mv(s.vt)}。所有体端接地。`;
   }
   for(const control of [kind,tail,input])control.addEventListener(control===input?'input':'change',render);

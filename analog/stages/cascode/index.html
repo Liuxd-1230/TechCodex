@@ -2122,8 +2122,6 @@
       
         
       
-        
-      
     
     
     
@@ -2184,34 +2182,6 @@
     
   
     知识覆盖与后续章节
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/examples/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    第 2～7 章教例地图
   
 
     
@@ -2417,6 +2387,10 @@ R_{\mathrm{cas}}=\frac{v_o}{i_x}
 \]</div>
 <p>这正是 <a href="../common-source/">源极退化</a> 的输出阻抗公式，把 RS 换成 ro1。我们不必为每个新拓扑重新记一个结果，只要看清测试源问题已经化成什么已知结构。</p>
 <p>输出抬高时，有限 ro2 会试图增加支路电流；电流增量使 x 升高，减小 M2 的 VGS、VBS，抵消刚才的电流增加。因此相同输出电压变化引起的电流变化更小，输出电阻提高。恢复作用由 <span class="arithmatex">\(g_{t2}\)</span> 与 ro1 的组合提供。</p>
+<figure id="figure-cascode-feedback"><p><a aria-label="输出测试下，中间节点的微小移动抵消大部分输出电导电流 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cascode-feedback.svg" title="打开原图，查看细节"><img alt="输出测试下，中间节点的微小移动抵消大部分输出电导电流" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cascode-feedback.svg"/></a></p><figcaption>图 3.5-1b：把上面的式子落实到一次测试。取 <span class="arithmatex">\(g_{t2}=1\ \mathrm{mS}\)</span>、<span class="arithmatex">\(r_{o1}=r_{o2}=100\ \mathrm{k\Omega}\)</span>，输入增量置零，M1 因而只剩 ro1；M2 的栅、体交流固定。施加 +100 mV 输出测试，x 只上升约 0.980 mV，净向下测试电流约 9.80 nA。所有数值来自同一组低频线性方程。 <a aria-label="输出测试下，中间节点的微小移动抵消大部分输出电导电流 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/cascode-feedback.svg">查看原图</a></figcaption></figure>
+
+<p>这里两个接近 1 µA 的项不是两条独立支路电流，而是 <strong>M2 同一漏电流的两个增量分量</strong>。ro2 项想增加电流，源端上升引起的跨导项减少电流，最后才剩约 9.80 nA。若单独把 100 mV 加在 ro1 上，会得到 1 µA；共源共栅因此把这次输出扰动引起的电流压低约 102 倍。</p>
+<p>可以据此检查一个设计判断：若上管跨导下降，x 需要移动更多还是更少，才能抵消相同的漏端扰动？需要更多。下管漏压于是更容易被输出带动，端口输出电阻也随之下降。</p>
 <p>若 <span class="arithmatex">\(g_{t2}r_{o1}\)</span>、<span class="arithmatex">\(g_{t2}r_{o2}\)</span> 都足够大，可取</p>
 <div class="arithmatex">\[
 R_{\mathrm{cas}}\simeq g_{t2}r_{o1}r_{o2}.
