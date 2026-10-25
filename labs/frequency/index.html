@@ -2352,12 +2352,17 @@
 <td><code>analytic-cgd</code>, <code>analytic-no-cgd</code></td>
 <td>独立显式受控源/电阻/电容模型，非 GF180；与 Python 完整两节点公式逐点复数比较，验证交互模型的电气含义</td>
 </tr>
+<tr>
+<td><code>analytic-output-port</code></td>
+<td>输入源 AC 置零，漏端施加 1 V AC 测试，依次取 RS=1 Ω、10 kΩ、1 MΩ、1 GΩ；观察栅压与流入漏端的复数电流，验证有限 RS 到浮栅分压的过渡。显式线性模型，非 GF180</td>
+</tr>
 </tbody>
 </table>
 <h2 id="_3">怎样复现<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>先按 <a href="../windows/">Windows 配置</a> 安装已锁定依赖，仓库根目录运行：</p>
 <div class="highlight"><pre><span></span><code><span class="n">uv</span> <span class="n">run</span> <span class="p">-</span><span class="n">-locked</span> <span class="n">scripts</span><span class="p">/</span><span class="n">run_frequency</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-check</span>
 <span class="n">uv</span> <span class="n">run</span> <span class="p">-</span><span class="n">-locked</span> <span class="n">scripts</span><span class="p">/</span><span class="n">check_frequency</span><span class="p">.</span><span class="n">py</span>
+<span class="n">uv</span> <span class="n">run</span> <span class="p">-</span><span class="n">-locked</span> <span class="n">scripts</span><span class="p">/</span><span class="n">check_cs_output_port</span><span class="p">.</span><span class="n">py</span>
 <span class="n">node</span> <span class="n">scripts</span><span class="p">/</span><span class="n">check_frequency_demo</span><span class="p">.</span><span class="n">mjs</span>
 <span class="n">uv</span> <span class="n">run</span> <span class="p">-</span><span class="n">-locked</span> <span class="n">scripts</span><span class="p">/</span><span class="n">draw_frequency</span><span class="p">.</span><span class="n">py</span>
 <span class="n">uv</span> <span class="n">run</span> <span class="p">-</span><span class="n">-locked</span> <span class="n">scripts</span><span class="p">/</span><span class="n">plot_frequency</span><span class="p">.</span><span class="n">py</span>
@@ -2366,6 +2371,7 @@
 <span class="n">uv</span> <span class="n">run</span> <span class="p">-</span><span class="n">-locked</span> <span class="p">-</span><span class="n">-group</span> <span class="n">site</span> <span class="n">scripts</span><span class="p">/</span><span class="n">check_site</span><span class="p">.</span><span class="n">py</span>
 </code></pre></div>
 <p>运行器保留失败信息；每次删除预期临时输出以防陈旧文件误通过。<code>--check</code> 先与已提交主要增益/带宽比较，容差 0.5%，再写新运行记录；不会根据新结果改变指标。图像只读取归档 CSV，不平滑、拟合或将解析曲线伪装为工艺数据。线性模型与真实模型各自明确标注。</p>
+<p>6.2 的<a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/decks/analytic-output-port.cir">漏端测试网表</a>由 <code>check_cs_output_port.py</code> 单独复核，无需工艺模型。扫描为 0.01 Hz～1 GHz、每十倍频 60 点；<span class="arithmatex">\(g_m=1\)</span> mS、<span class="arithmatex">\(R_o=50\)</span> kΩ、<span class="arithmatex">\(C_i=C_o=1\)</span> pF、<span class="arithmatex">\(C_f=0.1\)</span> pF。脚本以 <code>-i(Vtest)</code> 为流入电路的电流，逐点比较复数栅压、漏端导纳与独立节点消元结果，输出保存在 <code>build/ch06/analytic-output-port/</code>。极端频率用于检验线性方程的极限，不代表真实 MOS 的有效频段。</p>
 <p><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/data/metrics.json">metrics.json</a> 保存工作点、饱和余量、功耗、带宽和第一次向下 0 dB 穿越。带宽用相邻扫描点的 <strong>dB 对 log(f)</strong> 线性插值，相对 1 Hz 幅度降低 <span class="arithmatex">\(10\log_{10}2\)</span>；它不是极点提取。相位由复数结果 atan2 后连续展开，单位度。反相电路的恒定 180° 与附加相位分开解释；<code>unity_Hz=null</code> 表示没有找到穿越，不虚构单位增益频率。</p>
 <p><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/data/nodal.json">nodal.json</a> 的 G 单位 S、C 单位 F，顺序 X、O、T、B；输入项为 S 和 F。通过 1/10/100 kHz AC 端口测试提取矩阵，检查其频率一致性，再与未钳位直接 AC 在 30 MHz 以下对照。模态由 <span class="arithmatex">\(-C^{-1}G\)</span> 特征值求得，并检查稳定性、矩阵可逆与时间常数系数恒等式。左右特征向量参与度支持输出、镜节点和偏置模态的关联；快速模态仍只是当前准静态网络结果。</p>
 <p><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/data/run.json">run.json</a> 记录平台、Python/ngspice 版本、可执行文件与模型哈希，以及指标文件、生成脚本、原始网表、日志、CSV 和汇总的 SHA-256。原始 ngspice 输出只规范换行和文件末尾空白，不过滤警告或计算信息。前五章资源保持独立。</p>

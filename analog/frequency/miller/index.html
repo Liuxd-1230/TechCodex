@@ -1386,6 +1386,61 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#drain-perturbation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先关掉输入，从漏端施加扰动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capacitive-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        栅极不传导，漏端电导从何而来
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “大 Rs”必须相对于时间尺度来判断
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        这个漏端 RC 对应哪个极点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-node-kcl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        让两个节点一起求解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2262,6 +2317,61 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#drain-perturbation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先关掉输入，从漏端施加扰动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capacitive-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        栅极不传导，漏端电导从何而来
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “大 Rs”必须相对于时间尺度来判断
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        这个漏端 RC 对应哪个极点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-node-kcl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        让两个节点一起求解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2357,6 +2467,61 @@ Y_{out,gd}(s)=sC_{gd}[1-1/A(s)].
 <h2 id="_2">两个节点完整保留，会出现什么<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <figure><p><a aria-label="含 RS、Ci、Cf、Ro、Co 与 gmvg 的两节点共源小信号电路 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs-small.svg" title="打开原图，查看细节"><img alt="含 RS、Ci、Cf、Ro、Co 与 gmvg 的两节点共源小信号电路" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs-small.svg"/></a></p><figcaption>图 6-2 · <span class="arithmatex">\(C_f=C_{gd}\)</span>；<span class="arithmatex">\(C_i\)</span> 包括 <span class="arithmatex">\(C_{gs}\)</span>，<span class="arithmatex">\(C_o\)</span> 包括 <span class="arithmatex">\(C_{db}\)</span> 与负载，<span class="arithmatex">\(R_o=R_D\parallel r_o\)</span>。源端与体端交流接地；负载本身的附加动态尚未加入。跨导源正方向由输出流向地。 <a aria-label="含 RS、Ci、Cf、Ro、Co 与 gmvg 的两节点共源小信号电路 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs-small.svg">查看原图</a></figcaption></figure>
 
+<h3 id="drain-perturbation">先关掉输入，从漏端施加扰动<a class="headerlink" href="#drain-perturbation" title="Permanent link">¶</a></h3>
+<p>刚才是栅端变化、漏端跟着反相变化。现在反过来问：<strong>漏端受到扰动时，栅端还能固定不动吗？</strong> 将独立输入电压源置零，保留它的输出电阻 <span class="arithmatex">\(R_S\)</span>，在漏端施加测试电压 <span class="arithmatex">\(v_t\)</span>。这里的 <span class="arithmatex">\(R_S\)</span> 是栅前的信号源电阻，不是接在 MOS 源极上的退化电阻。</p>
+<p>先看两个极限。<span class="arithmatex">\(R_S\to0\)</span> 时，栅端被理想电压源固定在交流地。经栅漏支路流出的电流只用于给 <span class="arithmatex">\(C_f\)</span> 充放电；<span class="arithmatex">\(v_g=0\)</span>，跨导源没有增量电流。此时 <span class="arithmatex">\(C_f\)</span> 对漏端就是一只对地电容。</p>
+<p>若栅前支路近似开路，漏端上升会通过 <span class="arithmatex">\(C_f\)</span> 抬高栅压。<span class="arithmatex">\(C_i\)</span> 把栅端拉向交流地，因而栅压上升小于漏压，但方向相同。晶体管随之增加流向地的漏流：测试源既要给电容充电，还要补足这股沟道电流。原书 Fig. 6.14 所求的正是这一漏端阻抗。注意原书 Fig. 6.13 的 X 标在栅节点，而 Fig. 6.14 的 <span class="arithmatex">\(Z_X\)</span> 表示从漏端看入的阻抗；本节统一用 <span class="arithmatex">\(v_g\)</span> 和 <span class="arithmatex">\(v_t\)</span> 区分这两个端口。</p>
+<figure class="wide-circuit-figure" id="figure-frequency-cs-output-port"><p class="diagram-scroll-hint">此图保留端口标注大小，可左右查看完整电路。</p><div aria-label="输入源置零后的两种漏端测试：栅端固定时跨导电流为零，栅前开路时电容分压使栅压随漏压同向变化并增加漏流，窄屏可横向查看" class="diagram-viewport" role="region" tabindex="0"><a aria-label="输入源置零后的两种漏端测试：栅端固定时跨导电流为零，栅前开路时电容分压使栅压随漏压同向变化并增加漏流 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs-output-port.svg" title="打开原图，查看细节"><img alt="输入源置零后的两种漏端测试：栅端固定时跨导电流为零，栅前开路时电容分压使栅压随漏压同向变化并增加漏流" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs-output-port.svg"/></a></div><figcaption>图 6-2a · 两幅图施加相同的漏端测试电压。只画参与反馈的 <span class="arithmatex">\(C_i,C_f,g_m\)</span>；完整输出端还并联图 6-2 中的 <span class="arithmatex">\(R_o,C_o\)</span>。箭头给出测试电流和受控源电流的正方向；栅与漏之间没有导线。 <a aria-label="输入源置零后的两种漏端测试：栅端固定时跨导电流为零，栅前开路时电容分压使栅压随漏压同向变化并增加漏流 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cs-output-port.svg">查看原图</a></figcaption></figure>
+
+<h3 id="capacitive-feedback">栅极不传导，漏端电导从何而来<a class="headerlink" href="#capacitive-feedback" title="Permanent link">¶</a></h3>
+<p>近似开路的栅前支路不能送走增量电荷。在零初始扰动的小信号分析中，栅节点两只电容极板上的电荷变化之和为零：</p>
+<div class="arithmatex">\[
+C_i\,\delta v_g+C_f(\delta v_g-\delta v_t)=0.
+\]</div>
+<p>因此，令 <span class="arithmatex">\(C_\Sigma=C_i+C_f\)</span>，便有</p>
+<div class="arithmatex">\[
+v_g=\alpha v_t,\qquad \alpha=\frac{C_f}{C_\Sigma}.
+\]</div>
+<p>这是电容分压，不需要电荷穿过栅氧化层。漏端电压变化先改变栅上电荷分布，再通过栅压控制沟道电流。对稳态正弦扰动，<span class="arithmatex">\(\alpha\)</span> 是正实数，<span class="arithmatex">\(g_mv_g\)</span> 就与 <span class="arithmatex">\(v_t\)</span> 同相；测试端必须提供一股与自身电压成正比的电流，所以会测到正的等效电导。</p>
+<p>把漏端流入这部分网络的电流分成两项，可以分别看出电阻和电容从哪里来：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+i_t&amp;=g_mv_g+sC_f(v_t-v_g)\\
+   &amp;=\left[g_m\alpha+sC_f(1-\alpha)\right]v_t.
+\end{aligned}
+\]</div>
+<p>于是这部分网络的漏端等效为</p>
+<div class="arithmatex">\[
+\boxed{\begin{aligned}
+R_x&amp;=\frac{C_i+C_f}{g_mC_f},\\
+C_{eq}&amp;=\frac{C_iC_f}{C_i+C_f}.
+\end{aligned}}
+\]</div>
+<p>这就是 <span class="arithmatex">\(Z_{\mathrm{branch}}=R_x\parallel1/(sC_{eq})\)</span>。<span class="arithmatex">\(C_{eq}\)</span> 是两只电容经浮置栅节点形成的串联等效；<span class="arithmatex">\(R_x\)</span> 来自电容分压驱动的跨导。它不是 MOS 的 <span class="arithmatex">\(r_o\)</span>，也不是栅极漏电。若把 <span class="arithmatex">\(g_m\)</span> 置零，电导就消失，只留下串联电容。将 <span class="arithmatex">\(R_o,C_o\)</span> 接回后，总漏端阻抗近似为 <span class="arithmatex">\((R_o\parallel R_x)\parallel1/[s(C_o+C_{eq})]\)</span>。</p>
+<h3 id="rs">“大 Rs”必须相对于时间尺度来判断<a class="headerlink" href="#rs" title="Permanent link">¶</a></h3>
+<p>对于有限 <span class="arithmatex">\(R_S\)</span>，栅节点始终有一条经信号源电阻回到交流地的路径。它何时来不及固定栅压？直接写栅节点电流，得到</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\frac{v_g}{R_S}+sC_iv_g+sC_f(v_g-v_t)&amp;=0,\\
+\frac{v_g}{v_t}&amp;=\frac{sC_f}{1/R_S+sC_\Sigma}.
+\end{aligned}
+\]</div>
+<p>在 <span class="arithmatex">\(\omega R_SC_\Sigma\gg1\)</span> 的频段，电容电流占优，栅前电阻才可以近似开路，得到刚才的 <span class="arithmatex">\(\alpha\)</span>。因此，“大”不能只看 <span class="arithmatex">\(R_S\)</span> 是否大于 <span class="arithmatex">\(R_o\)</span>。反过来，<span class="arithmatex">\(\omega R_SC_\Sigma\ll1\)</span> 时，<span class="arithmatex">\(v_g/v_t\approx sR_SC_f\)</span>，栅端扰动很小；但它产生的跨导电流与 <span class="arithmatex">\(sC_fv_t\)</span> 之比约为 <span class="arithmatex">\(g_mR_S\)</span>。若要连跨导电流也忽略，<span class="arithmatex">\(g_mR_S\ll1\)</span> 是一个充分条件。<strong>小电压不一定意味着可忽略的小电流。</strong></p>
+<p>恢复正常输入以后，低阻信号源使栅压近似跟随 <span class="arithmatex">\(v_{in}\)</span>；“栅节点交流固定”只针对输入已置零的漏端测试。</p>
+<p>对任何有限 <span class="arithmatex">\(R_S\)</span>，当频率降到足够低时，电容耦合消失，测试所见的直流输出电阻仍为 <span class="arithmatex">\(R_o\)</span>。不能把高于上述转折频率才出现的 <span class="arithmatex">\(R_x\)</span> 当成一只始终接在输出上的直流电阻。先令 <span class="arithmatex">\(R_S\to\infty\)</span> 与先令频率趋零，所保留的栅节点约束不同。</p>
+<p>这一推导采用源、体交流固定、饱和工作点附近的常数 <span class="arithmatex">\(g_m,r_o\)</span> 和准静态二端电容。实际应用中，开路近似还必须处在这个器件模型有效的频段内；源端运动、栅漏电或额外动态需要重新写节点方程。</p>
+<h3 id="rc">这个漏端 RC 对应哪个极点<a class="headerlink" href="#rc" title="Permanent link">¶</a></h3>
+<p>在大 <span class="arithmatex">\(R_S\)</span>、输入变化远慢于输出内部调整的情况下，漏端网络给出一个较快的自然模态估计：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\omega_{\mathrm{fast}}&amp;\approx
+\frac{1/R_o+1/R_x}{C_o+C_{eq}}\\
+&amp;=\frac1{(R_o\parallel R_x)(C_o+C_{eq})}.
+\end{aligned}
+\]</div>
+<p>同一个 <span class="arithmatex">\(C_f\)</span> 一方面使输入源承担米勒电荷，形成较慢的输入变化；另一方面在较快的输出调整中，允许栅压随漏压同向变化，增加恢复电流。两个效应属于同一个耦合电路的不同时间尺度。不能先按固定栅压算一次输出 RC，再另加一只 <span class="arithmatex">\(R_x\)</span>：固定栅压与浮栅分压是两种不同约束。</p>
+<p>若两极点不分离，或者估计出的频率还不满足 <span class="arithmatex">\(\omega R_SC_\Sigma\gg1\)</span>，这个端口 RC 就不足以代表某个独立极点。下面保留两个节点，检验这幅物理图像。</p>
+<h3 id="two-node-kcl">让两个节点一起求解<a class="headerlink" href="#two-node-kcl" title="Permanent link">¶</a></h3>
 <p>令 <span class="arithmatex">\(G_i=1/R_S\)</span>、<span class="arithmatex">\(G_o=1/R_o\)</span>。两个节点的 KCL 直接给出</p>
 <div class="arithmatex">\[
 \begin{aligned}
@@ -2376,11 +2541,37 @@ d_2&amp;=C_iC_o+C_f(C_i+C_o).
 \end{aligned}
 \]</div>
 <p>低频检查得到 <span class="arithmatex">\(H(0)=-g_mR_o\)</span>。将 <span class="arithmatex">\(C_f\)</span> 置零，则分母可以分成 <span class="arithmatex">\((G_i+sC_i)(G_o+sC_o)\)</span>，输入与输出只剩单向跨导传递。这个退化情况帮助检查符号和单位。</p>
+<details>
+<summary>推导核对：有限 Rs 的漏端导纳怎样回到完整分母</summary>
+<p>输入置零、保留漏端测试源时，将上面的 <span class="arithmatex">\(v_g/v_t\)</span> 代入漏端电流，可得</p>
+<div class="arithmatex">\[
+Y_{out}(s)=G_o+sC_o+
+\frac{sC_f(G_i+g_m+sC_i)}{G_i+sC_\Sigma}
+=\frac{d_0+d_1s+d_2s^2}{G_i+sC_\Sigma}.
+\]</div>
+<p>这与两节点行列式使用同一个分母多项式。取 <span class="arithmatex">\(G_i\to0\)</span> 且 <span class="arithmatex">\(s\ne0\)</span>，得到 <span class="arithmatex">\(G_o+g_m\alpha+s(C_o+C_{eq})\)</span>；取有限 <span class="arithmatex">\(G_i\)</span> 后再令 <span class="arithmatex">\(s\to0\)</span>，则只剩 <span class="arithmatex">\(G_o\)</span>。</p>
+<p>在 <span class="arithmatex">\(R_S\)</span> 足够大且极点分离时，<span class="arithmatex">\(d_1\approx G_oC_\Sigma+g_mC_f\)</span>，于是</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\omega_{\mathrm{slow}}&amp;\approx\frac{d_0}{d_1}
+\approx\frac1{R_S[C_i+C_f(1+g_mR_o)]},\\
+\omega_{\mathrm{fast}}&amp;\approx\frac{d_1}{d_2}
+\approx\frac{G_o+g_m\alpha}{C_o+C_{eq}}.
+\end{aligned}
+\]</div>
+<p>前一个是常见的输入米勒时间常数，后一个是浮栅条件下的漏端 RC。快模态近似消除了较慢的栅前电阻通路；它没有使原电路的慢模态消失。</p>
+</details>
 <h3 id="_3">零点来自路径抵消，而不是“又多了一只电容”<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>分子在 <span class="arithmatex">\(s=+g_m/C_f\)</span> 为零，是 RHP 零点。这个说法来自复频域中两条路径的代数抵消；在真实正弦频率轴上，<span class="arithmatex">\(j\omega C_f\)</span> 不会等于正实数 <span class="arithmatex">\(g_m\)</span>，所以不会在那一频率出现幅度降为零的凹口。</p>
 <p>从时域也能预见这个符号：输入突然向上，电容先把输出推高；随后晶体管增大漏流，把输出拉低。最初运动方向与最终反相响应相反，是这一简化共源级非最小相位行为的线索。</p>
 <p>结论依赖于源极交流固定、跨导为常数、<span class="arithmatex">\(C_f\)</span> 为互易二端电容以及负载模型。真实 BSIM 中的电荷分配、移动源端和有源负载都可能改变零点，不能把 <span class="arithmatex">\(g_m/C_{gd}\)</span> 作为所有 MOS 放大器的零点公式。</p>
 <h2 id="_4">米勒近似能估计什么，丢掉什么<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
+<p>从输出节点 KCL 可以直接读出实际局部增益：</p>
+<div class="arithmatex">\[
+A(s)=\frac{v_o}{v_g}
+=\frac{sC_f-g_m}{G_o+s(C_o+C_f)}.
+\]</div>
+<p>它不含栅前的输入分压。输出电容可以先使这个局部增益下降，随后改变输入端的米勒加载；不能只凭总增益 <span class="arithmatex">\(H(s)\)</span> 的 −3 dB 位置去调整米勒倍数。</p>
 <p>以 <span class="arithmatex">\(A_0=-g_mR_o\)</span> 替代实际 <span class="arithmatex">\(A(s)\)</span>，得到</p>
 <div class="arithmatex">\[
 C_{Mi}=C_i+C_f(1+g_mR_o),\qquad
@@ -2393,9 +2584,11 @@ C_{Mo}=C_o+C_f\left(1+\frac1{g_mR_o}\right).
 \frac{d_1}{d_0}=R_SC_i+R_oC_o+C_f(R_S+R_o+g_mR_SR_o).
 \]</div>
 <p>桥接电容对应的电阻包含 <span class="arithmatex">\(g_mR_SR_o\)</span>。这里能看到米勒效应如何进入时间常数，又不必预先拆成两只等效电容。<a href="../methods/">6.7</a> 会从测试端口推导这个电阻。</p>
+<p>有一个实负慢极点充分主导时，<span class="arithmatex">\(\omega_{\mathrm{slow}}\approx d_0/d_1\)</span>；再忽略 <span class="arithmatex">\(R_o(C_o+C_f)\)</span>，才回到输入米勒估计 <span class="arithmatex">\(1/(R_SC_{Mi})\)</span>。这说明输入米勒、漏端 <span class="arithmatex">\(R_x\)</span> 和开路时间常数可以相互校验，却不是三份应叠加的独立修正。时间常数法中，计算 <span class="arithmatex">\(C_f\)</span> 的测试电阻时要把 <span class="arithmatex">\(C_i,C_o\)</span> 开路；推导 <span class="arithmatex">\(R_x\)</span> 时却必须保留 <span class="arithmatex">\(C_i\)</span> 来建立电容分压，测试条件并不相同。</p>
 <h2 id="_5">用一组小参数检查直觉<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>取 <span class="arithmatex">\(g_m=1\)</span> mS、<span class="arithmatex">\(R_S=10\)</span> kΩ、<span class="arithmatex">\(R_o=50\)</span> kΩ、<span class="arithmatex">\(C_i=C_o=1\)</span> pF。<span class="arithmatex">\(C_f\)</span> 仅为 0.1 pF，低频输入等效电容却达到 6.1 pF。完整二次分母的极点是 1.439 MHz、29.33 MHz；前馈 RHP 零点为 1.592 GHz。−3 dB 带宽约 1.436 MHz，接近慢极点是因为这里恰好有较好的极点分离。</p>
 <p>去掉 <span class="arithmatex">\(C_f\)</span> 后，两个极点变成 3.183 MHz、15.92 MHz，−3 dB 带宽约 3.067 MHz。<strong>跨端电容既把慢极点拉低，又把快极点推高</strong>，并非给两个原节点各增加同一比例的电容。</p>
+<p>若只把 <span class="arithmatex">\(R_S\)</span> 改成 1 MΩ，<span class="arithmatex">\(R_x=11\)</span> kΩ、<span class="arithmatex">\(C_{eq}=0.0909\)</span> pF。漏端 RC 预测快极点约 16.18 MHz，完整两节点解为 16.30 MHz；与此同时，慢极点降至 25.90 kHz。只看漏端 RC 会漏掉这个真正限制带宽的慢变化。这里两极点相隔约 629 倍，才适合分别解释它们的电荷路径。</p>
 <figure><p><a aria-label="完整两节点解、无 Cgd 对照与固定增益米勒近似的幅相响应 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-miller-response.svg" title="打开原图，查看细节"><img alt="完整两节点解、无 Cgd 对照与固定增益米勒近似的幅相响应" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-miller-response.svg"/></a></p><figcaption>图 6-3 · 这是显式线性教学模型，已经用独立原生 ngspice 网表核对，非 GF180 曲线。固定增益米勒近似能解释低频加载；高频时，忽略耦合和零点使相位判断发生偏差。幅度为 <span class="arithmatex">\(20\log_{10}|v_o/v_{in}|\)</span>，相位相对低频反相增益。 <a aria-label="完整两节点解、无 Cgd 对照与固定增益米勒近似的幅相响应 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-miller-response.svg">查看原图</a></figcaption></figure>
 
 <section aria-labelledby="miller-demo-title" class="circuit-demo frequency-demo" data-demo="miller-poles" hidden="">
@@ -2436,6 +2629,11 @@ C_{Mo}=C_o+C_f\left(1+\frac1{g_mR_o}\right).
 <p>可以依次做三次预测：把 <span class="arithmatex">\(C_f\)</span> 减到零，零点会去哪？增加 <span class="arithmatex">\(C_f\)</span>，两个精确极点是否同时降低？把观察频率移到很高处，输入是否仍能用 6.1 pF 解释？上面的静态图和公式已经给出完整答案；交互用于把这些关系放到同一次操作中观察。</p>
 <p>提高 <span class="arithmatex">\(g_m\)</span> 一方面增加驱动电流，另一方面在这里增加低频反相增益和输入端的米勒负担。若限制来自输出电容，较大 <span class="arithmatex">\(g_m\)</span> 未必移动该输出 RC 极点；若输入受限，变化方向还要连同 <span class="arithmatex">\(R_S\)</span> 和 <span class="arithmatex">\(R_o\)</span> 判断。</p>
 <p>下一节：<a href="../follower-gate/">换一个端口，电容的命运也变了</a></p>
+<details>
+<summary>原书对照与勘误</summary>
+<p>拉扎维《模拟 CMOS 集成电路设计》第二版，本地中文版印刷页 164～167（PDF 第 188～191 页）。Fig. 6.13～6.15、式 (6.21)～(6.30) 对应输入米勒估计、漏端端口等效及完整两节点分析；式 (6.35)、(6.39)～(6.42) 讨论极点分离。本文沿用 <span class="arithmatex">\(C_i,C_f,C_o,R_o\)</span> 的统一符号，图示为独立绘制，有限 <span class="arithmatex">\(R_S\)</span> 的端口导纳由本节 KCL 推导。</p>
+<p>本扫描版印刷第 166 页例 6.6 的式 (6.32) 分母漏写 <span class="arithmatex">\(s\)</span>，应为 <span class="arithmatex">\(1+sR_DC_{gd}\)</span>；同页式 (6.31) 下的 <span class="arithmatex">\(\omega_0\)</span> 应取所列 RC 时间常数之和的倒数。这两处在原页图中也存在，不能只依靠文字识别纠正，须用 KCL 和量纲复核。</p>
+</details>
 
 
 
