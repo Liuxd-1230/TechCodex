@@ -2628,12 +2628,12 @@ C_{Mo}=C_o+C_f\left(1+\frac1{g_mR_o}\right).
 <script src="../../../assets/demos/miller-poles.js?v=7b2b40b2c0e8" type="module"></script>
 <p>可以依次做三次预测：把 <span class="arithmatex">\(C_f\)</span> 减到零，零点会去哪？增加 <span class="arithmatex">\(C_f\)</span>，两个精确极点是否同时降低？把观察频率移到很高处，输入是否仍能用 6.1 pF 解释？上面的静态图和公式已经给出完整答案；交互用于把这些关系放到同一次操作中观察。</p>
 <p>提高 <span class="arithmatex">\(g_m\)</span> 一方面增加驱动电流，另一方面在这里增加低频反相增益和输入端的米勒负担。若限制来自输出电容，较大 <span class="arithmatex">\(g_m\)</span> 未必移动该输出 RC 极点；若输入受限，变化方向还要连同 <span class="arithmatex">\(R_S\)</span> 和 <span class="arithmatex">\(R_o\)</span> 判断。</p>
-<p>下一节：<a href="../follower-gate/">换一个端口，电容的命运也变了</a></p>
 <details>
 <summary>原书对照与勘误</summary>
-<p>拉扎维《模拟 CMOS 集成电路设计》第二版，本地中文版印刷页 164～167（PDF 第 188～191 页）。Fig. 6.13～6.15、式 (6.21)～(6.30) 对应输入米勒估计、漏端端口等效及完整两节点分析；式 (6.35)、(6.39)～(6.42) 讨论极点分离。本文沿用 <span class="arithmatex">\(C_i,C_f,C_o,R_o\)</span> 的统一符号，图示为独立绘制，有限 <span class="arithmatex">\(R_S\)</span> 的端口导纳由本节 KCL 推导。</p>
-<p>本扫描版印刷第 166 页例 6.6 的式 (6.32) 分母漏写 <span class="arithmatex">\(s\)</span>，应为 <span class="arithmatex">\(1+sR_DC_{gd}\)</span>；同页式 (6.31) 下的 <span class="arithmatex">\(\omega_0\)</span> 应取所列 RC 时间常数之和的倒数。这两处在原页图中也存在，不能只依靠文字识别纠正，须用 KCL 和量纲复核。</p>
+<p>拉扎维《模拟 CMOS 集成电路设计》第二版中文版，第 6 章，印刷页 164～167。Fig. 6.13～6.15、式 (6.21)～(6.30) 对应输入米勒估计、漏端端口等效及完整两节点分析；式 (6.35)、(6.39)～(6.42) 讨论极点分离。本文使用 <span class="arithmatex">\(C_i,C_f,C_o,R_o\)</span> 的统一符号，图示独立绘制，有限 <span class="arithmatex">\(R_S\)</span> 的端口导纳由本节 KCL 推导。</p>
+<p>本节核对的第二版中文版第 166 页中，例 6.6 的式 (6.32) 分母漏写 <span class="arithmatex">\(s\)</span>，应为 <span class="arithmatex">\(1+sR_DC_{gd}\)</span>；同页式 (6.31) 下的 <span class="arithmatex">\(\omega_0\)</span> 应取所列 RC 时间常数之和的倒数。这两项更正由节点方程与量纲核验得到，仅针对所核对的版本，不推及其他印次。</p>
 </details>
+<p>下一节：<a href="../follower-gate/">换一个端口，电容的命运也变了</a></p>
 
 
 

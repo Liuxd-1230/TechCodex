@@ -577,6 +577,78 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="完整模型为什么用电荷，而不只用几只固定电容">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-terminal-charge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两端电容带来的一种直觉
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charge-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        守恒约束每一列，参考电位约束每一行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nonreciprocal-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一个可以逐项求导的反例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ward-dutton-charge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        回到沟道：夹断隔离了哪一种扰动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charge-and-energy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        静电能量的互易性为什么不能直接套用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charge-in-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        把不同方向的响应放回小信号电路
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2296,6 +2368,78 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="完整模型为什么用电荷，而不只用几只固定电容">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-terminal-charge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两端电容带来的一种直觉
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charge-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        守恒约束每一列，参考电位约束每一行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nonreciprocal-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一个可以逐项求导的反例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ward-dutton-charge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        回到沟道：夹断隔离了哪一种扰动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charge-and-energy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        静电能量的互易性为什么不能直接套用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charge-in-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        把不同方向的响应放回小信号电路
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2380,7 +2524,7 @@ g_m=\beta V_{OV}=\frac{2I_D}{V_{OV}}
 
 <p>栅到源、漏、体的电容来自不同机制。沟道反型电荷需要在源漏端之间分配；栅与源漏扩散的重叠、边缘场还形成附加电容。漏体、源体 PN 结则形成反偏结电容，即使栅极不动，它们也会加载对应节点。</p>
 <h2 id="_3">沟道电荷分布决定本征电容怎样分配<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>先采用长沟道、准静态、强反型近似，把重叠和边缘电容暂时分开。低 VDS 时，沟道电荷较均匀，栅端电荷变化大致由源漏两端分担；进入饱和后，漏端附近沟道夹断，漏端电压对受栅控制电荷的作用减弱，栅电容主要落在源端。</p>
+<p>先采用长沟道、准静态、强反型近似，把重叠和边缘电容暂时分开。低 VDS 时，沟道电荷较均匀，栅端电荷变化大致由源漏两端分担；进入饱和后，漏端附近沟道夹断，漏端电压对本征栅电荷的作用减弱。用两端电容近似时，常把饱和区的本征栅电容画在源端一侧；稍后会看到，这幅栅端加载图并没有完整规定源、漏的瞬态电荷分配。</p>
 <p>回到 2.1 的电荷分布，做一次相同的操作：源、体固定，栅压增加 40 mV。前一级需要补充多少栅电荷？先看新增的面积，而不是急着把电容分成 Cgs 和 Cgd。</p>
 <figure id="figure-mos-charge-increment"><p><a aria-label="低漏压与饱和时，同样增加栅压所需的新增电荷 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-charge-increment.svg" title="打开原图，查看细节"><img alt="低漏压与饱和时，同样增加栅压所需的新增电荷" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-charge-increment.svg"/></a></p><figcaption>图 2.3-2b：灰线是原来的电荷幅值，绿线是加栅压以后的电荷幅值，绿色条带表示两者之差。上图 VDS=0；下图漏压固定，且两次栅压下均保持饱和。长沟道模型取固定阈值，VOV 从 0.40 增至 0.44 V；图中省略耗尽、重叠与边缘电荷。 <a aria-label="低漏压与饱和时，同样增加栅压所需的新增电荷 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-charge-increment.svg">查看原图</a></figcaption></figure>
 
@@ -2390,7 +2534,7 @@ g_m=\beta V_{OV}=\frac{2I_D}{V_{OV}}
 <thead>
 <tr>
 <th>偏置与近似</th>
-<th>常用本征电容图像</th>
+<th>常用本征电容图像（描述栅端响应）</th>
 </tr>
 </thead>
 <tbody>
@@ -2425,7 +2569,7 @@ V_{OV}V(x)-\frac{V(x)^2}{2}
 Q_{g,\mathrm{inv}}=WC_{ox}V_{OV}\int_0^L\sqrt{1-x/L}\,dx
 =\frac23WLC_{ox}V_{OV}.
 \]</div>
-<p>在这个饱和、准静态近似中，漏端对本征栅电荷的影响忽略，源端和体端固定，因此对 VGS 求导得到约 2WLCox/3 的栅电容，并主要归到源端。这个积分也解释了：沟道电荷不是均匀铺满 WL，不能在饱和区继续把栅电容对半分给源、漏。</p>
+<p>在这个饱和、准静态近似中，漏端对本征栅电荷的影响忽略，源端和体端固定，因此对 VGS 求导得到约 2WLCox/3 的总本征栅电容。这个积分解释了总电荷斜率为何不再等于 WLCox；源、漏端各自的电荷电流还需要进一步分配。</p>
 </details>
 <p>尤其要分清“本征 Cgd≈0”和“实际栅漏耦合≈0”。重叠电容仍然存在，常按宽度缩放，且还有边缘电场贡献。一个高增益共源级即使本征 Cgd 很小，也可能通过这些附加电容产生明显的输入输出耦合。</p>
 <h2 id="_4">结电容与输出摆幅也有关系<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
@@ -2438,15 +2582,120 @@ C_{db}\simeq
 <p>这里 Cj0 是单位面积零偏电容，Cjsw0 是单位长度零偏侧墙电容；AD、PD 分别为面积和周长。该式只说明反偏工作区的主要依赖关系，不用于正偏或击穿区域。</p>
 <p>所以扩大器件宽度，不只是增大 gm，也会增加扩散和栅电荷。增大输出摆幅，也不只是在同一个固定电容上移动电压，节点电容可能沿着信号周期变化。这会影响带宽、失真与瞬态充放电行为。</p>
 <h2 id="_5">完整模型为什么用电荷，而不只用几只固定电容<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
-<p>令 Qk 为第 k 个端口的电荷。在一个工作点附近，电荷的增量关系可写成</p>
+<h3 id="two-terminal-charge">两端电容带来的一种直觉<a class="headerlink" href="#two-terminal-charge" title="Permanent link">¶</a></h3>
+<p>先看一只实际的栅漏重叠电容，令它的端口电容值为 <span class="arithmatex">\(C_p\)</span>，单位为 F。在把它近似成常数时，两块极板上的电荷为</p>
 <div class="arithmatex">\[
-q_k=\sum_j
-\left.\frac{\partial Q_k}{\partial V_j}\right|_Qv_j,
-\qquad
-i_{k,\mathrm{disp}}=\frac{dq_k}{dt}.
+\begin{aligned}
+Q_g&amp;=C_p(V_g-V_d),\\
+Q_d&amp;=-Q_g.
+\end{aligned}
 \]</div>
-<p>电荷偏导带有符号，交叉项不必具有简单两端被动电容的对称性。正确的模型还要满足端口电荷守恒和参考电位不变性。把复杂模型粗化成 Cgs、Cgd 等两端电容时，是在为特定电路与频段选择一个方便近似，而不是证明所有动态效应都能由几只常数电容精确描述。</p>
-<p>这也决定仿真数据的读法：模型输出的电容项可能采用自己的符号或端口约定，必须查清含义再组合，不能看到一个数就直接与外接 CL 相加。</p>
+<p>无论抬高哪一端，两块极板的电荷总是等量反号。而且 <span class="arithmatex">\(\partial Q_g/\partial V_d=\partial Q_d/\partial V_g=-C_p\)</span>：交换激励与响应端口，交叉电荷斜率也相同。电荷守恒与互易在这里同时成立，很容易让人以为前者必然推出后者。</p>
+<p>MOS 多了沟道与源、漏载流子交换。现在问：<strong>四个端口的电荷总和为零，是否就要求“漏压改变栅电荷”与“栅压改变漏电荷”具有相同的斜率？</strong></p>
+<h3 id="charge-constraints">守恒约束每一列，参考电位约束每一行<a class="headerlink" href="#charge-constraints" title="Permanent link">¶</a></h3>
+<p>令 <span class="arithmatex">\(Q_g,Q_d,Q_s,Q_b\)</span> 为电荷模型分配给四个端口的带符号电荷，<span class="arithmatex">\(V_g,V_d,V_s,V_b\)</span> 是相对于同一参考点的绝对电位。在工作点附近定义电荷雅可比</p>
+<div class="arithmatex">\[
+\begin{aligned}
+J_{ij}&amp;=\left.\frac{\partial Q_i}{\partial V_j}\right|_Q,\\
+dq_i&amp;=\sum_jJ_{ij}\,dv_j.
+\end{aligned}
+\]</div>
+<p>下标的第一个位置是<strong>观察电荷的端口</strong>，第二个位置是<strong>施加电压扰动的端口</strong>；求偏导时其余端口电位固定。本文将流入器件的端口电荷电流取为正，因此</p>
+<div class="arithmatex">\[
+i_{i,\mathrm{disp}}=\frac{dq_i}{dt}
+=\sum_jJ_{ij}\frac{dv_j}{dt}.
+\]</div>
+<p>这里的电荷电流与前面的传导漏流 <span class="arithmatex">\(g_mv_{gs}+g_{ds}v_{ds}+g_{mb}v_{bs}\)</span> 分开计算，再在端口相加。</p>
+<p>先只动漏压。如果栅端增加了一份电荷，其余端口合起来必须减少同样多的电荷。这就是</p>
+<div class="arithmatex">\[
+\begin{gathered}
+Q_g+Q_d+Q_s+Q_b=0,\\
+\sum_iJ_{ij}=\frac{\partial}{\partial V_j}\sum_iQ_i=0.
+\end{gathered}
+\]</div>
+<p>这对每个激励端口 <span class="arithmatex">\(j\)</span> 都成立。矩阵的一列描述同一次电压扰动在所有端口产生的电荷变化，所以<strong>列和为零</strong>。它没有要求其中某一项等于另一列中的某一项。</p>
+<p>再把四个端口的电位同时抬高 <span class="arithmatex">\(a\)</span>。所有端口间电压都没变，器件电荷也不应变化：</p>
+<div class="arithmatex">\[
+\begin{gathered}
+Q_i(\boldsymbol V+a\boldsymbol 1)=Q_i(\boldsymbol V),\\
+\sum_jJ_{ij}=0.
+\end{gathered}
+\]</div>
+<p>第二式由对共同变化量 <span class="arithmatex">\(a\)</span> 求导得到，对每个观察端口 <span class="arithmatex">\(i\)</span> 都成立。这给出<strong>行和为零</strong>。它约束的是共同平移参考电位的响应，也没有要求 <span class="arithmatex">\(J_{ij}=J_{ji}\)</span>。如果已把源端设成零并删去对应行、列，剩下的约化矩阵就不必各行、各列都为零；不能把约化矩阵当成不守恒的证据。</p>
+<p>还要分清符号：有的模型手册将 <span class="arithmatex">\(J_{ij}\)</span> 直接记作 <span class="arithmatex">\(C_{ij}\)</span>；另一种常见约定是对角项 <span class="arithmatex">\(C_{ii}=J_{ii}\)</span>、交叉项 <span class="arithmatex">\(C_{ij}=-J_{ij}\)</span>。本节统一使用带符号的 <span class="arithmatex">\(J\)</span>。前面的 <span class="arithmatex">\(C_{gs},C_{gd}\)</span> 两端图像，不应自动解释为两种方向完全相同的端口偏导。仿真器输出项也须先核对其具体定义。上述电荷导数及行、列约束见 <a href="https://ngspice.sourceforge.io/external-documents/models/BSIM480_Manual.pdf#page=62">BSIM4v4.8.0 手册 §7.2.1</a>。</p>
+<h3 id="nonreciprocal-example">一个可以逐项求导的反例<a class="headerlink" href="#nonreciprocal-example" title="Permanent link">¶</a></h3>
+<p>设 <span class="arithmatex">\(C_0&gt;0\)</span>，把栅源电压引起的负电荷按比例 <span class="arithmatex">\(\eta\)</span> 分给漏端，其余分给源端：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+Q_g&amp;=C_0(V_g-V_s),\\
+Q_d&amp;=-\eta C_0(V_g-V_s),\\
+Q_s&amp;=-(1-\eta)C_0(V_g-V_s),\\
+Q_b&amp;=0,\qquad 0&lt;\eta&lt;1.
+\end{aligned}
+\]</div>
+<p>这是一个专门检验守恒约束的数学教学模型，不是某个工艺的 MOS 参数。它的电荷总和恒为零，也只依赖相对电压。按 <span class="arithmatex">\(g,d,s,b\)</span> 排列行、列，逐项求导得到</p>
+<div class="arithmatex">\[
+J=C_0\begin{bmatrix}
+1&amp;0&amp;-1&amp;0\\
+-\eta&amp;0&amp;\eta&amp;0\\
+\eta-1&amp;0&amp;1-\eta&amp;0\\
+0&amp;0&amp;0&amp;0
+\end{bmatrix}.
+\]</div>
+<p>每一列、每一行都加起来为零，但 <span class="arithmatex">\(J_{gd}=0\)</span>，<span class="arithmatex">\(J_{dg}=-\eta C_0\ne0\)</span>。只抬高漏压时，四份电荷都不变；只抬高栅压时，栅端电荷增加，源、漏端按所定比例分担相反的变化。<strong>两次不同实验可以有不同的分配，每次实验仍然各自守恒。</strong></p>
+<p>取 <span class="arithmatex">\(\eta=0\)</span>，漏端退出分配，便退化为一只普通栅源电容：<span class="arithmatex">\(Q_g=-Q_s=C_0(V_g-V_s)\)</span>，对应的矩阵恢复对称。非对称来自额外的端口分配关系，行、列和条件本身并没有排除它。这个反例也没有声称能用一个无源电容网络实现。</p>
+<h3 id="ward-dutton-charge">回到沟道：夹断隔离了哪一种扰动<a class="headerlink" href="#ward-dutton-charge" title="Permanent link">¶</a></h3>
+<p>数学反例还不能说明 MOS 为什么如此。回到前面推导过的饱和沟道分布，令 <span class="arithmatex">\(u=V_{GS}-V_{TH}&gt;0\)</span>、<span class="arithmatex">\(C_A=WLC_{ox}\)</span>。采用长沟道、强反型、准静态、恒定迁移率与阈值近似；忽略沟道长度调制、耗尽电荷的变化，以及重叠、边缘和结电容。这一简化模型只保留反型电荷贡献，取 <span class="arithmatex">\(Q_b=0\)</span>，且扰动前后均在饱和区。</p>
+<p>用 <span class="arithmatex">\(\lambda(x)\)</span> 表示沿沟道每单位长度的<strong>负</strong>反型电荷，与端口总电荷 <span class="arithmatex">\(Q_d\)</span> 区分：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\lambda(x)&amp;=-WC_{ox}u\sqrt{1-x/L},\\
+Q_{ch}&amp;=\int_0^L\lambda(x)\,dx.
+\end{aligned}
+\]</div>
+<p>栅压抬高，整条沟道的反型电荷幅值增加；漏压抬高而器件仍饱和时，这个忽略长度调制的模型保持同一条电荷分布。两次扰动改变的对象不同。夹断使漏压对栅下反型电荷的控制减弱，却没有阻止改变栅压时沟道电荷与端口电流发生变化。<a href="https://docenti.ing.unipi.it/~a008309/mat_stud/PSM/2023/Optional_Material/Articles/Dutton_Ward_JSSC_1978_charge_oriented_cap_model.pdf">Ward–Dutton 的原始论文</a>在第 705 页、Fig. 4 附近专门比较了这两个方向。</p>
+<p>要分别得到源、漏端的电荷电流，还须选择分配规则。这里采用 Ward–Dutton 线性电荷分配：靠近源端的沟道位置赋予较大的源端权重，靠近漏端的位置赋予较大的漏端权重：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+Q_d&amp;=\int_0^L\frac{x}{L}\lambda(x)\,dx,\\
+Q_s&amp;=\int_0^L\left(1-\frac{x}{L}\right)\lambda(x)\,dx,\\
+Q_g&amp;=-(Q_d+Q_s).
+\end{aligned}
+\]</div>
+<p>两项权重在每个位置之和都是 1，因而逐点保证分配前后的电荷总量相同。这里的 <span class="arithmatex">\(Q_d,Q_s\)</span> 是计算端口瞬态电流的等效电荷，不是漏区、源区各自局部存储的全部电荷，也不是从哪一端注入电子的比例。线性分配式可对照 <a href="https://ngspice.sourceforge.io/external-documents/models/BSIM480_Manual.pdf#page=66">BSIM4v4.8.0 §7.2.4，式 (7.22)</a>。</p>
+<p>令 <span class="arithmatex">\(z=x/L\)</span>。前面已经算过 <span class="arithmatex">\(\int_0^1\sqrt{1-z}\,dz=2/3\)</span>；现在分别对同一条分布加权，得到</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\frac{Q_d}{C_Au}&amp;=-\int_0^1z\sqrt{1-z}\,dz=-\frac4{15},\\
+\frac{Q_s}{C_Au}&amp;=-\int_0^1(1-z)^{3/2}\,dz=-\frac25,\\
+Q_g&amp;=\frac23C_Au.
+\end{aligned}
+\]</div>
+<p>这给出了本例饱和区的漏/源 40/60 电荷分配；不是在所有工作区都固定分成 40/60。若 <span class="arithmatex">\(V_{DS}=0\)</span>，均匀的沟道分布配上线性权重，会恢复源、漏各承担一半的结果。</p>
+<figure id="figure-mos-charge-partition"><p><a aria-label="同一个饱和工作点的两种扰动：栅压增加改变沟道电荷并分配到源漏，漏压增加而保持饱和时本征电荷分布近似不变 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-charge-partition.svg" title="打开原图，查看细节"><img alt="同一个饱和工作点的两种扰动：栅压增加改变沟道电荷并分配到源漏，漏压增加而保持饱和时本征电荷分布近似不变" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-charge-partition.svg"/></a></p><figcaption>图 2.3-3 · 自绘长沟道电荷模型对照。绿色面积表示增加的反型电荷幅值；端口标注保留电荷正负号。源、体固定，所有扰动都保持饱和；图中不含重叠、耗尽和结电荷。 <a aria-label="同一个饱和工作点的两种扰动：栅压增加改变沟道电荷并分配到源漏，漏压增加而保持饱和时本征电荷分布近似不变 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/mos-charge-partition.svg">查看原图</a></figcaption></figure>
+
+<p>现在固定其余三个端口，分别求两个交叉偏导：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+J_{gd}&amp;=\frac{\partial Q_g}{\partial V_d}=0,\\
+J_{dg}&amp;=\frac{\partial Q_d}{\partial V_g}=-\frac4{15}C_A.
+\end{aligned}
+\]</div>
+<p>一个为零，另一个非零。若采用交叉电容取负偏导的约定，对应 <span class="arithmatex">\(C_{gd}=0\)</span>、<span class="arithmatex">\(C_{dg}=4C_A/15\)</span>。它们在同一符号规则下仍不相等。</p>
+<p>正向增加栅压时，栅端电荷电流为正，漏端和源端的电荷电流分别为负，三者之和为零。漏端的这部分变化须与 <span class="arithmatex">\(g_mv_{gs}\)</span> 传导电流相加；夹断不意味着漏端的增量电荷电流消失。原先的 <span class="arithmatex">\(2C_A/3\)</span> 栅电荷斜率也保留着，只是现在知道了另一端不能用一只互易 <span class="arithmatex">\(C_{gs}\)</span> 完整替代。</p>
+<h3 id="charge-and-energy">静电能量的互易性为什么不能直接套用<a class="headerlink" href="#charge-and-energy" title="Permanent link">¶</a></h3>
+<p>对纯静电、无载流子输运的理想电容系统，若端口电荷是同一个平滑静电共能函数对各端电位的导数，电荷雅可比就是该函数的 Hessian，交叉偏导相等。这里的共能函数以端口电压为变量。这个额外的物理结构才保证互易；单靠电荷总和为零推不出来。</p>
+<p>有偏置的 MOS 存在源漏输运。分配给源漏的等效端口电荷用来表示瞬态端口电流，不能直接当成一个孤立静电储能函数的共轭变量。因此，不能借静电网络的互易性强迫它们对称。</p>
+<p>这也没有赋予无源网络凭空供能的能力。电荷守恒回答电流能否正确相加，能量平衡还要计入源漏偏置源、传导电流和耗散。只拿电荷矩阵，尤其是上面的数学反例，不能完成器件的功率核算。</p>
+<h3 id="charge-in-circuits">把不同方向的响应放回小信号电路<a class="headerlink" href="#charge-in-circuits" title="Permanent link">¶</a></h3>
+<p>在频率足够低、可以准静态线性化的工作点附近，端口方程写成</p>
+<div class="arithmatex">\[
+\boldsymbol i=(G+sJ)\boldsymbol v.
+\]</div>
+<p><span class="arithmatex">\(G\)</span> 保留跨导与输出电导，<span class="arithmatex">\(J\)</span> 保留电荷响应。要问漏端运动使前一级多提供多少电流，应看栅电流中的 <span class="arithmatex">\(J_{gd}\,dv_d/dt\)</span>；要问栅端变化怎样进入漏端，则还须看漏电流中的 <span class="arithmatex">\(J_{dg}\,dv_g/dt\)</span> 和传导跨导。这是两个方向的响应，不能只凭一项电容值同时规定它们。</p>
+<p>实际存在的栅漏重叠电容仍会贡献一组互易项：<span class="arithmatex">\(J_{gg}\)</span>、<span class="arithmatex">\(J_{dd}\)</span> 各增加 <span class="arithmatex">\(C_p\)</span>，<span class="arithmatex">\(J_{gd}\)</span>、<span class="arithmatex">\(J_{dg}\)</span> 各减少 <span class="arithmatex">\(C_p\)</span>。它与非互易的沟道电荷响应可以同时存在；加入它并不会自动让总矩阵变对称。</p>
+<p><a href="../../frequency/miller/">6.2 的米勒与共源级</a>先用一只互易二端 <span class="arithmatex">\(C_f\)</span> 解释电流路径；那里同一只电容两端的电流可以等量反号地写出。使用真实 BSIM 电荷模型时，应保留其完整端口电荷导数，或在明确的工作点、频段和终接下作近似，再验证端口响应。把不同方向的交叉项直接平均成一只常数电容，可能同时改变前馈、反馈和极点。</p>
+<p>这些关系解释了原书电容图的用途和边界。它们不要求用长沟道分配替代实际模型：短沟道、耗尽电荷变化、DIBL、长度调制和非准静态效应都会改变定量偏导，工作区边界也需要平滑处理。</p>
 <h2 id="_6">两个马上会用到的速度直觉<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>第一，一个电容是否重载输入，要看它两端的<strong>相对变化</strong>。共源级输出反相变化，Cgd 两端压差可能比输入更大；源跟随器的源端跟随输入，Cgs 两端变化可能反而较小。具体等效需要从电流 <span class="arithmatex">\(i=C\,d(v_1-v_2)/dt\)</span> 推导，第 6 章会展开 Miller 与自举效应。</p>
 <p>第二，gm/C 是一个速度量级，但必须说明 C 与测量定义。源、体为交流地、输出短路等条件下，忽略次要寄生和前馈项，晶体管短路电流增益降到一的频率常近似为</p>
@@ -2455,7 +2704,8 @@ f_T\simeq\frac{g_m}{2\pi(C_{gs}+C_{gd})}.
 \]</div>
 <p>它不是任意电路的 −3 dB 带宽，也不是输入信号源电阻与栅电容形成的 RC 极点；后者还取决于前一级的输出阻抗。更大的 gm、更多的面积与更大的电容常一起变化，不能只挑有利的一项。</p>
 <p>至此，我们已经拥有分析单级电路所需的低频斜率和动态接口。带着“相对电压怎样变、电流流到哪里”的问题进入 <a href="../../stages/">第 3 章</a>，比单独背一张小信号图更容易迁移到新电路。</p>
-<p>本节长沟道解析关系对应 Razavi 第二版 Chapter 2。进一步阅读：<a href="https://bsim.berkeley.edu/models/bsim4/">Berkeley BSIM4</a> 的电荷模型与本项目的 <a href="../../../labs/models/">工艺模型及验证范围</a>。</p>
+<p>本节原书对照：Razavi 第二版第 2 章，中文版印刷页 13 的 Fig. 2.10、式 (2.4)～(2.8)，以及印刷页 26～28 的 Fig. 2.31～2.34。端口矩阵约束与线性电荷分配进一步参考上述 BSIM4 手册和 Ward–Dutton 论文；最小反例、行列约束证明与加权积分由本文独立展开，不归作原书已有推导。<a href="../../../labs/models/">工艺模型及验证范围</a>另见实验资源。</p>
+<p><a href="https://github.com/Liuxd-1230/TechCodex/blob/main/scripts/check_charge_partition.py">电荷模型核验脚本</a>用于复核本文的反例、全部端口偏导、沟道积分和电荷电流；在仓库根目录运行 <code>uv run --locked scripts/check_charge_partition.py</code>。</p>
 
 
 
