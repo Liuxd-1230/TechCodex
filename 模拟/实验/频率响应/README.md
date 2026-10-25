@@ -26,6 +26,7 @@ AC 扫描 1 Hz～10 GHz、每十倍频 80 点。高频端用于看清模型路�
 | `cs/cascode-input-limited` | 上述对应拓扑改为 RS=1 MΩ、CL=0.05 pF；将输入加载变得重要，避免只用一组负载给拓扑排速度名次 |
 | `passive-diff` | 输入管 10/1 µm、80 µA 理想尾源、VCM 1.4 V，两只 40 kΩ 与两只 1 pF；CSV 为右输出、左输出、尾电压，激励 $v_{id}=1$ |
 | `analytic-cgd`, `analytic-no-cgd` | 独立显式受控源/电阻/电容模型，非 GF180；与 Python 完整两节点公式逐点复数比较，验证交互模型的电气含义 |
+| `analytic-output-port` | 输入源 AC 置零，漏端施加 1 V AC 测试，依次取 RS=1 Ω、10 kΩ、1 MΩ、1 GΩ；观察栅压与流入漏端的复数电流，验证有限 RS 到浮栅分压的过渡。显式线性模型，非 GF180 |
 
 ## 怎样复现
 
@@ -34,6 +35,7 @@ AC 扫描 1 Hz～10 GHz、每十倍频 80 点。高频端用于看清模型路�
 ```powershell
 uv run --locked scripts/run_frequency.py --check
 uv run --locked scripts/check_frequency.py
+uv run --locked scripts/check_cs_output_port.py
 node scripts/check_frequency_demo.mjs
 uv run --locked scripts/draw_frequency.py
 uv run --locked scripts/plot_frequency.py
@@ -43,6 +45,8 @@ uv run --locked --group site scripts/check_site.py
 ```
 
 运行器保留失败信息；每次删除预期临时输出以防陈旧文件误通过。`--check` 先与已提交主要增益/带宽比较，容差 0.5%，再写新运行记录；不会根据新结果改变指标。图像只读取归档 CSV，不平滑、拟合或将解析曲线伪装为工艺数据。线性模型与真实模型各自明确标注。
+
+6.2 的[漏端测试网表](decks/analytic-output-port.cir)由 `check_cs_output_port.py` 单独复核，无需工艺模型。扫描为 0.01 Hz～1 GHz、每十倍频 60 点；$g_m=1$ mS、$R_o=50$ kΩ、$C_i=C_o=1$ pF、$C_f=0.1$ pF。脚本以 `-i(Vtest)` 为流入电路的电流，逐点比较复数栅压、漏端导纳与独立节点消元结果，输出保存在 `build/ch06/analytic-output-port/`。极端频率用于检验线性方程的极限，不代表真实 MOS 的有效频段。
 
 [metrics.json](data/metrics.json) 保存工作点、饱和余量、功耗、带宽和第一次向下 0 dB 穿越。带宽用相邻扫描点的 **dB 对 log(f)** 线性插值，相对 1 Hz 幅度降低 $10\log_{10}2$；它不是极点提取。相位由复数结果 atan2 后连续展开，单位度。反相电路的恒定 180° 与附加相位分开解释；`unity_Hz=null` 表示没有找到穿越，不虚构单位增益频率。
 

@@ -39,6 +39,33 @@ def small():
     file.write_text(file.read_text(encoding='utf-8').replace('TechCodex original teaching schematic. D, G, S, B are explicitly distinguished. Colored arrows show perturbations, not wires.','Original two-node small-signal circuit: input through RS to gate node, Ci to ground, Cf between gate and output. Output has Ro and Co to ground, and a downward controlled current gm times vg.'),encoding='utf-8',newline='\n')
 
 
+def output_port():
+    c=Canvas('漏端测试中的两种栅端约束：固定电压与电容分压',680,630)
+    for offset,floating in [(0,False),(310,True)]:
+        c.text(26,offset+35,'② 栅前开路：电容分压驱动跨导' if floating else '① RS → 0：栅节点固定在交流地',22)
+        c.wire((225,offset+170),(225,offset+110))
+        c.cap_between((225,offset+110),(480,offset+110))
+        c.text(310,offset+91,'Cf = Cgd',20,SIGNAL)
+        c.wire((225,offset+170),(225,offset+190));c.cap(225,offset+190,'Ci')
+        c.ground(225,offset+250);c.node(225,offset+170)
+        c.wire((480,offset+110),(600,offset+110));c.node(480,offset+110)
+        c.text(613,offset+117,'vt',21,SIGNAL)
+        c.arrow((595,offset+67),(520,offset+67));c.text(550,offset+53,'it',19,SIGNAL)
+        c.wire((480,offset+110),(480,offset+150))
+        c.current(480,offset+150,'gm vg',controlled=True);c.ground(480,offset+234)
+        c.text(245,offset+176,'vg = α vt' if floating else 'vg = 0',21,SIGNAL)
+        c.text(55,offset+145,'RS → ∞' if floating else 'RS → 0',18,MUTED)
+        c.ground(95,offset+170)
+        if floating:
+            c.line(95,offset+170,125,offset+170);c.line(155,offset+170,225,offset+170)
+            for x in (125,155):
+                c.parts.append(f'<circle cx="{x}" cy="{offset+170}" r="3" fill="white"/>')
+        else:c.line(95,offset+170,225,offset+170)
+        c.text(26,offset+295,'栅随漏动：同相漏流 gm α vt 形成等效电导。' if floating else '漏端给 Cf 充放电；跨导增量电流为零。',18,SIGNAL if floating else MUTED)
+    c.line(26,310,654,310,color='#d5e0e8')
+    c.save('frequency-cs-output-port',OUT,description='Original linear circuit comparison with the input generator set to zero. Each drain test port connects to Cf and a downward gm vg current source. Ci connects the gate to ground. Top: the gate is shorted to AC ground. Bottom: the source-resistance branch is open, allowing capacitive division vg = Cf/(Ci+Cf) times vt. Ro and Co are omitted here and remain parallel at the drain in the full circuit. The oxide is not a conducting connection.')
+
+
 def paths():
     for name in ('sf','cg'):
         c=Canvas('源跟随器的跨端电容' if name=='sf' else '共栅级的跨端电容',640,460)
@@ -78,4 +105,4 @@ def ota():
     (OUT/'frequency-ota.svg').write_text(svg,encoding='utf-8',newline='\n')
 
 
-if __name__=='__main__':cs();small();paths();ota()
+if __name__=='__main__':cs();small();output_port();paths();ota()

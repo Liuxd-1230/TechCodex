@@ -110,7 +110,7 @@ def on_page_content(html,page,config,files):
                     'device-body-port','device-body-evidence','device-output-slope',
                     'frequency-mirror-phasors','frequency-mirror-nodes'):
             figure['id']='figure-'+stem
-        wide_circuit=stem=='frequency-ota' and page.url=='analog/frequency/differential/'
+        wide_circuit=(stem=='frequency-ota' and page.url=='analog/frequency/differential/') or stem=='frequency-cs-output-port'
         if stem in ('mos-charge','sf-feedback','noise-referral','noise-paths') or wide_circuit:
             figure['class']=['wide-circuit-figure' if wide_circuit else 'concept-figure']
             figure['id']='figure-'+Path(image['src']).stem

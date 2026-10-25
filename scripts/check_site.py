@@ -178,6 +178,8 @@ else:
         errors.append('Source follower port comparison missing')
 
 miller_page=documents[SITE/'analog/frequency/miller/index.html']
+if not miller_page.select_one('#figure-frequency-cs-output-port .diagram-viewport[tabindex="0"][role="region"]'):
+    errors.append('CS drain-port comparison lacks an accessible static diagram viewport')
 miller=miller_page.select_one('[data-demo="miller-poles"]')
 if miller is None or not miller.has_attr('hidden'):
     errors.append('Miller demo must enhance progressively')

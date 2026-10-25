@@ -1,0 +1,23 @@
+CS drain-port test: explicit linear teaching model, not a process MOS model
+Vin in 0 dc 0 ac 0
+Rsig in g 1Meg
+Vtest o 0 dc 0 ac 1
+Rout o 0 50k
+Gm o 0 g 0 1m
+Ci g 0 1p
+Co o 0 1p
+Cf g o 0.1p
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+set numdgt=15
+foreach resistance 1 10k 1Meg 1G
+alter Rsig $resistance
+ac dec 60 0.01 1G
+let it = -i(Vtest)
+wrdata port-$resistance v(g) it
+end
+quit
+.endc
+.end
