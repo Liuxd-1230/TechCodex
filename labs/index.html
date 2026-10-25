@@ -2182,7 +2182,7 @@
 <p>第 4 章新增 <a href="differential/">差分对实验</a>，包括同工作点的理想/真实尾源比较、电流转向和不等负载的共模转换。它使用独立入口 <code>scripts/run_differential.py --check</code>，原有入口和数据保持独立。</p>
 <p>第 5 章的 <a href="mirrors/">电流镜与 OTA 实验</a> 先固定设计指标，比较普通/共源共栅镜，再实现电阻参考的五管 OTA 核心。入口是 <code>scripts/run_mirrors.py --check</code>，包括工作区、DC/AC 增益、少量 PVT 与一条上电轨迹。</p>
 <p>第 6 章的 <a href="frequency/">频率响应实验</a> 保留第 5 章基准，研究 OTA 的负载、节点导纳、尺寸和电流取舍；同时独立验证 CS/SF/CG/cascode 与电阻负载差分对。实时米勒解析交互与真实 GF180 数据分开，原始复数 AC、完整网表和日志全部保留。</p>
-<p>从根目录执行 <code>python scripts/run.py --check</code>，脚本自动定位仓库、展开模板并调用原生 ngspice。这里的 <code>python</code> 应为已安装依赖的项目虚拟环境解释器；完整 Windows 命令见安装步骤。</p>
+<p>从仓库根目录用 <code>uv run --locked scripts/run.py --check</code> 执行，脚本自动定位仓库、展开模板并调用原生 ngspice。完整 Windows 命令见<a href="windows/">安装步骤</a>。旧 pip 依赖快照 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/requirements-v1.txt">requirements-v1.txt</a> 只记录历史实验环境；新环境使用根目录的 <code>pyproject.toml</code> 和 <code>uv.lock</code>。</p>
 <table>
 <thead>
 <tr>
