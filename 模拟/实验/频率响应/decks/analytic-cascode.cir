@@ -1,0 +1,23 @@
+Ch06 explicit linear cascode; grounded gates/bulks of M2, no GF180 parameters
+Vin in 0 ac 1
+Rsig in g 10k
+Rd o 0 40k
+Ro1 x 0 100k
+Gm1 x 0 g 0 1m
+Ro2 o x 100k
+Gm2 o x 0 x 1m
+Gmb2 o x 0 x .2m
+Cgs g 0 1p
+Cf g x .1p
+Cx x 0 .5p
+Co o 0 1p
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+set numdgt=15
+ac dec 40 1 100G
+wrdata ac.txt v(g) v(x) v(o)
+quit
+.endc
+.end
