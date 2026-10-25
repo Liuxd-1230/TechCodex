@@ -79,3 +79,53 @@ def test_fig614_port_equivalence_from_independent_kcl():
                 assert np.isclose(current,s*cgd,rtol=2e-6)
             else:
                 assert np.isclose(1/current,1/(1/rx+s*ceq),rtol=1e-4)
+
+
+def test_cloud_import_maps_pages_preserves_math_and_keeps_sources(tmp_path):
+    from rag.import_ocr import import_cloud_ocr
+    with pymupdf.open() as doc:
+        for i in range(3):
+            page = doc.new_page()
+            page.insert_text((50, 50), f'Original page {i+1}')
+            image = page.get_pixmap().tobytes('png')
+            page.clean_contents()
+            page.insert_image(page.rect, stream=image)
+        doc.set_page_labels([{'startpage':0, 'prefix':'', 'style':'D', 'firstpagenum':10}])
+        doc.set_toc([[1,'第6章 Frequency response',2]])
+        doc.save(tmp_path/'book.pdf')
+        with pymupdf.open() as split:
+            split.insert_pdf(doc, from_page=1, to_page=2)
+            split.save(tmp_path/'split.pdf')
+    book = Book(Config(tmp_path/'book.pdf',tmp_path/'model',tmp_path/'index.sqlite3',tmp_path/'pages'))
+    formula = r'R_X=\frac{C_{GS}+C_{GD}}{g_{m1}C_{GD}}'
+    block = {'type':'text', 'bbox':[0,0,300,50], 'index':0,
+             'lines':[{'spans':[{'type':'text','content':'Gate resistance Rs and equivalent Rx: '},
+                                {'type':'inline_equation','content':formula,'bbox':[20,20,100,50]}]}]}
+    data = {'_version_name':'3.4.4', '_backend':'hybrid', '_effort':'medium',
+            'pdf_info':[{'page_idx':i,'page_size':[595,842], 'para_blocks':[block,
+                       {'type':'image','blocks':[{'type':'image_caption','lines':[{'spans':[
+                           {'type':'text','content':'图6.14 Original circuit'}]}]}]}]} for i in range(2)]}
+    export = tmp_path/'cloud.json'
+    export.write_text(json.dumps(data), encoding='utf-8')
+    report = import_cloud_ocr(book, export, tmp_path/'split.pdf', 2)
+    assert report['original_pdf_pages'] == [2,3] and report['formulas'] == 2
+    read = book.read_pages(2)['pages'][0]
+    assert formula in read['text'] and '图6.14' in read['text']
+    assert read['printed_label'] == '11' and read['chapter'] == '6'
+    assert read['ocr']['execution'] == 'user-supplied cloud export'
+    assert 'ONNX CPU' not in read['extraction'] and read['ocr_confidence'] is None
+    record = book.ocr_record(2)
+    assert record['split_pdf_page'] == 1 and record['formulas'][0]['latex_raw'] == formula
+    assert record['figure_refs'][0]['label'] == '图6.14'
+    assert record['provenance']['export_sha256'] and record['review_status'] == 'pending'
+    book.index(keyword_only=True)
+    assert book.search('Fig. 6.14',mode='keyword')['hits'][0]['pdf_page'] == 2
+    assert export.is_file() and book.page_image(2).read_bytes().startswith(b'\x89PNG')
+    # Reject incorrect offsets and missing/duplicated export pages before writing any cache.
+    with pytest.raises(RagError,match='does not match original'):
+        import_cloud_ocr(book, export, tmp_path/'split.pdf', 1)
+    data['pdf_info'][1]['page_idx'] = 0
+    export.write_text(json.dumps(data), encoding='utf-8')
+    with pytest.raises(RagError,match='sequential'):
+        import_cloud_ocr(book, export, tmp_path/'split.pdf', 2)
+    assert book.ocr_record(2)['provenance']['export_sha256'] == record['provenance']['export_sha256']

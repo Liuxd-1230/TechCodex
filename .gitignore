@@ -18,6 +18,7 @@ site/
 node_modules/
 .impeccable/review/
 .local/
+/MinerU_*_Razavi_*.json
 .venv-rag/
 .venv-ocr/
 *.pdf

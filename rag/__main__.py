@@ -17,6 +17,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
     commands.add_parser('status')
+    cloud = commands.add_parser('import-ocr', help='Import a private MinerU cloud JSON export')
+    cloud.add_argument('export', type=Path)
+    cloud.add_argument('--split-pdf', type=Path, required=True)
+    cloud.add_argument('--start', type=int, required=True, help='First page in the original PDF (one-based)')
     ocr = commands.add_parser('ocr', help='Explicit local OCR for selected scanned pages')
     ocr.add_argument('--start', type=int, required=True)
     ocr.add_argument('--end', type=int, required=True)
@@ -45,7 +49,10 @@ def main():
                         '--', sys.executable, str(ROOT / 'scripts/book_mcp.py')], check=True)
         return
     book = Book(Config.load())
-    if args.command == 'ocr':
+    if args.command == 'import-ocr':
+        from .import_ocr import import_cloud_ocr
+        result = import_cloud_ocr(book, args.export, args.split_pdf, args.start)
+    elif args.command == 'ocr':
         from .ocr import ocr_pages
         result = ocr_pages(book,args.start,args.end,args.tier,args.reason)
     elif args.command == 'status':

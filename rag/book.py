@@ -138,7 +138,7 @@ class Book:
 
     def ocr_record(self, number):
         base = self.config.cache.parent
-        for tier in ('advanced','standard','basic'):
+        for tier in ('cloud','advanced','standard','basic'):
             path = base/'ocr-mineru'/self.pdf_hash()/tier/f'{number}.json'
             if path.is_file():
                 record = json.loads(path.read_text(encoding='utf-8'))
@@ -161,6 +161,8 @@ class Book:
         return {'engine':provenance.get('engine'),'version':provenance.get('version'),
                 'tier':provenance.get('tier'),'model_fingerprint':provenance.get('model_fingerprint'),
                 'vlm':provenance.get('vlm'),
+                'execution':provenance.get('execution', 'local ONNX CPU' if record.get('schema') == 'techcodex.ocr.v2' else 'legacy RapidOCR'),
+                'export_file':provenance.get('export_file'),'export_sha256':provenance.get('export_sha256'),
                 'review_status':record.get('review_status','unreviewed legacy OCR'),
                 'review_flags':record.get('review_flags',['OCR symbols need original-image verification']),
                 'formula_count':len(record.get('formulas',[]))}
@@ -174,7 +176,8 @@ class Book:
                 blocks = [b['text'] for b in record['blocks'] if b['text'].strip() and
                           b['type'] not in ('header','footer','page_number')]
                 provenance = record['provenance']
-                source = f'MinerU {provenance["version"]} {provenance["tier"]} ONNX CPU; original math transcription'
+                execution = provenance.get('execution', 'local ONNX CPU')
+                source = f'MinerU {provenance["version"]} {provenance["tier"]} {execution}; original math transcription'
                 confidence = record['text_confidence']
             elif record:
                 blocks = list(ocr_blocks(record['lines']))

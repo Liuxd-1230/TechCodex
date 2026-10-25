@@ -102,6 +102,19 @@ Standard/Advanced 每批最多 3 页，必须给出理由，不由查询自动�
 
 本机这三页的解析阶段约为 Basic 31 秒、Standard 349 秒。Standard 恢复了式 6.24 的括号关系与式 6.30 的系数，但仍漏掉式 6.21，且把 `gm1` 识为 `gml`；这些问题保持待复核状态。该结果说明升级应按页使用，不能把更高档位或流畅的 LaTeX 当作正确性证明。
 
+### 导入自行取得的 MinerU 云端结果
+
+将云端 JSON 放入私有 `.local/book-rag/cloud-ocr/`，使用当时上传的分卷 PDF 指定映射：
+
+```powershell
+.venv-rag/Scripts/python.exe -m rag import-ocr .local/book-rag/cloud-ocr/result.json --split-pdf .local/pdf-upload/02_Razavi_Ch06-08.pdf --start 181
+.venv-rag/Scripts/python.exe -m rag index
+```
+
+`--start` 是分卷首页在完整原 PDF 中的实际页码，从 1 开始。导入会核对导出页数、顺序、版面比例，并逐页比对分卷与原 PDF 的渲染图像；页码和章节仍取完整 PDF。只使用 `para_blocks` 的阅读顺序，保留原始 LaTeX、公式位置和图注，不下载 JSON 中的远程图片。原始 JSON 留在私有目录，页记录保存来源校验与映射。
+
+云端导出优先于旧的本地 OCR 缓存，旧结果保留。来源按导出中的版本、backend 与 effort 记录；未提供的具体模型和置信度保持未知，不宣称使用本地 Basic 或 ONNX CPU。公式默认待核对，原始页面图像仍由完整 PDF 渲染。导入与查询均不重新运行 OCR，只有显式 `index` 才更新关键词和向量。
+
 ### 少量页面的视觉检索
 
 ```powershell
