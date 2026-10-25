@@ -7,7 +7,7 @@ from urllib.parse import unquote, urlsplit
 from bs4 import BeautifulSoup
 from export_steering_demo import package, OUT
 from export_mirror_demo import package as mirror_package, OUT as MIRROR_OUT
-from book import ROUTES, SEARCH_EXCLUDED_ABOUT
+from book import ROUTES, SEARCH_EXCLUDED_ABOUT, assert_public_asset
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / 'site'
@@ -32,9 +32,16 @@ for suffix in ('.csv', '.py', '.cir', '.ngspice', '.spice', '.lib'):
 for directory in ('models', 'scripts'):
     if (SITE / directory).exists():
         errors.append(f'Repository source directory leaked into site: {directory}')
-for name in ('LICENSE', 'requirements.txt', 'requirements-lock.txt'):
+for name in ('LICENSE', 'requirements.txt', 'requirements-lock.txt', 'pyproject.toml', 'uv.lock'):
     if (SITE / name).exists():
         errors.append(f'Repository root file leaked into site: {name}')
+
+for asset in SITE.rglob('*'):
+    if asset.is_file():
+        try:
+            assert_public_asset(asset)
+        except RuntimeError as exc:
+            errors.append(str(exc))
 
 search_index_path = SITE / 'search/search_index.json'
 if not search_index_path.is_file():

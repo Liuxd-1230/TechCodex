@@ -15,16 +15,15 @@
 前提是 Python 3.13 x64 可用。先用 `python --version` 检查，避免误用 Windows 商店的占位命令。在仓库根目录执行：
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe scripts/bootstrap.py
-.\.venv\Scripts\python.exe scripts/run.py --check
-.\.venv\Scripts\python.exe scripts/plot__device_cs__paper.py
-.\.venv\Scripts\python.exe scripts/draw_schematics.py
-.\.venv\Scripts\python.exe scripts/check_repo.py
+uv sync --locked
+uv run --locked scripts/bootstrap.py
+uv run --locked scripts/run.py --check
+uv run --locked scripts/plot__device_cs__paper.py
+uv run --locked scripts/draw_schematics.py
+uv run --locked scripts/check_repo.py
 ```
 
-`requirements.txt` 固定三项直接依赖；[完整依赖快照](../requirements-lock.txt) 保存本次 Python 3.13 环境的间接依赖，可用 `pip install -r requirements-lock.txt` 复建同一组版本。运行脚本无需激活环境，因此不需要修改 PowerShell 执行策略。
+`pyproject.toml` 固定 NumPy 2.5.4、Matplotlib 3.11.2 和 py7zr 1.1.4；仓库只有一个 `uv.lock`。原 pip 快照保存在[历史记录](../模拟/实验/requirements-v1.txt)，仅用于追溯旧实验环境。`uv sync --locked` 按锁文件安装基础环境；运行脚本无需激活环境，也不需要修改 PowerShell 执行策略。当前 Python 版本由 `.python-version` 固定为 3.13.12，uv 会使用兼容的现有 Python。基础环境不包含 PyTorch、Transformers 或模型文件。需要本地 RAG 时，按[可选 RAG 环境说明](RAG.md)明确选择 CPU 或 CUDA 安装；配置遵循 [uv 的 PyTorch 索引指南](https://docs.astral.sh/uv/guides/integration/pytorch/)，两种 extra 不能同时启用。
 
 `bootstrap.py` 先验证仓库内模型 SHA-256，再依次检查 `NGSPICE`、本项目 `.tools/Spice64/bin/ngspice_con.exe` 与 PATH。如果已安装则复用；否则下载官方 ngspice 47 Windows 64 位压缩包，核对 SHA-256 后解压到 `.tools/`。不修改系统 PATH、注册表或用户 `.spiceinit`。压缩包来源和实测 SHA 见 [来源记录](SOURCES.md)。
 
@@ -32,7 +31,7 @@ python -m venv .venv
 
 ```powershell
 $env:NGSPICE = 'C:\tools\ngspice\bin\ngspice_con.exe'
-.\.venv\Scripts\python.exe scripts/run.py --check
+uv run --locked scripts/run.py --check
 ```
 
 以上是路径示例，请按本机位置填写。`NGSPICE` 传入可执行文件的完整路径，不含额外命令参数；含空格的路径也由 Python 参数数组安全传递。不要把 GUI 启动器或未经验证的第三方封装误作控制台程序。已安装版本会记录在每次输出的 `run.json` 中；当前基准来自 ngspice 47。

@@ -19,13 +19,13 @@
 在仓库根目录运行；Python 环境安装方法见 [Windows 环境](../../../docs/WINDOWS.md)：
 
 ```powershell
-.\.venv\Scripts\python.exe scripts/run_noise.py --check
-.\.venv\Scripts\python.exe scripts/check_noise.py
-.\.venv\Scripts\python.exe scripts/plot_noise.py
-.\.venv\Scripts\python.exe scripts/build_noise_demo.py
+uv run --locked scripts/run_noise.py --check
+uv run --locked scripts/check_noise.py
+uv run --locked scripts/plot_noise.py
+uv run --locked scripts/build_noise_demo.py
 node scripts/check_noise_demo.mjs
-.\.venv-site\Scripts\python.exe scripts/book.py build
-.\.venv-site\Scripts\python.exe scripts/check_site.py
+uv run --locked --group site scripts/book.py build
+uv run --locked --group site scripts/check_site.py
 ```
 
 `run_noise.py` 复用第 5、6 章已有 OTA 发生器，未改动旧实验。每个候选新求工作点、频响和噪声；`--check` 与此前输入 RMS 比较，容差 0.5%。它先删除本次预期输出，运行失败会停止，避免把旧 CSV 当作新结果。

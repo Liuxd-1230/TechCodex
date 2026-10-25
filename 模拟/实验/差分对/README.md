@@ -7,10 +7,10 @@
 ## 从仓库根目录复现
 
 ```powershell
-.\.venv\Scripts\python.exe scripts/run_differential.py --check
-.\.venv\Scripts\python.exe scripts/plot_differential.py
-.\.venv\Scripts\python.exe scripts/check_differential.py
-.\.venv\Scripts\python.exe scripts/check_repo.py
+uv run --locked scripts/run_differential.py --check
+uv run --locked scripts/plot_differential.py
+uv run --locked scripts/check_differential.py
+uv run --locked scripts/check_repo.py
 ```
 
 沿用现有原生 ngspice 47、Python 与模型，无需 WSL、版图工具或额外 Python 包。`--check` 使用已提交指标作 2% 相对误差、1e-7 V/V 绝对误差的参考漂移检查；始终执行更严格的内部一致性检查。首次有意重建基线可不带 `--check`，随后应审阅差异，不能以覆盖旧指标来消除失败。

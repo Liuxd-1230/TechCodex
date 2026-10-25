@@ -33,7 +33,7 @@ ngspice 下载 URL：`https://downloads.sourceforge.net/project/ngspice/ng-spice
 59225971bd68cdd1199443649aa4615a9e6d684933f205ab49006a3942518f5a
 ```
 
-此哈希来自本次官方来源下载的文件，作为后续复现的锁定值，不是声称上游提供了同算法的签名证明。可执行文件不提交到 Git。版本完整输出记录在 [run.json](../模拟/实验/data/run.json)，Python 依赖记录在 [requirements-lock.txt](../requirements-lock.txt)。
+此哈希来自本次官方来源下载的文件，作为后续复现的锁定值，不是声称上游提供了同算法的签名证明。可执行文件不提交到 Git。版本完整输出记录在 [run.json](../模拟/实验/data/run.json)，当前 Python 依赖由根目录的 `pyproject.toml` 与 `uv.lock` 管理；旧 pip 快照作为历史记录保存在 [requirements-v1.txt](../模拟/实验/requirements-v1.txt)。
 
 编辑阶段使用本机 pe-plots-paper 技能的 `eeplot` 辅助布局，并用其审图脚本检查印刷尺寸。仓库绘图脚本默认使用自带的独立 Matplotlib 样式，读者不依赖 Codex 技能、个人路径或其辅助库；数值数据相同，排版可能有细微差异。正文 SVG/PNG 的最终审图状态见 [验证记录](VALIDATION.md)。
 

@@ -10,7 +10,7 @@
 
 第 6 章的 [频率响应实验](频率响应/README.md) 保留第 5 章基准，研究 OTA 的负载、节点导纳、尺寸和电流取舍；同时独立验证 CS/SF/CG/cascode 与电阻负载差分对。实时米勒解析交互与真实 GF180 数据分开，原始复数 AC、完整网表和日志全部保留。
 
-从根目录执行 `python scripts/run.py --check`，脚本自动定位仓库、展开模板并调用原生 ngspice。这里的 `python` 应为已安装依赖的项目虚拟环境解释器；完整 Windows 命令见安装步骤。
+从仓库根目录用 `uv run --locked scripts/run.py --check` 执行，脚本自动定位仓库、展开模板并调用原生 ngspice。完整 Windows 命令见[安装步骤](../../docs/WINDOWS.md)。旧 pip 依赖快照 [requirements-v1.txt](requirements-v1.txt) 只记录历史实验环境；新环境使用根目录的 `pyproject.toml` 和 `uv.lock`。
 
 | 源文件 | 测试条件与输出 | 用途 |
 |---|---|---|

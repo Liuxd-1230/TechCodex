@@ -1,6 +1,7 @@
 """Check local Markdown links, SVG validity, provenance and model integrity."""
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
@@ -11,8 +12,11 @@ from bootstrap import ROOT, verify_models
 
 def main():
     verify_models()
-    files=[p for p in ROOT.rglob('*') if p.is_file() and not any(
-        x in ('.git','.tools','.venv','.venv-site','.cache','build','site','node_modules','__pycache__') for x in p.relative_to(ROOT).parts)]
+    excluded={'.git','.tools','.venv','.venv-site','.venv-rag','.venv-ocr','.local','.cache','build','site','node_modules','__pycache__'}
+    files=[]
+    for directory,subdirs,names in os.walk(ROOT):
+        subdirs[:]=[name for name in subdirs if name not in excluded]
+        files.extend(Path(directory)/name for name in names)
     links=0
     for file in files:
         if file.suffix=='.md':

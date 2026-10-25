@@ -1,0 +1,72 @@
+[project]
+name = "techcodex"
+version = "0.1.0"
+description = "Analog CMOS notes, experiments, and reading site"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "numpy==2.5.4",
+    "matplotlib==3.11.2",
+    "py7zr==1.1.4",
+]
+
+[project.optional-dependencies]
+rag-cpu = [
+    "mcp==2.3.0",
+    "pymupdf==2.0.0",
+    "safetensors",
+    "sentence-transformers==6.2.0",
+    "torch==2.14.1",
+    "torchvision==0.29.1",
+    "transformers==5.20.2",
+]
+rag-cuda = [
+    "mcp==2.3.0",
+    "pymupdf==2.0.0",
+    "safetensors",
+    "sentence-transformers==6.2.0",
+    "torch==2.14.1",
+    "torchvision==0.29.1",
+    "transformers==5.20.2",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+ocr = [
+    "mineru==4.0.12",
+    # Newer DocVortex pulls DirectML beside MinerU's CPU ORT on Windows.
+    "docvortex==0.5.16",
+    "pymupdf==2.0.0",
+    "onnxruntime==1.31.0",
+]
+site = [
+    "beautifulsoup4==4.14.3",
+    "jieba==0.42.1",
+    "mkdocs==1.6.1",
+    "mkdocs-material==9.7.7",
+]
+
+[tool.uv]
+package = false
+conflicts = [
+    [{ extra = "rag-cpu" }, { extra = "rag-cuda" }],
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu", extra = "rag-cpu" },
+    { index = "pytorch-cu130", extra = "rag-cuda" },
+]
+torchvision = [
+    { index = "pytorch-cpu", extra = "rag-cpu" },
+    { index = "pytorch-cu130", extra = "rag-cuda" },
+]

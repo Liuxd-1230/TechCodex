@@ -24,12 +24,12 @@ OTA 是五管核心加 MR 与约 60 kΩ 电阻；电阻是理想线性电阻，�
 ## 运行与检查
 
 ```powershell
-.\.venv\Scripts\python.exe scripts/run_mirrors.py --check
-.\.venv\Scripts\python.exe scripts/check_mirrors.py
-.\.venv\Scripts\python.exe scripts/plot_mirrors.py
-python scripts/export_mirror_demo.py
-python scripts/export_mirror_demo.py --check
-.\.venv\Scripts\python.exe scripts/check_repo.py
+uv run --locked scripts/run_mirrors.py --check
+uv run --locked scripts/check_mirrors.py
+uv run --locked scripts/plot_mirrors.py
+uv run --locked scripts/export_mirror_demo.py
+uv run --locked scripts/export_mirror_demo.py --check
+uv run --locked scripts/check_repo.py
 ```
 
 首次建立数据可省略 `--check`；后续保留它，检查是否偏离已提交的 OTA 参考结果。运行器不仅检查进程退出码，还检查有限数值、候选电流容差、标称 OTA 功耗与尾电流、核心管饱和余量、DC/AC 斜率一致和完整模型与三参数节点模型的增益一致。闭式公式另外用 96 组确定性参数的独立节点导纳矩阵交叉检查。

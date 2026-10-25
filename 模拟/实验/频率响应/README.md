@@ -32,14 +32,14 @@ AC 扫描 1 Hz～10 GHz、每十倍频 80 点。高频端用于看清模型路�
 先按 [Windows 配置](../../../docs/WINDOWS.md) 安装已锁定依赖，仓库根目录运行：
 
 ```powershell
-.\.venv\Scripts\python.exe scripts/run_frequency.py --check
-.\.venv\Scripts\python.exe scripts/check_frequency.py
+uv run --locked scripts/run_frequency.py --check
+uv run --locked scripts/check_frequency.py
 node scripts/check_frequency_demo.mjs
-.\.venv\Scripts\python.exe scripts/draw_frequency.py
-.\.venv\Scripts\python.exe scripts/plot_frequency.py
-.\.venv\Scripts\python.exe scripts/check_repo.py
-.\.venv-site\Scripts\python.exe scripts/book.py build
-.\.venv-site\Scripts\python.exe scripts/check_site.py
+uv run --locked scripts/draw_frequency.py
+uv run --locked scripts/plot_frequency.py
+uv run --locked scripts/check_repo.py
+uv run --locked --group site scripts/book.py build
+uv run --locked --group site scripts/check_site.py
 ```
 
 运行器保留失败信息；每次删除预期临时输出以防陈旧文件误通过。`--check` 先与已提交主要增益/带宽比较，容差 0.5%，再写新运行记录；不会根据新结果改变指标。图像只读取归档 CSV，不平滑、拟合或将解析曲线伪装为工艺数据。线性模型与真实模型各自明确标注。

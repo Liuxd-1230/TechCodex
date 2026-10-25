@@ -12,6 +12,17 @@ ROOT=Path(__file__).resolve().parents[1]
 STAGE=ROOT/'build/book-source'
 REPOSITORY_URL='https://github.com/Liuxd-1230/TechCodex'
 IMAGE_SUFFIXES={'.svg','.png'}
+PRIVATE_SUFFIXES={'.pdf','.safetensors','.onnx','.gguf','.sqlite','.sqlite3','.db','.npz','.npy','.pt','.pth'}
+
+
+def assert_public_asset(path):
+    if (path.suffix.lower() in PRIVATE_SUFFIXES or
+            path.name.startswith(('tokenizer', 'sentence_bert_config', 'config_sentence_transformers')) or
+            path.name in ('middle_json.json','model_output.json','structured_content.json') or
+            '.local' in path.parts or 'book-rag' in path.parts or 'ocr-mineru' in path.parts):
+        raise RuntimeError(f'Private RAG artifact cannot be published: {path.name}')
+
+
 MARKDOWN_LINK=re.compile(r'(!?\[[^\]]*\]\()([^)]+)(\))')
 ROUTES={
     'README.md':'index.md',
@@ -159,11 +170,15 @@ def prepare():
         dest.write_text(_page_metadata(target)+content,encoding='utf-8',newline='\n')
     for original in sorted(images):
         source=ROOT/Path(original)
+        assert_public_asset(source)
         dest=STAGE/Path(original)
         if not source.resolve().is_relative_to(ROOT.resolve()):
             raise RuntimeError(f'Image reference escapes repository: {original}')
         dest.parent.mkdir(parents=True,exist_ok=True)
         shutil.copyfile(source,dest)
+    for asset in (ROOT/'web/assets').rglob('*'):
+        if asset.is_file():
+            assert_public_asset(asset)
     shutil.copytree(ROOT/'web/assets',STAGE/'assets',dirs_exist_ok=True)
 
 

@@ -38,15 +38,16 @@
 仿真在 Windows PowerShell 中从仓库根目录运行：
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe scripts/bootstrap.py
-.\.venv\Scripts\python.exe scripts/run.py --check
-.\.venv\Scripts\python.exe scripts/run_differential.py --check
-.\.venv\Scripts\python.exe scripts/check_repo.py
+uv sync --locked
+uv run --locked scripts/bootstrap.py
+uv run --locked scripts/run.py --check
+uv run --locked scripts/run_differential.py --check
+uv run --locked scripts/check_repo.py
 ```
 
-无需 WSL、容器或完整的版图工具链。配置、模型与实际验证范围见 [Windows 复现](docs/WINDOWS.md) 和 [模型说明](models/README.md)。网站单独使用 `.venv-site`，见 [构建与发布](docs/网站维护.md)。
+无需 WSL、容器或完整的版图工具链。配置、模型与实际验证范围见 [Windows 复现](docs/WINDOWS.md) 和 [模型说明](models/README.md)。网站依赖通过 `uv sync --locked --group site` 安装，见 [构建与发布](docs/网站维护.md)。
+
+编辑教材时可选用 [本地原书检索与 Codex MCP](docs/RAG.md)。它使用私有 PDF 和离线 EmbeddingGemma 2；普通仿真与建站不依赖模型或 PyTorch。
 
 </details>
 
