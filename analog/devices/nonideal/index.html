@@ -47,7 +47,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/book.css?v=d783f6b192e5">
+      <link rel="stylesheet" href="../../../assets/book.css?v=9c15b59fb8e4">
     
       <link rel="stylesheet" href="../../../assets/demos/circuit-demo.css?v=0bc6ed227c44">
     
@@ -2325,7 +2325,14 @@
 <p><a href="../">第 2 章</a> · <a href="../small-signal/">下一篇：小信号与电容</a></p>
 <p>理想饱和平方律把 ID 写成 VGS 的函数，容易让人形成一个方便的印象：栅端决定电流，其他端口只需满足工作区要求。真实器件却会让源体电压、漏压、纵向电场和横向电场都参与进来。设计中需要辨认它们分别改变了什么，不能把所有偏差统称为“沟道长度调制”。</p>
 <h2 id="_1">源极上升，阈值为什么也跟着上升<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>对 NMOS，把体端固定，源端抬高，使源体结反偏增大。形成反型所需平衡的耗尽区电荷随之改变，栅极需要更高的电压才能维持同样的表面反型程度。长沟道近似下</p>
+<p>先把两个容易混在一起的变化分开：源极升高时，如果栅极对地电压不动，VGS 自然降低；即使同时抬高栅极、让 VGS 保持不变，电流仍可能减小。第二个变化才是下面要单独观察的体效应。</p>
+<figure id="figure-device-body-port"><p><a aria-label="体效应扫描的四个端口，栅漏电压均相对源端保持固定 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-body-port.svg" title="打开原图，查看细节"><img alt="体效应扫描的四个端口，栅漏电压均相对源端保持固定" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-body-port.svg"/></a></p><figcaption>图 2.2-1：沿用 V0 的真实测试连接。B 接地，VS 从 0 扫到 0.8 V；栅端和漏端随源端一起抬高，使 VGS=0.90 V、VDS=1.65 V 始终不变。图中标签是各端口对地电压，不是把 G、D 与 S 短接。原网表见 <a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/v0-body.cir">v0-body.cir</a>。 <a aria-label="体效应扫描的四个端口，栅漏电压均相对源端保持固定 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-body-port.svg">查看原图</a></figcaption></figure>
+
+<p>先预测：已经把 VGS 的下降补回来了，漏流还会下降吗？对 NMOS，源体结反偏增大，形成反型所需平衡的耗尽区电荷随之改变。栅极需要更高的相对源端电压，才能维持同样的表面反型程度。</p>
+<figure id="figure-device-body-evidence"><p><a aria-label="同一次 GF180 体效应扫描中的模型阈值与漏极电流 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-body-evidence.svg" title="打开原图，查看细节"><img alt="同一次 GF180 体效应扫描中的模型阈值与漏极电流" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-body-evidence.svg"/></a></p><figcaption>图 2.2-2：同一组 81 个归档偏置点，上图读 BSIM4 工作点输出的 VTH，下图读 ID；W/L=10/1 µm、typical、27 °C。模型与来源沿用 <a href="../../../labs/">V0 实验</a>，图中不叠加平方律拟合。 <a aria-label="同一次 GF180 体效应扫描中的模型阈值与漏极电流 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-body-evidence.svg">查看原图</a></figcaption></figure>
+
+<p>VSB 从 0 增至 0.8 V，模型 VTH 从约 0.688 V 升到 0.946 V，ID 从 40.64 µA 降到 1.20 µA。栅源电压虽然没变，形成反型的余量却在减少。末端 VGS 已低于这里报告的 VTH，电流仍未突然归零，这也连接了上一节的弱反型图像。模型报告的阈值是其工作点量，不是另外用恒流法提取的开关电压。</p>
+<p>长沟道近似把这一趋势写成</p>
 <div class="arithmatex">\[
 V_{TH}(V_{SB})=V_{TH0}
 +\gamma\left(\sqrt{2\phi_F+V_{SB}}-\sqrt{2\phi_F}\right).
@@ -2351,8 +2358,12 @@ g_{ds}\simeq\lambda I_{D0},\qquad
 r_o=\frac1{g_{ds}}\simeq\frac1{\lambda I_D}.
 \]</div>
 <p>最后一个近似还用了 λVDS 不大的条件。这给出一个有用直觉：在简单 λ 模型和其他条件相近时，更大的电流对应更大的输出电导，而有限 ro 会削弱放大器增益、电流镜复制精度与高阻节点的独立性。</p>
+<figure id="figure-device-output-slope"><p><a aria-label="真实输出曲线在工作点附近的斜率与局部切线 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-output-slope.svg" title="打开原图，查看细节"><img alt="真实输出曲线在工作点附近的斜率与局部切线" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-output-slope.svg"/></a></p><figcaption>图 2.2-3：复用归档 <code>output-Vg0.9.csv</code>，VGS=0.90 V、VSB=0、W/L=10/1 µm、typical、27 °C。这里只放大 0.8～2.6 V 的漏压窗口；<a href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-output.svg">完整输出曲线</a>仍保留。蓝虚线使用 VDS=1.65 V 处保存的 gds 画局部切线，不是对整段扫描拟合 λ。 <a aria-label="真实输出曲线在工作点附近的斜率与局部切线 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/device-output-slope.svg">查看原图</a></figcaption></figure>
+
+<p>在这个点，ID≈40.64 µA、gds≈0.850 µS，因此 ro≈1.18 MΩ。VDS/ID 却只有约 40.6 kΩ：它连的是原点与工作点，不能替代这里的局部斜率倒数。若漏压只多动 10 mV，局部电流增量约为 8.50 nA；把这个小变化带入高阻输出节点，才会看出它对增益和电流镜误差的作用。</p>
 <p>但同样的输出斜率也可能有其他来源。短沟道时，漏端电场可以降低源端注入势垒，表现为阈值随漏压降低，即 DIBL。用局部模型 <span class="arithmatex">\(V_{TH}\simeq V_{TH0}-\eta_DV_{DS}\)</span> 理解，在其他条件相同时，它会给 gds 增加约 <span class="arithmatex">\(\eta_Dg_m\)</span> 的贡献。这个项与简单沟道长度缩短的机制不同，不能指望一个固定 λ 对所有栅压、漏压和长度都有效。</p>
 <p>因此，仿真中直接读取指定工作点的 gm、gds，通常比把整条输出曲线拟合为一个 λ 更适合局部电路分析。解释设计方向时仍需分辨输出斜率由什么主导。</p>
+<p>可以用一个独立于 GF180 数据的解析反例区分机制：在弱反型、<span class="arithmatex">\(V_{DS}\gg U_T\)</span> 而漏端指数项可忽略的局部模型中，若 <span class="arithmatex">\(nU_T=40\ \mathrm{mV}\)</span>、<span class="arithmatex">\(\eta_D=0.02\ \mathrm{V/V}\)</span>，漏压增加 0.5 V 会让势垒对应的阈值降低 10 mV，电流约乘以 <span class="arithmatex">\(e^{10/40}\approx1.28\)</span>。这是阈值进入指数关系的结果，不能仅按“电流乘上一个接近一的 λ 因子”判断。上面的真实输出曲线记录的是所有机制合成的斜率；现有扫描没有单独提取 DIBL，不能据它声称已经分离出 CLM 和 DIBL 各自的份额。</p>
 <h2 id="_3">栅压加得更多，为何电流没有按平方增长<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>长沟道推导假设迁移率不随偏置变化。实际反型层被更强的纵向电场压向界面，表面散射等机制会降低有效迁移率。常见的教学近似为</p>
 <div class="arithmatex">\[
