@@ -43,6 +43,40 @@ def charge_increment():
     assert np.isclose(np.trapezoid(np.ones_like(u),u),1)
 
 
+def charge_partition():
+    c=Canvas('同一饱和偏置，栅压与漏压扰动产生不同的端口电荷响应',480,770)
+    c.text(22,30,'交换扰动端口，电荷分配会一样吗',22)
+    c.text(22,59,'S、B 固定；两次扰动都保持饱和。',19,MUTED)
+    z=np.linspace(0,1,241);x=66+356*z
+    for top,gate_change in [(96,True),(457,False)]:
+        c.text(22,top,'① VG：0.90 → 0.94 V' if gate_change else '② VD：0.80 → 0.84 V',22,SIGNAL)
+        c.text(22,top+28,'VD 固定在 0.80 V' if gate_change else 'VG 固定在 0.90 V',18,MUTED)
+        bottom=top+182
+        old=bottom-.4*np.sqrt(1-z)*260
+        new=bottom-(.44 if gate_change else .4)*np.sqrt(1-z)*260
+        points=' '.join(f'{a:.2f},{b:.2f}' for a,b in zip(np.r_[x,x[::-1]],np.r_[old,new[::-1]]))
+        c.parts.append(f'<polygon points="{points}" fill="#c4e3db" stroke="none"/>')
+        for values,color in [(old,MUTED),(new,SIGNAL)]:
+            points=' '.join(f'{a:.2f},{b:.2f}' for a,b in zip(x,values))
+            dash=' stroke-dasharray="5 4"' if not gate_change and color==SIGNAL else ''
+            c.parts.append(f'<polyline points="{points}" stroke="{color}"{dash}/>')
+        c.wire((66,top+45),(66,bottom),(422,bottom))
+        c.text(82,top+57,'|λ| / (W Cox) [V]',18)
+        c.text(66,bottom+25,'S · x/L = 0',18)
+        c.text(422,bottom+25,'D · x/L = 1',18,anchor='end')
+        if gate_change:
+            c.text(22,bottom+62,'ΔQg = +⅔ CA ΔVG',20,SIGNAL)
+            c.text(22,bottom+89,'ΔQd = −4/15 CA ΔVG',20)
+            c.text(22,bottom+116,'ΔQs = −⅖ CA ΔVG',20)
+        else:
+            c.text(170,top+137,'曲线重合，新增面积为零',17,MUTED)
+            c.text(22,bottom+62,'ΔQg = ΔQd = ΔQs = 0',21,SIGNAL)
+    c.line(22,425,458,425,color='#d5e0e8')
+    c.text(22,748,'VTH = 0.50 V；CA = WL Cox。',19,MUTED)
+    c.save('mos-charge-partition',OUT,
+           '独立绘制的长沟道准静态反型电荷模型，阈值0.50伏，源与体为零。栅压从0.90增至0.94伏，漏压0.80伏固定，电荷曲线间的绿色面积为新增反型电荷幅值；Ward-Dutton线性分配给出栅正三分之二、漏负十五分之四、源负五分之二倍CA乘栅压变化。另一对照只将漏压从0.80增至0.84伏，栅压固定且仍饱和，忽略长度调制时两条本征电荷曲线重合。不含耗尽、重叠和结电荷，不是工艺测量。')
+
+
 def cg_termination():
     c = Canvas('同一共栅工作点，漏端终接改变输入电流',480,720)
     c.text(22,30,'源端同样抬高 1 mV，电流却不同',22)
@@ -115,5 +149,5 @@ def cascode_feedback():
 
 
 if __name__=='__main__':
-    charge_increment();cg_termination();cascode_feedback()
-    print('Generated 3 analytical charge/port figures; integral and KCL checks passed.')
+    charge_increment();charge_partition();cg_termination();cascode_feedback()
+    print('Generated 4 analytical charge/port figures; integral and KCL checks passed.')

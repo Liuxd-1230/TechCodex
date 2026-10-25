@@ -177,6 +177,9 @@ else:
     if len(follower_page.select('.sf-loading-pair figure'))!=2:
         errors.append('Source follower port comparison missing')
 
+charge_page=documents[SITE/'analog/devices/small-signal/index.html']
+if not charge_page.select_one('#figure-mos-charge-partition img[alt]'):
+    errors.append('MOS charge partition example lacks its static teaching figure')
 miller_page=documents[SITE/'analog/frequency/miller/index.html']
 if not miller_page.select_one('#figure-frequency-cs-output-port .diagram-viewport[tabindex="0"][role="region"]'):
     errors.append('CS drain-port comparison lacks an accessible static diagram viewport')

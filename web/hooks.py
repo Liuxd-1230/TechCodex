@@ -106,7 +106,7 @@ def on_page_content(html,page,config,files):
         image=figure.find('img')
         stem=Path(image.get('src','')).stem
         if stem in ('mos-channel','diff-modes','cs-load-resistor','cs-load-diode','cs-load-current','ota-current-sum','noise-statistics',
-                    'mos-charge-increment','cg-termination','cascode-feedback',
+                    'mos-charge-increment','mos-charge-partition','cg-termination','cascode-feedback',
                     'device-body-port','device-body-evidence','device-output-slope',
                     'frequency-mirror-phasors','frequency-mirror-nodes'):
             figure['id']='figure-'+stem
