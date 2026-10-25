@@ -1430,10 +1430,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#output-to-x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输出抬高一点，X 为什么也会上升
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#x" class="md-nav__link">
     <span class="md-ellipsis">
       
         X 没有消失，它有自己的电荷
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coupled-dynamics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        让三个节点一起运动
       
     </span>
   </a>
@@ -2222,10 +2244,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#output-to-x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输出抬高一点，X 为什么也会上升
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#x" class="md-nav__link">
     <span class="md-ellipsis">
       
         X 没有消失，它有自己的电荷
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coupled-dynamics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        让三个节点一起运动
       
     </span>
   </a>
@@ -2278,25 +2322,133 @@
 
 
 <h1 id="64">6.4 · 把大摆幅留在上面，下面就快了吗<a class="headerlink" href="#64" title="Permanent link">¶</a></h1>
-<p>共源级能把栅压变成漏电流，但漏节点的大反相摆幅让 <span class="arithmatex">\(C_{gd}\)</span> 很吃力。上面接一只共栅管，让下面那只管的漏极只需小幅移动，就有可能减小这份输入加载。</p>
-<figure><p><a aria-label="下管输入、共栅上管和内部 X 节点，Cgd1 跨输入与 X · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode.svg" title="打开原图，查看细节"><img alt="下管输入、共栅上管和内部 X 节点，Cgd1 跨输入与 X" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode.svg"/></a></p><figcaption>图 6-6 · <span class="arithmatex">\(C_{gd1}\)</span> 的另一端是 X，不能把总输出增益代进它的米勒公式。两只体端均接地；上管源端不接体端。输出负载经 <span class="arithmatex">\(R_D\)</span> 到 VDD，<span class="arithmatex">\(C_O\)</span> 包含 <span class="arithmatex">\(C_{gd2},C_{db2},C_L\)</span>。 <a aria-label="下管输入、共栅上管和内部 X 节点，Cgd1 跨输入与 X · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode.svg">查看原图</a></figcaption></figure>
+<p>普通共源级的漏端反相运动，栅漏电容两端的电压差因此比输入更大，前一级要提供更多充放电电流。上面接一只共栅管，把最终输出与下管漏端 X 分开，就有机会减轻这份加载。但 X 仍然要移动、要充放电；限制它摆幅的那只上管，也不是理想的电流传送器。</p>
+<figure><p><a aria-label="下管输入、共栅上管和内部 X 节点，Cgd1 跨输入与 X · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode.svg" title="打开原图，查看细节"><img alt="下管输入、共栅上管和内部 X 节点，Cgd1 跨输入与 X" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode.svg"/></a></p><figcaption>图 6-6 · <span class="arithmatex">\(C_{gd1}\)</span> 的另一端是 X，不能把总输出增益代进它的米勒公式。两只体端均接地；上管源端不接体端。上栅偏置 <span class="arithmatex">\(V_B\)</span> 和 VDD 均为交流固定点。输出负载经 <span class="arithmatex">\(R_D\)</span> 到 VDD，<span class="arithmatex">\(C_O\)</span> 包含 <span class="arithmatex">\(C_{gd2},C_{db2},C_L\)</span>；图中省略的 X 对地电容稍后逐项归入 <span class="arithmatex">\(C_X\)</span>。 <a aria-label="下管输入、共栅上管和内部 X 节点，Cgd1 跨输入与 X · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode.svg">查看原图</a></figcaption></figure>
 
 <h2 id="_1">先看局部电流怎样被接走<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>低频下，下管产生 <span class="arithmatex">\(g_{m1}v_g\)</span>。上管从源端看进去的导纳约 <span class="arithmatex">\(g_{m2}+g_{mb2}\)</span>；当上管漏端没有近乎自由地跟着源端移动时，X 无须很大电压就能传递这份电流：</p>
+<p>让下管栅压 <span class="arithmatex">\(v_g\)</span> 升高一点。M1 先试图增加向下的漏流；若 M2 还没有增加供给 X 的电流，差额便由 X 上的电荷承担，X 电压开始下降。M2 的栅和体都固定，因此它的 <span class="arithmatex">\(v_{gs2}\)</span>、<span class="arithmatex">\(v_{bs2}\)</span> 同时增加，向下流入 X 的电流也增加。这个响应使电流差额缩小。<strong>X 的小幅下降，是传递电流需求的过程，不是一个可以直接删去的节点。</strong></p>
+<p>先在低频忽略电容，令 <span class="arithmatex">\(g_1=1/r_{o1}\)</span>、<span class="arithmatex">\(g_2=1/r_{o2}\)</span>，并记</p>
 <div class="arithmatex">\[
-\frac{v_x}{v_g}\approx-\frac{g_{m1}}{g_{m2}+g_{mb2}}.
+\begin{aligned}
+g_{t2}&amp;=g_{m2}+g_{mb2},\\
+k_2&amp;=g_{t2}+g_2.
+\end{aligned}
 \]</div>
-<p>两管跨导同量级时，这个局部增益约为 −1，而不是总输出可能达到的几十或几百。于是输入端对 <span class="arithmatex">\(C_{gd1}\)</span> 的低频加载约为</p>
+<p>两管漏电流均以从漏到源为正。M1 源、体固定，故 <span class="arithmatex">\(g_{mb1}\)</span> 不产生信号电流；M2 则有 <span class="arithmatex">\(v_{gs2}=v_{bs2}=-v_x\)</span>，于是</p>
 <div class="arithmatex">\[
-C_{gd1}\left(1+\frac{g_{m1}}{g_{m2}+g_{mb2}}\right),
+\begin{aligned}
+i_{d1}&amp;=g_{m1}v_g+g_1v_x,\\
+i_{d2}&amp;=-g_{t2}v_x+g_2(v_o-v_x)\\
+&amp;=g_2v_o-k_2v_x.
+\end{aligned}
 \]</div>
-<p>比单管高增益共源的米勒项小得多。这里的近似先忽略 <span class="arithmatex">\(g_o\)</span>，并假定上管偏置足够固定；若输出阻抗极大、<span class="arithmatex">\(g_o\)</span> 耦合重要，就需要下面的完整方程。</p>
+<p>这里 <span class="arithmatex">\(g_{m2}\)</span> 与 <span class="arithmatex">\(g_{mb2}\)</span> 都增强源端移动引起的恢复电流，<span class="arithmatex">\(g_2\)</span> 则同时响应源、漏两端。若把上管体端误接到源端，<span class="arithmatex">\(g_{mb2}\)</span> 这一项就会改变，不能沿用同一方程。</p>
+<p>在 X 令 <span class="arithmatex">\(i_{d1}=i_{d2}\)</span>，在输出令 <span class="arithmatex">\(G_Dv_o+i_{d2}=0\)</span>，其中 <span class="arithmatex">\(G_D=1/R_D\)</span>，得到</p>
+<div class="arithmatex">\[
+\begin{aligned}
+(g_1+k_2)v_x-g_2v_o&amp;=-g_{m1}v_g,\\
+(G_D+g_2)v_o&amp;=k_2v_x.
+\end{aligned}
+\]</div>
+<p>第二式告诉我们：X 向下，输出也向下。消去输出后，X 对输入的低频局部增益为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+G_{X0}&amp;=g_1+k_2\frac{G_D}{G_D+g_2},\\
+A_{x0}\equiv\frac{v_x}{v_g}&amp;=-\frac{g_{m1}}{G_{X0}}.
+\end{aligned}
+\]</div>
+<p>其中 <span class="arithmatex">\(1/G_{X0}\)</span> 是输入栅置零、保留输出负载时，从 X 看入的低频小信号阻抗。若单看上管源端，不含下管的 <span class="arithmatex">\(r_{o1}\)</span>，则为</p>
+<div class="arithmatex">\[
+R_{\mathrm{in},2}=\frac{1+g_2R_D}{k_2}.
+\]</div>
+<p>这正接上了 <a href="../../stages/common-gate/">3.4 的终接问题</a>：漏端负载越高，上管源端未必仍然低阻。在 <span class="arithmatex">\(g_2R_D\ll1\)</span>、<span class="arithmatex">\(g_1,g_2\ll g_{t2}\)</span> 时，可简化为</p>
+<div class="arithmatex">\[
+A_{x0}\approx-\frac{g_{m1}}{g_{m2}+g_{mb2}}.
+\]</div>
+<p>在有限 <span class="arithmatex">\(R_D\)</span> 下忽略两管输出电导，也得到这一结果。两管跨导同量级时，局部增益约为 −1；总输出增益却还要乘上 <span class="arithmatex">\(k_2/(G_D+g_2)\)</span>。计算 <span class="arithmatex">\(C_{gd1}\)</span> 的输入电流时，用的是前一个关系：</p>
+<div class="arithmatex">\[
+\begin{gathered}
+C_f=C_{gd1},\\
+i_{g,C_f}=sC_f(v_g-v_x),\\
+C_{\mathrm{in,LF}}\approx C_{gs1}+C_f(1-A_{x0}).
+\end{gathered}
+\]</div>
+<p>这才得到熟悉的 <span class="arithmatex">\(C_f[1+g_{m1}/g_{t2}]\)</span> 米勒项。若输出在低频近乎开路而 <span class="arithmatex">\(g_2\ne0\)</span>，则 <span class="arithmatex">\(G_{X0}\to g_1\)</span>，X 可能有很大摆幅。不能先假设 X 接地，再用这个假设证明它摆幅很小。</p>
+<h2 id="output-to-x">输出抬高一点，X 为什么也会上升<a class="headerlink" href="#output-to-x" title="Permanent link">¶</a></h2>
+<p>现在把输入置零，用理想测试源规定输出增量，仍先忽略电容。输出升高使 M2 的 <span class="arithmatex">\(g_2(v_o-v_x)\)</span> 项试图增加向下电流。电流流入 X，使 X 上升；随之减小的 <span class="arithmatex">\(v_{gs2}\)</span> 和 <span class="arithmatex">\(v_{bs2}\)</span> 又抵消大部分电流变化。由同一条 X 方程可得</p>
+<div class="arithmatex">\[
+\left.\frac{v_x}{v_o}\right|_{v_g=0}
+=\frac{g_2}{g_1+k_2}&gt;0.
+\]</div>
+<p>比值通常很小，却不是零。<a href="../../stages/cascode/">3.5 的输出测试图</a>已经把这次抵消画在原电路上。这里要注意测试条件：输出由测试源强制运动，已不服从刚才自由输出时的 <span class="arithmatex">\(v_o/v_x\)</span> 关系。外接 <span class="arithmatex">\(R_D\)</span> 会改变测试源提供的电流，不改变这个规定电压下的低频比值。上管 <span class="arithmatex">\(r_{o2}\to\infty\)</span> 时，<span class="arithmatex">\(g_2\to0\)</span>，本模型的输出到 X 反馈才消失。</p>
+<p>终接还随频率变化。先移开 X 上的并联电容，只看上管传导支路；输出由 <span class="arithmatex">\(R_D\parallel1/(sC_O)\)</span> 终接时，源端看到</p>
+<div class="arithmatex">\[
+Z_{\mathrm{in},2}(s)
+=\frac{G_D+g_2+sC_O}{k_2(G_D+sC_O)}.
+\]</div>
+<p>低频很高的输出负载，在较高频率可能被 <span class="arithmatex">\(C_O\)</span> 旁路。当 <span class="arithmatex">\(|G_D+sC_O|\gg g_2\)</span>，这个阻抗又接近 <span class="arithmatex">\(1/k_2\)</span>：输出不能再通过 <span class="arithmatex">\(r_{o2}\)</span> 充分跟着 X 运动，上管源端恢复了较强的电流响应。因此，低频较大的 X 摆幅，并不能直接证明整个高频范围都存在同样大的米勒倍乘。这也是原书习题 6.11 特别提出“大 <span class="arithmatex">\(C_L\)</span>”条件的原因。</p>
 <h2 id="x">X 没有消失，它有自己的电荷<a class="headerlink" href="#x" title="Permanent link">¶</a></h2>
-<p>X 处包含下管漏结电容、上管栅源与源体电容；上管偏置并不理想时，还要考虑偏置节点本身。粗估 X 节点频率为 <span class="arithmatex">\((g_{m2}+g_{mb2})/(2\pi C_X)\)</span>，它通常较高，却可能在减小输出负载后变成速度限制。</p>
-<p>与此同时，共源共栅提高了输出电阻。若输出仍带固定 <span class="arithmatex">\(C_L\)</span>，提高电阻会增加低频增益，也会延长输出充放电时间。这正是“改善输入米勒效应”与“提高整个放大器 −3 dB 带宽”不能画等号的原因。</p>
+<p>在本节的常数二端电容近似中，先把路径分清：</p>
+<table>
+<thead>
+<tr>
+<th>电容</th>
+<th>两端与作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(C_{db1}\)</span></td>
+<td>X 到固定体端，属于 X 的对地电荷</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(C_{gs2}\)</span>、<span class="arithmatex">\(C_{sb2}\)</span></td>
+<td>X 到固定的上栅、体端，也属于对地电荷</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(C_f=C_{gd1}\)</span></td>
+<td>输入栅到 X，两个端点都可能运动，须保留 <span class="arithmatex">\(sC_f(v_x-v_g)\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(C_{gs1}\)</span></td>
+<td>输入栅到地，首先加载输入源</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(C_O=C_{gd2}+C_{db2}+C_L\)</span></td>
+<td>输出到地，改变输出终接，也间接改变 X 的阻抗</td>
+</tr>
+</tbody>
+</table>
+<p>以下记 <span class="arithmatex">\(C_X=C_{db1}+C_{gs2}+C_{sb2}\)</span>，不重复计入 <span class="arithmatex">\(C_f\)</span>。忽略直接漏源跨接电容，假设上栅偏置始终交流固定。若偏置网络有显著阻抗，<span class="arithmatex">\(C_{gs2}\)</span> 的另一端也会移动，需要把偏置节点纳入分析。</p>
+<p>若把输入栅与输出都用理想电压源固定，X 受到的恢复导纳就是 <span class="arithmatex">\(g_1+k_2\)</span>，需要充放电的电容是 <span class="arithmatex">\(C_X+C_f\)</span>。这个明确的端口实验给出局部时间尺度</p>
+<div class="arithmatex">\[
+\tau_{X,\mathrm{clamp}}=\frac{C_X+C_f}{g_1+k_2}.
+\]</div>
+<p>它回答“在其他节点被固定时，X 多快恢复”。自由放大器中的栅和输出并没有同时被钳位，这个数不能直接命名为整机的一个精确极点。原书式 (6.80) 则用了另一种估计：将 <span class="arithmatex">\(C_f\)</span> 在 X 一侧按 <span class="arithmatex">\(1-v_g/v_x\)</span> 米勒变换；若 <span class="arithmatex">\(v_x/v_g\approx-1\)</span>，就得到约 <span class="arithmatex">\(2C_f+C_X\)</span>。两种电容值对应不同的端口约束，不能混用。频率升高后，局部增益变成复数，固定倍乘也随之失效。</p>
+<p><a href="../../devices/small-signal/#charge-in-circuits">2.3 的端口电荷</a>还给出更深一层的边界：真实 BSIM 中，X 端电荷电流是各端口电压变化率的加权和，交叉偏导可以非互易。本节几只二端电容是解释路径的近似，不能用任意对称化的电容值替换真实电荷矩阵。下面的 GF180 曲线保留了原模型的电荷响应。</p>
+<h2 id="coupled-dynamics">让三个节点一起运动<a class="headerlink" href="#coupled-dynamics" title="Permanent link">¶</a></h2>
+<p>在低频，M2 送入 X 的电流几乎全部交给 M1；信号加快后，一部分还要改变 <span class="arithmatex">\(C_X\)</span> 与 <span class="arithmatex">\(C_f\)</span> 的电荷。输出也要为 <span class="arithmatex">\(C_O\)</span> 供电流。把这些电流逐项写出，令 <span class="arithmatex">\(G_i=1/R_S\)</span>：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+G_i(v_g-v_{in})+sC_{gs1}v_g\\
+{}+sC_f(v_g-v_x)&amp;=0,\\[3pt]
+g_{m1}v_g+(g_1+k_2)v_x-g_2v_o\\
+{}+sC_Xv_x+sC_f(v_x-v_g)&amp;=0,\\[3pt]
+(G_D+g_2+sC_O)v_o-k_2v_x&amp;=0.
+\end{aligned}
+\]</div>
+<p>X 方程中的 <span class="arithmatex">\(-g_2v_o\)</span> 正是输出返回 X 的路径；<span class="arithmatex">\(-sC_fv_g\)</span> 则是栅压经电容直接注入 X 的路径。它们不能被“X 近似交流地”一并抹去。</p>
+<p>先规定栅端电压，消去输出，便看见 X 的恢复关系：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+Y_X(s)&amp;=g_1+k_2+s(C_X+C_f)\\
+&amp;\quad-\frac{g_2k_2}{G_D+g_2+sC_O},\\
+\frac{v_x}{v_g}&amp;=\frac{sC_f-g_{m1}}{Y_X(s)}.
+\end{aligned}
+\]</div>
+<p>这里 <span class="arithmatex">\(Y_X\)</span> 是栅端置零、输出自由终接时从 X 看入的导纳。低频代入 <span class="arithmatex">\(s=0\)</span>，恢复前面的 <span class="arithmatex">\(G_{X0}\)</span>；输出被足够强地固定时，最后的耦合项减弱，才接近单独的局部 RC。若 X 的恢复速度远高于输入、输出的变化速度，可以在所关注频段忽略 X 自身的储能项，代数消去 X；由栅压变化驱动的 <span class="arithmatex">\(sC_fv_g\)</span> 前馈仍须按频段判断，不能连同整只 <span class="arithmatex">\(C_f\)</span> 一起删除。若时间尺度接近，输出返回项与栅漏电容都随频率变化，就必须联立求解。</p>
 <details>
-<summary>三节点 KCL：保留 X 与输出的耦合</summary>
-<p>令 <span class="arithmatex">\(g_1,g_2\)</span> 为下、上管输出电导，<span class="arithmatex">\(k_2=g_{m2}+g_{mb2}+g_2\)</span>，<span class="arithmatex">\(G_D=1/R_D\)</span>，<span class="arithmatex">\(C_f=C_{gd1}\)</span>。<span class="arithmatex">\(C_X\)</span> 不含已单列的 <span class="arithmatex">\(C_f\)</span>，忽略漏源跨接电容，模型为</p>
+<summary>原三节点矩阵与精确传递函数</summary>
 <div class="arithmatex">\[
 \begin{bmatrix}
 G_i+s(C_{gs1}+C_f)&amp;-sC_f&amp;0\\
@@ -2306,15 +2458,83 @@ g_{m1}-sC_f&amp;g_1+k_2+s(C_X+C_f)&amp;-g_2\\
 \begin{bmatrix}v_g\\v_x\\v_o\end{bmatrix}
 =\begin{bmatrix}G_iv_{in}\\0\\0\end{bmatrix}.
 \]</div>
-<p>第二行的 <span class="arithmatex">\(-g_2v_o\)</span> 很有意义：上管漏端运动会反馈到 X。第三行中，上管源端运动产生的电流由 <span class="arithmatex">\(k_2\)</span> 表示。精确极点来自整个三阶行列式，不是将图上三个 RC 各算一次。</p>
-<p>如果输入由理想电压驱动，<span class="arithmatex">\(v_g\)</span> 不再是独立动态状态，但 <span class="arithmatex">\(C_f\)</span> 的前馈仍进入 X 方程。若输出极点远低于 X 极点，可以先把 X 近似为快速节点，再估算输出主极点；反过来将所有高频路径都压进一个 <span class="arithmatex">\(R_{out}C_L\)</span> 会漏掉内部限制。</p>
+<p>为了不展开冗长的三阶多项式，记</p>
+<div class="arithmatex">\[
+\begin{aligned}
+A&amp;=G_i+s(C_{gs1}+C_f),\\
+B&amp;=g_1+k_2+s(C_X+C_f),\\
+D&amp;=G_D+g_2+sC_O,\\
+P&amp;=g_{m1}-sC_f,\\
+\Delta(s)&amp;=A(BD-g_2k_2)+sC_fPD.
+\end{aligned}
+\]</div>
+<p>则</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\frac{v_x}{v_{in}}&amp;=-\frac{G_iPD}{\Delta(s)},\\
+\frac{v_o}{v_{in}}&amp;=-\frac{G_ik_2P}{\Delta(s)}.
+\end{aligned}
+\]</div>
+<p>以上关系由本节电路独立消元得到，不作为原书公式转录。</p>
 </details>
+<p>三个自由节点通常给出三个自然模态：撤去输入以后，栅、X、输出按某个电压比例共同恢复。写成 <span class="arithmatex">\(C\dot v+Gv=0\)</span>，每个模态的恢复率由 <span class="arithmatex">\(-C^{-1}G\)</span> 的特征值给出；它不是某一只电容独自放电的速度。</p>
+<p>输入能激发这个模态多少、输出能看到它多少，还决定它在传递函数中的权重。一个很快或权重很小的模态，未必在幅频曲线上形成明显转折。若用理想电压源规定 <span class="arithmatex">\(v_g\)</span>，栅端不再是自由状态，阶数已降为二；<span class="arithmatex">\(C_f\)</span> 仍参与 X 的充放电与前馈。这个二端电容模型还给出 <span class="arithmatex">\(s=+g_{m1}/C_f\)</span> 的右半平面前馈零点，<span class="arithmatex">\(C_f\to0\)</span> 时它移到无穷远。零点不增加储能，却会改变幅相，因而不能只数节点就猜带宽。</p>
+<p>再比较两个不同的观察端口。输入栅固定，移开 <span class="arithmatex">\(R_D\)</span>、<span class="arithmatex">\(C_O\)</span>，暂忽略 <span class="arithmatex">\(C_f\)</span>，从最终输出看入有</p>
+<div class="arithmatex">\[
+Z_{out}(s)=r_{o2}
++\frac{1+g_{t2}r_{o2}}{g_1+sC_X}.
+\]</div>
+<p>它在 <span class="arithmatex">\(g_1/C_X\)</span> 开始失去低频的高阻抗提升：X 的电容旁路了下管 <span class="arithmatex">\(r_{o1}\)</span>，原来的局部反馈条件变了。但重新接回输出负载，输入栅理想驱动时，要用两节点耦合的动态分母 <span class="arithmatex">\(D_{xo}(s)\)</span> 求电压增益：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+D_{xo}(s)&amp;=(g_1+k_2+sC_X)\\
+&amp;\quad\cdot(G_D+g_2+sC_O)\\
+&amp;\quad-g_2k_2.
+\end{aligned}
+\]</div>
+<div class="arithmatex">\[
+\left.\frac{v_o}{v_g}\right|_{C_f=0}
+=-\frac{g_{m1}k_2}{D_{xo}(s)}.
+\]</div>
+<p>分母一般不含独立的 <span class="arithmatex">\((g_1+sC_X)\)</span> 因子，不能把刚才的端口阻抗极点原封不动加进电压增益。原书例 6.16 用理想电流源负载进一步说明：输出电容在较高频率降低漏端终接。取 <span class="arithmatex">\(G_D=0\)</span>，在 <span class="arithmatex">\(g_1,g_2\ll g_{t2}\)</span> 且 <span class="arithmatex">\(g_{t2}C_O\gg g_2C_X\)</span> 的极限下，内部快速模态仍可接近 <span class="arithmatex">\(g_{t2}/C_X\)</span>。这不表示 X 电荷没有影响，而是必须在实际终接下判断它的影响。</p>
+<p>一个显式线性例子能看清何时值得担心 X。取两管 <span class="arithmatex">\(g_m=1\)</span> mS、<span class="arithmatex">\(r_o=100\)</span> kΩ，上管 <span class="arithmatex">\(g_{mb}=0.2\)</span> mS；<span class="arithmatex">\(R_S=1\)</span> kΩ、<span class="arithmatex">\(R_D=40\)</span> kΩ，<span class="arithmatex">\(C_{gs1}=1\)</span> pF、<span class="arithmatex">\(C_f=0.1\)</span> pF、<span class="arithmatex">\(C_O=0.05\)</span> pF，仅改变 <span class="arithmatex">\(C_X\)</span>：</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(C_X\)</span></th>
+<th>完整网络最慢模态 <span class="arithmatex">\(\lvert p\rvert/(2\pi)\)</span></th>
+<th><span class="arithmatex">\(v_o/v_{in}\)</span> 的 −3 dB 带宽</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.5 pF</td>
+<td>67.71 MHz</td>
+<td>56.12 MHz</td>
+</tr>
+<tr>
+<td>5 pF</td>
+<td>23.79 MHz</td>
+<td>22.49 MHz</td>
+</tr>
+<tr>
+<td>50 pF</td>
+<td>2.744 MHz</td>
+<td>2.741 MHz</td>
+</tr>
+</tbody>
+</table>
+<p>这些是解析教学参数，不是 GF180 提取值。增大 X 电荷确实能把内部动态拖入信号频段；当一个慢模态充分主导输出时，带宽才逐渐接近它的频率。实际加宽 M2 还会同时改变跨导、电流和多个电容，不能把这张“只改 <span class="arithmatex">\(C_X\)</span>”的表当成器件尺寸扫描。</p>
 <h2 id="_2">同一个拓扑，换限制条件会得到不同答案<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<figure><p><a aria-label="两组源阻抗和负载条件下共源与共源共栅的归一化频响 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode-contrast.svg" title="打开原图，查看细节"><img alt="两组源阻抗和负载条件下共源与共源共栅的归一化频响" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode-contrast.svg"/></a></p><figcaption>图 6-7 · 全部曲线来自真实 GF180MCU。上下图均为 <span class="arithmatex">\(v_o/v_{in}\)</span> 并相对各自低频幅度归一化；两管均 10/1 µm，<span class="arithmatex">\(R_D=40\)</span> kΩ，输入直流栅压约 0.900 V，共源共栅上栅 1.8 V。两组实验只改变标明的外部源阻抗与电容，不在不同端口之间比较。 <a aria-label="两组源阻抗和负载条件下共源与共源共栅的归一化频响 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode-contrast.svg">查看原图</a></figcaption></figure>
+<figure><p><a aria-label="两组源阻抗和负载条件下共源与共源共栅的归一化频响 · 打开原图" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode-contrast.svg" title="打开原图，查看细节"><img alt="两组源阻抗和负载条件下共源与共源共栅的归一化频响" src="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode-contrast.svg"/></a></p><figcaption>图 6-7 · 全部曲线来自真实 GF180MCU。上下图均为 <span class="arithmatex">\(v_o/v_{in}\)</span> 并相对各自低频幅度归一化；两管均 10/1 µm，<span class="arithmatex">\(R_D=40\)</span> kΩ，输入直流栅压约 0.900 V，共源共栅上栅 1.8 V。两组实验只改变标明的外部源阻抗与电容，不在不同端口之间比较。典型角、27 ℃、VDD 3.3 V，体端连接与图 6-6 相同。 <a aria-label="两组源阻抗和负载条件下共源与共源共栅的归一化频响 · 查看原图" class="figure-detail" href="../../../%E6%A8%A1%E6%8B%9F/%E5%9B%BE/frequency-cascode-contrast.svg">查看原图</a></figcaption></figure>
 
-<p>上图 <span class="arithmatex">\(R_S=10\)</span> kΩ、<span class="arithmatex">\(C_L=1\)</span> pF：共源约 4.05 MHz，共源共栅约 3.94 MHz。输入端原本不是主要瓶颈，增加上管结电容与内部节点，不会让大负载自动更快。</p>
-<p>下图 <span class="arithmatex">\(R_S=1\)</span> MΩ、<span class="arithmatex">\(C_L=0.05\)</span> pF：共源约 3.22 MHz，共源共栅约 4.74 MHz。输入加载变得重要，限制 X 摆幅的优势才显现。这也不是说 4.74 MHz 就是 X 的精确极点，而是指定端口在这组终接下的 −3 dB 带宽。</p>
-<p>设计时应先判断受限位置。若输入米勒项占主要时间常数，共源共栅有明确动机；若输出负载主导，可能更需要跨导、电流、负载或后级缓冲的改变。加宽上管能降低 X 电阻，也会增加 <span class="arithmatex">\(C_{gs2},C_{sb2}\)</span> 和相关结电容；堆叠还要消耗电压余量。尺寸应通过这两边的变化选择，不能只追求一个更大的 <span class="arithmatex">\(g_m\)</span>。</p>
+<p>上图 <span class="arithmatex">\(R_S=10\)</span> kΩ、<span class="arithmatex">\(C_L=1\)</span> pF：共源约 4.05 MHz，共源共栅约 3.94 MHz。较低源阻抗减弱了输入充放电的限制，较大的输出负载则使两者都要面对输出充放电。共源共栅提高支路输出电阻，却还受外部 40 kΩ 并联限制；提高电阻带来的增益与较长的输出时间常数，也不是免费的速度收益。上管增加的结电容和 X 电荷可能抵消部分输入优势。观察到的净结果是带宽没有提高，不能把这点下降单独归给 X。</p>
+<p>下图 <span class="arithmatex">\(R_S=1\)</span> MΩ、<span class="arithmatex">\(C_L=0.05\)</span> pF：共源约 3.22 MHz，共源共栅约 4.74 MHz。输出负载减轻，源阻抗增大，栅端加载变得重要；让 <span class="arithmatex">\(C_{gd1}\)</span> 的另一端只作较小运动就更有价值。这里改善的是指定源阻抗下从信号源到最终输出的传递，不等于上管或 X 的本征速度提高了。</p>
+<p>两组共源共栅实验的直流点相同：<span class="arithmatex">\(V_X\approx0.678\)</span> V、<span class="arithmatex">\(V_O\approx1.710\)</span> V；按各管归档的 <span class="arithmatex">\(V_{DS}-V_{DSAT}\)</span>，下管余量约 0.457 V，上管约 0.801 V。带宽差异没有来自某一组失去饱和。但这些端到端曲线没有单独测量 X 的 AC 响应，不能据此给 X 指定一个精确工艺极点，也不能把几种寄生影响各占多少作唯一归因。</p>
+<p>选择尺寸时，可以先问：前一级主要在给米勒项充电，还是输出负载已占据主要时间常数？若先解决了这两个限制，X 的动态才更可能显露出来。加宽上管能增强恢复电流，也会增加 <span class="arithmatex">\(C_{gs2},C_{sb2}\)</span> 等电荷；堆叠还消耗电压余量。共源共栅改善的是特定的耦合、阻抗和电流传递条件，整个电路是否更快，仍由这些条件共同决定。</p>
+<p>本节原书对照：Razavi 第二版中文版印刷页 73～74（PDF 97～98），Fig. 3.53～3.54、式 (3.116)～(3.119)，讨论共栅源端阻抗与漏端终接；印刷页 77（PDF 101），Fig. 3.63、3.65、式 (3.128)，讨论电流传递与输出阻抗。频率部分见印刷页 176～179（PDF 200～203），式 (6.74)、Fig. 6.34～6.35、式 (6.79)～(6.86)；大负载与米勒项的联系另见印刷页 195（PDF 219）的习题 6.11、Fig. 6.63。本文的有限终接消元、三节点模态与数值例子独立展开。</p>
+<p>所核对的中文第二版 Fig. 6.34 将上管栅源之间的电容标为 <span class="arithmatex">\(C_{GD2}\)</span>；按其连接应为 <span class="arithmatex">\(C_{GS2}\)</span>，与同页正文一致。本节按端口连接标注，不将该图中文字沿用到模型。</p>
+<p>复核资源：<a href="../../../labs/frequency/">原 GF180 实验与模型条件</a>、<a href="https://github.com/Liuxd-1230/TechCodex/blob/main/%E6%A8%A1%E6%8B%9F/%E5%AE%9E%E9%AA%8C/%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94/decks/analytic-cascode.cir">显式线性网表</a>及<a href="https://github.com/Liuxd-1230/TechCodex/blob/main/scripts/check_cascode_dynamics.py">独立核验脚本</a>。在仓库根目录运行 <code>uv run --locked scripts/check_cascode_dynamics.py</code>，可比较端口极限、节点方程、原生 ngspice 和归档 GF180 响应。</p>
 <p>下一节：<a href="../differential/">差分与电流镜的动态路径</a></p>
 
 
