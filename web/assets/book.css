@@ -24,8 +24,11 @@ body{background:var(--book-margin);caret-color:#126e63;scrollbar-color:#8ca8b5 #
 .md-typeset .diagram-viewport>a{display:block;min-width:320px}
 .md-typeset .diagram-viewport:focus-visible{outline:2px solid var(--book-blue);outline-offset:3px}
 .md-typeset .diagram-scroll-hint{display:none;font-size:.65rem;line-height:1.7;color:#526974;margin:0 0 .6rem}
-.md-typeset .concept-figure{scroll-margin-top:4rem}
+.md-typeset .concept-figure,.md-typeset .wide-circuit-figure{scroll-margin-top:4rem}
 .md-typeset .concept-figure img{width:100%;min-width:320px;max-width:400px;max-height:none}
+.md-typeset .wide-circuit-figure .diagram-viewport>a{min-width:620px}
+.md-typeset .wide-circuit-figure img{width:620px;max-width:none;max-height:none}
+@media(max-width:44.984em){.md-typeset .wide-circuit-figure .diagram-scroll-hint{display:block}}
 .md-typeset .figure-detail{display:inline-flex;align-items:center;min-height:2.2rem;margin-left:.4rem;font-size:.66rem;white-space:nowrap;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
 /* Keep Material's native action away from chapter and experiment headings. */
 .md-top{top:auto!important;bottom:.8rem;left:auto;right:.8rem;margin:0;transform:none;max-width:calc(100vw - 1.6rem);min-height:2.2rem;border:1px solid var(--book-rule);border-radius:4px;color:#173c50;background:#fff;box-shadow:0 2px 12px #173c5014}

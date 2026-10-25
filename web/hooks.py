@@ -106,10 +106,13 @@ def on_page_content(html,page,config,files):
         image=figure.find('img')
         stem=Path(image.get('src','')).stem
         if stem in ('mos-channel','diff-modes','cs-load-resistor','cs-load-diode','cs-load-current','ota-current-sum','noise-statistics',
-                    'mos-charge-increment','cg-termination','cascode-feedback'):
+                    'mos-charge-increment','cg-termination','cascode-feedback',
+                    'device-body-port','device-body-evidence','device-output-slope',
+                    'frequency-mirror-phasors','frequency-mirror-nodes'):
             figure['id']='figure-'+stem
-        if stem in ('mos-charge','sf-feedback','noise-referral','noise-paths'):
-            figure['class']=['concept-figure']
+        wide_circuit=stem=='frequency-ota' and page.url=='analog/frequency/differential/'
+        if stem in ('mos-charge','sf-feedback','noise-referral','noise-paths') or wide_circuit:
+            figure['class']=['wide-circuit-figure' if wide_circuit else 'concept-figure']
             figure['id']='figure-'+Path(image['src']).stem
             paragraph.name='div'
             paragraph['class']=['diagram-viewport']
@@ -117,7 +120,7 @@ def on_page_content(html,page,config,files):
             paragraph['tabindex']='0'
             paragraph['aria-label']=image.get('alt','概念图')+'，窄屏可横向查看'
             hint=soup.new_tag('p',attrs={'class':'diagram-scroll-hint'})
-            hint.string='图内可左右查看，或使用下方的“查看原图”。'
+            hint.string='此图保留端口标注大小，可左右查看完整电路。' if wide_circuit else '图内可左右查看，或使用下方的“查看原图”。'
             paragraph.insert_before(hint)
         if not image.find_parent('a'):
             link=soup.new_tag('a',href=image['src'],title='打开原图，查看细节')

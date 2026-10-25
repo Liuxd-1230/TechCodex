@@ -113,6 +113,17 @@ if (SITE/'assets/demos/ota-frequency-data.json').read_bytes()!=(ROOT/'web/assets
     errors.append('OTA frequency payload differs from the published copy')
 if (SITE/'about/examples').exists() or any(s.select_one('nav a[href*="about/examples"]') for s in documents.values()):
     errors.append('Source-only example map leaked into reader routes/navigation')
+for route,names in (
+    ('analog/devices/nonideal',('device-body-port','device-body-evidence','device-output-slope')),
+    ('analog/frequency/differential',('frequency-mirror-phasors','frequency-mirror-nodes')),
+):
+    page=documents[SITE/route/'index.html']
+    for name in names:
+        figure=page.select_one(f'#figure-{name}')
+        if not figure or not figure.select_one(f'img[alt][src*="{name}.svg"]') or not figure.find('figcaption'):
+            errors.append(f'{route}: static teaching figure/caption missing: {name}')
+if not documents[SITE/'analog/frequency/differential/index.html'].select_one('#figure-frequency-ota .diagram-viewport[tabindex="0"][role="region"]'):
+    errors.append('OTA complete schematic lacks its keyboard-accessible local reading viewport')
 sample = documents[SITE / 'analog/stages/source-follower/index.html']
 if sample.select_one('details strong') is None:
     errors.append('Sample exercise Markdown was not parsed')
